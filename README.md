@@ -1,4 +1,67 @@
-# 《偏爱》指弹六线谱
+# 小k吉他练习
+
+这个仓库用于根据截图或网页原谱制作吉他谱，并通过静态网页展示成品。
+
+## 打开首页
+
+直接用浏览器打开 [index.html](index.html)，即可使用曲名/歌手搜索、指弹/弹唱伴奏分类、更新时间/曲名排序，并打开或下载曲谱。支持本地离线与 GitHub Pages，首页不依赖服务器、外部字体或 JavaScript 框架。
+
+- `index.html`：首页结构。
+- `assets/catalog.js`：独立曲谱清单，新增曲谱时在这里登记。
+- `assets/home.js`、`assets/home.css`：首页交互和样式。
+- `sheet_music/`：制作完成的独立 HTML 曲谱。
+- [docs/制谱.html](docs/制谱.html)：实际制谱流程、工具及校核经验。
+
+## 添加曲谱
+
+1. 将完成的曲谱 HTML 放入 `sheet_music/`。
+2. 在 `assets/catalog.js` 的 `window.GUITAR_SCORES` 数组中添加一条记录，使用唯一 `id`、真实曲名和更新时间。
+3. 运行 `npm run test:home` 检查清单与首页，并实际打开新曲谱核对显示；发布时提交并推送相关文件。
+
+当前条目示例：
+
+```js
+{
+  id: 'pian-ai-fingerstyle',
+  title: '《偏爱》指弹',
+  type: 'fingerstyle',
+  path: 'sheet_music/偏爱指弹.html',
+  timeSignature: '4/4',
+  capo: 2,
+  bars: 61,
+  updatedAt: '2026-09-16',
+  description: '前奏至 G 段完整收录，含逐小节核对说明。'
+}
+```
+
+`type` 为 `fingerstyle`（指弹）或 `accompaniment`（弹唱伴奏）；`updatedAt` 使用 `YYYY-MM-DD`。`artist`、`timeSignature`、`capo`、`bars` 和 `description` 可省略，未知信息不要补猜；`capo: 0` 表示无需变调夹。`path` 是相对仓库根目录的路径，不要以 `/` 开头。
+
+首页不会自动扫描目录，也不需要构建；曲谱文件和清单一起维护。普通脚本加载清单，避免本地文件打开时 `fetch` JSON 的限制。当前 `npm run build` 仍专用于重新生成《偏爱》曲谱，其他曲谱的生成流程可后续扩展。
+
+## 发布到 GitHub Pages
+
+1. 将网站文件提交并推送到 GitHub 仓库的 `master` 分支。
+2. 打开仓库 **Settings → Pages**。
+3. 在 **Build and deployment → Source** 选择 **Deploy from a branch**。
+4. 选择 **master** 和 **/ (root)**，点击 **Save**。
+5. 等待 Pages 部署完成，打开 `https://huatuo-dr.github.io/guitar/`（采用默认域名时）。
+
+根目录已包含 `.nojekyll`，按普通静态文件发布。站内链接使用相对路径，适配 `/guitar/` 前缀；不要选择 `/docs` 发布目录。HTML 曲谱本身仍可下载后离线打开。本次代码配置不代表远端 Pages 已启用。
+
+参见 [GitHub Pages 发布源配置](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)和[静态站点入口说明](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)。
+
+## 验证
+
+```sh
+npm ci
+npm test
+npx playwright install chromium
+npm run test:browser
+```
+
+`npm run test:browser` 同时检查曲谱和首页；`npm run test:home` 仅检查首页。可通过 `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` 指定已有 Chromium。首页测试包含离线打开、搜索/分类/排序、手机适配、真实 HTML 下载和模拟 `/guitar/` 子路径发布；多条曲谱只作为测试夹具，不加入真实目录。
+
+## 已完成曲谱：《偏爱》指弹
 
 直接用浏览器打开 [sheet_music/偏爱指弹.html](sheet_music/偏爱指弹.html)。生成的曲谱统一存放在 `sheet_music/` 目录。文件内嵌脚本、字体与乐谱，离线可用，无需启动服务器。可缩放、按段定位、打印或存为 PDF；窄屏可在谱面内横向滚动。
 

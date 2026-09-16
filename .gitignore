@@ -4,6 +4,7 @@ artifacts/
 tmp/
 /test-results/
 /playwright-report/
+/docs/superpowers/
 
 # Local environment files (keep shareable examples)
 .env
