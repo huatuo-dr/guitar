@@ -1,0 +1,78 @@
+{
+  "title": "《偏爱》指弹",
+  "timeSignature": [4, 4],
+  "capo": 2,
+  "source": "截图/1.png–4.png；截图/小节信息.txt",
+  "notes": [
+    "按整小节还原，红色虚线作为截图标记，不计入谱面。",
+    "品位数字沿用原图；图示变调夹第 2 品。",
+    "第 4 小节末尾虽未显示结束小节线，可见音符已合计四拍。",
+    "曲名由用户提供；未提供速度和调弦说明，仅展示六线谱，不推定播放速度。"
+  ],
+  "bars": [
+    {
+      "number": 1,
+      "beats": [
+        {"duration":8,"notes":[{"string":2,"fret":8},{"string":3,"fret":0},{"string":6,"fret":0}]},
+        {"duration":16,"notes":[{"string":4,"fret":0}]},
+        {"duration":16,"notes":[{"string":2,"fret":7}]},
+        {"duration":16,"notes":[{"string":6,"fret":"x"}]},
+        {"duration":16,"notes":[{"string":6,"fret":0}]},
+        {"duration":16,"notes":[{"string":2,"fret":8}]},
+        {"duration":16,"notes":[{"string":1,"fret":10}]},
+        {"duration":8,"notes":[{"string":1,"fret":10},{"string":6,"fret":8}]},
+        {"duration":16,"notes":[{"string":3,"fret":0}]},
+        {"duration":16,"notes":[{"string":1,"fret":8}]},
+        {"duration":16,"notes":[{"string":6,"fret":"x"}]},
+        {"duration":16,"notes":[{"string":6,"fret":8}]},
+        {"duration":16,"notes":[{"string":2,"fret":8,"legato":true}]},
+        {"duration":16,"notes":[{"string":2,"fret":10}]}
+      ]
+    },
+    {
+      "number": 2,
+      "beats": [
+        {"duration":8,"notes":[{"string":2,"fret":10},{"string":4,"fret":0}]},
+        {"duration":8,"notes":[{"string":5,"fret":0}]},
+        {"duration":8,"notes":[{"string":3,"fret":7,"harmonic":true}]},
+        {"duration":8,"notes":[{"string":5,"fret":0}]},
+        {"duration":8,"dotted":true,"notes":[{"string":2,"fret":7}]},
+        {"duration":16,"notes":[{"string":3,"fret":0}]},
+        {"duration":16,"notes":[{"string":1,"fret":0}]},
+        {"duration":16,"notes":[{"string":3,"fret":7}]},
+        {"duration":16,"notes":[{"string":4,"fret":7}]},
+        {"duration":16,"notes":[{"string":2,"fret":0}]}
+      ]
+    },
+    {
+      "number": 3,
+      "beats": [
+        {"duration":16,"notes":[{"string":2,"fret":8,"legato":true},{"string":3,"fret":0},{"string":6,"fret":0}]},
+        {"duration":16,"notes":[{"string":2,"fret":7}]},
+        {"duration":16,"notes":[{"string":2,"fret":8}]},
+        {"duration":16,"notes":[{"string":1,"fret":7}]},
+        {"duration":16,"notes":[{"string":6,"fret":"x"}]},
+        {"duration":16,"notes":[{"string":6,"fret":0}]},
+        {"duration":16,"notes":[{"string":2,"fret":8}]},
+        {"duration":16,"notes":[{"string":1,"fret":10}]},
+        {"duration":16,"notes":[{"string":1,"fret":10},{"string":6,"fret":8}]},
+        {"duration":16,"notes":[{"string":4,"fret":0}]},
+        {"duration":16,"notes":[{"string":3,"fret":0}]},
+        {"duration":16,"notes":[{"string":1,"fret":8}]},
+        {"duration":16,"notes":[{"string":6,"fret":"x"}]},
+        {"duration":16,"notes":[{"string":6,"fret":8}]},
+        {"duration":8,"notes":[{"string":1,"fret":7}]}
+      ]
+    },
+    {
+      "number": 4,
+      "beats": [
+        {"duration":8,"notes":[{"string":1,"fret":5},{"string":2,"fret":3},{"string":3,"fret":2}]},
+        {"duration":8,"notes":[{"string":4,"fret":0}]},
+        {"duration":4,"notes":[{"string":2,"fret":3},{"string":3,"fret":2}]},
+        {"duration":4,"arpeggio":"up","notes":[{"string":2,"fret":7,"harmonic":true},{"string":3,"fret":7,"harmonic":true}]},
+        {"duration":4,"notes":[{"string":6,"fret":"x"}]}
+      ]
+    }
+  ]
+}

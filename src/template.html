@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>《偏爱》指弹 · 吉他六线谱</title>
+  <style>
+    :root { color-scheme:light; --ink:#243732; --muted:#727a75; --green:#315e4d; --line:#e0e4dc; --paper:#fffefa; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:#f0f2ed; color:var(--ink); font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif; }
+    button, select { font:inherit; }
+    button { cursor:pointer; }
+    button:focus-visible, select:focus-visible, summary:focus-visible { outline:3px solid #729683; outline-offset:3px; }
+    .topbar { max-width:1280px; margin:auto; padding:25px 34px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+    .brand { display:flex; align-items:center; gap:11px; font-size:14px; font-weight:650; letter-spacing:.06em; }
+    .brand-mark { width:26px; height:25px; background:repeating-linear-gradient(to bottom,transparent 0 3px,var(--green) 3px 4px); border-left:2px solid var(--green); border-right:2px solid var(--green); }
+    main { max-width:1280px; margin:0 auto 48px; padding:0 28px; }
+    .toolbar { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:15px 7px 19px; }
+    .section-nav { display:flex; flex-wrap:wrap; align-items:center; gap:6px; }
+    .label { color:var(--muted); font-size:12px; margin-right:8px; }
+    .section-nav button { display:flex; flex-direction:column; align-items:center; gap:4px; min-width:70px; padding:8px 12px; border:1px solid transparent; border-radius:8px; background:transparent; color:var(--ink); font-size:13px; }
+    .section-nav small { color:var(--muted); font-size:10px; white-space:nowrap; }
+    .section-nav button:hover, .section-nav button[aria-pressed="true"] { background:#e0e8de; border-color:#cedacb; }
+    .controls { display:flex; align-items:center; gap:10px; flex-shrink:0; white-space:nowrap; }
+    select, .print-button { padding:9px 13px; border:1px solid #d6dcd2; border-radius:6px; background:#fafbf7; color:var(--ink); font-size:13px; }
+    .print-button { background:var(--green); color:white; border-color:var(--green); }
+    .sheet { background:var(--paper); border:1px solid #dfe3d9; box-shadow:0 12px 42px #20392a07; border-radius:3px; padding:45px 42px 26px; overflow:hidden; }
+    .sheet-heading { display:flex; justify-content:space-between; align-items:flex-end; gap:24px; padding-bottom:26px; border-bottom:1px solid var(--line); }
+    .eyebrow { color:var(--green); font-size:11px; letter-spacing:.22em; font-weight:600; }
+    h1 { font-size:36px; letter-spacing:.13em; font-weight:550; margin:10px 0 8px; }
+    .metadata { display:flex; gap:24px; text-align:right; }
+    .metadata span { display:block; font-size:10px; letter-spacing:.13em; color:var(--muted); margin-bottom:7px; }
+    .metadata strong { font-size:17px; font-weight:500; }
+    .score-area { overflow:auto; padding-top:26px; }
+    #score { min-width:1100px; }
+    .at-surface { cursor:default; }
+    .score-error { padding:16px; color:#8e3625; background:#fff0e9; border:1px solid #e0bbb0; }
+    #status { font-size:12px; color:var(--muted); margin:0 0 10px; }
+    .legend { border-bottom:1px solid var(--line); display:flex; flex-wrap:wrap; gap:13px 30px; padding:18px 0; font-size:12px; color:var(--muted); }
+    .legend b { color:var(--ink); font-family:Georgia,serif; font-size:16px; display:inline-block; margin-right:7px; }
+    .legend-notes { flex-basis:100%; display:flex; flex-wrap:wrap; gap:10px 30px; }
+    .sheet-footer { margin-top:26px; display:flex; justify-content:space-between; color:#92988e; font-size:10px; letter-spacing:.06em; }
+    details.notes { margin:22px 6px 0; color:var(--muted); font-size:13px; line-height:1.9; }
+    summary { cursor:pointer; width:fit-content; }
+    details.notes p { margin:8px 0; max-width:850px; }
+    .licenses { font-size:11px; color:#899085; margin:15px 6px; }
+    .licenses pre { white-space:pre-wrap; font-size:10px; max-height:200px; overflow:auto; }
+    @media(max-width:700px) {
+      .topbar { padding:20px 18px; }
+      main { padding:0 12px; }
+      .toolbar { flex-wrap:wrap; padding:7px 4px 15px; }
+      .controls { margin-left:auto; }
+      .sheet { padding:27px 18px 22px; }
+      .sheet-heading { align-items:flex-start; flex-direction:column; gap:16px; }
+      h1 { font-size:28px; letter-spacing:.05em; }
+      .metadata { gap:22px; padding-top:0; text-align:left; }
+      .metadata strong { font-size:15px; }
+      .metadata span { font-size:9px; }
+      .legend { gap:10px 20px; }
+    }
+    @page { size:A4 landscape; margin:12mm; }
+    @media print {
+      body { background:white; }
+      .topbar,.toolbar,.notes,.licenses,#status { display:none!important; }
+      main { max-width:none; margin:0; padding:0; }
+      .sheet { background:white; border:0; box-shadow:none; padding:0; overflow:visible; }
+      .sheet-heading { padding-bottom:15px; }
+      h1 { font-size:27px; }
+      .score-area { overflow:visible; padding-top:10px; }
+      #score { min-width:0!important; }
+      .legend { padding:12px 0; }
+      .sheet-footer { margin-top:16px; }
+      .at-surface { height:auto!important; overflow:visible!important; }
+      .at-surface>div { position:static!important; display:block!important; break-inside:avoid; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark" aria-hidden="true"></span>小k吉他练习</div>
+  </header>
+  <main>
+    <nav class="toolbar" aria-label="乐谱工具">
+      <div class="section-nav" id="section-nav"><span class="label">段定位</span></div>
+      <div class="controls">
+        <label class="label" for="zoom">谱面大小</label>
+        <select id="zoom"><option value="0.85">85%</option><option value="1" selected>100%</option><option value="1.2">120%</option><option value="1.4">140%</option></select>
+        <button type="button" class="print-button" id="print">打印 / 存为 PDF</button>
+      </div>
+    </nav>
+    <article class="sheet" aria-label="《偏爱》指弹：前奏及 A–G 段完整六线谱">
+      <header class="sheet-heading">
+        <div><div class="eyebrow">GUITAR TABLATURE</div><h1>《偏爱》指弹</h1></div>
+        <div class="metadata"><div><span>拍号</span><strong>4 / 4</strong></div><div><span>变调夹</span><strong>第 2 品</strong></div></div>
+      </header>
+      <div class="legend" aria-label="演奏记号说明"><span><b>H</b>击弦</span><span><b>P</b>勾弦</span><span><b>×</b>闷音</span><span><b>&lt;7&gt;</b>7 品自然泛音</span><span><b>↑</b>琶音方向</span><span><b>sl.</b>连奏滑音</span><span><b>3</b>三连音</span><span><b>*</b>打板</span><div class="legend-notes"><span>同音弧线：延音，不再拨弦</span><span>小字号音符：装饰音</span></div></div>
+      <div class="score-area" id="score-area"><p id="status" role="status">正在排版乐谱…</p><div id="score" role="img" aria-label="《偏爱》指弹第 1 至 61 小节，含前奏及 A–G 段，4/4 拍，变调夹第二品。详细音符可在下方转录内容中查看。"></div></div>
+      <footer class="sheet-footer"><span>全曲 · 61 小节</span><span>品位与演奏记号按原谱转录</span></footer>
+    </article>
+    <details class="notes"><summary>转录说明与逐小节核对</summary>
+      <p>本稿包含全曲第 1–61 小节：前奏 1–4、A 段 5–12、B 段 13–16、C 段 17–28、D 段 29–36、E 段 37–40、F 段 41–55、G 段 56–61。截图中的红色虚线为练习标记，谱面保留整小节内容；品位数字沿用原图。</p>
+      <p>A 段重点核对：第 5 小节末尾为同音延音，不再次拨弦；第 8 小节开头为 4 弦空弦装饰音击弦至 2 品；第 11 小节末尾为连续 0→1→0→1 击弦、勾弦、击弦。</p>
+      <p>B 段重点核对：第 13 小节的五弦琶音；第 15 小节四弦 2→4 连奏滑音；第 16 小节三弦 (2) 延音后滑至 4 品，同时的四弦空弦需拨响。</p>
+      <p>C 段重点核对：第 17 小节的装饰击弦；第 20 小节首拍三连音及第二拍连续延音；第 24 小节一弦 3→5→3 连奏滑音；第 25 小节开头为二弦 3 品；第 26 小节三弦 7 品自然泛音。星号（*）表示打板，保留原谱标注位置。</p>
+      <p>D–G 段重点核对：第 34–36 小节的三十二分音符；第 40 小节末尾琶音；第 48 小节仅 3→5 连奏滑音，后面的 3 重新拨弦；第 49 小节没有装饰击弦；第 61 小节首拍琶音后延音至全小节结束。</p>
+      <p>重复小节已完整展开：41–47 与 17–23 相同，50–55 与 18–23 相同，57–60 与 25–28 相同。D 段经确认按截图标为 29–36 小节。</p>
+      <p>曲名按用户提供的信息标为《偏爱》指弹。截图未提供速度和调弦说明，本稿仅展示六线谱；装饰音不另占标称节拍。</p>
+      <div id="transcription"></div>
+    </details>
+    <details class="licenses"><summary>开源许可</summary><pre>@@LICENSE@@</pre></details>
+  </main>
+  <script>@@LIBRARY@@</script>
+  <script>
+    const scoreData = @@DATA@@;
+    const alphaTex = @@TEX@@;
+    const scoreElement = document.getElementById('score');
+    const status = document.getElementById('status');
+    // In pinned alphaTab 1.8.4, SharedBottom = 3. The score's beat text is
+    // used only for source asterisks; let the native engraver space them below.
+    const textBand = alphaTab.Environment.defaultRenderers.flatMap(renderer => renderer.effectBands)
+      .find(band => band.effect.constructor.name === 'TextEffectInfo');
+    if (!textBand) throw new Error('alphaTab text effect band changed; review source-marker placement.');
+    textBand.mode = 3;
+    const api = new alphaTab.AlphaTabApi(scoreElement, {
+      core: { engine:'svg', useWorkers:false, includeNoteBounds:true, enableLazyLoading:false, fontDirectory:null, smuflFontSources:new Map([[alphaTab.FontFileFormat.Woff2,'data:font/woff2;base64,@@FONT@@']]) },
+      display: { scale:0.9, barsPerRow:4, justifyLastSystem:false, staveProfile:alphaTab.StaveProfile.Tab, padding:[0,12,0,12], resources: { staffLineColor:'#566059', mainGlyphColor:'#1d2822', secondaryGlyphColor:'#1d2822', barNumberColor:'#66725f', tablatureFont:'16px Arial', barNumberFont:'12px Arial', elementFonts:{EffectText:'18px Georgia'} } },
+      notation: { rhythmMode:alphaTab.TabRhythmMode.ShowWithBars, elements: { ScoreTitle:false, ScoreSubTitle:false, ScoreArtist:false, ScoreAlbum:false, ScoreWords:false, ScoreMusic:false, ScoreWordsAndMusic:false, ScoreCopyright:false, GuitarTuning:false, TrackNames:false, EffectTempo:false, EffectCapo:false, EffectDynamics:false, EffectHarmonics:false, EffectHammerOnPullOffText:true, EffectSlideText:true } },
+      player: { enablePlayer:false }
+    });
+    api.error.on(error => { status.className='score-error'; status.textContent='乐谱显示失败：'+error.message; document.body.dataset.renderState='error'; });
+    api.renderFinished.on(() => { status.hidden=true; document.body.dataset.renderState='ready'; });
+    api.tex(alphaTex);
+    const baseWidth = 1100;
+    document.getElementById('zoom').addEventListener('change', event => {
+      const zoom = Number(event.target.value);
+      scoreElement.style.minWidth = baseWidth * zoom + 'px';
+      api.settings.display.scale = 0.9 * zoom;
+      api.updateSettings();
+      api.render();
+    });
+    for (const section of scoreData.sections) {
+      const end = section.end;
+      const button = document.createElement('button');
+      button.type='button'; button.dataset.sectionStart=section.start;
+      const name = document.createElement('span'); name.textContent=section.name;
+      const range = document.createElement('small'); range.textContent=`${section.start}–${end} 小节`;
+      button.append(name,range);
+      button.setAttribute('aria-label',`定位${section.name}，第 ${section.start} 至 ${end} 小节`);
+      button.setAttribute('aria-pressed','false');
+      document.getElementById('section-nav').append(button);
+    }
+    document.querySelectorAll('[data-section-start]').forEach(button => button.addEventListener('click', () => {
+      const index = Number(button.dataset.sectionStart) - 1;
+      const bounds = api.renderer.boundsLookup?.findMasterBarByIndex(index);
+      if (!bounds) return;
+      const rect = scoreElement.getBoundingClientRect();
+      const area = document.getElementById('score-area');
+      area.scrollTo({left:Math.max(0,bounds.visualBounds.x - 20),behavior:'smooth'});
+      window.scrollTo({top:window.scrollY+rect.top+bounds.visualBounds.y-100,behavior:'smooth'});
+      document.querySelectorAll('[data-section-start]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+    }));
+    let screenScale;
+    window.addEventListener('beforeprint', () => { screenScale=api.settings.display.scale; scoreElement.style.minWidth='0'; api.settings.display.scale=0.9; api.updateSettings(); api.render(); });
+    window.addEventListener('afterprint', () => { if(screenScale===undefined)return; api.settings.display.scale=screenScale; scoreElement.style.minWidth=baseWidth*Number(document.getElementById('zoom').value)+'px'; api.updateSettings(); api.render(); });
+    document.getElementById('print').addEventListener('click',()=>window.print());
+    const durationName={4:'四分',8:'八分',16:'十六分',32:'三十二分'};
+    const transcript=document.getElementById('transcription');
+    for(const bar of scoreData.bars){
+      const details=document.createElement('details');
+      const summary=document.createElement('summary'); summary.textContent=`第 ${bar.number} 小节 · 4 拍`; details.append(summary);
+      const list=document.createElement('ol');
+      for(const beat of bar.beats){
+        const item=document.createElement('li');
+        item.textContent=beat.notes.map(note=>`${note.string}弦${note.fret==='x'?'闷音':note.fret+'品'}${note.harmonic?'（自然泛音）':''}${note.legato?'（连至下一音，击/勾弦）':''}${note.tie?'（延续前音，不再拨弦）':''}${note.slide==='legato'?'（连奏滑至下一音，不重拨）':''}`).join(' + ')+`；${beat.grace?'装饰音，不另占拍':`${beat.dotted?'附点':''}${durationName[beat.duration]}${beat.tuplet?'三连音':'音符'}`}${beat.arpeggio?'；向上琶音箭头':''}${beat.text?'；打板 '+beat.text:''}`;
+        list.append(item);
+      }
+      details.append(list); transcript.append(details);
+    }
+  </script>
+</body>
+</html>

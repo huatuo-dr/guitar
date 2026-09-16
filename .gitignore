@@ -1,0 +1,22 @@
+# Dependencies and generated verification artifacts
+node_modules/
+artifacts/
+tmp/
+/test-results/
+/playwright-report/
+
+# Local environment files (keep shareable examples)
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# npm logs
+npm-debug.log*
+
+# OS metadata and editor temporary files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
