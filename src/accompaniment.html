@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>@@TITLE@@ · 小k吉他练习</title>
+  <style>
+    :root{color-scheme:light;--ink:#213c35;--muted:#6b746f;--line:#dce2dc;--paper:#fffefa;--accent:#245747}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f3f4ef;color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+    a{color:var(--accent);text-underline-offset:3px}button,select{font:inherit;color:inherit}button,a,select{-webkit-tap-highlight-color:transparent}
+    :focus-visible{outline:3px solid #bc8650;outline-offset:3px}button{cursor:pointer}
+    .site-bar{padding:18px max(24px,calc((100vw - 1240px)/2));border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;font-size:14px}.brand{text-decoration:none;font-weight:700;letter-spacing:.04em}.back{font-size:13px}
+    main{max-width:1240px;margin:28px auto 48px;padding:0 24px}.paper{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:28px 24px;box-shadow:0 8px 28px #213c3505}
+    h1{margin:7px 0 10px;font-size:30px;letter-spacing:.025em}p{line-height:1.8}.eyebrow{font-size:12px;letter-spacing:.1em;color:var(--muted)}.metadata{display:flex;flex-wrap:wrap;gap:8px 20px;color:var(--muted);font-size:14px}.scope{font-size:13px;color:var(--muted);margin:12px 0 20px}
+    .tools{display:flex;align-items:center;flex-wrap:wrap;gap:10px;padding:12px 0 18px;border-bottom:1px solid var(--line);font-size:13px}.tools label{display:flex;gap:8px;align-items:center}.tools select,.tools button{border:1px solid #c8d4ca;border-radius:6px;background:#fffefa;padding:7px 11px}.tools button{background:var(--ink);color:#fff}.scroll-hint{margin-left:auto;color:var(--muted);font-size:12px}
+    .section-nav{display:flex;flex-wrap:wrap;gap:8px;padding:17px 0}.nav-label{font-size:12px;align-self:center;margin-right:8px;color:var(--muted)}.jump-link{display:inline-flex;flex-direction:column;gap:3px;text-align:center;border:1px solid var(--line);border-radius:6px;padding:7px 13px;text-decoration:none;font-size:13px;min-width:68px}.jump-link small{color:var(--muted);font-size:10px}.jump-link:hover,.jump-link[aria-current="location"]{background:#e9f0e9;border-color:#9cb4a5}
+    .legend{font-size:13px;line-height:1.9;border-top:1px solid var(--line);padding:13px 0}.legend p{margin:0}.legend strong{display:inline-block;min-width:22px;color:#111}.legend .legend-row{display:flex;gap:10px 24px;flex-wrap:wrap}.legend .secondary{margin-top:3px;color:var(--muted)}
+    .source-caution{background:#faf2e3;border-left:3px solid #c29b55;margin:0 0 14px;padding:9px 12px;font-size:12px;line-height:1.75;color:#77592b}.source-caution a{color:inherit}
+    details{margin:12px 0}summary{cursor:pointer;font-size:13px;font-weight:600;padding:5px 0}.route{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:7px;margin:9px 0 16px}.route a{border:1px solid var(--line);border-radius:6px;padding:9px;text-decoration:none;font-size:12px;line-height:1.6}.route strong{display:block;font-size:15px}.route span{font-size:11px;color:var(--muted)}.route a:hover{background:#edf2ec}
+    .chord-guide{display:flex;flex-wrap:wrap;gap:7px}.chord-card{width:96px}.chord-guide svg{width:100%;height:auto}.guide-text{font-size:12px;color:var(--muted);margin:6px 0}
+    .score-viewport{overflow:auto;max-width:100%;overscroll-behavior-x:contain;scrollbar-color:#a7b7aa #f1f3ec;padding:8px 0 4px}#score{width:1140px;max-width:none;margin:0 auto}.score-system{display:block;width:100%;height:auto;break-inside:avoid;color:#222d28;overflow:visible}
+    svg{fill:currentColor;stroke:currentColor;stroke-width:1.2}svg text{stroke:none;font-family:Arial,"Microsoft YaHei",sans-serif;fill:currentColor}.staff-line{stroke:#adb5ad;stroke-width:.75}.bar-line{stroke:#707970;stroke-width:1.1}.chord-diagram{stroke-width:.7}.chord-name{font-size:14px;font-weight:600}.open-string{font-size:9px}.fret-code{font-size:10px;letter-spacing:.7px;fill:#6b746f}.bar-number{font-size:11px;fill:#778778}.section-label{font-size:11px;fill:#47735b}.tab-label{font-family:Georgia,serif;font-size:15px}.fret{font-size:13px;font-weight:500}.note-background{fill:var(--paper);stroke:none}.hammer{font-size:10px;paint-order:stroke;stroke:var(--paper);stroke-width:3px}.hold{font-size:19px;paint-order:stroke;stroke:var(--paper);stroke-width:3px}.pulse{font-size:9px;fill:#839186}.navigation-label{font-size:10px;fill:#365f49;font-weight:600}.source-note{font-size:10px;fill:#926828}.volta-label{font-size:11px}.measure-highlight{fill:transparent;stroke:none}.measure.current .measure-highlight,.measure:target .measure-highlight{fill:#c5dfad40}
+    .verification{border-top:1px solid var(--line);padding-top:12px;margin-top:20px}.verification p,.verification li{font-size:12px;line-height:1.9;color:var(--muted)}.verification ul{padding-left:20px}.source-link{font-size:12px}footer{font-size:11px;color:var(--muted);margin-top:24px;line-height:1.8}
+    @media(max-width:600px){.site-bar{padding:15px 16px}main{margin:18px auto;padding:0 10px}.paper{padding:20px 14px}h1{font-size:25px}.scroll-hint{margin-left:0;width:100%}.section-nav{gap:6px}.jump-link{padding:7px 10px}.nav-label{width:100%;margin-bottom:3px}.metadata{font-size:12px;gap:8px 14px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+    @page{size:A4 landscape;margin:9mm}
+    @media print{
+      html{scroll-behavior:auto}body{background:white;color:#111}.site-bar,.tools,.section-nav,.optional,.verification,footer{display:none}main{max-width:none;margin:0;padding:0}.paper{border:0;border-radius:0;padding:0;box-shadow:none;background:white}h1{font-size:23px;margin:0 0 5px}.eyebrow{display:none}.metadata{font-size:11px}.scope{margin:5px 0 7px;font-size:10px}.legend{font-size:10px;padding:6px 0}.source-caution{font-size:9px;padding:4px 8px;margin-bottom:3px;background:white}.score-viewport{overflow:visible;padding:0}#score{width:100%!important;margin:0}.score-system{break-inside:avoid;page-break-inside:avoid}.measure{outline:none!important}.measure.current .measure-highlight,.measure:target .measure-highlight{fill:transparent}.note-background{fill:white}.hammer,.hold{stroke:white}.route-print{display:block!important;font-size:9px;line-height:1.5;margin:6px 0}.source-link{font-size:9px}
+    }
+  </style>
+</head>
+<body data-render-state="ready">
+  <header class="site-bar"><a class="brand" href="../index.html">小k吉他练习</a><a class="back" href="../index.html">← 返回曲谱库</a></header>
+  <main><article class="paper">
+    <div class="eyebrow">弹唱伴奏 / ACOUSTIC GUITAR</div>
+    <h1>@@TITLE@@</h1>
+    <div class="metadata"><span>演唱：@@ARTIST@@</span><span>1 = C</span><span>4/4</span><span>55 个书写小节</span></div>
+    <p class="scope">和弦、扫弦与过门的伴奏声部整理 · 演唱部分可对照<a href="@@SOURCE@@" target="_blank" rel="noopener noreferrer">网页原谱</a>。</p>
+    <div class="tools"><label for="zoom">谱面大小 <select id="zoom"><option value=".85">85%</option><option value="1" selected>100%</option><option value="1.15">115%</option><option value="1.3">130%</option></select></label><button type="button" id="print">打印 / 存为 PDF</button><span class="scroll-hint">每行 4 小节 · 窄屏可在谱面内左右滑动</span></div>
+    <nav class="section-nav" aria-label="段定位"><span class="nav-label">段定位</span>@@SECTIONS@@</nav>
+    <div class="legend">
+      <p class="legend-row"><span><strong>↑</strong> 下扫：低音弦 → 高音弦</span><span><strong>↓</strong> 上扫：高音弦 → 低音弦</span><span><strong>波浪 ↑</strong> 琶音：低音弦 → 高音弦</span></p>
+      <p class="secondary">H：击弦，后一个音不再拨弦　　—：延续前音，不再扫弦　　谱下 1–4：拍点提示　　†：补充的 G/B 参考指法</p>
+    </div>
+    <p class="source-caution">原谱核对：<a href="#bar-18" data-jump="18">第 18 小节</a>、<a href="#bar-43" data-jump="43">第 43 小节</a>只记了两拍（F、G 各一拍），此处按图保留。原谱未注明速度、变调夹位置。</p>
+    <details class="optional" open><summary>演奏顺序 · 按原谱反复与跳尾</summary><div class="route">@@ROUTE@@</div></details>
+    <p class="route-print" style="display:none">演奏顺序：1–29 → 7–27 → 30–45 → 21–26 → 46–47 → 21–27 → 48–55。第1房子为28–29，第2房子为30。D.S.1在27前跳46；D.S.2在28前跳48。</p>
+    <details class="optional"><summary>和弦指法速查 · 10 个和弦</summary><p class="guide-text">图中左至右为 6 弦至 1 弦；○ 空弦，× 不弹，圆点为按弦位置，粗横线为横按。† G/B 为补充参考指法。</p><div class="chord-guide">@@CHORDS@@</div></details>
+    <div class="score-viewport" aria-label="吉他六线谱，可横向滚动" tabindex="0"><div id="score">@@SCORE@@</div></div>
+    <details class="verification"><summary>原谱对照与整理说明</summary><ul>@@NOTES@@</ul><p>谱面为可缩放的矢量重绘，所有谱面与样式均已内嵌，保存此 HTML 后可以离线打开。小节仍按书写顺序保留，没有展开反复；上方演奏顺序列出了完整行进路线。</p></details>
+    <p class="source-link">参考：<a href="@@SOURCE@@" target="_blank" rel="noopener noreferrer">@@SOURCE_TITLE@@</a> · 伴奏声部整理</p>
+    <footer>小k吉他练习 · 小节编号与段名用于阅读定位</footer>
+  </article></main>
+  <script>
+    const score = document.getElementById('score');
+    document.getElementById('zoom').addEventListener('change', event => { score.style.width = (1140 * Number(event.target.value)) + 'px'; });
+    document.getElementById('print').addEventListener('click', () => window.print());
+    document.querySelectorAll('[data-jump]').forEach(link => link.addEventListener('click', event => {
+      event.preventDefault();
+      const target = document.getElementById('bar-' + link.dataset.jump);
+      if (!target) return;
+      document.querySelectorAll('.measure.current').forEach(bar => bar.classList.remove('current'));
+      target.classList.add('current');
+      document.querySelectorAll('.section-nav [data-jump]').forEach(item => {
+        if (item === link) item.setAttribute('aria-current', 'location'); else item.removeAttribute('aria-current');
+      });
+      history.replaceState(null, '', '#bar-' + link.dataset.jump);
+      target.scrollIntoView({block:'center', inline:'center', behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
+      target.focus({preventScroll:true});
+    }));
+  </script>
+</body>
+</html>

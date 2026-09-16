@@ -36,7 +36,7 @@
 
 `type` 为 `fingerstyle`（指弹）或 `accompaniment`（弹唱伴奏）；`updatedAt` 使用 `YYYY-MM-DD`。`artist`、`timeSignature`、`capo`、`bars` 和 `description` 可省略，未知信息不要补猜；`capo: 0` 表示无需变调夹。`path` 是相对仓库根目录的路径，不要以 `/` 开头。
 
-首页不会自动扫描目录，也不需要构建；曲谱文件和清单一起维护。普通脚本加载清单，避免本地文件打开时 `fetch` JSON 的限制。当前 `npm run build` 仍专用于重新生成《偏爱》曲谱，其他曲谱的生成流程可后续扩展。
+首页不会自动扫描目录，也不需要构建；曲谱文件和清单一起维护。普通脚本加载清单，避免本地文件打开时 `fetch` JSON 的限制。`npm run build` 会重新生成《偏爱》和《老男孩》两份独立曲谱；`npm run build:laonanhai` 仅生成《老男孩》。
 
 ## 发布到 GitHub Pages
 
@@ -59,7 +59,17 @@ npx playwright install chromium
 npm run test:browser
 ```
 
-`npm run test:browser` 同时检查曲谱和首页；`npm run test:home` 仅检查首页。可通过 `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` 指定已有 Chromium。首页测试包含离线打开、搜索/分类/排序、手机适配、真实 HTML 下载和模拟 `/guitar/` 子路径发布；多条曲谱只作为测试夹具，不加入真实目录。
+`npm run test:browser` 同时检查两份曲谱和首页；`npm run test:home` 仅检查首页。可通过 `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` 指定已有 Chromium。首页测试包含离线打开、搜索/分类/排序、手机适配、真实 HTML 下载和模拟 `/guitar/` 子路径发布；额外的排序样本仅作为测试夹具，不加入真实目录。
+
+## 已完成曲谱：《老男孩》弹唱伴奏
+
+打开 [sheet_music/老男孩弹唱伴奏.html](sheet_music/老男孩弹唱伴奏.html)。根据[吉他寻谱网页原图](https://www.jitaxp.com/jitatanchangpu/403.html)整理伴奏声部，含 55 个书写小节、和弦指法、扫弦、击弦过门与琶音；演唱部分通过原谱链接对照。每行四小节、末行三小节，支持段定位、缩放、打印和离线打开。
+
+本谱采用构建时生成的原生 SVG，保留箭头扫弦记法，无需外部库、字体或网络，禁用 JavaScript 后仍能阅读。`score/laonanhai.json` 保存和弦与节奏模式、逐小节引用、演奏路线和核对说明；`scripts/accompaniment-svg.mjs` 负责时值校验、和弦图和六线谱绘制；`scripts/build-laonanhai.mjs` 与 `src/accompaniment.html` 生成单文件成品。
+
+原谱第 18、43 小节只记两拍，按图保留并显著说明，没有擅自补拍。Dm7、A7、G7 采用图中的 `x00211`、`002223`、`300001` 指法；原谱只写名称的 G/B 补充 `x20003`，用 † 标为参考。未补猜速度与变调夹。小节编号和段名为阅读辅助。
+
+保留第 1 房子 28–29、第 2 房子 30，完整路线为 **1–29 → 7–27 → 30–45 → 21–26 → 46–47 → 21–27 → 48–55**。两次 D.S. 均返回 21：第一次在 27 之前跳至 46，第二次在 28 之前跳至 48。`tests/accompaniment.test.mjs` 检查时值、过门、指法与路线；`tests/accompaniment-browser.mjs` 检查离线、段定位、缩放、打印和首页集成。
 
 ## 已完成曲谱：《偏爱》指弹
 

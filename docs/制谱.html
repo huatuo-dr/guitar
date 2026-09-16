@@ -19,9 +19,9 @@
 <header>
 <div class="eyebrow">制谱流程与实践记录</div>
 <h1>如何把原谱制作成网页吉他谱</h1>
-<p class="lead">以《偏爱》指弹为例，记录从读取截图、逐小节识谱，到生成独立 HTML、校核音符和检查打印的完整过程，供后续制作指弹谱与弹唱伴奏谱时复用。</p>
+<p class="lead">以《偏爱》指弹和《老男孩》弹唱伴奏为例，记录读取截图与网页原图、逐小节识谱、生成独立 HTML、校核音符和检查打印的实际过程。</p>
 <p class="meta">记录日期：2026-09-16 · 根据当前仓库实现与实际制作过程整理</p>
-<div class="facts"><span>61 小节</span><span>前奏 + A–G 段</span><span>每行 4 小节</span><span>单文件离线 HTML</span><span>10 项数据测试 + 浏览器检查</span></div>
+<div class="facts"><span>偏爱 · 61 小节</span><span>老男孩 · 55 小节</span><span>每行 4 小节</span><span>单文件离线 HTML</span><span>数据与浏览器检查</span></div>
 </header>
 <nav aria-label="文档目录"><ol>
 <li><a href="#result">01 · 本次完成了什么</a></li><li><a href="#tools">02 · 使用了哪些工具</a></li><li><a href="#sources">03 · 如何读取原谱</a></li><li><a href="#workflow">04 · 分段制作流程</a></li><li><a href="#data">05 · 音符如何记录</a></li><li><a href="#lessons">06 · 遇到的问题与处理</a></li><li><a href="#verification">07 · 如何验证结果</a></li><li><a href="#rebuild">08 · 文件与重建方法</a></li><li><a href="#next">09 · 后续如何复用</a></li>
@@ -45,6 +45,7 @@
 <tr><td>AI 图像查看与视觉识读</td><td>查看原始截图和放大预览，识别六根弦上的品位、符干、连梁、弧线、装饰音及其他符号；对模糊处再次放大并独立复核。</td></tr>
 <tr><td>网页读取工具、Python urllib</td><td>从用户给出的网页查找正文和图片地址；读取工具未能取到图片时，再以带浏览器标识和来源页的普通 HTTP 请求验证原图是否可访问。用于已查看的《老男孩》页面。</td></tr>
 <tr><td><code>@coderline/alphatab 1.8.4</code></td><td>实际制谱引擎。解析 AlphaTex，布局六线谱、节奏和技法，并输出 SVG。版本固定在项目依赖中。</td></tr>
+<tr><td>原生 SVG 伴奏绘制</td><td>《老男孩》在构建时直接绘制和弦图、扫弦箭头、连梁、过门与跳转提示，保持伴奏的箭头记法。无需额外运行时或字体，禁用脚本也可阅读。</td></tr>
 <tr><td>AlphaTex</td><td>制谱库读取的文本格式。构建脚本将 JSON 中的音符和技巧转换为该格式，便于检查渲染前的乐谱内容。</td></tr>
 <tr><td>Node.js、npm</td><td>运行构建脚本和测试；管理项目内依赖；将库、字体、数据和模板组合为独立 HTML。</td></tr>
 <tr><td>HTML / CSS / SVG、Bravura 字体</td><td>完成页面和矢量谱面显示；字体以数据 URL 内嵌，避免离线时缺字或依赖外部 CDN。</td></tr>
@@ -54,7 +55,7 @@
 <tr><td>独立审谱代理</td><td>对同一批截图独立识读，再与主转录结果逐项对照，重点检查难辨的时值和技法。</td></tr>
 <tr><td>项目内 skill：<code>lit-sheet-music</code></td><td>参考了使用 Lit + OpenSheetMusicDisplay 渲染 MusicXML 的方案。当前实现采用 alphaTab，未引入 Lit 或 OSMD 运行时。该 skill 保存在 <a href="../.agents/skills/lit-sheet-music/SKILL.md">项目目录</a>中。</td></tr>
 </tbody></table></div>
-<p>需要区分：skill 提供工作方法和参考资料，alphaTab 才是当前网页运行时实际使用的制谱库。依赖和该额外 skill 均安装在项目内。</p>
+<p>需要区分：skill 提供工作方法和参考资料。《偏爱》使用 alphaTab；《老男孩》伴奏采用原生 SVG 构建脚本，未引入新的制谱库。依赖和额外 skill 均安装在项目内。</p>
 </section>
 
 <section id="sources"><h2>03 · 如何读取原谱</h2>
@@ -62,7 +63,7 @@
 <p>先读取小节信息，列清分段、已有图片和重复来源，再对照实际小节线查看整小节。红色虚线框经用户确认只是练习标记，所以框外属于该小节的音符同样转录。小图通过浏览器放大后查看；预览保存在 <code>artifacts/</code>，不会嵌入成品曲谱。</p>
 <p>识读时先固定弦号：最上方为 1 弦，最下方为 6 弦；再按横向时间位置，分清同时发音的一组音符与先后出现的音符。读取品位后，还必须检查下方的符干和连梁，才能判断时值。</p>
 <h3>用户提供的网页链接</h3>
-<p>链接输入先检查正文和原图，而不能只凭文章标题判断已经看到了谱子。本次查看的 <a href="https://www.jitaxp.com/jitatanchangpu/403.html">《老男孩》页面</a>有一张封面图和三张谱图；成功读取原图后，确认是含和弦图、扫弦节奏、演唱简谱、歌词和反复跳转的弹唱伴奏谱。到本记录为止，仅完成查看，尚未将它转录成新的网页曲谱。</p>
+<p>链接输入先检查正文和原图，而不能只凭文章标题判断已经看到了谱子。本次查看的 <a href="https://www.jitaxp.com/jitatanchangpu/403.html">《老男孩》页面</a>有一张封面图和三张谱图；成功读取原图后，确认是含和弦图、扫弦节奏、演唱简谱、歌词和反复跳转的弹唱伴奏谱。现已整理其伴奏声部，生成 <a href="../sheet_music/老男孩弹唱伴奏.html">《老男孩》弹唱伴奏</a>，演唱部分通过原谱链接对照。</p>
 <div class="note">材料中没有提供的信息应记录为未知。例如《偏爱》原图可确认 4/4 拍和变调夹第 2 品，但没有速度、调弦说明；成品没有补写未经确认的参数，也没有提供播放功能。</div>
 </section>
 
@@ -146,7 +147,7 @@
 <tr><td>视觉与打印复核</td><td>桌面和手机截图；四页 PDF；密集音符、括号、三十二分连梁、结尾以及页边界。</td><td>发现模型正确但谱面拥挤、重叠、裁切的问题。</td></tr>
 </tbody></table></div>
 <div class="note">自动测试通过不等于已经证明原图转录无误。JSON 与 AlphaTex 一致，只能说明转换一致；如果最初识读错了，两者仍可能一起出错。因此数据测试、视觉复核和原图核对都需要保留。</div>
-<p>当前仓库有 10 项 Node 测试及一套浏览器检查。原图与放大图供识读使用，生成曲谱依赖的是已经转录的数据；从当前提交重新构建不需要读取原始截图。</p>
+<p>当前两首曲谱都有 Node 数据测试与浏览器检查。原图与放大图供识读使用，生成曲谱依赖的是已经转录的数据；从当前提交重新构建不需要读取原始截图。</p>
 </section>
 
 <section id="rebuild"><h2>08 · 文件与重建方法</h2>
@@ -154,10 +155,14 @@
 ├── index.html                 # 曲谱库首页，支持搜索、分类和下载
 ├── assets/                    # 首页样式、脚本及独立曲谱清单
 ├── sheet_music/
-│   └── 偏爱指弹.html          # 可独立打开的成品
-├── score/                     # 当前《偏爱》的结构化转录和 AlphaTex
+│   ├── 偏爱指弹.html          # 指弹成品
+│   └── 老男孩弹唱伴奏.html    # 伴奏成品
+├── score/                     # 两首曲谱的结构化数据；偏爱另含 AlphaTex
 ├── src/template.html          # 曲谱页面模板、交互和打印样式
 ├── scripts/build.mjs          # 合并数据、展开重复、生成 HTML
+├── scripts/build-laonanhai.mjs # 老男孩独立构建入口
+├── scripts/accompaniment-svg.mjs # 伴奏矢量绘制
+├── src/accompaniment.html     # 伴奏页面模板
 ├── scripts/alphatab-display.mjs
 ├── tests/                     # 数据、解析和浏览器验证
 ├── docs/制谱.html             # 本文
@@ -173,7 +178,7 @@ npm run test:browser</code></pre>
 <pre><code>pdfinfo artifacts/score-print.pdf
 pdftoppm -scale-to 1600 -png artifacts/score-print.pdf artifacts/preview</code></pre>
 <p>构建时读取本地 alphaTab 脚本、Bravura 字体和许可证，连同数据一起写入 HTML。用户打开成品无需安装 Node.js，也无需启动服务器。<code>node_modules/</code>、<code>artifacts/</code>及其他临时文件由 <a href="../.gitignore">.gitignore</a>排除；成品、数据、模板、脚本、依赖锁文件和项目 skill 可纳入版本管理。</p>
-<p>早期兼容入口 <code>前奏.html</code>已按用户要求删除，构建不会重新生成它。目前生成脚本仍专用于《偏爱》；首页已支持独立曲谱清单与多首曲谱展示，批量制谱尚未实现。</p>
+<p>早期兼容入口 <code>前奏.html</code>已按用户要求删除，构建不会重新生成它。<code>npm run build</code>依次生成《偏爱》和《老男孩》；<code>npm run build:laonanhai</code>仅重建伴奏谱。首页清单在 <code>assets/catalog.js</code>登记，不自动扫描目录。</p>
 </section>
 
 <section id="next"><h2>09 · 后续如何复用</h2>
@@ -185,9 +190,12 @@ pdftoppm -scale-to 1600 -png artifacts/score-print.pdf artifacts/preview</code><
 <li>确认特殊符号、段落冲突和看不清的内容，将结论写回数据说明。</li>
 <li>生成 HTML，做数据回读、浏览器和逐页打印检查，最后放入 <code>sheet_music/</code>。</li>
 </ol>
-<h3>弹唱伴奏谱需要新增什么</h3>
-<p>《老男孩》这类谱子还需要记录和弦名称、和弦指法图、扫弦方向与覆盖弦、演唱旋律和歌词对齐，以及反复段、不同结尾和 D.S. 等跳转。扫弦伴奏中的符号要结合和弦及原谱约定解释，不能直接套用当前指弹谱中所有记号的含义。</p>
-<p>这些内容尚未在当前 JSON 结构和生成脚本中完整实现。下一步适合用该谱的前奏或短段验证和弦、扫弦和简谱布局，再扩展模型；同时明确是否展示演唱声部和歌词，以及按原谱保留跳转还是展开演奏顺序。</p>
+<h3>《老男孩》伴奏声部的实践</h3>
+<p>三页原谱分别有20、24、11个书写小节，共55小节。先建立小节编号，再记录和弦变换拍点与节奏模式。普通半小节为“下扫四分、下扫八分、下扫十六分、上扫十六分”；另行记录密集C和弦、三和弦、过门、琶音与延续，不把相似小节全部套成同一节奏。</p>
+<p><code>score/laonanhai.json</code>中的 <code>patterns</code>保存节奏事件，<code>bars</code>引用模式并指定和弦起拍。品位事件仍采用1弦在上、6弦在下的约定；过门为4弦0击到2，再弹3弦空弦。和弦图的数组则按6弦至1弦读取，两种方向需要明确区分。</p>
+<p>独立识读发现第18、43小节只写了两拍，因此保留 <code>beats: 2</code>并附原谱说明。校验要求事件时值合计与该值一致，非四拍小节必须有说明；不通过补音来凑满四拍。Dm7、A7、G7按图保留 <code>x00211</code>、<code>002223</code>、<code>300001</code>；G/B原图没有指法图，补充常用 <code>x20003</code>并用†明确标为参考。</p>
+<p>反复保持书写顺序：第1房子28–29，第2房子30。完整演奏路线为 <code>1–29 → 7–27 → 30–45 → 21–26 → 46–47 → 21–27 → 48–55</code>。两次D.S.均回21，分别在27之前跳到46、28之前跳到48。页面同时提供路线导航和小节内文字提示，避免把跳尾入口当成需要先演奏的小节。</p>
+<p>为保留箭头扫弦记法，构建脚本直接绘制SVG和弦图、六根弦、方向箭头、节奏连梁与小节线。生成文件没有远程资源请求，也不依赖JavaScript绘制；脚本仅处理缩放、定位和打印。SVG逐行进入正常文档流并禁止行内分页，打印忽略屏幕缩放值。</p>
 <h3>仓库逐步整理的方向</h3>
 <p>根目录 <a href="../index.html">index.html</a>现已实现曲谱目录，元信息独立保存在 <code>assets/catalog.js</code>，支持搜索、分类、排序、打开及下载，并适配 GitHub Pages。新增成品放入 <code>sheet_music/</code>后登记清单即可展示。后续可为每首曲谱分开保存来源和结构化数据，再扩展按曲谱选择生成的构建流程。</p>
 </section>
