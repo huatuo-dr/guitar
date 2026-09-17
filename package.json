@@ -4,12 +4,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node scripts/build.mjs && node scripts/build-laonanhai.mjs && node scripts/build-houlai.mjs",
+    "build": "node scripts/build.mjs && node scripts/build-laonanhai.mjs && node scripts/build-houlai.mjs && node scripts/build-kongxin.mjs",
     "build:laonanhai": "node scripts/build-laonanhai.mjs",
     "build:houlai": "node scripts/build-houlai.mjs",
     "test": "node --test tests/*.test.mjs",
-    "test:browser": "node tests/browser.mjs && node tests/home.mjs && node tests/accompaniment-browser.mjs && node tests/responsive-score.mjs && node tests/houlai-browser.mjs && node tests/auto-scroll.mjs && node tests/score-download.mjs && node tests/pianai-lyrics-browser.mjs",
-    "test:home": "node tests/home.mjs"
+    "test:browser": "node tests/browser.mjs && node tests/home.mjs && node tests/accompaniment-browser.mjs && node tests/responsive-score.mjs && node tests/houlai-browser.mjs && node tests/auto-scroll.mjs && node tests/score-download.mjs && node tests/pianai-lyrics-browser.mjs && node tests/kongxin-browser.mjs",
+    "test:home": "node tests/home.mjs",
+    "build:kongxin": "node scripts/build-kongxin.mjs"
   },
   "dependencies": {
     "@coderline/alphatab": "1.8.4"

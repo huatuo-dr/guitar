@@ -34,5 +34,16 @@ window.GUITAR_SCORES = [
     bars: 49,
     updatedAt: '2026-09-17',
     description: 'C 调指法、原调 E♭，含分解和弦、扫弦、简谱歌词与两组反复跳尾。'
+  },
+  {
+    id: 'kong-xin-accompaniment',
+    title: '《空心》弹唱伴奏',
+    artist: '光泽',
+    type: 'accompaniment',
+    path: 'sheet_music/空心弹唱伴奏.html',
+    timeSignature: '4/4',
+    bars: 47,
+    updatedAt: '2026-09-17',
+    description: 'C 调指法，含扫弦、琶音、简谱、双行歌词与反复跳尾。'
   }
 ];

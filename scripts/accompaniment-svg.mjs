@@ -44,6 +44,7 @@ export function validateScore(data) {
         for(const n of event.notes??[])if(!Number.isInteger(n.string)||n.string<1||n.string>6||!Number.isInteger(n.fret)||n.fret<0||event.strings.includes(n.string))throw new Error('同时拨弦品位无效');
       }
       for(const string of [event.startString,event.endString])if(string!==undefined&&(!Number.isInteger(string)||string<1||string>6))throw new Error('扫弦范围无效');
+      if(event.sourceArrow!==undefined && (event.kind!=='hold'||!['up','down'].includes(event.sourceArrow)))throw new Error('延音扫弦箭头无效');
     }
   }
   for (const route of data.route) {
@@ -153,10 +154,11 @@ function renderBar(bar, data, index, rowHeight) {
     const chord = bar.chords.findLast(c => c.beat <= event.beat);
     const bassIndex = data.chordShapes[chord.name].frets.findIndex(f => f >= 0);
     const bassY = TOP + (5-bassIndex) * STRING_GAP;
-    if (event.kind === 'down') svg += arrow(at,event.startString?TOP+(event.startString-1)*STRING_GAP:Number.isInteger(event.beat)?bassY:TOP+24,event.endString?TOP+(event.endString-1)*STRING_GAP:TOP);
-    if (event.kind === 'up') svg += arrow(at,event.startString?TOP+(event.startString-1)*STRING_GAP:TOP,event.endString?TOP+(event.endString-1)*STRING_GAP:TOP+24);
-    if (event.kind === 'arpeggio') svg += arrow(at,bassY,TOP,true);
-    if (event.kind === 'hold') svg += text(at,TOP+23,'–','hold','middle');
+    const strokeKind = event.sourceArrow ?? event.kind;
+    if (strokeKind === 'down') svg += arrow(at,event.startString?TOP+(event.startString-1)*STRING_GAP:Number.isInteger(event.beat)?bassY:TOP+24,event.endString?TOP+(event.endString-1)*STRING_GAP:TOP);
+    if (strokeKind === 'up') svg += arrow(at,event.startString?TOP+(event.startString-1)*STRING_GAP:TOP,event.endString?TOP+(event.endString-1)*STRING_GAP:TOP+24);
+    if (event.kind === 'arpeggio') svg += arrow(at,event.startString?TOP+(event.startString-1)*STRING_GAP:bassY,event.endString?TOP+(event.endString-1)*STRING_GAP:TOP,true);
+    if (event.kind === 'hold' && !event.sourceArrow) svg += text(at,TOP+23,'–','hold','middle');
     if(event.kind==='pluck'){
       for(const string of event.strings){
         const y=TOP+(string-1)*STRING_GAP;
@@ -165,10 +167,6 @@ function renderBar(bar, data, index, rowHeight) {
       for(const n of event.notes??[]){
         const y=TOP+(n.string-1)*STRING_GAP;
         svg+=`<rect x="${at-5}" y="${y-6}" width="10" height="13" class="note-background"/>`+text(at,y+4,n.fret,'fret','middle');
-      }
-      if(event.tieToNext){
-        const y=TOP+(event.strings[0]-1)*STRING_GAP-6;
-        svg+=`<path class="tab-tie" d="M ${at} ${y} Q ${(at+placed[i+1].x)/2} ${y-9} ${placed[i+1].x} ${y}" fill="none"/>`;
       }
     }
     if (event.kind === 'note') {
@@ -180,7 +178,11 @@ function renderBar(bar, data, index, rowHeight) {
         svg += text((at+end)/2,y-17,event.pullToNext?'P':'H','hammer','middle');
       }
     }
-    if (event.kind !== 'hold') svg += line(at,BOTTOM+7,at,STEM_END);
+    if(event.tieToNext && placed[i+1]){
+      const y=event.kind==='pluck'?TOP+(event.strings[0]-1)*STRING_GAP-6:TOP-8;
+      svg+=`<path class="tab-tie" d="M ${at} ${y} Q ${(at+placed[i+1].x)/2} ${y-9} ${placed[i+1].x} ${y}" fill="none"/>`;
+    }
+    if (event.kind !== 'hold' || event.sourceArrow) svg += line(at,BOTTOM+7,at,STEM_END);
   });
   // Beam within each quarter-note pulse; connect only contiguous eighth/sixteenth events.
   for (let beat = 1; beat <= bar.beats; beat++) {
@@ -202,7 +204,7 @@ function renderBar(bar, data, index, rowHeight) {
     svg+=line(x,216,x,252,'class="bar-line"')+line(x+BAR_WIDTH,216,x+BAR_WIDTH,252,'class="bar-line"');
     if(meterChange)svg+='<g class="melody-time-signature">'+text(x+15,228,bar.beats,'meter-number','middle')+text(x+15,247,4,'meter-number','middle')+'</g>';
     const previous=data.bars[bar.number-2]?.vocal;
-    svg+=renderNumberedMelody(bar.vocal,{position:eventX,left:x,right:x+BAR_WIDTH,incomingTie:previous?.events.at(-1).tieToNext??false,incomingSlur:bar.vocal.incomingSlur||previous?.events.at(-1).slurToNext||false});
+    svg+=renderNumberedMelody(bar.vocal,{position:eventX,left:x,right:x+BAR_WIDTH,incomingTie:!!previous?.events.at(-1).tieToNext||previous?.crossBarTieStart!==undefined,incomingSlur:bar.vocal.incomingSlur||previous?.events.at(-1).slurToNext||false});
   }
   if (bar.note) svg += text(x+10,rowHeight-10,bar.note,'source-note');
   if (bar.endLabel) svg += text(x+BAR_WIDTH-10,rowHeight-10,bar.endLabel,'navigation-label','end');

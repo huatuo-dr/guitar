@@ -17,15 +17,16 @@ export async function buildAccompaniment(id,filename) {
   if(data.fingeringKey) metadata.push(['原调',`1 = ${data.key}`],['指法',`${data.fingeringKey} 指法`]);
   else metadata.push(['调式',`1 = ${data.key}`]);
   if(data.capo!==undefined) metadata.push(['变调夹',`${data.capo} 品`]);
+  else if(data.capoText) metadata.push(['变调夹建议',data.capoText]);
 
   const referenceNames = Object.entries(data.chordShapes).filter(([,shape]) => shape.reference).map(([name]) => name).join('、');
   const referenceLegend = referenceNames ? `　　†：补充的 ${referenceNames} 参考指法` : '';
-  const techniqueLegend = data.fingeringKey
+  const techniqueLegend = data.techniqueLegend ?? (data.fingeringKey
     ? '六线谱 ×：按和弦在指定弦拨弦　　H：击弦；P：勾弦　　弧线上的 3：三连音　　—：延续前音'
-    : `H：击弦，后一个音不再拨弦　　—：延续前音，不再扫弦${referenceLegend}`;
-  const melodyLegend = data.fingeringKey
+    : `H：击弦，后一个音不再拨弦　　—：延续前音，不再扫弦${referenceLegend}`);
+  const melodyLegend = data.melodyLegend ?? (data.fingeringKey
     ? '简谱：上下圆点表示八度，数字下短线表示减时，0 为休止，— 为延长前音；同音弧线为延音，异音弧线为连音，♭ 为降号，弧线上的 3 为三连音。双行歌词对应两段演唱。'
-    : '简谱：上下圆点表示八度，数字下短线表示减时，0 为休止，— 为延长前音；小字号音符为装饰音，同音弧线为延音。双行歌词对应两段演唱。';
+    : '简谱：上下圆点表示八度，数字下短线表示减时，0 为休止，— 为延长前音；小字号音符为装饰音，同音弧线为延音。双行歌词对应两段演唱。');
   const sourceLink = label => `<a href="${escape(data.source)}" target="_blank" rel="noopener noreferrer">${escape(label)}</a>`;
   const routeNote = data.routeNote??(data.notes??[]).find(note => note.startsWith('第1房子'))??'';
   const routePrint = `演奏顺序：${data.route.map(({start,end}) => `${start}–${end}`).join(' → ')}。${routeNote}`;

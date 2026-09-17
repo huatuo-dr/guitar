@@ -1,0 +1,861 @@
+{
+  "title": "《空心》弹唱伴奏",
+  "artist": "光泽",
+  "key": "C",
+  "fingeringKey": "C",
+  "capoText": "男声 5–7 品 / 女声 0–2 品",
+  "timeSignature": [
+    4,
+    4
+  ],
+  "sourceTitle": "皋尚艺琴行（六安）·《空心》（用户提供三页截图）",
+  "techniqueLegend": "扫弦弧线：延音，后一个箭头不重复扫弦　　—：延续前音",
+  "melodyLegend": "简谱：上方一点为高一个八度，两点为高两个八度；下方短线表示减时，0 为休止，— 为延长。同音弧线为延音，异音弧线为连音，小字号为装饰音，弧线上的 3 为三连音。双行歌词对应两次演唱。",
+  "notes": [
+    "依据用户提供的三页原谱重绘：光泽演唱，姚若龙作词、光泽作曲，皋尚艺琴行（六安）编配。原谱标注原调1=C、选调1=C、4/4；未标速度。",
+    "变调夹按原谱保留男声5–7品、女声0–2品建议，由演唱音域决定；未指定固定品位。",
+    "共47个书写小节：第一页1–15，第二页16–35，第三页36–47。原图未印小节号，编号与段名为阅读定位；反复不展开。",
+    "Fmaj7按原图保留6弦至1弦指法0 0 3 2 1 0；Em7为0 2 2 0 3 0。常规扫弦及多数琶音按图为5弦至1弦。",
+    "第4、12小节第二拍末上扫延续到第三拍，原谱的续音箭头和弧线同时保留；第四拍换G，琶音范围为6弦至2弦。第21小节首拍两次低音扫弦为6弦至3弦，第三拍为四个十六分音符。",
+    "第39–41、47小节伴奏为首拍琶音后延续三拍；不把延续横线改成重复扫弦。"
+  ],
+  "routeNote": "第5小节开始反复。第一遍走第30小节的1房子，再回到5；第二遍弹至29后跳过30，进入31的2房子并演奏至47结束。第31房子右端按原图保持开放。",
+  "sections": [
+    {
+      "name": "前奏",
+      "start": 1,
+      "end": 4
+    },
+    {
+      "name": "主歌",
+      "start": 5,
+      "end": 12
+    },
+    {
+      "name": "过渡",
+      "start": 13,
+      "end": 21
+    },
+    {
+      "name": "副歌",
+      "start": 22,
+      "end": 30
+    },
+    {
+      "name": "桥段",
+      "start": 31,
+      "end": 38
+    },
+    {
+      "name": "尾声",
+      "start": 39,
+      "end": 47
+    }
+  ],
+  "route": [
+    {
+      "label": "第一遍 · 走1房子",
+      "start": 1,
+      "end": 30
+    },
+    {
+      "label": "反复 · 第二段歌词",
+      "start": 5,
+      "end": 29
+    },
+    {
+      "label": "走2房子 · 至结束",
+      "start": 31,
+      "end": 47
+    }
+  ],
+  "chordShapes": {
+    "Fmaj7": {
+      "frets": [
+        0,
+        0,
+        3,
+        2,
+        1,
+        0
+      ]
+    },
+    "G": {
+      "frets": [
+        3,
+        2,
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    "Em7": {
+      "frets": [
+        0,
+        2,
+        2,
+        0,
+        3,
+        0
+      ]
+    },
+    "Am": {
+      "frets": [
+        -1,
+        0,
+        2,
+        2,
+        1,
+        0
+      ]
+    }
+  },
+  "patterns": {
+    "intro": [
+      {
+        "kind": "arpeggio",
+        "duration": 4,
+        "startString": 5,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 5,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 5
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 5,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 8,
+        "startString": 1,
+        "endString": 5
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 5
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 5,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 5
+      }
+    ],
+    "standard": [
+      {
+        "kind": "down",
+        "duration": 4,
+        "startString": 5,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 5,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 5
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 5,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 8,
+        "startString": 1,
+        "endString": 5
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 5
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 5,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 5
+      }
+    ],
+    "turnaround": [
+      {
+        "kind": "down",
+        "duration": 4,
+        "startString": 5,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 5,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "tieToNext": true,
+        "startString": 1,
+        "endString": 5
+      },
+      {
+        "kind": "hold",
+        "duration": 4,
+        "sourceArrow": "up",
+        "startString": 1,
+        "endString": 5
+      },
+      {
+        "kind": "arpeggio",
+        "duration": 4,
+        "startString": 6,
+        "endString": 2
+      }
+    ],
+    "fill": [
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 6,
+        "endString": 3
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 6,
+        "endString": 3
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 5,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 5
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 5,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 5
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 5,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 5
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 5,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 5
+      }
+    ],
+    "sustain": [
+      {
+        "kind": "arpeggio",
+        "duration": 4,
+        "startString": 5,
+        "endString": 1
+      },
+      {
+        "kind": "hold",
+        "duration": 4
+      },
+      {
+        "kind": "hold",
+        "duration": 4
+      },
+      {
+        "kind": "hold",
+        "duration": 4
+      }
+    ]
+  },
+  "bars": [
+    {
+      "number": 1,
+      "chords": [
+        [
+          1,
+          "Fmaj7"
+        ]
+      ],
+      "pattern": "intro"
+    },
+    {
+      "number": 2,
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 3,
+      "chords": [
+        [
+          1,
+          "Em7"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 4,
+      "chords": [
+        [
+          1,
+          "Am"
+        ],
+        [
+          4,
+          "G"
+        ]
+      ],
+      "pattern": "turnaround"
+    },
+    {
+      "number": 5,
+      "chords": [
+        [
+          1,
+          "Fmaj7"
+        ]
+      ],
+      "repeatStart": true,
+      "pattern": "intro"
+    },
+    {
+      "number": 6,
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 7,
+      "chords": [
+        [
+          1,
+          "Em7"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 8,
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 9,
+      "chords": [
+        [
+          1,
+          "Fmaj7"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 10,
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 11,
+      "chords": [
+        [
+          1,
+          "Em7"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 12,
+      "chords": [
+        [
+          1,
+          "Am"
+        ],
+        [
+          4,
+          "G"
+        ]
+      ],
+      "pattern": "turnaround"
+    },
+    {
+      "number": 13,
+      "chords": [
+        [
+          1,
+          "Fmaj7"
+        ]
+      ],
+      "pattern": "intro"
+    },
+    {
+      "number": 14,
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 15,
+      "chords": [
+        [
+          1,
+          "Em7"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 16,
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 17,
+      "chords": [
+        [
+          1,
+          "Fmaj7"
+        ]
+      ],
+      "pattern": "intro"
+    },
+    {
+      "number": 18,
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 19,
+      "chords": [
+        [
+          1,
+          "Em7"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 20,
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 21,
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "pattern": "fill"
+    },
+    {
+      "number": 22,
+      "chords": [
+        [
+          1,
+          "Fmaj7"
+        ]
+      ],
+      "pattern": "intro"
+    },
+    {
+      "number": 23,
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 24,
+      "chords": [
+        [
+          1,
+          "Em7"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 25,
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 26,
+      "chords": [
+        [
+          1,
+          "Fmaj7"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 27,
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 28,
+      "chords": [
+        [
+          1,
+          "Em7"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 29,
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 30,
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "volta": 1,
+      "voltaStart": true,
+      "voltaEnd": true,
+      "repeatEnd": true,
+      "pattern": "standard"
+    },
+    {
+      "number": 31,
+      "chords": [
+        [
+          1,
+          "Fmaj7"
+        ]
+      ],
+      "volta": 2,
+      "voltaStart": true,
+      "pattern": "intro"
+    },
+    {
+      "number": 32,
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 33,
+      "chords": [
+        [
+          1,
+          "Em7"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 34,
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 35,
+      "chords": [
+        [
+          1,
+          "Fmaj7"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 36,
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 37,
+      "chords": [
+        [
+          1,
+          "Em7"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 38,
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 39,
+      "chords": [
+        [
+          1,
+          "Fmaj7"
+        ]
+      ],
+      "pattern": "sustain"
+    },
+    {
+      "number": 40,
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "pattern": "sustain"
+    },
+    {
+      "number": 41,
+      "chords": [
+        [
+          1,
+          "Em7"
+        ]
+      ],
+      "pattern": "sustain"
+    },
+    {
+      "number": 42,
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 43,
+      "chords": [
+        [
+          1,
+          "Fmaj7"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 44,
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 45,
+      "chords": [
+        [
+          1,
+          "Em7"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 46,
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "pattern": "standard"
+    },
+    {
+      "number": 47,
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "pattern": "sustain"
+    }
+  ]
+}

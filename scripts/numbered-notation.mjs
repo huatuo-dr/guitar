@@ -14,6 +14,7 @@ export function attachVocals(score,vocals) {
     const beats=vocal.events.reduce((sum,n)=>sum+eventBeats(n),0);
     if(Math.abs(beats-(vocal.beats??4))>1e-8) throw new Error(`第${bar.number}小节简谱时值为${beats}拍`);
     if(Math.abs(beats-(bar.beats??4))>1e-8) throw new Error(`第${bar.number}小节简谱与伴奏时值不一致`);
+    if(vocal.crossBarTieStart!==undefined && (!Number.isInteger(vocal.crossBarTieStart)||!vocal.events[vocal.crossBarTieStart]||vocal.events[vocal.crossBarTieStart].hold||vocal.events[vocal.crossBarTieStart].degree===0)) throw new Error('跨小节延音起点无效');
     for(const [index,note] of vocal.events.entries()){
       if(![1,2,4,8,16,32].includes(note.duration)) throw new Error('简谱时值无效');
       if(note.tuplet!==undefined && note.tuplet!==3) throw new Error('简谱连音分组无效');
@@ -122,7 +123,8 @@ export function renderNumberedMelody(vocal,{position,left,right,incomingTie=fals
     }
   }
   if(incomingTie||incomingSlur)svg+=`<path d="M ${left} ${baseline-37} Q ${(left+notes[0].x)/2} ${baseline-40} ${notes[0].x} ${baseline-31}" fill="none" class="${incomingTie?'melody-tie':'melody-slur'}"/>`;
-  if(notes.at(-1).tieToNext||notes.at(-1).slurToNext)svg+=`<path d="M ${notes.at(-1).x} ${baseline-31} Q ${(notes.at(-1).x+right)/2} ${baseline-40} ${right} ${baseline-37}" fill="none" class="${notes.at(-1).tieToNext?'melody-tie':'melody-slur'}"/>`;
+  const tieStart = vocal.crossBarTieStart!==undefined ? notes[vocal.crossBarTieStart] : notes.at(-1);
+  if(vocal.crossBarTieStart!==undefined||tieStart.tieToNext||tieStart.slurToNext)svg+=`<path d="M ${tieStart.x} ${baseline-31} Q ${(tieStart.x+right)/2} ${baseline-40} ${right} ${baseline-37}" fill="none" class="${vocal.crossBarTieStart!==undefined||tieStart.tieToNext?'melody-tie':'melody-slur'}"/>`;
   if(endAt!==undefined)svg+=text(notes[endAt].x+12,baseline,')','melody-parenthesis');
   return svg+'</g>';
 }
