@@ -37,4 +37,23 @@ function setupScoreView({storageKey, viewport, baseWidths, apply}) {
   window.addEventListener('beforeprint',()=>print(true));
   window.addEventListener('afterprint',()=>print(printMedia.matches));
   update();
+  setupScoreAutoScroll({storageKey:storageKey+':auto-scroll'});
+}
+
+// Capture the parsed standalone document before rendering or adding runtime UI.
+// A Blob download also works when this page is opened directly via file://.
+function setupScoreDownload() {
+  const source = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+  const button = document.getElementById('download');
+  button.addEventListener('click', () => {
+    const url = URL.createObjectURL(new Blob([source], {type:'text/html;charset=utf-8'}));
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = button.dataset.filename;
+    document.body.append(link);
+    link.click();
+    link.remove();
+    // Give the browser time to start saving before releasing the temporary URL.
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+  });
 }

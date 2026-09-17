@@ -53,14 +53,15 @@ const [template, library, font, license, fontLicense] = await Promise.all([
 ]);
 const escapeJson = value => JSON.stringify(value).replaceAll('<', '\\u003c');
 const tokens = {
-  VIEW: await read('src/score-view.js'),
+  VIEW: await read('src/score-view.js')+'\n'+await read('src/auto-scroll.js'),
+  AUTO_SCROLL_CSS: await read('src/auto-scroll.css'),
   LIBRARY: showTiedSlideFrets(library).replace(/\/\/# sourceMappingURL=.*$/gm, '').replace(/<\/script/gi, '<\\/script'),
   FONT: font.toString('base64'),
   TEX: escapeJson(tex),
   DATA: escapeJson(data),
   LICENSE: `${license}\n\n${fontLicense}`.replaceAll('&', '&amp;').replaceAll('<', '&lt;')
 };
-const html = template.replace(/@@(LIBRARY|FONT|TEX|DATA|LICENSE|VIEW)@@/g, (_, token) => tokens[token]);
+const html = template.replace(/@@(LIBRARY|FONT|TEX|DATA|LICENSE|VIEW|AUTO_SCROLL_CSS)@@/g, (_, token) => tokens[token]);
 await mkdir(new URL('sheet_music/', root), {recursive:true});
 await writeFile(new URL('sheet_music/偏爱指弹.html', root), html);
 console.log(`生成 sheet_music/偏爱指弹.html：${(Buffer.byteLength(html) / 1024 / 1024).toFixed(2)} MB，${data.bars.length} 小节，脚本与字体已内嵌。`);

@@ -55,9 +55,7 @@
     const actions=element('div','score-actions');
     const open=element('a','open-score','打开曲谱');open.href=`./${score.path}`;open.setAttribute('aria-label',`打开${score.title}`);
     open.append(icon('M7 17 17 7M7 7h10v10'));
-    const download=element('a','download-score','下载 HTML');download.href=`./${score.path}`;download.download=score.path.split('/').at(-1);download.setAttribute('aria-label',`下载${score.title} HTML`);
-    download.append(icon('M12 3v12m-4-4 4 4 4-4M5 16v5h14v-5'));
-    actions.append(open,download);side.append(time,actions);article.append(art,info,side);
+    actions.append(open);side.append(time,actions);article.append(art,info,side);
     return article;
   }
 

@@ -4,7 +4,7 @@
 
 ## 打开首页
 
-直接用浏览器打开 [index.html](index.html)，即可使用曲名/歌手搜索、指弹/弹唱伴奏分类、更新时间/曲名排序，并打开或下载曲谱。支持本地离线与 GitHub Pages，首页不依赖服务器、外部字体或 JavaScript 框架。
+直接用浏览器打开 [index.html](index.html)，即可使用曲名/歌手搜索、指弹/弹唱伴奏分类、更新时间/曲名排序，并打开曲谱；进入曲谱后，点击“打印 / 存为 PDF”后面的“下载 HTML”即可保存离线文件（本地打开也支持）。支持本地离线与 GitHub Pages，首页不依赖服务器、外部字体或 JavaScript 框架。
 
 - `index.html`：首页结构。
 - `assets/catalog.js`：独立曲谱清单，新增曲谱时在这里登记。
@@ -44,6 +44,14 @@
 
 每份曲谱分别记住行数与缩放选项，横竖屏切换会重新计算自动布局。浏览器不允许本地存储时，当前页面仍可正常调整，只是不保留到下次。打印始终使用四小节并适应纸张，结束后恢复屏幕选项。共享逻辑在 `src/score-view.js`，构建时内嵌到三份 HTML，无需额外资源请求。《老男孩》《后来》同时内嵌两种矢量排版，禁用 JavaScript 后仍可阅读四小节版。
 
+## 自动滚动
+
+三份曲谱右下角均提供固定的“滚／停”按钮，点击开始或停止自动向下滚动。手动拖动、滚轮、键盘翻页及段定位不会关闭运行状态；操作结束后从当前位置接着滚。滚到底部仍保持“停”，手动向上翻后继续滚动。
+
+长按按钮约半秒或点击“速度：适中”可选很慢、慢、适中、快、很快（8／14／22／34／50像素每秒）。选择即时生效，每份曲谱分别记住速度，重新打开仍默认停止。点击面板外部或按Esc关闭速度选择。打印时按钮隐藏并暂停位移，打印结束后保留原运行状态。
+
+实现位于 `src/auto-scroll.js` 与 `src/auto-scroll.css`，构建时内嵌到独立HTML；不依赖网络。`tests/auto-scroll.mjs` 已纳入 `npm run test:browser`，覆盖长按、手机触摸、连续位移、底部恢复、五档速度、存储与打印。
+
 ## 发布到 GitHub Pages
 
 1. 将网站文件提交并推送到 GitHub 仓库的 `master` 分支。
@@ -65,7 +73,7 @@ npx playwright install chromium
 npm run test:browser
 ```
 
-`npm run test:browser` 同时检查三份曲谱和首页；`npm run test:home` 仅检查首页。可通过 `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` 指定已有 Chromium。首页测试包含离线打开、搜索/分类/排序、手机适配、真实 HTML 下载和模拟 `/guitar/` 子路径发布；额外的排序样本仅作为测试夹具，不加入真实目录。
+`npm run test:browser` 同时检查三份曲谱和首页；`npm run test:home` 仅检查首页。可通过 `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` 指定已有 Chromium。首页测试包含离线打开、搜索/分类/排序、手机适配和模拟 `/guitar/` 子路径发布；下载测试另行验证三份曲谱在本地和网站上的保存、离线重开与再次下载；额外的排序样本仅作为测试夹具，不加入真实目录。
 
 ## 已完成曲谱：《后来》弹唱伴奏
 

@@ -6,6 +6,7 @@
   <meta name="color-scheme" content="light">
   <title>《偏爱》指弹 · 吉他六线谱</title>
   <style>
+    @@AUTO_SCROLL_CSS@@
     :root { color-scheme:light; --ink:#243732; --muted:#727a75; --green:#315e4d; --line:#e0e4dc; --paper:#fffefa; }
     * { box-sizing:border-box; }
     body { margin:0; background:#f0f2ed; color:var(--ink); font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif; }
@@ -26,7 +27,7 @@
     .controls { display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
     .control-group { display:flex; align-items:center; gap:5px; white-space:nowrap; }
     #view-hint { flex-basis:100%; font-size:12px; color:var(--muted); }
-    select, .print-button { padding:9px 13px; border:1px solid #d6dcd2; border-radius:6px; background:#fafbf7; color:var(--ink); font-size:13px; }
+    select, .print-button, .download-button { padding:9px 13px; border:1px solid #d6dcd2; border-radius:6px; background:#fafbf7; color:var(--ink); font-size:13px; }
     .print-button { background:var(--green); color:white; border-color:var(--green); }
     .sheet { background:var(--paper); border:1px solid #dfe3d9; box-shadow:0 12px 42px #20392a07; border-radius:3px; padding:45px 42px 26px; overflow:hidden; }
     .sheet-heading { display:flex; justify-content:space-between; align-items:flex-end; gap:24px; padding-bottom:26px; border-bottom:1px solid var(--line); }
@@ -91,6 +92,7 @@
         <div class="control-group"><label class="label" for="bars-per-row">每行小节</label><select id="bars-per-row"><option value="auto" selected>自动</option><option value="2">2 小节</option><option value="4">4 小节</option></select></div>
         <div class="control-group"><label class="label" for="zoom">谱面大小</label><select id="zoom"><option value="fit" selected>适应宽度</option><option value="0.5">50%</option><option value="0.65">65%</option><option value="0.85">85%</option><option value="1">100%</option><option value="1.2">120%</option><option value="1.4">140%</option></select></div>
         <button type="button" class="print-button" id="print">打印 / 存为 PDF</button>
+        <button type="button" class="download-button" id="download" data-filename="偏爱指弹.html">下载 HTML</button>
         <span id="view-hint" aria-live="polite"></span>
       </div>
     </nav>
@@ -118,69 +120,73 @@
   <script>@@LIBRARY@@</script>
   <script>@@VIEW@@</script>
   <script>
-    const scoreData = @@DATA@@;
-    const alphaTex = @@TEX@@;
-    const scoreElement = document.getElementById('score');
-    const status = document.getElementById('status');
-    // In pinned alphaTab 1.8.4, SharedBottom = 3. The score's beat text is
-    // used only for source asterisks; let the native engraver space them below.
-    const textBand = alphaTab.Environment.defaultRenderers.flatMap(renderer => renderer.effectBands)
-      .find(band => band.effect.constructor.name === 'TextEffectInfo');
-    if (!textBand) throw new Error('alphaTab text effect band changed; review source-marker placement.');
-    textBand.mode = 3;
-    const api = new alphaTab.AlphaTabApi(scoreElement, {
-      core: { engine:'svg', useWorkers:false, includeNoteBounds:true, enableLazyLoading:false, fontDirectory:null, smuflFontSources:new Map([[alphaTab.FontFileFormat.Woff2,'data:font/woff2;base64,@@FONT@@']]) },
-      display: { scale:0.9, barsPerRow:4, justifyLastSystem:false, staveProfile:alphaTab.StaveProfile.Tab, padding:[0,12,0,12], resources: { staffLineColor:'#566059', mainGlyphColor:'#1d2822', secondaryGlyphColor:'#1d2822', barNumberColor:'#66725f', tablatureFont:'16px Arial', barNumberFont:'12px Arial', elementFonts:{EffectText:'18px Georgia'} } },
-      notation: { rhythmMode:alphaTab.TabRhythmMode.ShowWithBars, elements: { ScoreTitle:false, ScoreSubTitle:false, ScoreArtist:false, ScoreAlbum:false, ScoreWords:false, ScoreMusic:false, ScoreWordsAndMusic:false, ScoreCopyright:false, GuitarTuning:false, TrackNames:false, EffectTempo:false, EffectCapo:false, EffectDynamics:false, EffectHarmonics:false, EffectHammerOnPullOffText:true, EffectSlideText:true } },
-      player: { enablePlayer:false }
-    });
-    api.error.on(error => { status.className='score-error'; status.textContent='乐谱显示失败：'+error.message; document.body.dataset.renderState='error'; });
-    api.renderFinished.on(() => { status.hidden=true; document.body.dataset.renderState='ready'; });
-    setupScoreView({storageKey:'guitar-view:pianai:v1',viewport:document.getElementById('score-area'),baseWidths:{2:600,4:1100},apply({barsPerRow,zoom,width,printing}) {
-      document.body.dataset.renderState='rendering';
-      scoreElement.dataset.barsPerRow=barsPerRow;
-      scoreElement.style.width=printing?'100%':width+'px';
-      api.settings.display.barsPerRow=barsPerRow;
-      api.settings.display.scale=0.9*zoom;
-      api.updateSettings();
-      if(api.score)api.render();
-    }});
-    api.tex(alphaTex);
-    for (const section of scoreData.sections) {
-      const end = section.end;
-      const button = document.createElement('button');
-      button.type='button'; button.dataset.sectionStart=section.start;
-      const name = document.createElement('span'); name.textContent=section.name;
-      const range = document.createElement('small'); range.textContent=`${section.start}–${end} 小节`;
-      button.append(name,range);
-      button.setAttribute('aria-label',`定位${section.name}，第 ${section.start} 至 ${end} 小节`);
-      button.setAttribute('aria-pressed','false');
-      document.getElementById('section-nav').append(button);
-    }
-    document.querySelectorAll('[data-section-start]').forEach(button => button.addEventListener('click', () => {
-      const index = Number(button.dataset.sectionStart) - 1;
-      const bounds = api.renderer.boundsLookup?.findMasterBarByIndex(index);
-      if (!bounds) return;
-      const rect = scoreElement.getBoundingClientRect();
-      const area = document.getElementById('score-area');
-      area.scrollTo({left:Math.max(0,bounds.visualBounds.x - 20),behavior:'smooth'});
-      window.scrollTo({top:window.scrollY+rect.top+bounds.visualBounds.y-100,behavior:'smooth'});
-      document.querySelectorAll('[data-section-start]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
-    }));
-    document.getElementById('print').addEventListener('click',()=>window.print());
-    const durationName={4:'四分',8:'八分',16:'十六分',32:'三十二分'};
-    const transcript=document.getElementById('transcription');
-    for(const bar of scoreData.bars){
-      const details=document.createElement('details');
-      const summary=document.createElement('summary'); summary.textContent=`第 ${bar.number} 小节 · 4 拍`; details.append(summary);
-      const list=document.createElement('ol');
-      for(const beat of bar.beats){
-        const item=document.createElement('li');
-        item.textContent=beat.notes.map(note=>`${note.string}弦${note.fret==='x'?'闷音':note.fret+'品'}${note.harmonic?'（自然泛音）':''}${note.legato?'（连至下一音，击/勾弦）':''}${note.tie?'（延续前音，不再拨弦）':''}${note.slide==='legato'?'（连奏滑至下一音，不重拨）':''}`).join(' + ')+`；${beat.grace?'装饰音，不另占拍':`${beat.dotted?'附点':''}${durationName[beat.duration]}${beat.tuplet?'三连音':'音符'}`}${beat.arpeggio?'；向上琶音箭头':''}${beat.text?'；打板 '+beat.text:''}`;
-        list.append(item);
+    let api;
+    document.addEventListener('DOMContentLoaded', () => {
+      setupScoreDownload();
+      const scoreData = @@DATA@@;
+      const alphaTex = @@TEX@@;
+      const scoreElement = document.getElementById('score');
+      const status = document.getElementById('status');
+      // In pinned alphaTab 1.8.4, SharedBottom = 3. The score's beat text is
+      // used only for source asterisks; let the native engraver space them below.
+      const textBand = alphaTab.Environment.defaultRenderers.flatMap(renderer => renderer.effectBands)
+        .find(band => band.effect.constructor.name === 'TextEffectInfo');
+      if (!textBand) throw new Error('alphaTab text effect band changed; review source-marker placement.');
+      textBand.mode = 3;
+      api = new alphaTab.AlphaTabApi(scoreElement, {
+        core: { engine:'svg', useWorkers:false, includeNoteBounds:true, enableLazyLoading:false, fontDirectory:null, smuflFontSources:new Map([[alphaTab.FontFileFormat.Woff2,'data:font/woff2;base64,@@FONT@@']]) },
+        display: { scale:0.9, barsPerRow:4, justifyLastSystem:false, staveProfile:alphaTab.StaveProfile.Tab, padding:[0,12,0,12], resources: { staffLineColor:'#566059', mainGlyphColor:'#1d2822', secondaryGlyphColor:'#1d2822', barNumberColor:'#66725f', tablatureFont:'16px Arial', barNumberFont:'12px Arial', elementFonts:{EffectText:'18px Georgia'} } },
+        notation: { rhythmMode:alphaTab.TabRhythmMode.ShowWithBars, elements: { ScoreTitle:false, ScoreSubTitle:false, ScoreArtist:false, ScoreAlbum:false, ScoreWords:false, ScoreMusic:false, ScoreWordsAndMusic:false, ScoreCopyright:false, GuitarTuning:false, TrackNames:false, EffectTempo:false, EffectCapo:false, EffectDynamics:false, EffectHarmonics:false, EffectHammerOnPullOffText:true, EffectSlideText:true } },
+        player: { enablePlayer:false }
+      });
+      api.error.on(error => { status.className='score-error'; status.textContent='乐谱显示失败：'+error.message; document.body.dataset.renderState='error'; });
+      api.renderFinished.on(() => { status.hidden=true; document.body.dataset.renderState='ready'; });
+      setupScoreView({storageKey:'guitar-view:pianai:v1',viewport:document.getElementById('score-area'),baseWidths:{2:600,4:1100},apply({barsPerRow,zoom,width,printing}) {
+        document.body.dataset.renderState='rendering';
+        scoreElement.dataset.barsPerRow=barsPerRow;
+        scoreElement.style.width=printing?'100%':width+'px';
+        api.settings.display.barsPerRow=barsPerRow;
+        api.settings.display.scale=0.9*zoom;
+        api.updateSettings();
+        if(api.score)api.render();
+      }});
+      api.tex(alphaTex);
+      for (const section of scoreData.sections) {
+        const end = section.end;
+        const button = document.createElement('button');
+        button.type='button'; button.dataset.sectionStart=section.start;
+        const name = document.createElement('span'); name.textContent=section.name;
+        const range = document.createElement('small'); range.textContent=`${section.start}–${end} 小节`;
+        button.append(name,range);
+        button.setAttribute('aria-label',`定位${section.name}，第 ${section.start} 至 ${end} 小节`);
+        button.setAttribute('aria-pressed','false');
+        document.getElementById('section-nav').append(button);
       }
-      details.append(list); transcript.append(details);
-    }
+      document.querySelectorAll('[data-section-start]').forEach(button => button.addEventListener('click', () => {
+        const index = Number(button.dataset.sectionStart) - 1;
+        const bounds = api.renderer.boundsLookup?.findMasterBarByIndex(index);
+        if (!bounds) return;
+        const rect = scoreElement.getBoundingClientRect();
+        const area = document.getElementById('score-area');
+        area.scrollTo({left:Math.max(0,bounds.visualBounds.x - 20),behavior:'smooth'});
+        window.scrollTo({top:window.scrollY+rect.top+bounds.visualBounds.y-100,behavior:'smooth'});
+        document.querySelectorAll('[data-section-start]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+      }));
+      document.getElementById('print').addEventListener('click',()=>window.print());
+      const durationName={4:'四分',8:'八分',16:'十六分',32:'三十二分'};
+      const transcript=document.getElementById('transcription');
+      for(const bar of scoreData.bars){
+        const details=document.createElement('details');
+        const summary=document.createElement('summary'); summary.textContent=`第 ${bar.number} 小节 · 4 拍`; details.append(summary);
+        const list=document.createElement('ol');
+        for(const beat of bar.beats){
+          const item=document.createElement('li');
+          item.textContent=beat.notes.map(note=>`${note.string}弦${note.fret==='x'?'闷音':note.fret+'品'}${note.harmonic?'（自然泛音）':''}${note.legato?'（连至下一音，击/勾弦）':''}${note.tie?'（延续前音，不再拨弦）':''}${note.slide==='legato'?'（连奏滑至下一音，不重拨）':''}`).join(' + ')+`；${beat.grace?'装饰音，不另占拍':`${beat.dotted?'附点':''}${durationName[beat.duration]}${beat.tuplet?'三连音':'音符'}`}${beat.arpeggio?'；向上琶音箭头':''}${beat.text?'；打板 '+beat.text:''}`;
+          list.append(item);
+        }
+        details.append(list); transcript.append(details);
+      }
+    });
   </script>
 </body>
 </html>

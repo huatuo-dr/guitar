@@ -486,13 +486,6 @@ h1 {
 .open-score:hover {
   background:#254c3e
 }
-.download-score {
-  background:#fafbf5;
-  color:#53664c
-}
-.download-score:hover {
-  background:#edf2e5
-}
 .library-footer {
   display:flex;
   align-items:center;

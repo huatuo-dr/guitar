@@ -77,14 +77,10 @@ try {
   await hosted.locator('#search').fill('筷子兄弟');
   const card = hosted.locator('[data-score-id="lao-nan-hai-accompaniment"]');
   assert.equal(await hosted.locator('.score-card').count(),1);
-  const pending = hosted.waitForEvent('download');await card.locator('.download-score').click();
-  const download = await pending;
-  assert.equal(download.suggestedFilename(),'老男孩弹唱伴奏.html');
-  assert.deepEqual(await readFile(await download.path()),await readFile(new URL(path,root)));
   await card.locator('.open-score').click();assert.equal(await hosted.locator('.measure').count(),55);
   assert.ok(hosted.url().includes('/guitar/sheet_music/'));
   await hosted.locator('.back').click();assert.equal(await hosted.locator('[data-score-id="lao-nan-hai-accompaniment"]').count(),1);
-  console.log('PASS: 老男孩55小节、段定位、缩放、手机横向滚动、离线/禁用脚本、打印、首页搜索及子路径打开/下载/返回通过。');
+  console.log('PASS: 老男孩55小节、段定位、缩放、手机横向滚动、离线/禁用脚本、打印、首页搜索及子路径打开/返回通过。');
 } finally {
   await browser.close();
   if (server.listening) await new Promise(resolve => server.close(resolve));

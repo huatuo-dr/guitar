@@ -30,7 +30,7 @@ export async function buildAccompaniment(id,filename) {
   const routeNote = data.routeNote??(data.notes??[]).find(note => note.startsWith('第1房子'))??'';
   const routePrint = `演奏顺序：${data.route.map(({start,end}) => `${start}–${end}`).join(' → ')}。${routeNote}`;
   const tokens = {
-    TITLE:escape(data.title), METADATA:metadata.map(([label,value]) => metadataItem(label,value)).join(''),
+    FILENAME:escape(filename), TITLE:escape(data.title), METADATA:metadata.map(([label,value]) => metadataItem(label,value)).join(''),
     TECHNIQUE_LEGEND:escape(techniqueLegend), MELODY_LEGEND:escape(melodyLegend),
     SOURCE_CREDIT:data.source ? sourceLink(data.sourceTitle) : escape(data.sourceTitle),
     SOURCE_COMPARISON:data.source ? `可对照${sourceLink('网页原谱')}。` : '可对照用户提供的原谱截图。',
@@ -39,7 +39,8 @@ export async function buildAccompaniment(id,filename) {
     ROUTE_PRINT:escape(routePrint), CHORD_COUNT:Object.keys(data.chordShapes).length, BAR_COUNT:data.bars.length,
     REFERENCE_CHORDS:referenceNames ? `† ${escape(referenceNames)} 为补充参考指法。` : '',
     CHORDS:renderChordGuide(data), SCORE:renderScore(data), SCORE_TWO:renderScore(data,2),
-    VIEW:await readFile(new URL('src/score-view.js',root),'utf8'),
+    VIEW:await readFile(new URL('src/score-view.js',root),'utf8')+'\n'+await readFile(new URL('src/auto-scroll.js',root),'utf8'),
+    AUTO_SCROLL_CSS:await readFile(new URL('src/auto-scroll.css',root),'utf8'),
     STORAGE_KEY:JSON.stringify(`guitar-view:${id}:v1`).replaceAll('<','\\u003c'),
     NOTES:[...(data.notes??[]),...data.vocalNotes].map(note => `<li>${escape(note)}</li>`).join('')
   };

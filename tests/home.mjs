@@ -78,11 +78,7 @@ try{
   web.on('response',r=>{if(r.status()>=400)failures.push(`${r.status()} ${r.url()}`)});
   await web.goto(address);await web.waitForSelector('.score-card');
   assert.ok((await web.locator(`${referenceCard} .open-score`).getAttribute('href')).startsWith('./sheet_music/'));
-  const downloaded=web.waitForEvent('download');
-  await web.locator(`${referenceCard} .download-score`).click();
-  const download=await downloaded;
-  assert.equal(download.suggestedFilename(),'偏爱指弹.html');
-  assert.deepEqual(await readFile(await download.path()),await readFile(new URL(reference.path,root)));
+  assert.equal(await web.locator('.download-score').count(),0,'首页只保留打开曲谱');
   await web.locator('nav a[href="./docs/制谱.html"]').click();
   assert.equal(await web.locator('h1').innerText(),'如何把原谱制作成网页吉他谱');
   await web.goto(address);await web.locator(`${referenceCard} .open-score`).click();
@@ -114,7 +110,7 @@ try{
   await web.goto(address);
   assert.ok((await web.locator('#catalog-status').innerText()).includes('未能加载'));
   assert.equal(await web.locator('.empty-state').isVisible(),false);
-  console.log('PASS: 曲谱清单有效；首页离线、搜索、分类、排序、空态恢复、手机显示、真实HTML下载、曲谱/文档链接及GitHub Pages子路径检查通过。');
+  console.log('PASS: 曲谱清单有效；首页离线、搜索、分类、排序、空态恢复、手机显示、曲谱/文档链接及GitHub Pages子路径检查通过。');
   await hosted.close();
 }finally{
   await browser.close();

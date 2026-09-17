@@ -8,7 +8,7 @@
     "build:laonanhai": "node scripts/build-laonanhai.mjs",
     "build:houlai": "node scripts/build-houlai.mjs",
     "test": "node --test tests/*.test.mjs",
-    "test:browser": "node tests/browser.mjs && node tests/home.mjs && node tests/accompaniment-browser.mjs && node tests/responsive-score.mjs && node tests/houlai-browser.mjs",
+    "test:browser": "node tests/browser.mjs && node tests/home.mjs && node tests/accompaniment-browser.mjs && node tests/responsive-score.mjs && node tests/houlai-browser.mjs && node tests/auto-scroll.mjs && node tests/score-download.mjs",
     "test:home": "node tests/home.mjs"
   },
   "dependencies": {

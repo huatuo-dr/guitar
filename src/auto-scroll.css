@@ -1,0 +1,15 @@
+.auto-scroll{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:100;display:flex;flex-direction:column;align-items:center;gap:7px;color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+.auto-scroll button{cursor:pointer;touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.auto-scroll-toggle{width:54px;height:54px;border:1px solid var(--green);border-radius:50%;background:var(--green);color:#fffefa;font-size:23px;font-weight:600;line-height:1;box-shadow:0 4px 18px #20392a24}
+.auto-scroll-toggle[aria-pressed="true"]{background:#fffefa;color:var(--green);border:2px solid var(--green)}
+.auto-scroll-speed{min-height:32px;padding:5px 10px;border:1px solid #d6dcd2;border-radius:16px;background:#fffefa;color:var(--green);font-size:11px;box-shadow:0 2px 8px #20392a10}
+.auto-scroll :focus-visible{outline:3px solid #729683;outline-offset:3px}
+.auto-scroll-panel{position:absolute;right:0;bottom:calc(100% + 12px);width:180px;max-height:calc(100vh - 140px);max-height:calc(100dvh - 140px);overflow:auto;padding:12px;background:#fffefa;border:1px solid #d6dcd2;border-radius:12px;box-shadow:0 8px 30px #20392a25;text-align:left}
+.auto-scroll-panel[hidden]{display:none!important}
+.auto-scroll-panel fieldset{margin:0;padding:0;border:0;min-width:0}
+.auto-scroll-panel legend{padding:0 6px 8px;font-size:13px;font-weight:600}
+.auto-scroll-panel label{display:flex;align-items:center;gap:10px;padding:9px 7px;border-radius:6px;font-size:14px;cursor:pointer}
+.auto-scroll-panel label:hover{background:#edf2ec}
+.auto-scroll-panel input{accent-color:var(--green);margin:0;width:16px;height:16px}
+.auto-scroll-panel p{font-size:10px;line-height:1.5;color:var(--muted);margin:10px 5px 0}
+@media print{.auto-scroll{display:none!important}}
