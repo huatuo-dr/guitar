@@ -29,6 +29,7 @@ try {
   assert.equal(await page.locator('.score-system').count(),14);
   assert.equal(await page.locator('.score-system').last().locator('.measure').count(),3);
   assert.deepEqual(await page.locator('.route [data-jump]').evaluateAll(links => links.map(a => Number(a.dataset.jump))),[1,7,30,21,46,21,48]);
+  await page.locator('#bars-per-row').selectOption('4');
   await page.locator('.section-nav [data-jump="50"]').click();
   assert.equal(await page.locator('#bar-50').evaluate(el => el === document.activeElement),true);
   assert.equal(await page.locator('#bar-50').evaluate(el => {const r=el.getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight;}),true);

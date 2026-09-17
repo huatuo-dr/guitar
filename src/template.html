@@ -16,13 +16,15 @@
     .brand { display:flex; align-items:center; gap:11px; font-size:14px; font-weight:650; letter-spacing:.06em; }
     .brand-mark { width:26px; height:25px; background:repeating-linear-gradient(to bottom,transparent 0 3px,var(--green) 3px 4px); border-left:2px solid var(--green); border-right:2px solid var(--green); }
     main { max-width:1280px; margin:0 auto 48px; padding:0 28px; }
-    .toolbar { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:15px 7px 19px; }
+    .toolbar { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:14px; padding:15px 7px 19px; }
     .section-nav { display:flex; flex-wrap:wrap; align-items:center; gap:6px; }
     .label { color:var(--muted); font-size:12px; margin-right:8px; }
     .section-nav button { display:flex; flex-direction:column; align-items:center; gap:4px; min-width:70px; padding:8px 12px; border:1px solid transparent; border-radius:8px; background:transparent; color:var(--ink); font-size:13px; }
     .section-nav small { color:var(--muted); font-size:10px; white-space:nowrap; }
     .section-nav button:hover, .section-nav button[aria-pressed="true"] { background:#e0e8de; border-color:#cedacb; }
-    .controls { display:flex; align-items:center; gap:10px; flex-shrink:0; white-space:nowrap; }
+    .controls { display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
+    .control-group { display:flex; align-items:center; gap:5px; white-space:nowrap; }
+    #view-hint { flex-basis:100%; font-size:12px; color:var(--muted); }
     select, .print-button { padding:9px 13px; border:1px solid #d6dcd2; border-radius:6px; background:#fafbf7; color:var(--ink); font-size:13px; }
     .print-button { background:var(--green); color:white; border-color:var(--green); }
     .sheet { background:var(--paper); border:1px solid #dfe3d9; box-shadow:0 12px 42px #20392a07; border-radius:3px; padding:45px 42px 26px; overflow:hidden; }
@@ -33,7 +35,7 @@
     .metadata span { display:block; font-size:10px; letter-spacing:.13em; color:var(--muted); margin-bottom:7px; }
     .metadata strong { font-size:17px; font-weight:500; }
     .score-area { overflow:auto; padding-top:26px; }
-    #score { min-width:1100px; }
+    #score { width:1100px; max-width:none; margin:0 auto; }
     .at-surface { cursor:default; }
     .score-error { padding:16px; color:#8e3625; background:#fff0e9; border:1px solid #e0bbb0; }
     #status { font-size:12px; color:var(--muted); margin:0 0 10px; }
@@ -50,7 +52,7 @@
       .topbar { padding:20px 18px; }
       main { padding:0 12px; }
       .toolbar { flex-wrap:wrap; padding:7px 4px 15px; }
-      .controls { margin-left:auto; }
+      .controls { margin-left:0; }
       .sheet { padding:27px 18px 22px; }
       .sheet-heading { align-items:flex-start; flex-direction:column; gap:16px; }
       h1 { font-size:28px; letter-spacing:.05em; }
@@ -68,7 +70,7 @@
       .sheet-heading { padding-bottom:15px; }
       h1 { font-size:27px; }
       .score-area { overflow:visible; padding-top:10px; }
-      #score { min-width:0!important; }
+      #score { min-width:0!important; width:100%!important; }
       .legend { padding:12px 0; }
       .sheet-footer { margin-top:16px; }
       .at-surface { height:auto!important; overflow:visible!important; }
@@ -84,9 +86,10 @@
     <nav class="toolbar" aria-label="乐谱工具">
       <div class="section-nav" id="section-nav"><span class="label">段定位</span></div>
       <div class="controls">
-        <label class="label" for="zoom">谱面大小</label>
-        <select id="zoom"><option value="0.85">85%</option><option value="1" selected>100%</option><option value="1.2">120%</option><option value="1.4">140%</option></select>
+        <div class="control-group"><label class="label" for="bars-per-row">每行小节</label><select id="bars-per-row"><option value="auto" selected>自动</option><option value="2">2 小节</option><option value="4">4 小节</option></select></div>
+        <div class="control-group"><label class="label" for="zoom">谱面大小</label><select id="zoom"><option value="fit" selected>适应宽度</option><option value="0.5">50%</option><option value="0.65">65%</option><option value="0.85">85%</option><option value="1">100%</option><option value="1.2">120%</option><option value="1.4">140%</option></select></div>
         <button type="button" class="print-button" id="print">打印 / 存为 PDF</button>
+        <span id="view-hint" aria-live="polite"></span>
       </div>
     </nav>
     <article class="sheet" aria-label="《偏爱》指弹：前奏及 A–G 段完整六线谱">
@@ -111,6 +114,7 @@
     <details class="licenses"><summary>开源许可</summary><pre>@@LICENSE@@</pre></details>
   </main>
   <script>@@LIBRARY@@</script>
+  <script>@@VIEW@@</script>
   <script>
     const scoreData = @@DATA@@;
     const alphaTex = @@TEX@@;
@@ -130,15 +134,16 @@
     });
     api.error.on(error => { status.className='score-error'; status.textContent='乐谱显示失败：'+error.message; document.body.dataset.renderState='error'; });
     api.renderFinished.on(() => { status.hidden=true; document.body.dataset.renderState='ready'; });
-    api.tex(alphaTex);
-    const baseWidth = 1100;
-    document.getElementById('zoom').addEventListener('change', event => {
-      const zoom = Number(event.target.value);
-      scoreElement.style.minWidth = baseWidth * zoom + 'px';
-      api.settings.display.scale = 0.9 * zoom;
+    setupScoreView({storageKey:'guitar-view:pianai:v1',viewport:document.getElementById('score-area'),baseWidths:{2:600,4:1100},apply({barsPerRow,zoom,width,printing}) {
+      document.body.dataset.renderState='rendering';
+      scoreElement.dataset.barsPerRow=barsPerRow;
+      scoreElement.style.width=printing?'100%':width+'px';
+      api.settings.display.barsPerRow=barsPerRow;
+      api.settings.display.scale=0.9*zoom;
       api.updateSettings();
-      api.render();
-    });
+      if(api.score)api.render();
+    }});
+    api.tex(alphaTex);
     for (const section of scoreData.sections) {
       const end = section.end;
       const button = document.createElement('button');
@@ -160,9 +165,6 @@
       window.scrollTo({top:window.scrollY+rect.top+bounds.visualBounds.y-100,behavior:'smooth'});
       document.querySelectorAll('[data-section-start]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
     }));
-    let screenScale;
-    window.addEventListener('beforeprint', () => { screenScale=api.settings.display.scale; scoreElement.style.minWidth='0'; api.settings.display.scale=0.9; api.updateSettings(); api.render(); });
-    window.addEventListener('afterprint', () => { if(screenScale===undefined)return; api.settings.display.scale=screenScale; scoreElement.style.minWidth=baseWidth*Number(document.getElementById('zoom').value)+'px'; api.updateSettings(); api.render(); });
     document.getElementById('print').addEventListener('click',()=>window.print());
     const durationName={4:'四分',8:'八分',16:'十六分',32:'三十二分'};
     const transcript=document.getElementById('transcription');

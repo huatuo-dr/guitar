@@ -67,4 +67,9 @@ test('矢量谱面每行4小节，末行3小节，55小节都有唯一定位与�
   assert.match(svg, /D\.S\.2/);
   assert.match(svg, /原谱仅两拍/);
   assert.doesNotMatch(svg, /<image|https?:|NaN|undefined/);
+  const narrow = renderScore(data,2);
+  assert.equal((narrow.match(/class="score-system"/g) || []).length,28);
+  assert.equal((narrow.match(/class="measure"/g) || []).length,55);
+  assert.match(narrow,/viewBox="0 0 600 237"/);
+  assert.throws(()=>renderScore(data,3),/只支持2或4/);
 });

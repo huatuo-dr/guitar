@@ -9,7 +9,8 @@ const tokens = {
   TITLE:escape(data.title), ARTIST:escape(data.artist), SOURCE:escape(data.source), SOURCE_TITLE:escape(data.sourceTitle),
   SECTIONS:data.sections.map(s => `<a class="jump-link" href="#bar-${s.start}" data-jump="${s.start}">${escape(s.name)}<small>${s.start}–${s.end} 小节</small></a>`).join(''),
   ROUTE:data.route.map((r,i) => `<a href="#bar-${r.start}" data-jump="${r.start}"><span>${i+1}. ${escape(r.label)}</span><strong>${r.start}–${r.end}</strong></a>`).join(''),
-  CHORDS:renderChordGuide(data), SCORE:renderScore(data),
+  CHORDS:renderChordGuide(data), SCORE:renderScore(data), SCORE_TWO:renderScore(data,2),
+  VIEW:await readFile(new URL('src/score-view.js',root),'utf8'),
   NOTES:data.notes.map(note => `<li>${escape(note)}</li>`).join('')
 };
 const template = await readFile(new URL('src/accompaniment.html',root),'utf8');

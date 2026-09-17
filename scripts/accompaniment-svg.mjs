@@ -173,13 +173,14 @@ function renderBar(bar, data, index) {
   return svg + '</g>';
 }
 
-export function renderScore(data) {
+export function renderScore(data, barsPerRow = 4) {
+  if (![2,4].includes(barsPerRow)) throw new Error('每行小节数只支持2或4');
   validateScore(data);
   const bars = expandBars(data);
   let html = '';
-  for (let start = 0; start < bars.length; start += 4) {
-    const group = bars.slice(start,start+4);
-    html += `<svg class="score-system" viewBox="0 0 1140 ${ROW_HEIGHT}" role="group" aria-label="第${group[0].number}至${group.at(-1).number}小节">`;
+  for (let start = 0; start < bars.length; start += barsPerRow) {
+    const group = bars.slice(start,start+barsPerRow);
+    html += `<svg class="score-system" viewBox="0 0 ${LEFT + BAR_WIDTH * barsPerRow + 14} ${ROW_HEIGHT}" role="group" aria-label="第${group[0].number}至${group.at(-1).number}小节">`;
     html += text(12,TOP+6,'T','tab-label') + text(12,TOP+22,'A','tab-label') + text(12,TOP+38,'B','tab-label');
     html += group.map((bar,index) => renderBar(bar,data,index)).join('') + '</svg>';
   }

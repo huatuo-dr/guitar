@@ -37,6 +37,7 @@ try {
   assert.equal(info.extraDynamics,0,'不可添加原谱未标注的力度');
   assert.ok(info.bounds.x+info.bounds.w <= info.scoreWidth+2,'末小节应在谱面宽度内');
   await page.screenshot({path:'artifacts/score-desktop.png',fullPage:true});
+  await page.locator('#bars-per-row').selectOption('4');
 
   await page.locator('[data-section-start="56"]').click();
   assert.equal(await page.locator('[data-section-start="56"]').getAttribute('aria-pressed'),'true');

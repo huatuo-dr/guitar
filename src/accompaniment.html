@@ -37,7 +37,7 @@
     <h1>@@TITLE@@</h1>
     <div class="metadata"><span>演唱：@@ARTIST@@</span><span>1 = C</span><span>4/4</span><span>55 个书写小节</span></div>
     <p class="scope">和弦、扫弦与过门的伴奏声部整理 · 演唱部分可对照<a href="@@SOURCE@@" target="_blank" rel="noopener noreferrer">网页原谱</a>。</p>
-    <div class="tools"><label for="zoom">谱面大小 <select id="zoom"><option value=".85">85%</option><option value="1" selected>100%</option><option value="1.15">115%</option><option value="1.3">130%</option></select></label><button type="button" id="print">打印 / 存为 PDF</button><span class="scroll-hint">每行 4 小节 · 窄屏可在谱面内左右滑动</span></div>
+    <div class="tools"><label for="bars-per-row">每行小节 <select id="bars-per-row"><option value="auto" selected>自动</option><option value="2">2 小节</option><option value="4">4 小节</option></select></label><label for="zoom">谱面大小 <select id="zoom"><option value="fit" selected>适应宽度</option><option value="0.5">50%</option><option value="0.65">65%</option><option value="0.85">85%</option><option value="1">100%</option><option value="1.15">115%</option><option value="1.3">130%</option></select></label><button type="button" id="print">打印 / 存为 PDF</button><span class="scroll-hint" id="view-hint" aria-live="polite">每行 4 小节 · 窄屏可在谱面内左右滑动</span></div>
     <nav class="section-nav" aria-label="段定位"><span class="nav-label">段定位</span>@@SECTIONS@@</nav>
     <div class="legend">
       <p class="legend-row"><span><strong>↑</strong> 下扫：低音弦 → 高音弦</span><span><strong>↓</strong> 上扫：高音弦 → 低音弦</span><span><strong>波浪 ↑</strong> 琶音：低音弦 → 高音弦</span></p>
@@ -48,13 +48,26 @@
     <p class="route-print" style="display:none">演奏顺序：1–29 → 7–27 → 30–45 → 21–26 → 46–47 → 21–27 → 48–55。第1房子为28–29，第2房子为30。D.S.1在27前跳46；D.S.2在28前跳48。</p>
     <details class="optional"><summary>和弦指法速查 · 10 个和弦</summary><p class="guide-text">图中左至右为 6 弦至 1 弦；○ 空弦，× 不弹，圆点为按弦位置，粗横线为横按。† G/B 为补充参考指法。</p><div class="chord-guide">@@CHORDS@@</div></details>
     <div class="score-viewport" aria-label="吉他六线谱，可横向滚动" tabindex="0"><div id="score">@@SCORE@@</div></div>
+    <template id="two-bar-score">@@SCORE_TWO@@</template>
     <details class="verification"><summary>原谱对照与整理说明</summary><ul>@@NOTES@@</ul><p>谱面为可缩放的矢量重绘，所有谱面与样式均已内嵌，保存此 HTML 后可以离线打开。小节仍按书写顺序保留，没有展开反复；上方演奏顺序列出了完整行进路线。</p></details>
     <p class="source-link">参考：<a href="@@SOURCE@@" target="_blank" rel="noopener noreferrer">@@SOURCE_TITLE@@</a> · 伴奏声部整理</p>
     <footer>小k吉他练习 · 小节编号与段名用于阅读定位</footer>
   </article></main>
+  <script>@@VIEW@@</script>
   <script>
     const score = document.getElementById('score');
-    document.getElementById('zoom').addEventListener('change', event => { score.style.width = (1140 * Number(event.target.value)) + 'px'; });
+    const layouts = {4:score.innerHTML,2:document.getElementById('two-bar-score').innerHTML};
+    let currentRows=4;
+    setupScoreView({storageKey:'guitar-view:laonanhai:v1',viewport:document.querySelector('.score-viewport'),baseWidths:{2:600,4:1140},apply({barsPerRow,width,printing}) {
+      if(currentRows!==barsPerRow){
+        const focused=score.querySelector('.measure.current')?.id;
+        score.innerHTML=layouts[barsPerRow];
+        if(focused)document.getElementById(focused)?.classList.add('current');
+        currentRows=barsPerRow;
+      }
+      score.dataset.barsPerRow=barsPerRow;
+      score.style.width=printing?'100%':width+'px';
+    }});
     document.getElementById('print').addEventListener('click', () => window.print());
     document.querySelectorAll('[data-jump]').forEach(link => link.addEventListener('click', event => {
       event.preventDefault();
