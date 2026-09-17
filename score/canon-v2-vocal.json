@@ -1,0 +1,631 @@
+{
+  "title": "《卡农》版本2旋律简谱",
+  "sources": [
+    "用户提供的单张《卡农》版本2截图"
+  ],
+  "notes": [],
+  "bars": [
+    {
+      "number": 1,
+      "events": [
+        {
+          "degree": 5,
+          "octave": 1,
+          "duration": 8
+        },
+        {
+          "degree": 3,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 4,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 5,
+          "octave": 1,
+          "duration": 8
+        },
+        {
+          "degree": 3,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 4,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 5,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 5,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 6,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 7,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 1,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 2,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 3,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 4,
+          "octave": 1,
+          "duration": 16
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "events": [
+        {
+          "degree": 3,
+          "octave": 1,
+          "duration": 8
+        },
+        {
+          "degree": 1,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 2,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 3,
+          "octave": 1,
+          "duration": 8
+        },
+        {
+          "degree": 2,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 3,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 5,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 6,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 5,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 4,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 5,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 1,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 7,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 1,
+          "octave": 1,
+          "duration": 16
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "events": [
+        {
+          "degree": 6,
+          "octave": 0,
+          "duration": 8
+        },
+        {
+          "degree": 1,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 7,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 6,
+          "octave": 0,
+          "duration": 8
+        },
+        {
+          "degree": 5,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 4,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 5,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 4,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 3,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 4,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 5,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 6,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 7,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 1,
+          "octave": 1,
+          "duration": 16
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "events": [
+        {
+          "degree": 6,
+          "octave": 0,
+          "duration": 8
+        },
+        {
+          "degree": 1,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 7,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 1,
+          "octave": 1,
+          "duration": 8
+        },
+        {
+          "degree": 7,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 1,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 7,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 6,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 7,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 1,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 2,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 3,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 4,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 5,
+          "octave": 1,
+          "duration": 16
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "events": [
+        {
+          "degree": 3,
+          "octave": 1,
+          "duration": 8
+        },
+        {
+          "degree": 1,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 2,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 3,
+          "octave": 1,
+          "duration": 8
+        },
+        {
+          "degree": 2,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 1,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 2,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 7,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 1,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 2,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 3,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 2,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 1,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 7,
+          "octave": 0,
+          "duration": 16
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "events": [
+        {
+          "degree": 1,
+          "octave": 1,
+          "duration": 8
+        },
+        {
+          "degree": 6,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 7,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 1,
+          "octave": 1,
+          "duration": 8
+        },
+        {
+          "degree": 3,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 4,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 5,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 6,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 5,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 4,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 5,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 1,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 7,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 1,
+          "octave": 1,
+          "duration": 16
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "events": [
+        {
+          "degree": 6,
+          "octave": 0,
+          "duration": 8
+        },
+        {
+          "degree": 1,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 7,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 6,
+          "octave": 0,
+          "duration": 8
+        },
+        {
+          "degree": 5,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 4,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 5,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 4,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 3,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 4,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 5,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 6,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 7,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 1,
+          "octave": 1,
+          "duration": 16
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "events": [
+        {
+          "degree": 6,
+          "octave": 0,
+          "duration": 8
+        },
+        {
+          "degree": 1,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 7,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 1,
+          "octave": 1,
+          "duration": 8
+        },
+        {
+          "degree": 7,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 6,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 7,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 1,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 2,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 1,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 7,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 1,
+          "octave": 1,
+          "duration": 16
+        },
+        {
+          "degree": 6,
+          "octave": 0,
+          "duration": 16
+        },
+        {
+          "degree": 7,
+          "octave": 0,
+          "duration": 16
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "events": [
+        {
+          "degree": 1,
+          "octave": 1,
+          "duration": 4
+        },
+        {
+          "hold": true,
+          "duration": 4
+        },
+        {
+          "hold": true,
+          "duration": 4
+        },
+        {
+          "hold": true,
+          "duration": 4
+        }
+      ]
+    }
+  ]
+}

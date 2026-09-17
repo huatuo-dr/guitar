@@ -1,0 +1,1245 @@
+{
+  "title": "《卡农》指弹·版本 2",
+  "scoreType": "fingerstyle",
+  "key": "C",
+  "timeSignature": [
+    4,
+    4
+  ],
+  "tempoText": "60 拍/分钟",
+  "sourceTitle": "用户提供的《卡农》版本 2 单旋律练习截图",
+  "routeHeading": "演奏顺序",
+  "route": [
+    {
+      "label": "从头顺序演奏至结束",
+      "start": 1,
+      "end": 9
+    }
+  ],
+  "routeNote": "共9个书写小节，无反复；第9小节二弦1品延续四拍结束。",
+  "sections": [
+    {
+      "name": "练习一",
+      "start": 1,
+      "end": 4
+    },
+    {
+      "name": "练习二",
+      "start": 5,
+      "end": 8
+    },
+    {
+      "name": "收尾",
+      "start": 9,
+      "end": 9
+    }
+  ],
+  "chordShapes": {},
+  "patterns": {
+    "bar-1": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 1
+          }
+        ]
+      }
+    ],
+    "bar-2": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      }
+    ],
+    "bar-3": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      }
+    ],
+    "bar-4": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3
+          }
+        ]
+      }
+    ],
+    "bar-5": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-6": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      }
+    ],
+    "bar-7": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      }
+    ],
+    "bar-8": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-9": [
+      {
+        "kind": "fretted",
+        "duration": 1,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      }
+    ]
+  },
+  "bars": [
+    {
+      "number": 1,
+      "chords": [],
+      "pattern": "bar-1"
+    },
+    {
+      "number": 2,
+      "chords": [],
+      "pattern": "bar-2"
+    },
+    {
+      "number": 3,
+      "chords": [],
+      "pattern": "bar-3"
+    },
+    {
+      "number": 4,
+      "chords": [],
+      "pattern": "bar-4"
+    },
+    {
+      "number": 5,
+      "chords": [],
+      "pattern": "bar-5"
+    },
+    {
+      "number": 6,
+      "chords": [],
+      "pattern": "bar-6"
+    },
+    {
+      "number": 7,
+      "chords": [],
+      "pattern": "bar-7"
+    },
+    {
+      "number": 8,
+      "chords": [],
+      "pattern": "bar-8"
+    },
+    {
+      "number": 9,
+      "chords": [],
+      "pattern": "bar-9"
+    }
+  ],
+  "techniqueLegend": "八分与十六分音符按节拍线区分；末小节圆圈内的 1 为二弦 1 品全音符，持续四拍。",
+  "melodyLegend": "旋律简谱：上方圆点表示高一个八度，数字下短线表示减时；末小节的 1 后三条横线表示延长三拍。",
+  "notes": [
+    "依据用户提供的《卡农》版本2手机截图重绘，共9小节。截图为单旋律指弹练习，原图1=C、4/4、四分音符每分钟60拍。",
+    "六线谱与简谱逐音照录，没有补入低音伴奏、和弦图、歌词、击勾弦或反复记号。原图未标作者、编配者或变调夹，不另补猜。",
+    "第1–8小节各14个单音，节奏为八分、十六分、十六分、八分，随后十个十六分音符，各占四拍；第3与第7小节内容相同。",
+    "第9小节为二弦1品全音符，对应高音1，持续四拍。保留原图圈形品位及无符干的全音符画法。",
+    "截图中的黄色高亮为显示标记，不影响谱面内容；小节号沿用原图，分段名称仅为阅读定位。"
+  ],
+  "primaryLegend": "六线谱数字：品位　　弦序：上方为一弦，下方为六弦"
+}

@@ -36,9 +36,10 @@ export function validateScore(data) {
       if (!data.chordShapes[chord.name] || chord.beat <= previous || chord.beat > bar.beats) throw new Error(`第${bar.number}小节和弦无效`);
       previous = chord.beat;
     }
-    if (bar.chords[0]?.beat !== 1) throw new Error('每小节必须指定起始和弦');
+    const needsChord=bar.chords.length>0||bar.events.some(e=>['pluck','down','up','arpeggio'].includes(e.kind));
+    if (needsChord && bar.chords[0]?.beat !== 1) throw new Error('每小节必须指定起始和弦');
     for (const [eventIndex,event] of bar.events.entries()) {
-      if (!['down','up','hold','arpeggio','note','pluck','rest','fretted'].includes(event.kind) || ![4,8,16,32].includes(event.duration)) throw new Error('事件无效');
+      if (!['down','up','hold','arpeggio','note','pluck','rest','fretted'].includes(event.kind) || ![...(event.kind==='fretted'?[1]:[]),4,8,16,32].includes(event.duration)) throw new Error('事件无效');
       if (event.kind === 'note' && (!Number.isInteger(event.string) || event.string < 1 || event.string > 6 || !Number.isInteger(event.fret) || event.fret < 0)) throw new Error('品位或弦号无效');
       if(event.kind==='pluck'){
         if(!Array.isArray(event.strings)||!event.strings.length||event.strings.some(s=>!Number.isInteger(s)||s<1||s>6)||new Set(event.strings).size!==event.strings.length)throw new Error('拨弦弦位无效');
@@ -127,6 +128,7 @@ function renderFrettedEvent(event,next,right) {
   for(const note of event.notes){
     const y=TOP+(note.string-1)*STRING_GAP;
     const width=String(note.fret).length>1?16:10;
+    if(event.duration===1)svg+=`<ellipse class="whole-note" cx="${at}" cy="${y}" rx="${width/2+4}" ry="9" fill="none"/>`;
     svg+=`<rect x="${at-width/2}" y="${y-6}" width="${width}" height="13" class="note-background"/>`+text(at,y+4,note.fret,'fret','middle');
     if(note.hammerToNext||note.pullToNext||note.slideToNext||note.tieToNext){
       const end=next?.x??right;
@@ -137,7 +139,7 @@ function renderFrettedEvent(event,next,right) {
   return svg;
 }
 
-function renderBar(bar, data, index, rowHeight) {
+function renderBar(bar, data, index, rowHeight, headerCrop) {
   const x = LEFT + index * BAR_WIDTH;
   const meterChange=bar.number===1 || (data.bars[bar.number-2].beats??4)!==bar.beats;
   const inset=meterChange?45:21;
@@ -147,7 +149,7 @@ function renderBar(bar, data, index, rowHeight) {
   let svg = `<g class="measure" id="bar-${bar.number}" data-bar="${bar.number}" tabindex="-1"><title>${escape(measureDescription(bar))}</title>`;
   svg += `<rect class="measure-highlight" x="${x+2}" y="1" width="${BAR_WIDTH-4}" height="${rowHeight-2}" rx="5"/>`;
   svg += text(x+2,TOP-6,bar.number,'bar-number','end');
-  if (section) svg += text(x+37,13,section.name,'section-label');
+  if (section) svg += text(x+37,13+headerCrop,section.name,'section-label');
   if (bar.startLabel) svg += text(x+8,30,bar.startLabel,'navigation-label');
   if (bar.volta) {
     svg += line(x+5,39,x+BAR_WIDTH-4,39);
@@ -196,7 +198,7 @@ function renderBar(bar, data, index, rowHeight) {
     const at = event.x;
     if(event.kind==='fretted')svg+=renderFrettedEvent(event,placed[i+1],x+BAR_WIDTH);
     const chord = bar.chords.findLast(c => c.beat <= event.beat);
-    const bassIndex = data.chordShapes[chord.name].frets.findIndex(f => f >= 0);
+    const bassIndex = chord?data.chordShapes[chord.name].frets.findIndex(f => f >= 0):0;
     const bassY = TOP + (5-bassIndex) * STRING_GAP;
     const strokeKind = event.sourceArrow ?? event.kind;
     if (strokeKind === 'down') svg += arrow(at,event.startString?TOP+(event.startString-1)*STRING_GAP:Number.isInteger(event.beat)?bassY:TOP+24,event.endString?TOP+(event.endString-1)*STRING_GAP:TOP);
@@ -228,7 +230,7 @@ function renderBar(bar, data, index, rowHeight) {
       const end=placed[i+1]?.x??x+BAR_WIDTH;
       svg+=`<path class="tab-tie" d="M ${at} ${y} Q ${(at+end)/2} ${y-9} ${end} ${y}" fill="none"/>`;
     }
-    if (event.kind !== 'rest' && (event.kind !== 'hold' || event.sourceArrow)) svg += line(at,BOTTOM+7,at,STEM_END);
+    if (event.duration!==1 && event.kind !== 'rest' && (event.kind !== 'hold' || event.sourceArrow)) svg += line(at,BOTTOM+7,at,STEM_END);
     for(let i=0;i<(event.doubleDotted?2:event.dotted?1:0);i++)svg+=`<circle class="tab-duration-dot" cx="${at+6+i*5}" cy="${STEM_END-3}" r="1.5"/>`;
   });
   // Beam within each quarter-note pulse; connect only contiguous eighth/sixteenth events.
@@ -262,15 +264,16 @@ export function renderScore(data, barsPerRow = 4) {
   if (![2,4].includes(barsPerRow)) throw new Error('每行小节数只支持2或4');
   validateScore(data);
   const bars = expandBars(data);
+  const headerCrop=bars.every(b=>!b.chords.length&&!b.volta&&!b.startLabel)?70:0;
   let html = '';
   for (let start = 0; start < bars.length; start += barsPerRow) {
     const group = bars.slice(start,start+barsPerRow);
     const verseCount=Math.max(0,...group.map(bar=>lyricLines(bar.vocal)));
     const rowHeight=group.some(b=>b.vocal)?(verseCount?280+verseCount*24:272):ROW_HEIGHT;
-    html += `<svg class="score-system" viewBox="0 0 ${LEFT + BAR_WIDTH * barsPerRow + 14} ${rowHeight}" role="group" aria-label="第${group[0].number}至${group.at(-1).number}小节">`;
+    html += `<svg class="score-system" viewBox="0 ${headerCrop} ${LEFT + BAR_WIDTH * barsPerRow + 14} ${rowHeight-headerCrop}" role="group" aria-label="第${group[0].number}至${group.at(-1).number}小节">`;
     html += text(12,TOP+6,'T','tab-label') + text(12,TOP+22,'A','tab-label') + text(12,TOP+38,'B','tab-label');
     if(group.some(b=>b.vocal))html+=text(3,235,'简谱','voice-label');
-    html += group.map((bar,index) => renderBar(bar,data,index,rowHeight)).join('') + '</svg>';
+    html += group.map((bar,index) => renderBar(bar,data,index,rowHeight,headerCrop)).join('') + '</svg>';
   }
   return html;
 }

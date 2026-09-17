@@ -19,3 +19,11 @@ test('指弹输入拒绝重复弦位以及缺少同弦技法终点',()=>{
  const repeated=fixture();repeated.patterns.notes[0].notes.push({string:1,fret:2});assert.throws(()=>validateScore(repeated),/指弹弦品/);
  const noTarget=fixture();noTarget.patterns.notes[1].notes[0].string=2;assert.throws(()=>validateScore(noTarget),/技法终点/);
 });
+test('无和弦单旋律谱保留末尾全音符的圆圈与四拍时值',()=>{
+ const data={chordShapes:{},sections:[],route:[{start:1,end:1}],patterns:{ending:[{kind:'fretted',duration:1,notes:[{string:2,fret:1}]}]},bars:[{number:1,chords:[],pattern:'ending'}]};
+ assert.equal(validateScore(data),true);const svg=renderScore(data);
+ assert.match(svg,/class="whole-note"/);assert.doesNotMatch(svg,/class="chord-diagram"|NaN|undefined/);
+ assert.doesNotMatch(svg,/<line[^>]*y1="172"[^>]*y2="189"/,'全音符没有节拍符干');
+ data.patterns.ending=[{kind:'pluck',duration:4,strings:[2]},{kind:'hold',duration:4},{kind:'hold',duration:4},{kind:'hold',duration:4}];
+ assert.throws(()=>validateScore(data),/起始和弦/,'叉号拨弦仍需要和弦指法');
+});

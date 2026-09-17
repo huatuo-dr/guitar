@@ -34,10 +34,14 @@ export async function buildAccompaniment(id,filename) {
   const routeNote = data.routeNote??(data.notes??[]).find(note => note.startsWith('第1房子'))??'';
   const routePrint = `演奏顺序：${data.route.map(({start,end}) => `${start}–${end}`).join(' → ')}。${routeNote}`;
   const fingerstyle=data.scoreType==='fingerstyle';
+  const hasChords=Object.keys(data.chordShapes).length>0;
   const tokens = {
-    PRIMARY_LEGEND:fingerstyle ? '<span>六线谱数字：品位</span><span>同列音符：同时拨响</span><span><strong>波浪 ↑</strong> 琶音：低音弦 → 高音弦</span>' : '<span><strong>↑</strong> 下扫：低音弦 → 高音弦</span><span><strong>↓</strong> 上扫：高音弦 → 低音弦</span><span><strong>波浪 ↑</strong> 琶音：低音弦 → 高音弦</span>',
+    ROUTE_HEADING:escape(data.routeHeading??'演奏顺序 · 按原谱反复与跳尾'),
+    CHORD_GUIDE:hasChords ? `<details class="optional"><summary>和弦指法速查 · ${Object.keys(data.chordShapes).length} 个和弦</summary><p class="guide-text">图中左至右为 6 弦至 1 弦；○ 空弦，× 不弹，圆点为按弦位置，粗横线为横按。${referenceNames ? `† ${escape(referenceNames)} 为补充参考指法。` : ''}</p><div class="chord-guide">${renderChordGuide(data)}</div></details>` : '',
+
+    PRIMARY_LEGEND:data.primaryLegend ? escape(data.primaryLegend) : fingerstyle ? '<span>六线谱数字：品位</span><span>同列音符：同时拨响</span><span><strong>波浪 ↑</strong> 琶音：低音弦 → 高音弦</span>' : '<span><strong>↑</strong> 下扫：低音弦 → 高音弦</span><span><strong>↓</strong> 上扫：高音弦 → 低音弦</span><span><strong>波浪 ↑</strong> 琶音：低音弦 → 高音弦</span>',
     ACCESSIBLE_DESCRIPTION:fingerstyle ? '吉他六线谱与旋律简谱，可横向滚动' : '吉他六线谱、简谱与歌词，可横向滚动',
-    CONTENT_DESCRIPTION:fingerstyle ? '本页依据用户提供的截图整理指弹六线谱、和弦指法与旋律简谱。' : '本页整理和弦、扫弦、过门，并依据用户提供的截图补充简谱与歌词。',
+    CONTENT_DESCRIPTION:fingerstyle ? `本页依据用户提供的截图整理指弹六线谱${hasChords?'、和弦指法':''}与旋律简谱。` : '本页整理和弦、扫弦、过门，并依据用户提供的截图补充简谱与歌词。',
     SOURCE_DETAIL:fingerstyle ? '六线谱与旋律简谱据用户提供截图整理' : '简谱与歌词据用户提供截图整理',
     FILENAME:escape(filename), TITLE:escape(data.title), METADATA:metadata.map(([label,value]) => metadataItem(label,value)).join(''),
     TECHNIQUE_LEGEND:escape(techniqueLegend), MELODY_LEGEND:escape(melodyLegend),
@@ -45,9 +49,8 @@ export async function buildAccompaniment(id,filename) {
     SOURCE_COMPARISON:data.source ? `可对照${sourceLink('网页原谱')}。` : '可对照用户提供的原谱截图。',
     SECTIONS:data.sections.map(s => `<a class="jump-link" href="#bar-${s.start}" data-jump="${s.start}">${escape(s.name)}<small>${s.start}–${s.end} 小节</small></a>`).join(''),
     ROUTE:data.route.map((r,i) => `<a href="#bar-${r.start}" data-jump="${r.start}"><span>${i+1}. ${escape(r.label)}</span><strong>${r.start}–${r.end}</strong></a>`).join(''),
-    ROUTE_PRINT:escape(routePrint), CHORD_COUNT:Object.keys(data.chordShapes).length, BAR_COUNT:data.bars.length,
-    REFERENCE_CHORDS:referenceNames ? `† ${escape(referenceNames)} 为补充参考指法。` : '',
-    CHORDS:renderChordGuide(data), SCORE:renderScore(data), SCORE_TWO:renderScore(data,2),
+    ROUTE_PRINT:escape(routePrint), BAR_COUNT:data.bars.length,
+    SCORE:renderScore(data), SCORE_TWO:renderScore(data,2),
     VIEW:await readFile(new URL('src/score-view.js',root),'utf8')+'\n'+await readFile(new URL('src/auto-scroll.js',root),'utf8'),
     AUTO_SCROLL_CSS:await readFile(new URL('src/auto-scroll.css',root),'utf8'),
     STORAGE_KEY:JSON.stringify(`guitar-view:${id}:v1`).replaceAll('<','\\u003c'),

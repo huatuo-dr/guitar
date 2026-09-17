@@ -68,5 +68,15 @@ window.GUITAR_SCORES = [
     bars: 56,
     updatedAt: '2026-09-17',
     description: 'C 调指弹，含旋律简谱、和弦指法、击勾弦、滑音和反复跳尾。'
+  },
+  {
+    id: 'canon-v2-fingerstyle',
+    title: '《卡农》指弹·版本 2',
+    type: 'fingerstyle',
+    path: 'sheet_music/卡农指弹版本2.html',
+    timeSignature: '4/4',
+    bars: 9,
+    updatedAt: '2026-09-17',
+    description: 'C 调单旋律练习版，60 拍/分钟，含六线谱和对应简谱。'
   }
 ];
