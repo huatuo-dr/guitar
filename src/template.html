@@ -112,7 +112,8 @@
       <p>C 段重点核对：第 17 小节的装饰击弦；第 20 小节首拍三连音及第二拍连续延音；第 24 小节一弦 3→5→3 连奏滑音；第 25 小节开头为二弦 3 品；第 26 小节三弦 7 品自然泛音。星号（*）表示打板，保留原谱标注位置。</p>
       <p>D–G 段重点核对：第 34–36 小节的三十二分音符；第 40 小节末尾琶音；第 48 小节仅 3→5 连奏滑音，后面的 3 重新拨弦；第 49 小节没有装饰击弦；第 61 小节首拍琶音后延音至全小节结束。</p>
       <p>重复小节已完整展开：41–47 与 17–23 相同，50–55 与 18–23 相同，57–60 与 25–28 相同。D 段经确认按截图标为 29–36 小节。</p>
-      <p>曲名按用户提供的信息标为《偏爱》指弹。截图未提供速度和调弦说明，本稿仅展示六线谱；装饰音不另占标称节拍。</p>
+      <p>曲名按用户提供的信息标为《偏爱》指弹。原指弹截图未提供速度和调弦说明；装饰音不另占标称节拍。歌词根据后补的两页带词指弹谱对齐。</p>
+      <details id="lyric-notes"><summary>歌词对齐说明（含改编处）</summary><ul></ul></details>
       <div id="transcription"></div>
     </details>
     <details class="licenses"><summary>开源许可</summary><pre>@@LICENSE@@</pre></details>
@@ -133,9 +134,26 @@
         .find(band => band.effect.constructor.name === 'TextEffectInfo');
       if (!textBand) throw new Error('alphaTab text effect band changed; review source-marker placement.');
       textBand.mode = 3;
+      // Let alphaTab reserve a separate lyric band below the tab/rhythm/markers.
+      const lyricBand = alphaTab.Environment.defaultRenderers.flatMap(renderer => renderer.effectBands)
+        .find(band => band.effect.constructor.name === 'LyricsEffectInfo');
+      if (!lyricBand) throw new Error('alphaTab lyric effect band changed; review lyric placement.');
+      lyricBand.mode = 3;
+      lyricBand.order = 2000;
+      const createLyricGlyph = lyricBand.effect.createNewGlyph.bind(lyricBand.effect);
+      lyricBand.effect.createNewGlyph = (renderer,beat) => {
+        const glyph = createLyricGlyph(renderer,beat);
+        const layout = glyph.doLayout.bind(glyph);
+        glyph.doLayout = () => {
+          layout();
+          glyph.y = 16;
+          glyph.height += 16;
+        };
+        return glyph;
+      };
       api = new alphaTab.AlphaTabApi(scoreElement, {
         core: { engine:'svg', useWorkers:false, includeNoteBounds:true, enableLazyLoading:false, fontDirectory:null, smuflFontSources:new Map([[alphaTab.FontFileFormat.Woff2,'data:font/woff2;base64,@@FONT@@']]) },
-        display: { scale:0.9, barsPerRow:4, justifyLastSystem:false, staveProfile:alphaTab.StaveProfile.Tab, padding:[0,12,0,12], resources: { staffLineColor:'#566059', mainGlyphColor:'#1d2822', secondaryGlyphColor:'#1d2822', barNumberColor:'#66725f', tablatureFont:'16px Arial', barNumberFont:'12px Arial', elementFonts:{EffectText:'18px Georgia'} } },
+        display: { scale:0.9, barsPerRow:4, justifyLastSystem:false, staveProfile:alphaTab.StaveProfile.Tab, padding:[0,12,0,12], resources: { staffLineColor:'#566059', mainGlyphColor:'#1d2822', secondaryGlyphColor:'#1d2822', barNumberColor:'#66725f', tablatureFont:'16px Arial', barNumberFont:'12px Arial', elementFonts:{EffectText:'18px Georgia',EffectLyrics:'15px "Microsoft YaHei", "Noto Sans CJK SC", sans-serif'} } },
         notation: { rhythmMode:alphaTab.TabRhythmMode.ShowWithBars, elements: { ScoreTitle:false, ScoreSubTitle:false, ScoreArtist:false, ScoreAlbum:false, ScoreWords:false, ScoreMusic:false, ScoreWordsAndMusic:false, ScoreCopyright:false, GuitarTuning:false, TrackNames:false, EffectTempo:false, EffectCapo:false, EffectDynamics:false, EffectHarmonics:false, EffectHammerOnPullOffText:true, EffectSlideText:true } },
         player: { enablePlayer:false }
       });
@@ -173,6 +191,10 @@
         document.querySelectorAll('[data-section-start]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
       }));
       document.getElementById('print').addEventListener('click',()=>window.print());
+      for (const note of scoreData.lyricNotes) {
+        const item=document.createElement('li'); item.textContent=note;
+        document.querySelector('#lyric-notes ul').append(item);
+      }
       const durationName={4:'四分',8:'八分',16:'十六分',32:'三十二分'};
       const transcript=document.getElementById('transcription');
       for(const bar of scoreData.bars){

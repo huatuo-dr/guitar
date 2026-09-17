@@ -136,7 +136,11 @@ try {
 
   await page.evaluate(() => scrollTo(0, 0));
   await page.waitForTimeout(300);
-  await page.locator('.section-nav [data-jump="21"]').click();
+  // The page is intentionally moving: send a real click without waiting for
+  // Playwright's two-frame position stability, which auto-scroll can prevent.
+  const sectionJump = page.locator('.section-nav [data-jump="21"]');
+  assert.equal(await sectionJump.isVisible(),true);
+  await sectionJump.click({force:true});
   await page.waitForTimeout(500);
   await state(page, true);
   assert.equal(await page.locator('#bar-21').evaluate(node => node === document.activeElement), true);

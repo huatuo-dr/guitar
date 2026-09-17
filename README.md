@@ -113,11 +113,13 @@ Dm7、A7、G7 采用图中的 `x00211`、`002223`、`300001` 指法；原谱只�
 - `score/b-section.json`：B 段逐小节转录；包含琶音、连奏滑音及延音滑音。
 - `score/c-section.json`：C 段逐小节转录；包含三连音、连续延音、滑音、泛音与星号。
 - `score/remaining.json`：D–G 段新增转录及 `repeatOf` 来源引用，构建时展开。
+- `score/pianai-lyrics.json`：依据用户提供的两页带词参考谱，保存逐音歌词、重复段映射和改编位置说明；不修改原始指弹音符。
 - `score/score.alphatex`：全曲 61 小节的完整文本乐谱。
 - `score/intro.alphatex`：单独前奏的文本乐谱，供回归核对。
 - `src/template.html`：页面及制谱设置。
 - `scripts/build.mjs`：生成单文件 HTML。
 - `scripts/alphatab-display.mjs`：对固定版本的谱面显示作局部调整，使延音滑音起点显示括号品号。
+- `scripts/pianai-lyrics.mjs`：校验歌词落点与复制来源，在构建时附加到对应音符。
 - `tests/`：转录与浏览器检查。
 
 开发命令：
@@ -138,7 +140,9 @@ npm run test:browser
 
 C 段的星号（*）表示打板，含义经用户确认；按原图保存为 beat text。页面在固定版本的 `Environment.defaultRenderers` 中将 `TextEffectInfo` 的 effect band 置于谱下（`SharedBottom = 3`），由制谱库布局和绘制。其他演奏记号与音符语义不变。三连音使用 AlphaTex `tu 3 2`，装饰音不另占标称节拍。语法依据 [alphaTab 文档](https://alphatab.net/docs/alphatex/document-structure)。
 
-打印保持 A4 横向，当前为四页，C 段从第二页开始。打印样式将制谱库每行 SVG 的容器纳入正常文档流并避免行内分页，防止跨页绝对定位造成谱行重叠。
+歌词使用 AlphaTex 的逐音符 `lyrics` 属性，原生 `LyricsEffectInfo` 排在谱下，并预留与节拍线、打板标记的间距。每行两/四小节、缩放、打印和下载均包含歌词。参考谱为29小节带反复版本，当前61小节按旋律对应关系展开；19/20及其重复、24–25、34、48、56–57等改编位置的对齐依据见页面“原谱对照与整理说明 → 歌词对齐说明”，供审查。前奏和没有新歌词的尾奏留空，装饰音及延音不重复填字。`tests/pianai-lyrics.test.mjs` 校验字位与原始音符不变，`tests/pianai-lyrics-browser.mjs` 检查全曲歌词在各布局下不丢失、不重叠或裁切。
+
+打印保持 A4 横向，歌词版当前为四页。打印样式将制谱库每行 SVG 的容器纳入正常文档流并避免行内分页，防止跨页绝对定位造成谱行重叠。
 
 小节信息中 C 段为 17–28，D 段为 26–36，存在重叠。第 29 小节截图实际标注了 D 段，用户已确认按截图将 D 段定位为 29–36；26–28 不重复插入。
 
