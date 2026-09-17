@@ -57,5 +57,16 @@ window.GUITAR_SCORES = [
     bars: 62,
     updatedAt: '2026-09-17',
     description: 'C 调指法、原调 D，含分解和弦、扫弦、前后奏旋律与简谱歌词。'
+  },
+  {
+    id: 'canon-fingerstyle',
+    title: '《卡农》指弹',
+    artist: '深蓝雨吉他',
+    type: 'fingerstyle',
+    path: 'sheet_music/卡农指弹.html',
+    timeSignature: '4/4',
+    bars: 56,
+    updatedAt: '2026-09-17',
+    description: 'C 调指弹，含旋律简谱、和弦指法、击勾弦、滑音和反复跳尾。'
   }
 ];

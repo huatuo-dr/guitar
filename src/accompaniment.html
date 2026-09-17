@@ -54,17 +54,17 @@
         <div class="metadata">@@METADATA@@</div>
       </header>
     <div class="legend">
-      <p class="legend-row"><span><strong>↑</strong> 下扫：低音弦 → 高音弦</span><span><strong>↓</strong> 上扫：高音弦 → 低音弦</span><span><strong>波浪 ↑</strong> 琶音：低音弦 → 高音弦</span></p>
+      <p class="legend-row">@@PRIMARY_LEGEND@@</p>
       <p class="secondary">@@TECHNIQUE_LEGEND@@</p>
       <p>@@MELODY_LEGEND@@</p>
     </div>
     <details class="optional" open><summary>演奏顺序 · 按原谱反复与跳尾</summary><div class="route">@@ROUTE@@</div></details>
     <p class="route-print" style="display:none">@@ROUTE_PRINT@@</p>
     <details class="optional"><summary>和弦指法速查 · @@CHORD_COUNT@@ 个和弦</summary><p class="guide-text">图中左至右为 6 弦至 1 弦；○ 空弦，× 不弹，圆点为按弦位置，粗横线为横按。@@REFERENCE_CHORDS@@</p><div class="chord-guide">@@CHORDS@@</div></details>
-    <div class="score-viewport" aria-label="吉他六线谱、简谱与歌词，可横向滚动" tabindex="0"><div id="score">@@SCORE@@</div></div>
+    <div class="score-viewport" aria-label="@@ACCESSIBLE_DESCRIPTION@@" tabindex="0"><div id="score">@@SCORE@@</div></div>
     <template id="two-bar-score">@@SCORE_TWO@@</template>
-    <details class="verification"><summary>原谱对照与整理说明</summary><p>本页整理和弦、扫弦、过门，并依据用户提供的截图补充简谱与歌词。@@SOURCE_COMPARISON@@</p><ul>@@NOTES@@</ul><p>谱面为可缩放的矢量重绘，所有谱面与样式均已内嵌，保存此 HTML 后可以离线打开。小节仍按书写顺序保留，没有展开反复；上方演奏顺序列出了完整行进路线。</p></details>
-    <p class="source-link">参考：@@SOURCE_CREDIT@@ · 简谱与歌词据用户提供截图整理</p>
+    <details class="verification"><summary>原谱对照与整理说明</summary><p>@@CONTENT_DESCRIPTION@@@@SOURCE_COMPARISON@@</p><ul>@@NOTES@@</ul><p>谱面为可缩放的矢量重绘，所有谱面与样式均已内嵌，保存此 HTML 后可以离线打开。小节仍按书写顺序保留，没有展开反复；上方演奏顺序列出了完整行进路线。</p></details>
+    <p class="source-link">参考：@@SOURCE_CREDIT@@ · @@SOURCE_DETAIL@@</p>
     <footer>全曲 · @@BAR_COUNT@@ 小节 · 小节编号与段名用于阅读定位</footer>
   </article></main>
   <script>@@VIEW@@</script>

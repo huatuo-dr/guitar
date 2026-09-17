@@ -26,7 +26,8 @@ export function validateScore(data) {
     const base=shape.baseFret??1;
     if (!Number.isInteger(base)||base<1||shape.frets.length !== 6 || shape.frets.some(f => !Number.isInteger(f) || f < -1 || f > base+3 || (f>0&&f<base))) throw new Error(`和弦指法无效：${name}`);
   }
-  for (const [i, bar] of expandBars(data).entries()) {
+  const expanded=expandBars(data);
+  for (const [i, bar] of expanded.entries()) {
     if (bar.number !== i + 1) throw new Error('小节编号不连续');
     const duration = bar.events.reduce((n, e) => n + eventBeats(e), 0);
     if (duration !== bar.beats || ![2,4].includes(bar.beats)) throw new Error(`第${bar.number}小节时值与拍号不符`);
@@ -36,12 +37,22 @@ export function validateScore(data) {
       previous = chord.beat;
     }
     if (bar.chords[0]?.beat !== 1) throw new Error('每小节必须指定起始和弦');
-    for (const event of bar.events) {
-      if (!['down','up','hold','arpeggio','note','pluck','rest'].includes(event.kind) || ![4,8,16,32].includes(event.duration)) throw new Error('事件无效');
+    for (const [eventIndex,event] of bar.events.entries()) {
+      if (!['down','up','hold','arpeggio','note','pluck','rest','fretted'].includes(event.kind) || ![4,8,16,32].includes(event.duration)) throw new Error('事件无效');
       if (event.kind === 'note' && (!Number.isInteger(event.string) || event.string < 1 || event.string > 6 || !Number.isInteger(event.fret) || event.fret < 0)) throw new Error('品位或弦号无效');
       if(event.kind==='pluck'){
         if(!Array.isArray(event.strings)||!event.strings.length||event.strings.some(s=>!Number.isInteger(s)||s<1||s>6)||new Set(event.strings).size!==event.strings.length)throw new Error('拨弦弦位无效');
         for(const n of event.notes??[])if(!Number.isInteger(n.string)||n.string<1||n.string>6||!Number.isInteger(n.fret)||n.fret<0||event.strings.includes(n.string))throw new Error('同时拨弦品位无效');
+      }
+      if(event.kind==='fretted'){
+        if(!Array.isArray(event.notes)||!event.notes.length||new Set(event.notes.map(n=>n.string)).size!==event.notes.length||event.notes.some(n=>!Number.isInteger(n.string)||n.string<1||n.string>6||!Number.isInteger(n.fret)||n.fret<0))throw new Error('指弹弦品无效');
+        if(event.arpeggio!==undefined&&event.arpeggio!=='up')throw new Error('指弹琶音方向无效');
+        for(const note of event.notes){
+          if(!(note.hammerToNext||note.pullToNext||note.slideToNext||note.tieToNext))continue;
+          const next=bar.events[eventIndex+1]??(note.tieToNext?expanded[i+1]?.events[0]:undefined);
+          const target=next?.notes?.find(n=>n.string===note.string);
+          if(!target||(note.tieToNext&&target.fret!==note.fret))throw new Error(`第${bar.number}小节技法终点无效`);
+        }
       }
       for(const string of [event.startString,event.endString])if(string!==undefined&&(!Number.isInteger(string)||string<1||string>6))throw new Error('扫弦范围无效');
       if(event.kind==='rest' && event.duration!==8)throw new Error('当前仅支持八分休止');
@@ -103,8 +114,27 @@ function arrow(x, from, to, wavy = false) {
 
 function measureDescription(bar) {
   const action = {rest:'休止',down:'下扫',up:'上扫',hold:'延续',arpeggio:'向上箭头琶音'};
-  const events = bar.events.map(e => `${e.kind === 'note' ? `${e.string}弦${e.fret}品${e.hammerToNext ? '击弦至下一音' : e.pullToNext?'勾弦至下一音':e.slideToNext?'滑音至下一音':''}` : e.kind==='pluck'?`拨${e.strings.join('、')}弦${(e.notes??[]).map(n=>`与${n.string}弦${n.fret}品`).join('')}`:action[e.kind]}·${e.duration}分`).join('，');
+  const events = bar.events.map(e => `${e.kind==='fretted'?e.notes.map(n=>`${n.string}弦${n.fret}品${n.hammerToNext?'击弦':n.pullToNext?'勾弦':n.slideToNext?'滑音':n.tieToNext?'延音':''}`).join('、'):e.kind === 'note' ? `${e.string}弦${e.fret}品${e.hammerToNext ? '击弦至下一音' : e.pullToNext?'勾弦至下一音':e.slideToNext?'滑音至下一音':''}` : e.kind==='pluck'?`拨${e.strings.join('、')}弦${(e.notes??[]).map(n=>`与${n.string}弦${n.fret}品`).join('')}`:action[e.kind]}·${e.duration}分`).join('，');
   return `第${bar.number}小节；${bar.beats}/4拍；${bar.chords.map(c => `第${c.beat}拍${c.name}`).join('，')}；${events}${bar.note ? '；'+bar.note : ''}`;
+}
+
+function renderFrettedEvent(event,next,right) {
+  const at=event.x;let svg='';
+  if(event.arpeggio==='up'){
+    const strings=event.notes.map(n=>n.string);
+    svg+='<g class="fretted-arpeggio">'+arrow(at-10,TOP+(Math.max(...strings)-1)*STRING_GAP,TOP+(Math.min(...strings)-1)*STRING_GAP,true)+'</g>';
+  }
+  for(const note of event.notes){
+    const y=TOP+(note.string-1)*STRING_GAP;
+    const width=String(note.fret).length>1?16:10;
+    svg+=`<rect x="${at-width/2}" y="${y-6}" width="${width}" height="13" class="note-background"/>`+text(at,y+4,note.fret,'fret','middle');
+    if(note.hammerToNext||note.pullToNext||note.slideToNext||note.tieToNext){
+      const end=next?.x??right;
+      svg+=`<path class="${note.tieToNext?'tab-tie':'tab-legato'}" d="M ${at} ${y-9} Q ${(at+end)/2} ${y-20} ${end} ${y-9}" fill="none"/>`;
+      if(!note.tieToNext)svg+=text((at+end)/2,y-17,note.pullToNext?'P':note.slideToNext?'S':'H',note.slideToNext?'slide-label':'hammer','middle');
+    }
+  }
+  return svg;
 }
 
 function renderBar(bar, data, index, rowHeight) {
@@ -152,12 +182,19 @@ function renderBar(bar, data, index, rowHeight) {
   });
   const previousBar=data.bars[bar.number-2];
   const previousEvent=previousBar?data.patterns[previousBar.pattern].at(-1):undefined;
+  if(previousEvent?.kind==='fretted'){
+    for(const note of previousEvent.notes.filter(n=>n.tieToNext)){
+      const y=TOP+(note.string-1)*STRING_GAP-9;
+      svg+=`<path class="tab-tie" d="M ${x} ${y-4} Q ${(x+placed[0].x)/2} ${y-8} ${placed[0].x} ${y}" fill="none"/>`;
+    }
+  }
   if(previousEvent?.tieToNext){
     const first=placed[0],y=first.kind==='pluck'?TOP+(first.strings[0]-1)*STRING_GAP-6:TOP-8;
     svg+=`<path class="tab-tie" d="M ${x} ${y-4} Q ${(x+first.x)/2} ${y-8} ${first.x} ${y}" fill="none"/>`;
   }
   placed.forEach((event, i) => {
     const at = event.x;
+    if(event.kind==='fretted')svg+=renderFrettedEvent(event,placed[i+1],x+BAR_WIDTH);
     const chord = bar.chords.findLast(c => c.beat <= event.beat);
     const bassIndex = data.chordShapes[chord.name].frets.findIndex(f => f >= 0);
     const bassY = TOP + (5-bassIndex) * STRING_GAP;

@@ -1,0 +1,7547 @@
+{
+  "title": "《卡农》指弹",
+  "scoreType": "fingerstyle",
+  "artist": "深蓝雨吉他",
+  "artistLabel": "编配",
+  "key": "C",
+  "timeSignature": [
+    4,
+    4
+  ],
+  "tempoText": "60–65 拍/分钟",
+  "sourceTitle": "深蓝雨吉他 ·《卡农》指弹教学谱（2021-04号／曲谱集4-01号，用户提供三页截图）",
+  "techniqueLegend": "H：击弦　　P：勾弦　　S：滑音　　—：延续前音",
+  "melodyLegend": "旋律简谱：上下圆点表示八度，数字下短线表示减时，右侧圆点为附点；0 为休止，— 为延长。同音弧线为延音，异音弧线为连音。简谱按原图独立保留，不等同于六线谱每一次拨弦。",
+  "notes": [
+    "依据用户提供的深蓝雨吉他三页指弹教学谱重绘；原谱说明为“曲谱参考于网络并适当修改”，2021-04号／曲谱集4-01号作品。",
+    "原谱为C调、4/4，建议每分钟60–65拍，演示视频录制速度64拍。未标变调夹，本版不另指定品位。",
+    "共56个书写小节，编号沿用原图：第一页1–27、第二页28–53、第三页54–56。段名仅为阅读定位；完整反复路线列于谱前。",
+    "六线谱的同时音按截图逐弦保留，不依据和弦图补音。第1小节C起音没有四弦2品，第15小节首拍低音为四弦3品。",
+    "第14小节一弦3→5滑音；H、P分别为击弦、勾弦，按起音所在弦连接到下一音。第42–46小节高把位品数照图保留，和弦图仍为原谱给出的常用指法。",
+    "第56小节C和弦琶音从五弦到二弦，之后延续三拍；不改为四次弹奏。"
+  ],
+  "routeNote": "第一组反复从13开始：第一遍走16，第二遍跳至17。第二组从18开始：第一遍走20–21，第二遍跳至22–23。24–27和48–51分别演奏两遍，其余小节按书写顺序进行。",
+  "route": [
+    {
+      "label": "主题与变奏一·1房子",
+      "start": 1,
+      "end": 16
+    },
+    {
+      "label": "变奏一反复",
+      "start": 13,
+      "end": 15
+    },
+    {
+      "label": "2房子·进入变奏二",
+      "start": 17,
+      "end": 21
+    },
+    {
+      "label": "变奏二反复",
+      "start": 18,
+      "end": 19
+    },
+    {
+      "label": "2房子·进入变奏三",
+      "start": 22,
+      "end": 27
+    },
+    {
+      "label": "变奏三反复",
+      "start": 24,
+      "end": 27
+    },
+    {
+      "label": "后续变奏",
+      "start": 28,
+      "end": 51
+    },
+    {
+      "label": "变奏六反复",
+      "start": 48,
+      "end": 51
+    },
+    {
+      "label": "尾奏·结束",
+      "start": 52,
+      "end": 56
+    }
+  ],
+  "sections": [
+    {
+      "name": "前奏",
+      "start": 1,
+      "end": 4
+    },
+    {
+      "name": "主题",
+      "start": 5,
+      "end": 12
+    },
+    {
+      "name": "变奏一",
+      "start": 13,
+      "end": 17
+    },
+    {
+      "name": "变奏二",
+      "start": 18,
+      "end": 23
+    },
+    {
+      "name": "变奏三",
+      "start": 24,
+      "end": 31
+    },
+    {
+      "name": "低音主题",
+      "start": 32,
+      "end": 35
+    },
+    {
+      "name": "变奏四",
+      "start": 36,
+      "end": 43
+    },
+    {
+      "name": "变奏五",
+      "start": 44,
+      "end": 47
+    },
+    {
+      "name": "变奏六",
+      "start": 48,
+      "end": 51
+    },
+    {
+      "name": "尾奏",
+      "start": 52,
+      "end": 56
+    }
+  ],
+  "chordShapes": {
+    "C": {
+      "frets": [
+        -1,
+        3,
+        2,
+        0,
+        1,
+        0
+      ]
+    },
+    "G": {
+      "frets": [
+        3,
+        2,
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    "Am": {
+      "frets": [
+        -1,
+        0,
+        2,
+        2,
+        1,
+        0
+      ]
+    },
+    "Em": {
+      "frets": [
+        0,
+        2,
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    "F": {
+      "frets": [
+        1,
+        3,
+        3,
+        2,
+        1,
+        1
+      ]
+    },
+    "Gsus4": {
+      "frets": [
+        3,
+        2,
+        0,
+        0,
+        1,
+        3
+      ]
+    }
+  },
+  "patterns": {
+    "bar-1": [
+      {
+        "kind": "fretted",
+        "duration": 4,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          },
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 3,
+            "fret": 0
+          },
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "hold",
+        "duration": 4
+      },
+      {
+        "kind": "fretted",
+        "duration": 4,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          },
+          {
+            "string": 3,
+            "fret": 0
+          },
+          {
+            "string": 4,
+            "fret": 0
+          },
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "hold",
+        "duration": 4
+      }
+    ],
+    "bar-2": [
+      {
+        "kind": "fretted",
+        "duration": 4,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 4,
+            "fret": 2
+          },
+          {
+            "string": 5,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "hold",
+        "duration": 4
+      },
+      {
+        "kind": "fretted",
+        "duration": 4,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          },
+          {
+            "string": 4,
+            "fret": 2
+          },
+          {
+            "string": 5,
+            "fret": 2
+          },
+          {
+            "string": 6,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "hold",
+        "duration": 4
+      }
+    ],
+    "bar-3": [
+      {
+        "kind": "fretted",
+        "duration": 4,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 4,
+            "fret": 3
+          },
+          {
+            "string": 5,
+            "fret": 3
+          },
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "hold",
+        "duration": 4
+      },
+      {
+        "kind": "fretted",
+        "duration": 4,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 3,
+            "fret": 0
+          },
+          {
+            "string": 4,
+            "fret": 2
+          },
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "hold",
+        "duration": 4
+      }
+    ],
+    "bar-4": [
+      {
+        "kind": "fretted",
+        "duration": 4,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 4,
+            "fret": 3
+          },
+          {
+            "string": 5,
+            "fret": 3
+          },
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "hold",
+        "duration": 4
+      },
+      {
+        "kind": "fretted",
+        "duration": 4,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          },
+          {
+            "string": 3,
+            "fret": 0
+          },
+          {
+            "string": 4,
+            "fret": 0
+          },
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "hold",
+        "duration": 4
+      }
+    ],
+    "bar-5": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          },
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          },
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-6": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 5,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          },
+          {
+            "string": 6,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      }
+    ],
+    "bar-7": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          },
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      }
+    ],
+    "bar-8": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          },
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-9": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          },
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          },
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-10": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 5,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3
+          },
+          {
+            "string": 6,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 5
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-11": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 1
+          },
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          },
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-12": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-13": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          },
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-14": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 5,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3
+          },
+          {
+            "string": 6,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3,
+            "slideToNext": true
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 5
+          }
+        ]
+      }
+    ],
+    "bar-15": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 1
+          },
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          },
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-16": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-17": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      }
+    ],
+    "bar-18": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          },
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 1,
+            "pullToNext": true
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      }
+    ],
+    "bar-19": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 5,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0,
+            "hammerToNext": true
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          },
+          {
+            "string": 6,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-20": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          },
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      }
+    ],
+    "bar-21": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1,
+            "hammerToNext": true
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      }
+    ],
+    "bar-22": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          },
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-23": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          },
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      }
+    ],
+    "bar-24": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3
+          },
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3
+          },
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3
+          },
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1,
+            "hammerToNext": true
+          },
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 1
+          }
+        ]
+      }
+    ],
+    "bar-25": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          },
+          {
+            "string": 5,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1,
+            "hammerToNext": true
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          },
+          {
+            "string": 5,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2,
+            "hammerToNext": true
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0,
+            "hammerToNext": true
+          },
+          {
+            "string": 6,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          },
+          {
+            "string": 6,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      }
+    ],
+    "bar-26": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          },
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0,
+            "hammerToNext": true
+          },
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      }
+    ],
+    "bar-27": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0,
+            "hammerToNext": true
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          },
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0,
+            "hammerToNext": true
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          },
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 1,
+            "hammerToNext": true
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3
+          }
+        ]
+      }
+    ],
+    "bar-28": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          },
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          },
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          },
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1,
+            "hammerToNext": true
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          },
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1,
+            "pullToNext": true
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-29": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 5,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 5,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2,
+            "hammerToNext": true
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0,
+            "hammerToNext": true
+          },
+          {
+            "string": 6,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          },
+          {
+            "string": 6,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      }
+    ],
+    "bar-30": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          },
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2,
+            "hammerToNext": true
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0,
+            "hammerToNext": true
+          },
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      }
+    ],
+    "bar-31": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0,
+            "hammerToNext": true
+          },
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0,
+            "hammerToNext": true
+          },
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-32": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-33": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 5,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      }
+    ],
+    "bar-34": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      }
+    ],
+    "bar-35": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-36": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          },
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 1
+          },
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3
+          },
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          },
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          },
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          },
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          },
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-37": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 5,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          },
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          },
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          },
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          },
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          },
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-38": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          },
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          },
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          },
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      }
+    ],
+    "bar-39": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          },
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          },
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-40": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          },
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 1
+          },
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3
+          },
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          },
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          },
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          },
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 1
+          },
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          },
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-41": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 5,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          },
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          },
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3
+          },
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 1
+          },
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          },
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3
+          },
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-42": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 5
+          },
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 5
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 6
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 5
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3
+          },
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3
+          }
+        ]
+      }
+    ],
+    "bar-43": [
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 5
+          },
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 6
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 5
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3
+          },
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 6
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 5
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 7
+          },
+          {
+            "string": 4,
+            "fret": 5
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 5
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 8
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 7
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0,
+            "hammerToNext": true
+          },
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      }
+    ],
+    "bar-44": [
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          },
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1,
+            "hammerToNext": true
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 1,
+            "pullToNext": true
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      }
+    ],
+    "bar-45": [
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          },
+          {
+            "string": 5,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0,
+            "hammerToNext": true
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          },
+          {
+            "string": 6,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 5
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 8
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 7
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 8
+          }
+        ]
+      }
+    ],
+    "bar-46": [
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 7
+          },
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 5
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 6
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3
+          },
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          },
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-47": [
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          },
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      }
+    ],
+    "bar-48": [
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          },
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3
+          },
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 5
+          },
+          {
+            "string": 6,
+            "fret": 5
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3
+          },
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-49": [
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          },
+          {
+            "string": 5,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          },
+          {
+            "string": 6,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          },
+          {
+            "string": 6,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-50": [
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          },
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          },
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-51": [
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          },
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          },
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          },
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      }
+    ],
+    "bar-52": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-53": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 5,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-54": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 5,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      }
+    ],
+    "bar-55": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      }
+    ],
+    "bar-56": [
+      {
+        "kind": "arpeggio",
+        "startString": 5,
+        "endString": 2,
+        "duration": 4
+      },
+      {
+        "kind": "hold",
+        "duration": 4
+      },
+      {
+        "kind": "hold",
+        "duration": 4
+      },
+      {
+        "kind": "hold",
+        "duration": 4
+      }
+    ]
+  },
+  "bars": [
+    {
+      "number": 1,
+      "chords": [
+        [
+          1,
+          "C"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "pattern": "bar-1"
+    },
+    {
+      "number": 2,
+      "chords": [
+        [
+          1,
+          "Am"
+        ],
+        [
+          3,
+          "Em"
+        ]
+      ],
+      "pattern": "bar-2"
+    },
+    {
+      "number": 3,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "C"
+        ]
+      ],
+      "pattern": "bar-3"
+    },
+    {
+      "number": 4,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "pattern": "bar-4"
+    },
+    {
+      "number": 5,
+      "chords": [
+        [
+          1,
+          "C"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "pattern": "bar-5"
+    },
+    {
+      "number": 6,
+      "chords": [
+        [
+          1,
+          "Am"
+        ],
+        [
+          3,
+          "Em"
+        ]
+      ],
+      "pattern": "bar-6"
+    },
+    {
+      "number": 7,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "C"
+        ]
+      ],
+      "pattern": "bar-7"
+    },
+    {
+      "number": 8,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "pattern": "bar-8"
+    },
+    {
+      "number": 9,
+      "chords": [
+        [
+          1,
+          "C"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "pattern": "bar-9"
+    },
+    {
+      "number": 10,
+      "chords": [
+        [
+          1,
+          "Am"
+        ],
+        [
+          3,
+          "Em"
+        ]
+      ],
+      "pattern": "bar-10"
+    },
+    {
+      "number": 11,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "C"
+        ]
+      ],
+      "pattern": "bar-11"
+    },
+    {
+      "number": 12,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "pattern": "bar-12"
+    },
+    {
+      "number": 13,
+      "chords": [
+        [
+          1,
+          "C"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "repeatStart": true,
+      "pattern": "bar-13"
+    },
+    {
+      "number": 14,
+      "chords": [
+        [
+          1,
+          "Am"
+        ],
+        [
+          3,
+          "Em"
+        ]
+      ],
+      "pattern": "bar-14"
+    },
+    {
+      "number": 15,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "C"
+        ]
+      ],
+      "pattern": "bar-15"
+    },
+    {
+      "number": 16,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "Gsus4"
+        ]
+      ],
+      "volta": 1,
+      "voltaStart": true,
+      "voltaEnd": true,
+      "repeatEnd": true,
+      "pattern": "bar-16"
+    },
+    {
+      "number": 17,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "Gsus4"
+        ]
+      ],
+      "volta": 2,
+      "voltaStart": true,
+      "voltaEnd": true,
+      "pattern": "bar-17"
+    },
+    {
+      "number": 18,
+      "chords": [
+        [
+          1,
+          "C"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "repeatStart": true,
+      "pattern": "bar-18"
+    },
+    {
+      "number": 19,
+      "chords": [
+        [
+          1,
+          "Am"
+        ],
+        [
+          3,
+          "Em"
+        ]
+      ],
+      "pattern": "bar-19"
+    },
+    {
+      "number": 20,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "C"
+        ]
+      ],
+      "volta": 1,
+      "voltaStart": true,
+      "pattern": "bar-20"
+    },
+    {
+      "number": 21,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "Gsus4"
+        ]
+      ],
+      "volta": 1,
+      "voltaEnd": true,
+      "repeatEnd": true,
+      "pattern": "bar-21"
+    },
+    {
+      "number": 22,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "C"
+        ]
+      ],
+      "volta": 2,
+      "voltaStart": true,
+      "pattern": "bar-22"
+    },
+    {
+      "number": 23,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "volta": 2,
+      "voltaEnd": true,
+      "pattern": "bar-23"
+    },
+    {
+      "number": 24,
+      "chords": [
+        [
+          1,
+          "C"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "repeatStart": true,
+      "pattern": "bar-24"
+    },
+    {
+      "number": 25,
+      "chords": [
+        [
+          1,
+          "Am"
+        ],
+        [
+          3,
+          "Em"
+        ]
+      ],
+      "pattern": "bar-25"
+    },
+    {
+      "number": 26,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "C"
+        ]
+      ],
+      "pattern": "bar-26"
+    },
+    {
+      "number": 27,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "repeatEnd": true,
+      "pattern": "bar-27"
+    },
+    {
+      "number": 28,
+      "chords": [
+        [
+          1,
+          "C"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "pattern": "bar-28"
+    },
+    {
+      "number": 29,
+      "chords": [
+        [
+          1,
+          "Am"
+        ],
+        [
+          3,
+          "Em"
+        ]
+      ],
+      "pattern": "bar-29"
+    },
+    {
+      "number": 30,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "C"
+        ]
+      ],
+      "pattern": "bar-30"
+    },
+    {
+      "number": 31,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "pattern": "bar-31"
+    },
+    {
+      "number": 32,
+      "chords": [
+        [
+          1,
+          "C"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "pattern": "bar-32"
+    },
+    {
+      "number": 33,
+      "chords": [
+        [
+          1,
+          "Am"
+        ],
+        [
+          3,
+          "Em"
+        ]
+      ],
+      "pattern": "bar-33"
+    },
+    {
+      "number": 34,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "C"
+        ]
+      ],
+      "pattern": "bar-34"
+    },
+    {
+      "number": 35,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "pattern": "bar-35"
+    },
+    {
+      "number": 36,
+      "chords": [
+        [
+          1,
+          "C"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "pattern": "bar-36"
+    },
+    {
+      "number": 37,
+      "chords": [
+        [
+          1,
+          "Am"
+        ],
+        [
+          3,
+          "Em"
+        ]
+      ],
+      "pattern": "bar-37"
+    },
+    {
+      "number": 38,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "C"
+        ]
+      ],
+      "pattern": "bar-38"
+    },
+    {
+      "number": 39,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "pattern": "bar-39"
+    },
+    {
+      "number": 40,
+      "chords": [
+        [
+          1,
+          "C"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "pattern": "bar-40"
+    },
+    {
+      "number": 41,
+      "chords": [
+        [
+          1,
+          "Am"
+        ],
+        [
+          3,
+          "Em"
+        ]
+      ],
+      "pattern": "bar-41"
+    },
+    {
+      "number": 42,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "C"
+        ]
+      ],
+      "pattern": "bar-42"
+    },
+    {
+      "number": 43,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "pattern": "bar-43"
+    },
+    {
+      "number": 44,
+      "chords": [
+        [
+          1,
+          "C"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "pattern": "bar-44"
+    },
+    {
+      "number": 45,
+      "chords": [
+        [
+          1,
+          "Am"
+        ],
+        [
+          3,
+          "Em"
+        ]
+      ],
+      "pattern": "bar-45"
+    },
+    {
+      "number": 46,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "C"
+        ]
+      ],
+      "pattern": "bar-46"
+    },
+    {
+      "number": 47,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "pattern": "bar-47"
+    },
+    {
+      "number": 48,
+      "chords": [
+        [
+          1,
+          "C"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "repeatStart": true,
+      "pattern": "bar-48"
+    },
+    {
+      "number": 49,
+      "chords": [
+        [
+          1,
+          "Am"
+        ],
+        [
+          3,
+          "Em"
+        ]
+      ],
+      "pattern": "bar-49"
+    },
+    {
+      "number": 50,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "C"
+        ]
+      ],
+      "pattern": "bar-50"
+    },
+    {
+      "number": 51,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "repeatEnd": true,
+      "pattern": "bar-51"
+    },
+    {
+      "number": 52,
+      "chords": [
+        [
+          1,
+          "C"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "pattern": "bar-52"
+    },
+    {
+      "number": 53,
+      "chords": [
+        [
+          1,
+          "Am"
+        ],
+        [
+          3,
+          "Em"
+        ]
+      ],
+      "pattern": "bar-53"
+    },
+    {
+      "number": 54,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "C"
+        ]
+      ],
+      "pattern": "bar-54"
+    },
+    {
+      "number": 55,
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "pattern": "bar-55"
+    },
+    {
+      "number": 56,
+      "chords": [
+        [
+          1,
+          "C"
+        ]
+      ],
+      "pattern": "bar-56"
+    }
+  ]
+}

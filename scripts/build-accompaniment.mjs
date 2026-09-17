@@ -13,11 +13,14 @@ export async function buildAccompaniment(id,filename) {
   validateScore(data);
 
   const meters = [...new Set(data.bars.map(bar => `${bar.beats??data.timeSignature?.[0]??4}/${data.timeSignature?.[1]??4}`))];
-  const metadata = [['演唱',data.artist],['拍号',meters.join(' · ')]];
+  const metadata = [];
+  if(data.artist)metadata.push([data.artistLabel??'演唱',data.artist]);
+  metadata.push(['拍号',meters.join(' · ')]);
   if(data.fingeringKey) metadata.push(['原调',`1 = ${data.key}`],['指法',`${data.fingeringKey} 指法`]);
   else metadata.push(['调式',`1 = ${data.key}`]);
   if(data.capo!==undefined) metadata.push(['变调夹',`${data.capo} 品`]);
   else if(data.capoText) metadata.push(['变调夹建议',data.capoText]);
+  if(data.tempoText)metadata.push(['速度',data.tempoText]);
 
   const referenceNames = Object.entries(data.chordShapes).filter(([,shape]) => shape.reference).map(([name]) => name).join('、');
   const referenceLegend = referenceNames ? `　　†：补充的 ${referenceNames} 参考指法` : '';
@@ -30,7 +33,12 @@ export async function buildAccompaniment(id,filename) {
   const sourceLink = label => `<a href="${escape(data.source)}" target="_blank" rel="noopener noreferrer">${escape(label)}</a>`;
   const routeNote = data.routeNote??(data.notes??[]).find(note => note.startsWith('第1房子'))??'';
   const routePrint = `演奏顺序：${data.route.map(({start,end}) => `${start}–${end}`).join(' → ')}。${routeNote}`;
+  const fingerstyle=data.scoreType==='fingerstyle';
   const tokens = {
+    PRIMARY_LEGEND:fingerstyle ? '<span>六线谱数字：品位</span><span>同列音符：同时拨响</span><span><strong>波浪 ↑</strong> 琶音：低音弦 → 高音弦</span>' : '<span><strong>↑</strong> 下扫：低音弦 → 高音弦</span><span><strong>↓</strong> 上扫：高音弦 → 低音弦</span><span><strong>波浪 ↑</strong> 琶音：低音弦 → 高音弦</span>',
+    ACCESSIBLE_DESCRIPTION:fingerstyle ? '吉他六线谱与旋律简谱，可横向滚动' : '吉他六线谱、简谱与歌词，可横向滚动',
+    CONTENT_DESCRIPTION:fingerstyle ? '本页依据用户提供的截图整理指弹六线谱、和弦指法与旋律简谱。' : '本页整理和弦、扫弦、过门，并依据用户提供的截图补充简谱与歌词。',
+    SOURCE_DETAIL:fingerstyle ? '六线谱与旋律简谱据用户提供截图整理' : '简谱与歌词据用户提供截图整理',
     FILENAME:escape(filename), TITLE:escape(data.title), METADATA:metadata.map(([label,value]) => metadataItem(label,value)).join(''),
     TECHNIQUE_LEGEND:escape(techniqueLegend), MELODY_LEGEND:escape(melodyLegend),
     SOURCE_CREDIT:data.source ? sourceLink(data.sourceTitle) : escape(data.sourceTitle),
