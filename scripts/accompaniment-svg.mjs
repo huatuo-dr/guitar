@@ -1,5 +1,5 @@
 // Build-time SVG engraving for the accompaniment voice. No browser library is needed.
-import {createBeatPositioner,lyricLines,renderNumberedMelody} from './numbered-notation.mjs';
+import {createBeatPositioner,eventBeats,lyricLines,renderNumberedMelody} from './numbered-notation.mjs';
 const escape = value => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 const kinds = {d:'down', u:'up', h:'hold', a:'arpeggio'};
 
@@ -10,7 +10,7 @@ export function expandBars(data) {
     chords:bar.chords.map(([beat, name]) => ({beat, name})),
     events:data.patterns[bar.pattern].map(event => {
       if (typeof event !== 'string') return {...event};
-      const match = /^([duha])(4|8|16)$/.exec(event);
+      const match = /^([duha])(4|8|16|32)$/.exec(event);
       if (!match) throw new Error(`未知节奏事件：${event}`);
       return {kind:kinds[match[1]], duration:Number(match[2])};
     })
@@ -23,11 +23,12 @@ export function performanceOrder(data) {
 
 export function validateScore(data) {
   for (const [name, shape] of Object.entries(data.chordShapes)) {
-    if (shape.frets.length !== 6 || shape.frets.some(f => !Number.isInteger(f) || f < -1 || f > 3)) throw new Error(`和弦指法无效：${name}`);
+    const base=shape.baseFret??1;
+    if (!Number.isInteger(base)||base<1||shape.frets.length !== 6 || shape.frets.some(f => !Number.isInteger(f) || f < -1 || f > base+3 || (f>0&&f<base))) throw new Error(`和弦指法无效：${name}`);
   }
   for (const [i, bar] of expandBars(data).entries()) {
     if (bar.number !== i + 1) throw new Error('小节编号不连续');
-    const duration = bar.events.reduce((n, e) => n + 4 / e.duration, 0);
+    const duration = bar.events.reduce((n, e) => n + eventBeats(e), 0);
     if (duration !== bar.beats || ![2,4].includes(bar.beats)) throw new Error(`第${bar.number}小节时值与拍号不符`);
     let previous = 0;
     for (const chord of bar.chords) {
@@ -36,8 +37,13 @@ export function validateScore(data) {
     }
     if (bar.chords[0]?.beat !== 1) throw new Error('每小节必须指定起始和弦');
     for (const event of bar.events) {
-      if (!['down','up','hold','arpeggio','note'].includes(event.kind) || ![4,8,16].includes(event.duration)) throw new Error('事件无效');
+      if (!['down','up','hold','arpeggio','note','pluck'].includes(event.kind) || ![4,8,16,32].includes(event.duration)) throw new Error('事件无效');
       if (event.kind === 'note' && (!Number.isInteger(event.string) || event.string < 1 || event.string > 6 || !Number.isInteger(event.fret) || event.fret < 0)) throw new Error('品位或弦号无效');
+      if(event.kind==='pluck'){
+        if(!Array.isArray(event.strings)||!event.strings.length||event.strings.some(s=>!Number.isInteger(s)||s<1||s>6)||new Set(event.strings).size!==event.strings.length)throw new Error('拨弦弦位无效');
+        for(const n of event.notes??[])if(!Number.isInteger(n.string)||n.string<1||n.string>6||!Number.isInteger(n.fret)||n.fret<0||event.strings.includes(n.string))throw new Error('同时拨弦品位无效');
+      }
+      for(const string of [event.startString,event.endString])if(string!==undefined&&(!Number.isInteger(string)||string<1||string>6))throw new Error('扫弦范围无效');
     }
   }
   for (const route of data.route) {
@@ -51,17 +57,21 @@ const text = (x,y,content,cls='',anchor='start') => `<text x="${x}" y="${y}" cla
 const dot = (x,y,r=2.8) => `<circle cx="${x}" cy="${y}" r="${r}"/>`;
 
 function chordDiagram(name, shape, x, y) {
+  const base=shape.baseFret??1;
+  const fretCount=Math.max(3,...shape.frets.filter(f=>f>0).map(f=>f-base+1));
+  const step=36/fretCount;
   let svg = `<g class="chord-diagram" transform="translate(${x},${y})"><title>${escape(name)}：6弦至1弦 ${shape.frets.map(f => f < 0 ? '×' : f).join(' ')}${shape.reference ? '，补充参考指法' : ''}</title>`;
   svg += text(17,-17, name + (shape.reference ? '†' : ''), 'chord-name', 'middle');
   for (let s = 0; s < 6; s++) svg += line(s * 7,0,s * 7,36);
-  for (let f = 0; f < 4; f++) svg += line(0,f * 12,35,f * 12, f === 0 ? 'stroke-width="2"' : '');
+  for (let f = 0; f <= fretCount; f++) svg += line(0,f * step,35,f * step, f === 0 && base===1 ? 'stroke-width="2"' : '');
+  if(base>1)svg+=text(-6,8,base,'position-label','end');
   if (shape.barre) {
     const {from,to,fret} = shape.barre;
-    svg += line((6-from)*7,(fret-.5)*12,(6-to)*7,(fret-.5)*12,'stroke-width="5" stroke-linecap="round"');
+    svg += line((6-from)*7,(fret-base+.5)*step,(6-to)*7,(fret-base+.5)*step,'stroke-width="5" stroke-linecap="round"');
   }
   shape.frets.forEach((fret, s) => {
     if (fret <= 0) svg += text(s*7,-4,fret === 0 ? '○' : '×','open-string','middle');
-    else svg += dot(s*7,(fret-.5)*12);
+    else svg += dot(s*7,(fret-base+.5)*step);
   });
   return svg + '</g>';
 }
@@ -91,7 +101,7 @@ function arrow(x, from, to, wavy = false) {
 
 function measureDescription(bar) {
   const action = {down:'下扫',up:'上扫',hold:'延续',arpeggio:'向上箭头琶音'};
-  const events = bar.events.map(e => `${e.kind === 'note' ? `${e.string}弦${e.fret}品${e.hammerToNext ? '击弦至下一音' : ''}` : action[e.kind]}·${e.duration}分`).join('，');
+  const events = bar.events.map(e => `${e.kind === 'note' ? `${e.string}弦${e.fret}品${e.hammerToNext ? '击弦至下一音' : e.pullToNext?'勾弦至下一音':''}` : e.kind==='pluck'?`拨${e.strings.join('、')}弦${(e.notes??[]).map(n=>`与${n.string}弦${n.fret}品`).join('')}`:action[e.kind]}·${e.duration}分`).join('，');
   return `第${bar.number}小节；${bar.beats}/4拍；${bar.chords.map(c => `第${c.beat}拍${c.name}`).join('，')}；${events}${bar.note ? '；'+bar.note : ''}`;
 }
 
@@ -135,7 +145,7 @@ function renderBar(bar, data, index, rowHeight) {
   let elapsed = 0;
   const placed = bar.events.map(event => {
     const result = {...event, beat:elapsed+1, x:eventX(elapsed+1)};
-    elapsed += 4 / event.duration;
+    elapsed += eventBeats(event);
     return result;
   });
   placed.forEach((event, i) => {
@@ -143,17 +153,31 @@ function renderBar(bar, data, index, rowHeight) {
     const chord = bar.chords.findLast(c => c.beat <= event.beat);
     const bassIndex = data.chordShapes[chord.name].frets.findIndex(f => f >= 0);
     const bassY = TOP + (5-bassIndex) * STRING_GAP;
-    if (event.kind === 'down') svg += arrow(at, Number.isInteger(event.beat) ? bassY : TOP+24, TOP);
-    if (event.kind === 'up') svg += arrow(at,TOP,TOP+24);
+    if (event.kind === 'down') svg += arrow(at,event.startString?TOP+(event.startString-1)*STRING_GAP:Number.isInteger(event.beat)?bassY:TOP+24,event.endString?TOP+(event.endString-1)*STRING_GAP:TOP);
+    if (event.kind === 'up') svg += arrow(at,event.startString?TOP+(event.startString-1)*STRING_GAP:TOP,event.endString?TOP+(event.endString-1)*STRING_GAP:TOP+24);
     if (event.kind === 'arpeggio') svg += arrow(at,bassY,TOP,true);
     if (event.kind === 'hold') svg += text(at,TOP+23,'–','hold','middle');
+    if(event.kind==='pluck'){
+      for(const string of event.strings){
+        const y=TOP+(string-1)*STRING_GAP;
+        svg+=`<path class="pluck-cross" d="M ${at-3} ${y-3} l 6 6 M ${at-3} ${y+3} l 6 -6" fill="none"/>`;
+      }
+      for(const n of event.notes??[]){
+        const y=TOP+(n.string-1)*STRING_GAP;
+        svg+=`<rect x="${at-5}" y="${y-6}" width="10" height="13" class="note-background"/>`+text(at,y+4,n.fret,'fret','middle');
+      }
+      if(event.tieToNext){
+        const y=TOP+(event.strings[0]-1)*STRING_GAP-6;
+        svg+=`<path class="tab-tie" d="M ${at} ${y} Q ${(at+placed[i+1].x)/2} ${y-9} ${placed[i+1].x} ${y}" fill="none"/>`;
+      }
+    }
     if (event.kind === 'note') {
       const y = TOP + (event.string-1) * STRING_GAP;
       svg += `<rect x="${at-5}" y="${y-6}" width="10" height="13" class="note-background"/>` + text(at,y+4,event.fret,'fret','middle');
-      if (event.hammerToNext) {
+      if (event.hammerToNext || event.pullToNext) {
         const end = placed[i+1].x;
         svg += `<path d="M ${at} ${y-9} Q ${(at+end)/2} ${y-20} ${end} ${y-9}" fill="none"/>`;
-        svg += text((at+end)/2,y-17,'H','hammer','middle');
+        svg += text((at+end)/2,y-17,event.pullToNext?'P':'H','hammer','middle');
       }
     }
     if (event.kind !== 'hold') svg += line(at,BOTTOM+7,at,STEM_END);
@@ -161,7 +185,7 @@ function renderBar(bar, data, index, rowHeight) {
   // Beam within each quarter-note pulse; connect only contiguous eighth/sixteenth events.
   for (let beat = 1; beat <= bar.beats; beat++) {
     const group = placed.filter(e => Math.floor(e.beat) === beat && e.duration >= 8);
-    for (const [duration, y] of [[8,STEM_END],[16,STEM_END-5]]) {
+    for (const [duration, y] of [[8,STEM_END],[16,STEM_END-5],[32,STEM_END-10]]) {
       let run = [];
       const flush = () => {
         if (run.length > 1) svg += line(run[0].x,y,run.at(-1).x,y,'stroke-width="2.5"');
@@ -178,7 +202,7 @@ function renderBar(bar, data, index, rowHeight) {
     svg+=line(x,216,x,252,'class="bar-line"')+line(x+BAR_WIDTH,216,x+BAR_WIDTH,252,'class="bar-line"');
     if(meterChange)svg+='<g class="melody-time-signature">'+text(x+15,228,bar.beats,'meter-number','middle')+text(x+15,247,4,'meter-number','middle')+'</g>';
     const previous=data.bars[bar.number-2]?.vocal;
-    svg+=renderNumberedMelody(bar.vocal,{position:eventX,left:x,right:x+BAR_WIDTH,incomingTie:previous?.events.at(-1).tieToNext??false});
+    svg+=renderNumberedMelody(bar.vocal,{position:eventX,left:x,right:x+BAR_WIDTH,incomingTie:previous?.events.at(-1).tieToNext??false,incomingSlur:bar.vocal.incomingSlur||previous?.events.at(-1).slurToNext||false});
   }
   if (bar.note) svg += text(x+10,rowHeight-10,bar.note,'source-note');
   if (bar.endLabel) svg += text(x+BAR_WIDTH-10,rowHeight-10,bar.endLabel,'navigation-label','end');

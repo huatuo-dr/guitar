@@ -19,9 +19,9 @@
 <header>
 <div class="eyebrow">制谱流程与实践记录</div>
 <h1>如何把原谱制作成网页吉他谱</h1>
-<p class="lead">以《偏爱》指弹和《老男孩》弹唱伴奏为例，记录读取截图与网页原图、逐小节识谱、生成独立 HTML、校核音符和检查打印的实际过程。</p>
+<p class="lead">以《偏爱》指弹及《老男孩》《后来》弹唱伴奏为例，记录读取截图与网页原图、逐小节识谱、生成独立 HTML、校核音符和检查打印的实际过程。</p>
 <p class="meta">记录日期：2026-09-16 · 根据当前仓库实现与实际制作过程整理</p>
-<div class="facts"><span>偏爱 · 61 小节</span><span>老男孩 · 55 小节</span><span>每行 4 小节</span><span>单文件离线 HTML</span><span>数据与浏览器检查</span></div>
+<div class="facts"><span>偏爱 · 61 小节</span><span>老男孩 · 55 小节</span><span>后来 · 49 小节</span><span>每行 4 小节</span><span>单文件离线 HTML</span><span>数据与浏览器检查</span></div>
 </header>
 <nav aria-label="文档目录"><ol>
 <li><a href="#result">01 · 本次完成了什么</a></li><li><a href="#tools">02 · 使用了哪些工具</a></li><li><a href="#sources">03 · 如何读取原谱</a></li><li><a href="#workflow">04 · 分段制作流程</a></li><li><a href="#data">05 · 音符如何记录</a></li><li><a href="#lessons">06 · 遇到的问题与处理</a></li><li><a href="#verification">07 · 如何验证结果</a></li><li><a href="#rebuild">08 · 文件与重建方法</a></li><li><a href="#next">09 · 后续如何复用</a></li>
@@ -147,7 +147,7 @@
 <tr><td>视觉与打印复核</td><td>桌面和手机截图；四页 PDF；密集音符、括号、三十二分连梁、结尾以及页边界。</td><td>发现模型正确但谱面拥挤、重叠、裁切的问题。</td></tr>
 </tbody></table></div>
 <div class="note">自动测试通过不等于已经证明原图转录无误。JSON 与 AlphaTex 一致，只能说明转换一致；如果最初识读错了，两者仍可能一起出错。因此数据测试、视觉复核和原图核对都需要保留。</div>
-<p>当前两首曲谱都有 Node 数据测试与浏览器检查。原图与放大图供识读使用，生成曲谱依赖的是已经转录的数据；从当前提交重新构建不需要读取原始截图。</p>
+<p>当前三首曲谱都有 Node 数据测试与浏览器检查。原图与放大图供识读使用，生成曲谱依赖的是已经转录的数据；从当前提交重新构建不需要读取原始截图。</p>
 </section>
 
 <section id="rebuild"><h2>08 · 文件与重建方法</h2>
@@ -156,11 +156,14 @@
 ├── assets/                    # 首页样式、脚本及独立曲谱清单
 ├── sheet_music/
 │   ├── 偏爱指弹.html          # 指弹成品
-│   └── 老男孩弹唱伴奏.html    # 伴奏成品
-├── score/                     # 两首曲谱的结构化数据；偏爱另含 AlphaTex
+│   ├── 老男孩弹唱伴奏.html    # 伴奏成品
+│   └── 后来弹唱伴奏.html      # 伴奏、简谱与歌词
+├── score/                     # 三首曲谱的结构化数据；偏爱另含 AlphaTex
 ├── src/template.html          # 曲谱页面模板、交互和打印样式
 ├── scripts/build.mjs          # 合并数据、展开重复、生成 HTML
 ├── scripts/build-laonanhai.mjs # 老男孩独立构建入口
+├── scripts/build-houlai.mjs    # 后来独立构建入口
+├── scripts/build-accompaniment.mjs # 共享弹唱谱构建入口
 ├── scripts/accompaniment-svg.mjs # 伴奏矢量绘制
 ├── src/accompaniment.html     # 伴奏页面模板
 ├── scripts/alphatab-display.mjs
@@ -178,7 +181,7 @@ npm run test:browser</code></pre>
 <pre><code>pdfinfo artifacts/score-print.pdf
 pdftoppm -scale-to 1600 -png artifacts/score-print.pdf artifacts/preview</code></pre>
 <p>构建时读取本地 alphaTab 脚本、Bravura 字体和许可证，连同数据一起写入 HTML。用户打开成品无需安装 Node.js，也无需启动服务器。<code>node_modules/</code>、<code>artifacts/</code>及其他临时文件由 <a href="../.gitignore">.gitignore</a>排除；成品、数据、模板、脚本、依赖锁文件和项目 skill 可纳入版本管理。</p>
-<p>早期兼容入口 <code>前奏.html</code>已按用户要求删除，构建不会重新生成它。<code>npm run build</code>依次生成《偏爱》和《老男孩》；<code>npm run build:laonanhai</code>仅重建伴奏谱。首页清单在 <code>assets/catalog.js</code>登记，不自动扫描目录。</p>
+<p>早期兼容入口 <code>前奏.html</code>已按用户要求删除，构建不会重新生成它。<code>npm run build</code>依次生成《偏爱》《老男孩》《后来》；<code>npm run build:laonanhai</code>仅重建《老男孩》，<code>npm run build:houlai</code>仅重建《后来》。首页清单在 <code>assets/catalog.js</code>登记，不自动扫描目录。</p>
 </section>
 
 <section id="next"><h2>09 · 后续如何复用</h2>
@@ -200,9 +203,14 @@ pdftoppm -scale-to 1600 -png artifacts/score-print.pdf artifacts/preview</code><
 <p>用户提供的三张截图分别覆盖1–20、21–44、45–55小节。先按小节转录音级、上下八度点、时值、附点、装饰音与连线，再把歌词字放到对应的音符上；双行歌词保留上下两段，延音终点不重复填字。器乐旋律与休止符也照图保留。不同编配版本的前奏、旋律装饰与跳转可能不同，不能只按相同页码或行号互相替换。</p>
 <p>转录保存在 <code>score/laonanhai-vocal.json</code>，由 <code>scripts/numbered-notation.mjs</code> 校验和绘制。简谱与伴奏共用同一组时间位置，密集音符和装饰音预留横向间距；歌词行数决定谱行高度。换成每行两小节后，跨小节延音线分别在前行末尾和后行开头绘制。生成的HTML内嵌全部简谱与歌词，不拼接截图。</p>
 <p>核对18、43小节时，用户补充的新版本在对应乐句明确标出2/4，再恢复4/4，确认这两处是变拍。按用户确认同步调整伴奏与简谱，并在两声部小节开头绘制拍号，给首音和和弦图预留位置。第43小节延音后的高音2按新版本记为一个八分音符。每小节的伴奏、简谱和声明拍数必须一致，时值不符会阻止构建。</p>
+<h3>《后来》：分解和弦、三连音与反复跳尾</h3>
+<p>用户提供的无限延音三页截图分别包含17、19、13个书写小节，共49小节。原谱标注1=E♭、变调夹第3品、C调指法。先按页独立转录简谱与歌词，同时核对伴奏的每个拨弦事件，再合并数据；每小节两声部均应合计四拍。成品为 <a href="../sheet_music/后来弹唱伴奏.html">《后来》弹唱伴奏</a>。</p>
+<p>分解和弦不能直接套成扫弦箭头：六线谱中的×记录具体拨弦弦位，同一竖列可同时包含叉号与明确品位。数据用 <code>kind: "pluck"</code>、<code>strings</code> 和可选 <code>notes</code>表达。前奏F〈5〉指法为六弦至一弦5、8、7、5、6、5；指法图显示第5把位，并按实际品位数绘制网格。第4小节的32分音符、H和P分别保留，不能简化为同一次拨弦。</p>
+<p>第23小节的降6只在原图出现的位置印降号，同小节后续同音沿用临时变音。第27、29末拍为三连音，三个八分音符按2/3时值系数合为一拍；排版以960刻度每拍对齐，避免浮点累加产生重复拍位。第26末的异音连线既接第一结尾27，也接第二结尾29，后者单独记录入弧。第38→39未出现前段8→9的延音线，按各处原图分别保留。</p>
+<p>完整路线为1–28→13–26→29–43→31–41→44–49，书写谱面保留两组第一、第二房子。通用构建入口 <code>scripts/build-accompaniment.mjs</code>根据曲目数据生成元数据、图例、路线、来源与独立阅读偏好键，《老男孩》和《后来》共用模板。来源仅为用户截图时显示编配署名，不虚构原谱链接。</p>
 <h3>手机阅读：换行与缩放分开处理</h3>
-<p>两份曲谱共用 <code>src/score-view.js</code>，提供自动、每行2或4小节，以及适应宽度、50%、65%等缩放选择。自动模式按窗口宽度判断：小于700px用两小节，其余用四小节；适应宽度再依据谱面容器的实际可用宽度计算比例，窗口变化时重新计算。固定比例则保留谱面内部横向滚动。</p>
-<p>《偏爱》修改alphaTab的行数、缩放和容器宽度后重新排版；《老男孩》构建时生成两种SVG排版，运行时切换实际谱行，保持小节编号与导航有效。两种布局都内嵌在单文件中，四小节版仍是禁用脚本时的阅读内容。小节换行不是裁切原来的四小节图片。</p>
+<p>三份曲谱共用 <code>src/score-view.js</code>，提供自动、每行2或4小节，以及适应宽度、50%、65%等缩放选择。自动模式按窗口宽度判断：小于700px用两小节，其余用四小节；适应宽度再依据谱面容器的实际可用宽度计算比例，窗口变化时重新计算。固定比例则保留谱面内部横向滚动。</p>
+<p>《偏爱》修改alphaTab的行数、缩放和容器宽度后重新排版；《老男孩》《后来》构建时生成两种SVG排版，运行时切换实际谱行，保持小节编号与导航有效。两种布局都内嵌在单文件中，四小节版仍是禁用脚本时的阅读内容。小节换行不是裁切原来的四小节图片。</p>
 <p>每份谱独立记住选项，存储被禁用或损坏时回退到默认显示。打印事件临时使用四小节版，打印完成后恢复屏幕选项，不覆盖用户偏好。浏览器测试覆盖320px、390px竖屏、844px横屏、手动行数、50%/65%、刷新后的记忆、禁止存储、段定位和打印恢复。</p>
 <h3>仓库逐步整理的方向</h3>
 <p>根目录 <a href="../index.html">index.html</a>现已实现曲谱目录，元信息独立保存在 <code>assets/catalog.js</code>，支持搜索、分类、排序、打开及下载，并适配 GitHub Pages。新增成品放入 <code>sheet_music/</code>后登记清单即可展示。后续可为每首曲谱分开保存来源和结构化数据，再扩展按曲谱选择生成的构建流程。</p>

@@ -22,5 +22,17 @@ window.GUITAR_SCORES = [
     bars: 55,
     updatedAt: '2026-09-17',
     description: 'C 调弹唱，含简谱、歌词、和弦指法与完整反复路线。'
+  },
+  {
+    id: 'hou-lai-accompaniment',
+    title: '《后来》弹唱伴奏',
+    artist: '刘若英',
+    type: 'accompaniment',
+    path: 'sheet_music/后来弹唱伴奏.html',
+    timeSignature: '4/4',
+    capo: 3,
+    bars: 49,
+    updatedAt: '2026-09-17',
+    description: 'C 调指法、原调 E♭，含分解和弦、扫弦、简谱歌词与两组反复跳尾。'
   }
 ];

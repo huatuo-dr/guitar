@@ -14,7 +14,7 @@
     .brand{display:flex;align-items:center;gap:11px;font-size:14px;font-weight:650;letter-spacing:.06em;text-decoration:none}.brand-mark{width:26px;height:25px;background:repeating-linear-gradient(to bottom,transparent 0 3px,var(--green) 3px 4px);border-left:2px solid var(--green);border-right:2px solid var(--green)}.back{font-size:13px;white-space:nowrap}
     main{max-width:1280px;margin:0 auto 48px;padding:0 28px}.paper{background:var(--paper);border:1px solid #dfe3d9;box-shadow:0 12px 42px #20392a07;border-radius:3px;padding:45px 42px 26px;overflow:hidden}
     .sheet-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding-bottom:26px;border-bottom:1px solid var(--line)}
-    h1{text-wrap:balance;font-size:36px;letter-spacing:.13em;font-weight:550;margin:10px 0 8px}p{line-height:1.8}.eyebrow{color:var(--green);font-size:11px;letter-spacing:.22em;font-weight:600}.metadata{display:flex;gap:24px;text-align:right}.metadata span{display:block;font-size:10px;letter-spacing:.13em;color:var(--muted);margin-bottom:7px}.metadata strong{font-size:17px;font-weight:500;white-space:nowrap}
+    h1{text-wrap:balance;font-size:36px;letter-spacing:.13em;font-weight:550;margin:10px 0 8px}p{line-height:1.8}.eyebrow{color:var(--green);font-size:11px;letter-spacing:.22em;font-weight:600}.metadata{display:flex;flex-wrap:wrap;gap:14px 24px;max-width:100%;text-align:right}.metadata span{display:block;font-size:10px;letter-spacing:.13em;color:var(--muted);margin-bottom:7px}.metadata strong{font-size:17px;font-weight:500;white-space:nowrap}
     .toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;padding:15px 7px 19px}.controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px}.control-group{display:flex;align-items:center;gap:5px;white-space:nowrap}.label{color:var(--muted);font-size:12px;margin-right:8px}
     select,.print-button{padding:9px 13px;border:1px solid #d6dcd2;border-radius:6px;background:#fafbf7;color:var(--ink);font-size:13px}.print-button{background:var(--green);color:white;border-color:var(--green)}#view-hint{flex-basis:100%;font-size:12px;color:var(--muted)}
     .section-nav{display:flex;flex-wrap:wrap;align-items:center;gap:6px}.jump-link{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:70px;padding:8px 12px;border:1px solid transparent;border-radius:8px;background:transparent;color:var(--ink);font-size:13px;text-decoration:none}.jump-link small{color:var(--muted);font-size:10px;white-space:nowrap}.jump-link:hover,.jump-link[aria-current="location"]{background:#e0e8de;border-color:#cedacb}
@@ -24,6 +24,7 @@
     .score-viewport{overflow:auto;max-width:100%;overscroll-behavior-x:contain;scrollbar-color:#a7b7aa #f1f3ec;padding:8px 0 4px}#score{width:1140px;max-width:none;margin:0 auto}.score-system{display:block;width:100%;height:auto;break-inside:avoid;color:#222d28;overflow:visible}
     svg{fill:currentColor;stroke:currentColor;stroke-width:1.2}svg text{stroke:none;font-family:Arial,"Microsoft YaHei",sans-serif;fill:currentColor}.staff-line{stroke:#adb5ad;stroke-width:.75}.bar-line{stroke:#707970;stroke-width:1.1}.chord-diagram{stroke-width:.7}.chord-name{font-size:14px;font-weight:600}.open-string{font-size:9px}.fret-code{font-size:10px;letter-spacing:.7px;fill:#6b746f}.bar-number{font-size:11px;fill:#778778}.section-label{font-size:11px;fill:#47735b}.tab-label{font-family:Georgia,serif;font-size:15px}.fret{font-size:13px;font-weight:500}.note-background{fill:var(--paper);stroke:none}.hammer{font-size:10px;paint-order:stroke;stroke:var(--paper);stroke-width:3px}.hold{font-size:19px;paint-order:stroke;stroke:var(--paper);stroke-width:3px}.navigation-label{font-size:10px;fill:#365f49;font-weight:600}.source-note{font-size:10px;fill:#926828}.volta-label{font-size:11px}.measure-highlight{fill:transparent;stroke:none}.measure.current .measure-highlight,.measure:target .measure-highlight{fill:#c5dfad40}
     .meter-number{font-size:18px;font-weight:600}.melody-number{font-size:17px;font-weight:500}.melody-parenthesis{font-size:20px}.melody-octave,.melody-duration-dot{stroke:none}.melody-beam{stroke-width:1.2}.melody-tie,.melody-slur,.grace-slur{stroke-width:1;fill:none}.grace-number{font-size:10px}.grace-beam{stroke-width:.9}.lyric{font-size:15px}.voice-label{font-size:10px;fill:#778778}
+    .position-label,.tuplet-number{font-size:10px}.melody-accidental{font-family:Georgia,serif;font-size:15px}.pluck-cross{stroke-width:1.3}.tab-tie{stroke-width:1;fill:none}
     .verification{border-top:1px solid var(--line);padding-top:12px;margin-top:20px}.verification p,.verification li{font-size:12px;line-height:1.9;color:var(--muted)}.verification ul{padding-left:20px}.source-link{font-size:12px}footer{font-size:11px;color:var(--muted);margin-top:24px;line-height:1.8}
     @media(max-width:700px){.topbar{padding:20px 18px}main{padding:0 12px}.toolbar{padding:7px 4px 15px}.paper{padding:27px 18px 22px}.sheet-heading{align-items:flex-start;flex-direction:column;gap:16px}h1{font-size:28px;letter-spacing:.05em}.metadata{gap:22px;padding-top:0;text-align:left}.metadata strong{font-size:15px}.metadata span{font-size:9px}.legend .legend-row{gap:10px 20px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -48,28 +49,28 @@
     <article class="paper">
       <header class="sheet-heading">
         <div><div class="eyebrow">GUITAR TABLATURE</div><h1>@@TITLE@@</h1></div>
-        <div class="metadata"><div><span>演唱</span><strong>@@ARTIST@@</strong></div><div><span>拍号</span><strong>4/4 · 2/4</strong></div><div><span>调式</span><strong>1 = C</strong></div></div>
+        <div class="metadata">@@METADATA@@</div>
       </header>
     <div class="legend">
       <p class="legend-row"><span><strong>↑</strong> 下扫：低音弦 → 高音弦</span><span><strong>↓</strong> 上扫：高音弦 → 低音弦</span><span><strong>波浪 ↑</strong> 琶音：低音弦 → 高音弦</span></p>
-      <p class="secondary">H：击弦，后一个音不再拨弦　　—：延续前音，不再扫弦　　†：补充的 G/B 参考指法</p>
-      <p>简谱：上下圆点表示八度，数字下短线表示减时，0 为休止，— 为延长前音；小字号音符为装饰音，同音弧线为延音。双行歌词对应两段演唱。</p>
+      <p class="secondary">@@TECHNIQUE_LEGEND@@</p>
+      <p>@@MELODY_LEGEND@@</p>
     </div>
     <details class="optional" open><summary>演奏顺序 · 按原谱反复与跳尾</summary><div class="route">@@ROUTE@@</div></details>
-    <p class="route-print" style="display:none">演奏顺序：1–29 → 7–27 → 30–45 → 21–26 → 46–47 → 21–27 → 48–55。第1房子为28–29，第2房子为30。D.S.1在27前跳46；D.S.2在28前跳48。</p>
-    <details class="optional"><summary>和弦指法速查 · 10 个和弦</summary><p class="guide-text">图中左至右为 6 弦至 1 弦；○ 空弦，× 不弹，圆点为按弦位置，粗横线为横按。† G/B 为补充参考指法。</p><div class="chord-guide">@@CHORDS@@</div></details>
+    <p class="route-print" style="display:none">@@ROUTE_PRINT@@</p>
+    <details class="optional"><summary>和弦指法速查 · @@CHORD_COUNT@@ 个和弦</summary><p class="guide-text">图中左至右为 6 弦至 1 弦；○ 空弦，× 不弹，圆点为按弦位置，粗横线为横按。@@REFERENCE_CHORDS@@</p><div class="chord-guide">@@CHORDS@@</div></details>
     <div class="score-viewport" aria-label="吉他六线谱、简谱与歌词，可横向滚动" tabindex="0"><div id="score">@@SCORE@@</div></div>
     <template id="two-bar-score">@@SCORE_TWO@@</template>
-    <details class="verification"><summary>原谱对照与整理说明</summary><p>本页整理和弦、扫弦、过门，并依据用户提供的截图补充简谱与歌词。可对照<a href="@@SOURCE@@" target="_blank" rel="noopener noreferrer">网页原谱</a>。</p><ul>@@NOTES@@</ul><p>谱面为可缩放的矢量重绘，所有谱面与样式均已内嵌，保存此 HTML 后可以离线打开。小节仍按书写顺序保留，没有展开反复；上方演奏顺序列出了完整行进路线。</p></details>
-    <p class="source-link">参考：<a href="@@SOURCE@@" target="_blank" rel="noopener noreferrer">@@SOURCE_TITLE@@</a> · 简谱与歌词据用户提供截图整理</p>
-    <footer>全曲 · 55 小节 · 小节编号与段名用于阅读定位</footer>
+    <details class="verification"><summary>原谱对照与整理说明</summary><p>本页整理和弦、扫弦、过门，并依据用户提供的截图补充简谱与歌词。@@SOURCE_COMPARISON@@</p><ul>@@NOTES@@</ul><p>谱面为可缩放的矢量重绘，所有谱面与样式均已内嵌，保存此 HTML 后可以离线打开。小节仍按书写顺序保留，没有展开反复；上方演奏顺序列出了完整行进路线。</p></details>
+    <p class="source-link">参考：@@SOURCE_CREDIT@@ · 简谱与歌词据用户提供截图整理</p>
+    <footer>全曲 · @@BAR_COUNT@@ 小节 · 小节编号与段名用于阅读定位</footer>
   </article></main>
   <script>@@VIEW@@</script>
   <script>
     const score = document.getElementById('score');
     const layouts = {4:score.innerHTML,2:document.getElementById('two-bar-score').innerHTML};
     let currentRows=4;
-    setupScoreView({storageKey:'guitar-view:laonanhai:v1',viewport:document.querySelector('.score-viewport'),baseWidths:{2:600,4:1140},apply({barsPerRow,width,printing}) {
+    setupScoreView({storageKey:@@STORAGE_KEY@@,viewport:document.querySelector('.score-viewport'),baseWidths:{2:600,4:1140},apply({barsPerRow,width,printing}) {
       if(currentRows!==barsPerRow){
         const focused=score.querySelector('.measure.current')?.id;
         score.innerHTML=layouts[barsPerRow];

@@ -9,8 +9,8 @@ async function ready(page, bars) {
 async function checkRows(page, fingerstyle, total, perRow) {
   if(!fingerstyle){
     assert.equal(await page.locator('.numbered-melody').count(),total,'换行后每小节仍保留简谱');
-    assert.ok(await page.locator('#bar-46 .melody-tie').count()>0,'跨小节延音保留起点');
-    assert.ok(await page.locator('#bar-47 .melody-tie').count()>0,'跨行延音保留终点');
+    assert.ok(await page.locator(`#bar-${total===49?13:46} .melody-tie`).count()>0,'跨小节延音保留起点');
+    assert.ok(await page.locator(`#bar-${total===49?14:47} .melody-tie`).count()>0,'跨行延音保留终点');
   }
   const rows = await page.evaluate(({fingerstyle,total}) => fingerstyle
     ? Array.from({length:total},(_,i) => api.renderer.boundsLookup.findMasterBarByIndex(i).visualBounds.y)
@@ -25,7 +25,8 @@ async function fits(page, fingerstyle) {
   assert.ok(overflow<=2,`适应宽度不应要求横向滑动，实际溢出${overflow}px`);
 }
 try {
-  for (const [file,fingerstyle,total] of [['偏爱指弹.html',true,61],['老男孩弹唱伴奏.html',false,55]]) {
+  for (const [file,fingerstyle,total] of [['偏爱指弹.html',true,61],['老男孩弹唱伴奏.html',false,55],['后来弹唱伴奏.html',false,49]]) {
+    const scoreId=fingerstyle?'pianai':total===49?'houlai':'laonanhai';
     const context = await browser.newContext({offline:true,viewport:{width:390,height:844},reducedMotion:'reduce'});
     const page = await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
     const url = new URL('sheet_music/'+file,root).href;
@@ -35,7 +36,7 @@ try {
     assert.equal(await page.locator('#zoom').inputValue(),'fit');
     assert.equal(await page.locator('#bars-per-row').inputValue(),'auto');
     await checkRows(page,fingerstyle,total,2);await fits(page,fingerstyle);
-    await page.screenshot({path:`artifacts/responsive-${fingerstyle?'pianai':'laonanhai'}-390.png`,fullPage:true});
+    await page.screenshot({path:`artifacts/responsive-${scoreId}-390.png`,fullPage:true});
     await page.setViewportSize({width:320,height:740});await ready(page,2);
     await page.waitForFunction(() => document.getElementById('score').clientWidth<=document.getElementById('score').parentElement.clientWidth+1);
     await fits(page,fingerstyle);
@@ -61,7 +62,7 @@ try {
       window.printLayouts=[];
       for(const event of ['beforeprint','afterprint']) window.addEventListener(event,()=>window.printLayouts.push([event,Number(document.getElementById('score').dataset.barsPerRow)]));
     });
-    await page.pdf({path:`artifacts/responsive-${fingerstyle?'pianai':'laonanhai'}-print.pdf`,preferCSSPageSize:true,printBackground:true});
+    await page.pdf({path:`artifacts/responsive-${scoreId}-print.pdf`,preferCSSPageSize:true,printBackground:true});
     await ready(page,2);
     assert.deepEqual(await page.evaluate(()=>window.printLayouts),[['beforeprint',4],['afterprint',2]],'直接打印应临时切换并恢复行数');
     await checkRows(page,fingerstyle,total,2);
@@ -77,9 +78,10 @@ try {
       assert.equal(await page.locator('[data-section-start="56"]').getAttribute('aria-pressed'),'true');
       assert.equal(await page.locator('#score svg text').filter({hasText:/^\*$/}).count(),90);
     } else {
-      await page.locator('.section-nav [data-jump="50"]').click();
-      assert.equal(await page.locator('#bar-50').evaluate(el=>el===document.activeElement),true);
-      assert.equal(await page.locator('#bar-29').locator('.volta-label').textContent(),'1.（续）');
+      const target=total===49?45:50;
+      await page.locator(`.section-nav [data-jump="${target}"]`).click();
+      assert.equal(await page.locator(`#bar-${target}`).evaluate(el=>el===document.activeElement),true);
+      assert.equal(await page.locator(`#bar-${total===49?43:29}`).locator('.volta-label').textContent(),'1.（续）');
     }
     assert.deepEqual(errors,[]);await context.close();
 
@@ -88,5 +90,5 @@ try {
     const fallback = await blocked.newPage();await fallback.goto(url);await ready(fallback,2);await fits(fallback,fingerstyle);
     await fallback.locator('#zoom').selectOption('0.5');await ready(fallback,2);await blocked.close();
   }
-  console.log('PASS: 两份曲谱自动/2/4小节、适应宽度、50%/65%、横竖屏、偏好记忆、禁用存储、打印及定位回归通过。');
+  console.log('PASS: 三份曲谱自动/2/4小节、适应宽度、50%/65%、横竖屏、偏好记忆、禁用存储、打印及定位回归通过。');
 } finally {await browser.close();}

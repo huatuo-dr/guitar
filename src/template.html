@@ -14,6 +14,7 @@
     button:focus-visible, select:focus-visible, summary:focus-visible { outline:3px solid #729683; outline-offset:3px; }
     .topbar { max-width:1280px; margin:auto; padding:25px 34px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
     .brand { display:flex; align-items:center; gap:11px; font-size:14px; font-weight:650; letter-spacing:.06em; }
+    .back { color:var(--green); font-size:13px; white-space:nowrap; text-underline-offset:3px; }
     .brand-mark { width:26px; height:25px; background:repeating-linear-gradient(to bottom,transparent 0 3px,var(--green) 3px 4px); border-left:2px solid var(--green); border-right:2px solid var(--green); }
     main { max-width:1280px; margin:0 auto 48px; padding:0 28px; }
     .toolbar { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:14px; padding:15px 7px 19px; }
@@ -81,6 +82,7 @@
 <body>
   <header class="topbar">
     <div class="brand"><span class="brand-mark" aria-hidden="true"></span>小k吉他练习</div>
+    <a class="back" href="../index.html">← 返回曲谱库</a>
   </header>
   <main>
     <nav class="toolbar" aria-label="乐谱工具">
