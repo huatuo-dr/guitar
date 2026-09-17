@@ -45,5 +45,17 @@ window.GUITAR_SCORES = [
     bars: 47,
     updatedAt: '2026-09-17',
     description: 'C 调指法，含扫弦、琶音、简谱、双行歌词与反复跳尾。'
+  },
+  {
+    id: 'tu-ran-hao-xiang-ni-accompaniment',
+    title: '《突然好想你》弹唱伴奏',
+    artist: '五月天',
+    type: 'accompaniment',
+    path: 'sheet_music/突然好想你弹唱伴奏.html',
+    timeSignature: '4/4',
+    capo: 2,
+    bars: 62,
+    updatedAt: '2026-09-17',
+    description: 'C 调指法、原调 D，含分解和弦、扫弦、前后奏旋律与简谱歌词。'
   }
 ];

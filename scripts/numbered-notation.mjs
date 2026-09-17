@@ -2,7 +2,7 @@
 const esc = value => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const text = (x,y,value,cls) => `<text x="${x}" y="${y}" class="${cls}" text-anchor="middle">${esc(value)}</text>`;
 const line = (x1,y1,x2,y2,cls='melody-beam') => `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="${cls}"/>`;
-export const eventBeats = note => 4 / note.duration * (note.dotted ? 1.5 : 1) * (note.tuplet===3?2/3:1);
+export const eventBeats = note => 4 / note.duration * (note.doubleDotted ? 1.75 : note.dotted ? 1.5 : 1) * (note.tuplet===3?2/3:1);
 const beatRound = value => Math.round(value*960)/960;
 
 export function attachVocals(score,vocals) {
@@ -40,13 +40,13 @@ export function lyricLines(vocal) {
 // their main note, then distribute the remaining width by musical duration.
 export function createBeatPositioner(events,vocal,beats,left,width) {
   if(!vocal) return beat=>left+(beat-1)/beats*width;
-  const points=new Set([0,beats]);const ornament=new Map();const dotted=new Set();
+  const points=new Set([0,beats]);const ornament=new Map();const dotted=new Map();
   for(const sequence of [events,vocal.events]){
     let time=0;
-    for(const n of sequence){points.add(time);if(n.grace?.length||n.accidental)ornament.set(time,(n.grace?.length??0)+(n.accidental?1:0));if(n.dotted)dotted.add(time);time=beatRound(time+eventBeats(n));}
+    for(const n of sequence){points.add(time);if(n.grace?.length||n.accidental)ornament.set(time,(n.grace?.length??0)+(n.accidental?1:0));if(n.doubleDotted||n.dotted)dotted.set(time,n.doubleDotted?8:3);time=beatRound(time+eventBeats(n));}
   }
   const times=[...points].sort((a,b)=>a-b);
-  const minimum=times.slice(1).map((t,i)=>14+9*(ornament.get(t)??0)+(dotted.has(times[i])?3:0));
+  const minimum=times.slice(1).map((t,i)=>14+9*(ornament.get(t)??0)+(dotted.get(times[i])??0));
   const total=minimum.reduce((a,b)=>a+b,0);
   const positions=[left];
   times.slice(1).forEach((t,i)=>{
@@ -89,7 +89,7 @@ export function renderNumberedMelody(vocal,{position,left,right,incomingTie=fals
     svg+=text(note.x,baseline,note.hold?'—':note.degree,'melody-number');
     if(note.accidental)svg+=text(note.x-10,baseline-4,{b:'♭','#':'♯',n:'♮'}[note.accidental],'melody-accidental');
     if(!note.hold)svg+=octaveDots(note.x,baseline,note.octave);
-    if(note.dotted)svg+=`<circle cx="${note.x+9}" cy="${baseline-5}" r="1.6" class="melody-duration-dot"/>`;
+    for(let i=0;i<(note.doubleDotted?2:note.dotted?1:0);i++)svg+=`<circle cx="${note.x+9+i*5}" cy="${baseline-5}" r="1.6" class="melody-duration-dot"/>`;
     const grace=note.grace??[];
     grace.forEach((g,i)=>{
       const x=note.x-10*(grace.length-i)-4;

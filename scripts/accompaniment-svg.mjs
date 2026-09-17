@@ -37,13 +37,14 @@ export function validateScore(data) {
     }
     if (bar.chords[0]?.beat !== 1) throw new Error('每小节必须指定起始和弦');
     for (const event of bar.events) {
-      if (!['down','up','hold','arpeggio','note','pluck'].includes(event.kind) || ![4,8,16,32].includes(event.duration)) throw new Error('事件无效');
+      if (!['down','up','hold','arpeggio','note','pluck','rest'].includes(event.kind) || ![4,8,16,32].includes(event.duration)) throw new Error('事件无效');
       if (event.kind === 'note' && (!Number.isInteger(event.string) || event.string < 1 || event.string > 6 || !Number.isInteger(event.fret) || event.fret < 0)) throw new Error('品位或弦号无效');
       if(event.kind==='pluck'){
         if(!Array.isArray(event.strings)||!event.strings.length||event.strings.some(s=>!Number.isInteger(s)||s<1||s>6)||new Set(event.strings).size!==event.strings.length)throw new Error('拨弦弦位无效');
         for(const n of event.notes??[])if(!Number.isInteger(n.string)||n.string<1||n.string>6||!Number.isInteger(n.fret)||n.fret<0||event.strings.includes(n.string))throw new Error('同时拨弦品位无效');
       }
       for(const string of [event.startString,event.endString])if(string!==undefined&&(!Number.isInteger(string)||string<1||string>6))throw new Error('扫弦范围无效');
+      if(event.kind==='rest' && event.duration!==8)throw new Error('当前仅支持八分休止');
       if(event.sourceArrow!==undefined && (event.kind!=='hold'||!['up','down'].includes(event.sourceArrow)))throw new Error('延音扫弦箭头无效');
     }
   }
@@ -101,8 +102,8 @@ function arrow(x, from, to, wavy = false) {
 }
 
 function measureDescription(bar) {
-  const action = {down:'下扫',up:'上扫',hold:'延续',arpeggio:'向上箭头琶音'};
-  const events = bar.events.map(e => `${e.kind === 'note' ? `${e.string}弦${e.fret}品${e.hammerToNext ? '击弦至下一音' : e.pullToNext?'勾弦至下一音':''}` : e.kind==='pluck'?`拨${e.strings.join('、')}弦${(e.notes??[]).map(n=>`与${n.string}弦${n.fret}品`).join('')}`:action[e.kind]}·${e.duration}分`).join('，');
+  const action = {rest:'休止',down:'下扫',up:'上扫',hold:'延续',arpeggio:'向上箭头琶音'};
+  const events = bar.events.map(e => `${e.kind === 'note' ? `${e.string}弦${e.fret}品${e.hammerToNext ? '击弦至下一音' : e.pullToNext?'勾弦至下一音':e.slideToNext?'滑音至下一音':''}` : e.kind==='pluck'?`拨${e.strings.join('、')}弦${(e.notes??[]).map(n=>`与${n.string}弦${n.fret}品`).join('')}`:action[e.kind]}·${e.duration}分`).join('，');
   return `第${bar.number}小节；${bar.beats}/4拍；${bar.chords.map(c => `第${c.beat}拍${c.name}`).join('，')}；${events}${bar.note ? '；'+bar.note : ''}`;
 }
 
@@ -149,6 +150,12 @@ function renderBar(bar, data, index, rowHeight) {
     elapsed += eventBeats(event);
     return result;
   });
+  const previousBar=data.bars[bar.number-2];
+  const previousEvent=previousBar?data.patterns[previousBar.pattern].at(-1):undefined;
+  if(previousEvent?.tieToNext){
+    const first=placed[0],y=first.kind==='pluck'?TOP+(first.strings[0]-1)*STRING_GAP-6:TOP-8;
+    svg+=`<path class="tab-tie" d="M ${x} ${y-4} Q ${(x+first.x)/2} ${y-8} ${first.x} ${y}" fill="none"/>`;
+  }
   placed.forEach((event, i) => {
     const at = event.x;
     const chord = bar.chords.findLast(c => c.beat <= event.beat);
@@ -159,6 +166,7 @@ function renderBar(bar, data, index, rowHeight) {
     if (strokeKind === 'up') svg += arrow(at,event.startString?TOP+(event.startString-1)*STRING_GAP:TOP,event.endString?TOP+(event.endString-1)*STRING_GAP:TOP+24);
     if (event.kind === 'arpeggio') svg += arrow(at,event.startString?TOP+(event.startString-1)*STRING_GAP:bassY,event.endString?TOP+(event.endString-1)*STRING_GAP:TOP,true);
     if (event.kind === 'hold' && !event.sourceArrow) svg += text(at,TOP+23,'–','hold','middle');
+    if(event.kind==='rest') svg+=`<g class="tab-rest"><ellipse cx="${at-2}" cy="${TOP+22}" rx="2.5" ry="2" fill="currentColor"/><path d="M ${at-2} ${TOP+24} Q ${at+2} ${TOP+25} ${at+4} ${TOP+19} L ${at-1} ${TOP+34}" fill="none" stroke-width="1.8"/></g>`;
     if(event.kind==='pluck'){
       for(const string of event.strings){
         const y=TOP+(string-1)*STRING_GAP;
@@ -172,21 +180,23 @@ function renderBar(bar, data, index, rowHeight) {
     if (event.kind === 'note') {
       const y = TOP + (event.string-1) * STRING_GAP;
       svg += `<rect x="${at-5}" y="${y-6}" width="10" height="13" class="note-background"/>` + text(at,y+4,event.fret,'fret','middle');
-      if (event.hammerToNext || event.pullToNext) {
+      if (event.hammerToNext || event.pullToNext || event.slideToNext) {
         const end = placed[i+1].x;
         svg += `<path d="M ${at} ${y-9} Q ${(at+end)/2} ${y-20} ${end} ${y-9}" fill="none"/>`;
-        svg += text((at+end)/2,y-17,event.pullToNext?'P':'H','hammer','middle');
+        svg += text((at+end)/2,y-17,event.pullToNext?'P':event.slideToNext?'S':'H',event.slideToNext?'slide-label':'hammer','middle');
       }
     }
-    if(event.tieToNext && placed[i+1]){
+    if(event.tieToNext){
       const y=event.kind==='pluck'?TOP+(event.strings[0]-1)*STRING_GAP-6:TOP-8;
-      svg+=`<path class="tab-tie" d="M ${at} ${y} Q ${(at+placed[i+1].x)/2} ${y-9} ${placed[i+1].x} ${y}" fill="none"/>`;
+      const end=placed[i+1]?.x??x+BAR_WIDTH;
+      svg+=`<path class="tab-tie" d="M ${at} ${y} Q ${(at+end)/2} ${y-9} ${end} ${y}" fill="none"/>`;
     }
-    if (event.kind !== 'hold' || event.sourceArrow) svg += line(at,BOTTOM+7,at,STEM_END);
+    if (event.kind !== 'rest' && (event.kind !== 'hold' || event.sourceArrow)) svg += line(at,BOTTOM+7,at,STEM_END);
+    for(let i=0;i<(event.doubleDotted?2:event.dotted?1:0);i++)svg+=`<circle class="tab-duration-dot" cx="${at+6+i*5}" cy="${STEM_END-3}" r="1.5"/>`;
   });
   // Beam within each quarter-note pulse; connect only contiguous eighth/sixteenth events.
   for (let beat = 1; beat <= bar.beats; beat++) {
-    const group = placed.filter(e => Math.floor(e.beat) === beat && e.duration >= 8);
+    const group = placed.filter(e => Math.floor(e.beat) === beat);
     for (const [duration, y] of [[8,STEM_END],[16,STEM_END-5],[32,STEM_END-10]]) {
       let run = [];
       const flush = () => {
@@ -195,7 +205,7 @@ function renderBar(bar, data, index, rowHeight) {
         run = [];
       };
       for (const event of group) {
-        if (event.duration >= duration) run.push(event); else flush();
+        if (event.duration >= duration && event.kind!=='rest' && (event.kind!=='hold'||event.sourceArrow)) run.push(event); else flush();
       }
       flush();
     }
