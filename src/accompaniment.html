@@ -6,52 +6,63 @@
   <meta name="color-scheme" content="light">
   <title>@@TITLE@@ · 小k吉他练习</title>
   <style>
-    :root{color-scheme:light;--ink:#213c35;--muted:#6b746f;--line:#dce2dc;--paper:#fffefa;--accent:#245747}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f3f4ef;color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+    :root{color-scheme:light;--ink:#243732;--muted:#727a75;--green:#315e4d;--line:#e0e4dc;--paper:#fffefa;--accent:var(--green)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f0f2ed;color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
     a{color:var(--accent);text-underline-offset:3px}button,select{font:inherit;color:inherit}button,a,select{-webkit-tap-highlight-color:transparent}
-    :focus-visible{outline:3px solid #bc8650;outline-offset:3px}button{cursor:pointer}
-    .site-bar{padding:18px max(24px,calc((100vw - 1240px)/2));border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;font-size:14px}.brand{text-decoration:none;font-weight:700;letter-spacing:.04em}.back{font-size:13px}
-    main{max-width:1240px;margin:28px auto 48px;padding:0 24px}.paper{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:28px 24px;box-shadow:0 8px 28px #213c3505}
-    h1{margin:7px 0 10px;font-size:30px;letter-spacing:.025em}p{line-height:1.8}.eyebrow{font-size:12px;letter-spacing:.1em;color:var(--muted)}.metadata{display:flex;flex-wrap:wrap;gap:8px 20px;color:var(--muted);font-size:14px}.scope{font-size:13px;color:var(--muted);margin:12px 0 20px}
-    .tools{display:flex;align-items:center;flex-wrap:wrap;gap:10px;padding:12px 0 18px;border-bottom:1px solid var(--line);font-size:13px}.tools label{display:flex;gap:8px;align-items:center}.tools select,.tools button{border:1px solid #c8d4ca;border-radius:6px;background:#fffefa;padding:7px 11px}.tools button{background:var(--ink);color:#fff}.scroll-hint{margin-left:auto;color:var(--muted);font-size:12px}
-    .section-nav{display:flex;flex-wrap:wrap;gap:8px;padding:17px 0}.nav-label{font-size:12px;align-self:center;margin-right:8px;color:var(--muted)}.jump-link{display:inline-flex;flex-direction:column;gap:3px;text-align:center;border:1px solid var(--line);border-radius:6px;padding:7px 13px;text-decoration:none;font-size:13px;min-width:68px}.jump-link small{color:var(--muted);font-size:10px}.jump-link:hover,.jump-link[aria-current="location"]{background:#e9f0e9;border-color:#9cb4a5}
-    .legend{font-size:13px;line-height:1.9;border-top:1px solid var(--line);padding:13px 0}.legend p{margin:0}.legend strong{display:inline-block;min-width:22px;color:#111}.legend .legend-row{display:flex;gap:10px 24px;flex-wrap:wrap}.legend .secondary{margin-top:3px;color:var(--muted)}
-    .source-caution{background:#faf2e3;border-left:3px solid #c29b55;margin:0 0 14px;padding:9px 12px;font-size:12px;line-height:1.75;color:#77592b}.source-caution a{color:inherit}
+    :focus-visible{outline:3px solid #729683;outline-offset:3px}button{cursor:pointer}
+    .topbar{max-width:1280px;margin:auto;padding:25px 34px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:11px;font-size:14px;font-weight:650;letter-spacing:.06em;text-decoration:none}.brand-mark{width:26px;height:25px;background:repeating-linear-gradient(to bottom,transparent 0 3px,var(--green) 3px 4px);border-left:2px solid var(--green);border-right:2px solid var(--green)}.back{font-size:13px;white-space:nowrap}
+    main{max-width:1280px;margin:0 auto 48px;padding:0 28px}.paper{background:var(--paper);border:1px solid #dfe3d9;box-shadow:0 12px 42px #20392a07;border-radius:3px;padding:45px 42px 26px;overflow:hidden}
+    .sheet-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding-bottom:26px;border-bottom:1px solid var(--line)}
+    h1{text-wrap:balance;font-size:36px;letter-spacing:.13em;font-weight:550;margin:10px 0 8px}p{line-height:1.8}.eyebrow{color:var(--green);font-size:11px;letter-spacing:.22em;font-weight:600}.metadata{display:flex;gap:24px;text-align:right}.metadata span{display:block;font-size:10px;letter-spacing:.13em;color:var(--muted);margin-bottom:7px}.metadata strong{font-size:17px;font-weight:500;white-space:nowrap}
+    .toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;padding:15px 7px 19px}.controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px}.control-group{display:flex;align-items:center;gap:5px;white-space:nowrap}.label{color:var(--muted);font-size:12px;margin-right:8px}
+    select,.print-button{padding:9px 13px;border:1px solid #d6dcd2;border-radius:6px;background:#fafbf7;color:var(--ink);font-size:13px}.print-button{background:var(--green);color:white;border-color:var(--green)}#view-hint{flex-basis:100%;font-size:12px;color:var(--muted)}
+    .section-nav{display:flex;flex-wrap:wrap;align-items:center;gap:6px}.jump-link{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:70px;padding:8px 12px;border:1px solid transparent;border-radius:8px;background:transparent;color:var(--ink);font-size:13px;text-decoration:none}.jump-link small{color:var(--muted);font-size:10px;white-space:nowrap}.jump-link:hover,.jump-link[aria-current="location"]{background:#e0e8de;border-color:#cedacb}
+    .legend{border-bottom:1px solid var(--line);padding:18px 0;margin-bottom:14px;font-size:12px;color:var(--muted);line-height:1.9}.legend p{margin:0}.legend strong{color:var(--ink);font-family:Georgia,serif;font-size:16px;display:inline-block;margin-right:7px}.legend .legend-row{display:flex;gap:13px 30px;flex-wrap:wrap}.legend .secondary{margin-top:10px}
     details{margin:12px 0}summary{cursor:pointer;font-size:13px;font-weight:600;padding:5px 0}.route{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:7px;margin:9px 0 16px}.route a{border:1px solid var(--line);border-radius:6px;padding:9px;text-decoration:none;font-size:12px;line-height:1.6}.route strong{display:block;font-size:15px}.route span{font-size:11px;color:var(--muted)}.route a:hover{background:#edf2ec}
     .chord-guide{display:flex;flex-wrap:wrap;gap:7px}.chord-card{width:96px}.chord-guide svg{width:100%;height:auto}.guide-text{font-size:12px;color:var(--muted);margin:6px 0}
     .score-viewport{overflow:auto;max-width:100%;overscroll-behavior-x:contain;scrollbar-color:#a7b7aa #f1f3ec;padding:8px 0 4px}#score{width:1140px;max-width:none;margin:0 auto}.score-system{display:block;width:100%;height:auto;break-inside:avoid;color:#222d28;overflow:visible}
-    svg{fill:currentColor;stroke:currentColor;stroke-width:1.2}svg text{stroke:none;font-family:Arial,"Microsoft YaHei",sans-serif;fill:currentColor}.staff-line{stroke:#adb5ad;stroke-width:.75}.bar-line{stroke:#707970;stroke-width:1.1}.chord-diagram{stroke-width:.7}.chord-name{font-size:14px;font-weight:600}.open-string{font-size:9px}.fret-code{font-size:10px;letter-spacing:.7px;fill:#6b746f}.bar-number{font-size:11px;fill:#778778}.section-label{font-size:11px;fill:#47735b}.tab-label{font-family:Georgia,serif;font-size:15px}.fret{font-size:13px;font-weight:500}.note-background{fill:var(--paper);stroke:none}.hammer{font-size:10px;paint-order:stroke;stroke:var(--paper);stroke-width:3px}.hold{font-size:19px;paint-order:stroke;stroke:var(--paper);stroke-width:3px}.pulse{font-size:9px;fill:#839186}.navigation-label{font-size:10px;fill:#365f49;font-weight:600}.source-note{font-size:10px;fill:#926828}.volta-label{font-size:11px}.measure-highlight{fill:transparent;stroke:none}.measure.current .measure-highlight,.measure:target .measure-highlight{fill:#c5dfad40}
+    svg{fill:currentColor;stroke:currentColor;stroke-width:1.2}svg text{stroke:none;font-family:Arial,"Microsoft YaHei",sans-serif;fill:currentColor}.staff-line{stroke:#adb5ad;stroke-width:.75}.bar-line{stroke:#707970;stroke-width:1.1}.chord-diagram{stroke-width:.7}.chord-name{font-size:14px;font-weight:600}.open-string{font-size:9px}.fret-code{font-size:10px;letter-spacing:.7px;fill:#6b746f}.bar-number{font-size:11px;fill:#778778}.section-label{font-size:11px;fill:#47735b}.tab-label{font-family:Georgia,serif;font-size:15px}.fret{font-size:13px;font-weight:500}.note-background{fill:var(--paper);stroke:none}.hammer{font-size:10px;paint-order:stroke;stroke:var(--paper);stroke-width:3px}.hold{font-size:19px;paint-order:stroke;stroke:var(--paper);stroke-width:3px}.navigation-label{font-size:10px;fill:#365f49;font-weight:600}.source-note{font-size:10px;fill:#926828}.volta-label{font-size:11px}.measure-highlight{fill:transparent;stroke:none}.measure.current .measure-highlight,.measure:target .measure-highlight{fill:#c5dfad40}
+    .meter-number{font-size:18px;font-weight:600}.melody-number{font-size:17px;font-weight:500}.melody-parenthesis{font-size:20px}.melody-octave,.melody-duration-dot{stroke:none}.melody-beam{stroke-width:1.2}.melody-tie,.melody-slur,.grace-slur{stroke-width:1;fill:none}.grace-number{font-size:10px}.grace-beam{stroke-width:.9}.lyric{font-size:15px}.voice-label{font-size:10px;fill:#778778}
     .verification{border-top:1px solid var(--line);padding-top:12px;margin-top:20px}.verification p,.verification li{font-size:12px;line-height:1.9;color:var(--muted)}.verification ul{padding-left:20px}.source-link{font-size:12px}footer{font-size:11px;color:var(--muted);margin-top:24px;line-height:1.8}
-    @media(max-width:600px){.site-bar{padding:15px 16px}main{margin:18px auto;padding:0 10px}.paper{padding:20px 14px}h1{font-size:25px}.scroll-hint{margin-left:0;width:100%}.section-nav{gap:6px}.jump-link{padding:7px 10px}.nav-label{width:100%;margin-bottom:3px}.metadata{font-size:12px;gap:8px 14px}}
+    @media(max-width:700px){.topbar{padding:20px 18px}main{padding:0 12px}.toolbar{padding:7px 4px 15px}.paper{padding:27px 18px 22px}.sheet-heading{align-items:flex-start;flex-direction:column;gap:16px}h1{font-size:28px;letter-spacing:.05em}.metadata{gap:22px;padding-top:0;text-align:left}.metadata strong{font-size:15px}.metadata span{font-size:9px}.legend .legend-row{gap:10px 20px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-    @page{size:A4 landscape;margin:9mm}
+    @page{size:A4 landscape;margin:12mm}
     @media print{
-      html{scroll-behavior:auto}body{background:white;color:#111}.site-bar,.tools,.section-nav,.optional,.verification,footer{display:none}main{max-width:none;margin:0;padding:0}.paper{border:0;border-radius:0;padding:0;box-shadow:none;background:white}h1{font-size:23px;margin:0 0 5px}.eyebrow{display:none}.metadata{font-size:11px}.scope{margin:5px 0 7px;font-size:10px}.legend{font-size:10px;padding:6px 0}.source-caution{font-size:9px;padding:4px 8px;margin-bottom:3px;background:white}.score-viewport{overflow:visible;padding:0}#score{width:100%!important;margin:0}.score-system{break-inside:avoid;page-break-inside:avoid}.measure{outline:none!important}.measure.current .measure-highlight,.measure:target .measure-highlight{fill:transparent}.note-background{fill:white}.hammer,.hold{stroke:white}.route-print{display:block!important;font-size:9px;line-height:1.5;margin:6px 0}.source-link{font-size:9px}
+      html{scroll-behavior:auto}body{background:white;color:#111}.topbar,.toolbar,.optional,.verification,footer{display:none}main{max-width:none;margin:0;padding:0}.paper{border:0;border-radius:0;padding:0;box-shadow:none;background:white}.sheet-heading{padding-bottom:15px}h1{font-size:27px}.metadata strong{font-size:15px}.legend{font-size:10px;padding:6px 0}.score-viewport{overflow:visible;padding:0}#score{width:100%!important;margin:0}.score-system{break-inside:avoid;page-break-inside:avoid}.measure{outline:none!important}.measure.current .measure-highlight,.measure:target .measure-highlight{fill:transparent}.note-background{fill:white}.hammer,.hold{stroke:white}.route-print{display:block!important;font-size:9px;line-height:1.5;margin:6px 0}.source-link{font-size:9px}
     }
   </style>
 </head>
 <body data-render-state="ready">
-  <header class="site-bar"><a class="brand" href="../index.html">小k吉他练习</a><a class="back" href="../index.html">← 返回曲谱库</a></header>
-  <main><article class="paper">
-    <div class="eyebrow">弹唱伴奏 / ACOUSTIC GUITAR</div>
-    <h1>@@TITLE@@</h1>
-    <div class="metadata"><span>演唱：@@ARTIST@@</span><span>1 = C</span><span>4/4</span><span>55 个书写小节</span></div>
-    <p class="scope">和弦、扫弦与过门的伴奏声部整理 · 演唱部分可对照<a href="@@SOURCE@@" target="_blank" rel="noopener noreferrer">网页原谱</a>。</p>
-    <div class="tools"><label for="bars-per-row">每行小节 <select id="bars-per-row"><option value="auto" selected>自动</option><option value="2">2 小节</option><option value="4">4 小节</option></select></label><label for="zoom">谱面大小 <select id="zoom"><option value="fit" selected>适应宽度</option><option value="0.5">50%</option><option value="0.65">65%</option><option value="0.85">85%</option><option value="1">100%</option><option value="1.15">115%</option><option value="1.3">130%</option></select></label><button type="button" id="print">打印 / 存为 PDF</button><span class="scroll-hint" id="view-hint" aria-live="polite">每行 4 小节 · 窄屏可在谱面内左右滑动</span></div>
-    <nav class="section-nav" aria-label="段定位"><span class="nav-label">段定位</span>@@SECTIONS@@</nav>
+  <header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true"></span>小k吉他练习</a><a class="back" href="../index.html">← 返回曲谱库</a></header>
+  <main>
+    <nav class="toolbar" aria-label="乐谱工具">
+      <div class="section-nav" role="group" aria-label="段定位"><span class="label">段定位</span>@@SECTIONS@@</div>
+      <div class="controls">
+        <div class="control-group"><label class="label" for="bars-per-row">每行小节</label><select id="bars-per-row"><option value="auto" selected>自动</option><option value="2">2 小节</option><option value="4">4 小节</option></select></div>
+        <div class="control-group"><label class="label" for="zoom">谱面大小</label><select id="zoom"><option value="fit" selected>适应宽度</option><option value="0.5">50%</option><option value="0.65">65%</option><option value="0.85">85%</option><option value="1">100%</option><option value="1.15">115%</option><option value="1.3">130%</option></select></div>
+        <button type="button" class="print-button" id="print">打印 / 存为 PDF</button>
+        <span id="view-hint" aria-live="polite">每行 4 小节 · 窄屏可在谱面内左右滑动</span>
+      </div>
+    </nav>
+    <article class="paper">
+      <header class="sheet-heading">
+        <div><div class="eyebrow">GUITAR TABLATURE</div><h1>@@TITLE@@</h1></div>
+        <div class="metadata"><div><span>演唱</span><strong>@@ARTIST@@</strong></div><div><span>拍号</span><strong>4/4 · 2/4</strong></div><div><span>调式</span><strong>1 = C</strong></div></div>
+      </header>
     <div class="legend">
       <p class="legend-row"><span><strong>↑</strong> 下扫：低音弦 → 高音弦</span><span><strong>↓</strong> 上扫：高音弦 → 低音弦</span><span><strong>波浪 ↑</strong> 琶音：低音弦 → 高音弦</span></p>
-      <p class="secondary">H：击弦，后一个音不再拨弦　　—：延续前音，不再扫弦　　谱下 1–4：拍点提示　　†：补充的 G/B 参考指法</p>
+      <p class="secondary">H：击弦，后一个音不再拨弦　　—：延续前音，不再扫弦　　†：补充的 G/B 参考指法</p>
+      <p>简谱：上下圆点表示八度，数字下短线表示减时，0 为休止，— 为延长前音；小字号音符为装饰音，同音弧线为延音。双行歌词对应两段演唱。</p>
     </div>
-    <p class="source-caution">原谱核对：<a href="#bar-18" data-jump="18">第 18 小节</a>、<a href="#bar-43" data-jump="43">第 43 小节</a>只记了两拍（F、G 各一拍），此处按图保留。原谱未注明速度、变调夹位置。</p>
     <details class="optional" open><summary>演奏顺序 · 按原谱反复与跳尾</summary><div class="route">@@ROUTE@@</div></details>
     <p class="route-print" style="display:none">演奏顺序：1–29 → 7–27 → 30–45 → 21–26 → 46–47 → 21–27 → 48–55。第1房子为28–29，第2房子为30。D.S.1在27前跳46；D.S.2在28前跳48。</p>
     <details class="optional"><summary>和弦指法速查 · 10 个和弦</summary><p class="guide-text">图中左至右为 6 弦至 1 弦；○ 空弦，× 不弹，圆点为按弦位置，粗横线为横按。† G/B 为补充参考指法。</p><div class="chord-guide">@@CHORDS@@</div></details>
-    <div class="score-viewport" aria-label="吉他六线谱，可横向滚动" tabindex="0"><div id="score">@@SCORE@@</div></div>
+    <div class="score-viewport" aria-label="吉他六线谱、简谱与歌词，可横向滚动" tabindex="0"><div id="score">@@SCORE@@</div></div>
     <template id="two-bar-score">@@SCORE_TWO@@</template>
-    <details class="verification"><summary>原谱对照与整理说明</summary><ul>@@NOTES@@</ul><p>谱面为可缩放的矢量重绘，所有谱面与样式均已内嵌，保存此 HTML 后可以离线打开。小节仍按书写顺序保留，没有展开反复；上方演奏顺序列出了完整行进路线。</p></details>
-    <p class="source-link">参考：<a href="@@SOURCE@@" target="_blank" rel="noopener noreferrer">@@SOURCE_TITLE@@</a> · 伴奏声部整理</p>
-    <footer>小k吉他练习 · 小节编号与段名用于阅读定位</footer>
+    <details class="verification"><summary>原谱对照与整理说明</summary><p>本页整理和弦、扫弦、过门，并依据用户提供的截图补充简谱与歌词。可对照<a href="@@SOURCE@@" target="_blank" rel="noopener noreferrer">网页原谱</a>。</p><ul>@@NOTES@@</ul><p>谱面为可缩放的矢量重绘，所有谱面与样式均已内嵌，保存此 HTML 后可以离线打开。小节仍按书写顺序保留，没有展开反复；上方演奏顺序列出了完整行进路线。</p></details>
+    <p class="source-link">参考：<a href="@@SOURCE@@" target="_blank" rel="noopener noreferrer">@@SOURCE_TITLE@@</a> · 简谱与歌词据用户提供截图整理</p>
+    <footer>全曲 · 55 小节 · 小节编号与段名用于阅读定位</footer>
   </article></main>
   <script>@@VIEW@@</script>
   <script>

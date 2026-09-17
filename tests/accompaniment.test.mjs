@@ -4,7 +4,7 @@ import test from 'node:test';
 
 const source = new URL('../score/laonanhai.json', import.meta.url);
 
-test('老男孩保留55个书写小节及原谱两处短小节，不静默补拍', async () => {
+test('老男孩18、43小节按新参考谱变为两拍，其他小节四拍', async () => {
   const data = JSON.parse(await readFile(source, 'utf8'));
   const {expandBars, validateScore} = await import('../scripts/accompaniment-svg.mjs');
   assert.equal(validateScore(data), true);
@@ -12,11 +12,14 @@ test('老男孩保留55个书写小节及原谱两处短小节，不静默补拍
   assert.equal(bars.length, 55);
   assert.deepEqual(bars.map(b => b.number), Array.from({length:55}, (_, i) => i + 1));
   const length = bar => bar.events.reduce((n, e) => n + 4 / e.duration, 0);
-  assert.deepEqual(bars.filter(b => length(b) !== 4).map(b => b.number), [18, 43]);
+  assert.deepEqual(bars.filter(b => length(b) !== 4).map(b => b.number), [18,43]);
   for (const number of [18, 43]) {
     const bar = bars[number - 1];
     assert.equal(length(bar), 2);
-    assert.match(bar.note, /原谱.*两拍/);
+    assert.equal(bar.beats,2);
+    assert.deepEqual(bar.events.map(e=>[e.kind,e.duration]),[['down',8],['down',16],['up',16],['down',8],['down',16],['up',16]]);
+    assert.deepEqual(bar.chords, [{beat:1,name:'F'},{beat:2,name:'G'}]);
+    assert.equal(bar.note, undefined);
   }
   const invalid = structuredClone(data);
   invalid.bars[0].beats = 3;
@@ -65,9 +68,13 @@ test('矢量谱面每行4小节，末行3小节，55小节都有唯一定位与�
   for (let number = 1; number <= 55; number++) assert.equal((svg.match(new RegExp(`id="bar-${number}"`, 'g')) || []).length, 1);
   assert.match(svg, /D\.S\.1/);
   assert.match(svg, /D\.S\.2/);
-  assert.match(svg, /原谱仅两拍/);
+  assert.doesNotMatch(svg, /原谱仅两拍/);
   assert.doesNotMatch(svg, /<image|https?:|NaN|undefined/);
   const narrow = renderScore(data,2);
+  for(const layout of [svg,narrow]){
+    assert.deepEqual([...layout.matchAll(/class="time-signature" data-bar="(\d+)" data-meter="([24])\/4"/g)].map(m=>[Number(m[1]),m[2]]),[[1,'4'],[18,'2'],[19,'4'],[43,'2'],[44,'4']]);
+    assert.doesNotMatch(layout,/拍号待核对/);
+  }
   assert.equal((narrow.match(/class="score-system"/g) || []).length,28);
   assert.equal((narrow.match(/class="measure"/g) || []).length,55);
   assert.match(narrow,/viewBox="0 0 600 237"/);

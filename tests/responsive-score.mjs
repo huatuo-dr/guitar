@@ -7,6 +7,11 @@ async function ready(page, bars) {
   await page.waitForFunction(expected => document.body.dataset.renderState === 'ready' && Number(document.getElementById('score').dataset.barsPerRow) === expected, bars);
 }
 async function checkRows(page, fingerstyle, total, perRow) {
+  if(!fingerstyle){
+    assert.equal(await page.locator('.numbered-melody').count(),total,'换行后每小节仍保留简谱');
+    assert.ok(await page.locator('#bar-46 .melody-tie').count()>0,'跨小节延音保留起点');
+    assert.ok(await page.locator('#bar-47 .melody-tie').count()>0,'跨行延音保留终点');
+  }
   const rows = await page.evaluate(({fingerstyle,total}) => fingerstyle
     ? Array.from({length:total},(_,i) => api.renderer.boundsLookup.findMasterBarByIndex(i).visualBounds.y)
     : [...document.querySelectorAll('.score-system')].flatMap((row,i) => [...row.querySelectorAll('.measure')].map(() => i)), {fingerstyle,total});

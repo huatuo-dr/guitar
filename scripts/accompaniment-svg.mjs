@@ -1,4 +1,5 @@
 // Build-time SVG engraving for the accompaniment voice. No browser library is needed.
+import {createBeatPositioner,lyricLines,renderNumberedMelody} from './numbered-notation.mjs';
 const escape = value => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 const kinds = {d:'down', u:'up', h:'hold', a:'arpeggio'};
 
@@ -27,7 +28,7 @@ export function validateScore(data) {
   for (const [i, bar] of expandBars(data).entries()) {
     if (bar.number !== i + 1) throw new Error('小节编号不连续');
     const duration = bar.events.reduce((n, e) => n + 4 / e.duration, 0);
-    if (duration !== bar.beats || (duration !== 4 && !bar.note)) throw new Error(`第${bar.number}小节时值不符或缺少说明`);
+    if (duration !== bar.beats || ![2,4].includes(bar.beats)) throw new Error(`第${bar.number}小节时值与拍号不符`);
     let previous = 0;
     for (const chord of bar.chords) {
       if (!data.chordShapes[chord.name] || chord.beat <= previous || chord.beat > bar.beats) throw new Error(`第${bar.number}小节和弦无效`);
@@ -91,17 +92,19 @@ function arrow(x, from, to, wavy = false) {
 function measureDescription(bar) {
   const action = {down:'下扫',up:'上扫',hold:'延续',arpeggio:'向上箭头琶音'};
   const events = bar.events.map(e => `${e.kind === 'note' ? `${e.string}弦${e.fret}品${e.hammerToNext ? '击弦至下一音' : ''}` : action[e.kind]}·${e.duration}分`).join('，');
-  return `第${bar.number}小节；${bar.chords.map(c => `第${c.beat}拍${c.name}`).join('，')}；${events}${bar.note ? '；'+bar.note : ''}`;
+  return `第${bar.number}小节；${bar.beats}/4拍；${bar.chords.map(c => `第${c.beat}拍${c.name}`).join('，')}；${events}${bar.note ? '；'+bar.note : ''}`;
 }
 
-function renderBar(bar, data, index) {
+function renderBar(bar, data, index, rowHeight) {
   const x = LEFT + index * BAR_WIDTH;
-  const span = BAR_WIDTH - 42;
-  const eventX = beat => x + 21 + (beat - 1) / bar.beats * span;
+  const meterChange=bar.number===1 || (data.bars[bar.number-2].beats??4)!==bar.beats;
+  const inset=meterChange?45:21;
+  const span = BAR_WIDTH - inset - 21;
+  const eventX = createBeatPositioner(bar.events,bar.vocal,bar.beats,x+inset,span);
   const section = data.sections.find(s => s.start === bar.number);
   let svg = `<g class="measure" id="bar-${bar.number}" data-bar="${bar.number}" tabindex="-1"><title>${escape(measureDescription(bar))}</title>`;
-  svg += `<rect class="measure-highlight" x="${x+2}" y="1" width="${BAR_WIDTH-4}" height="${ROW_HEIGHT-2}" rx="5"/>`;
-  svg += text(x+8,13,bar.number,'bar-number');
+  svg += `<rect class="measure-highlight" x="${x+2}" y="1" width="${BAR_WIDTH-4}" height="${rowHeight-2}" rx="5"/>`;
+  svg += text(x+2,TOP-6,bar.number,'bar-number','end');
   if (section) svg += text(x+37,13,section.name,'section-label');
   if (bar.startLabel) svg += text(x+8,30,bar.startLabel,'navigation-label');
   if (bar.volta) {
@@ -116,6 +119,10 @@ function renderBar(bar, data, index) {
   for (let s = 0; s < 6; s++) svg += line(x,TOP+s*STRING_GAP,x+BAR_WIDTH,TOP+s*STRING_GAP,'class="staff-line"');
   svg += line(x,TOP,x,BOTTOM,'class="bar-line"');
   svg += line(x+BAR_WIDTH,TOP,x+BAR_WIDTH,BOTTOM,'class="bar-line"');
+  if(meterChange){
+    svg+=`<g class="time-signature" data-bar="${bar.number}" data-meter="${bar.beats}/4"><rect x="${x+5}" y="${TOP+1}" width="20" height="38" class="note-background"/>`;
+    svg+=text(x+15,TOP+17,bar.beats,'meter-number','middle')+text(x+15,TOP+34,4,'meter-number','middle')+'</g>';
+  }
   if (bar.repeatStart) {
     svg += line(x+2,TOP,x+2,BOTTOM,'stroke-width="3"') + line(x+7,TOP,x+7,BOTTOM);
     svg += dot(x+12,TOP+12,2) + dot(x+12,TOP+28,2);
@@ -166,10 +173,15 @@ function renderBar(bar, data, index) {
       }
       flush();
     }
-    svg += text(eventX(beat),207,beat,'pulse','middle');
   }
-  if (bar.note) svg += text(x+10,227,bar.note,'source-note');
-  if (bar.endLabel) svg += text(x+BAR_WIDTH-10,227,bar.endLabel,'navigation-label','end');
+  if(bar.vocal){
+    svg+=line(x,216,x,252,'class="bar-line"')+line(x+BAR_WIDTH,216,x+BAR_WIDTH,252,'class="bar-line"');
+    if(meterChange)svg+='<g class="melody-time-signature">'+text(x+15,228,bar.beats,'meter-number','middle')+text(x+15,247,4,'meter-number','middle')+'</g>';
+    const previous=data.bars[bar.number-2]?.vocal;
+    svg+=renderNumberedMelody(bar.vocal,{position:eventX,left:x,right:x+BAR_WIDTH,incomingTie:previous?.events.at(-1).tieToNext??false});
+  }
+  if (bar.note) svg += text(x+10,rowHeight-10,bar.note,'source-note');
+  if (bar.endLabel) svg += text(x+BAR_WIDTH-10,rowHeight-10,bar.endLabel,'navigation-label','end');
   return svg + '</g>';
 }
 
@@ -180,9 +192,12 @@ export function renderScore(data, barsPerRow = 4) {
   let html = '';
   for (let start = 0; start < bars.length; start += barsPerRow) {
     const group = bars.slice(start,start+barsPerRow);
-    html += `<svg class="score-system" viewBox="0 0 ${LEFT + BAR_WIDTH * barsPerRow + 14} ${ROW_HEIGHT}" role="group" aria-label="第${group[0].number}至${group.at(-1).number}小节">`;
+    const verseCount=Math.max(0,...group.map(bar=>lyricLines(bar.vocal)));
+    const rowHeight=group.some(b=>b.vocal)?(verseCount?280+verseCount*24:272):ROW_HEIGHT;
+    html += `<svg class="score-system" viewBox="0 0 ${LEFT + BAR_WIDTH * barsPerRow + 14} ${rowHeight}" role="group" aria-label="第${group[0].number}至${group.at(-1).number}小节">`;
     html += text(12,TOP+6,'T','tab-label') + text(12,TOP+22,'A','tab-label') + text(12,TOP+38,'B','tab-label');
-    html += group.map((bar,index) => renderBar(bar,data,index)).join('') + '</svg>';
+    if(group.some(b=>b.vocal))html+=text(3,235,'简谱','voice-label');
+    html += group.map((bar,index) => renderBar(bar,data,index,rowHeight)).join('') + '</svg>';
   }
   return html;
 }

@@ -1,8 +1,11 @@
 import {mkdir, readFile, writeFile} from 'node:fs/promises';
 import {renderScore, renderChordGuide, validateScore} from './accompaniment-svg.mjs';
+import {attachVocals} from './numbered-notation.mjs';
 
 const root = new URL('../', import.meta.url);
-const data = JSON.parse(await readFile(new URL('score/laonanhai.json', root), 'utf8'));
+const accompaniment = JSON.parse(await readFile(new URL('score/laonanhai.json', root), 'utf8'));
+const vocals = JSON.parse(await readFile(new URL('score/laonanhai-vocal.json',root),'utf8'));
+const data = attachVocals(accompaniment,vocals);
 validateScore(data);
 const escape = value => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const tokens = {
@@ -11,7 +14,7 @@ const tokens = {
   ROUTE:data.route.map((r,i) => `<a href="#bar-${r.start}" data-jump="${r.start}"><span>${i+1}. ${escape(r.label)}</span><strong>${r.start}–${r.end}</strong></a>`).join(''),
   CHORDS:renderChordGuide(data), SCORE:renderScore(data), SCORE_TWO:renderScore(data,2),
   VIEW:await readFile(new URL('src/score-view.js',root),'utf8'),
-  NOTES:data.notes.map(note => `<li>${escape(note)}</li>`).join('')
+  NOTES:[...data.notes,...data.vocalNotes].map(note => `<li>${escape(note)}</li>`).join('')
 };
 const template = await readFile(new URL('src/accompaniment.html',root),'utf8');
 const html = template.replace(/@@([A-Z_]+)@@/g, (_,key) => {

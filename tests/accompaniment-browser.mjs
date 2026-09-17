@@ -28,6 +28,12 @@ try {
   assert.equal(await page.locator('.measure').count(),55);
   assert.equal(await page.locator('.score-system').count(),14);
   assert.equal(await page.locator('.score-system').last().locator('.measure').count(),3);
+  assert.equal(await page.locator('.numbered-melody').count(),55);
+  assert.deepEqual(await page.locator('#bar-7 .lyric').evaluateAll(nodes=>[278,302].map(y=>nodes.filter(n=>Number(n.getAttribute('y'))===y).map(n=>n.textContent).join(''))),['那是我日夜思念深','转眼过去多年时间']);
+  assert.equal(await page.locator('#bar-7').evaluate(bar=>{
+    const stemX=[...bar.querySelectorAll('line[y1="172"]')].map(n=>Number(n.getAttribute('x1')));
+    return [0,1,1.5,2,3,3.5].every(time=>stemX.includes(Number(bar.querySelector(`.melody-event[data-onset="${time}"] .melody-number`).getAttribute('x'))));
+  }),true,'歌词简谱与对应的伴奏拍点应对齐');
   assert.deepEqual(await page.locator('.route [data-jump]').evaluateAll(links => links.map(a => Number(a.dataset.jump))),[1,7,30,21,46,21,48]);
   await page.locator('#bars-per-row').selectOption('4');
   await page.locator('.section-nav [data-jump="50"]').click();
@@ -61,7 +67,9 @@ try {
   // Engraving stays readable even with scripts disabled.
   const noScript = await browser.newContext({javaScriptEnabled:false,offline:true});
   const staticPage = await noScript.newPage();await staticPage.goto(new URL(path,root).href);
-  assert.equal(await staticPage.locator('.score-system').count(),14);await noScript.close();
+  assert.equal(await staticPage.locator('.score-system').count(),14);
+  assert.equal(await staticPage.locator('.numbered-melody').count(),55);
+  assert.ok(await staticPage.locator('.lyric').count()>0);await noScript.close();
 
   await new Promise(resolve => server.listen(0,'127.0.0.1',resolve));
   const address = `http://127.0.0.1:${server.address().port}/guitar/`;

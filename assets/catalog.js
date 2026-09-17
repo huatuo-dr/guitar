@@ -18,9 +18,9 @@ window.GUITAR_SCORES = [
     artist: '筷子兄弟',
     type: 'accompaniment',
     path: 'sheet_music/老男孩弹唱伴奏.html',
-    timeSignature: '4/4',
+    timeSignature: '4/4 · 2/4',
     bars: 55,
     updatedAt: '2026-09-17',
-    description: 'C 调伴奏，含和弦指法、扫弦、过门与反复路线；保留原谱两处短小节说明。'
+    description: 'C 调弹唱，含简谱、歌词、和弦指法与完整反复路线。'
   }
 ];
