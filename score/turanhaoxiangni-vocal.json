@@ -1,67 +1,35 @@
 {
   "title": "《突然好想你》简谱与歌词",
   "sources": [
-    "用户提供的“弦心距”音乐四页原谱截图"
+    "用户提供的革命吉他制谱三页截图"
   ],
   "notes": [
-    "第1–4小节括号内为前奏旋律，括号在第4小节高音5后结束，随后接主唱弱起；第58–62小节为尾奏。",
-    "第11、28、52、56小节首音为双附点四分音符，占1.75拍；前奏升5与尾奏降6按图保留。",
-    "主歌双行歌词按反复分别演唱；第13小节首字为“己”，承接前小节“自”。跨小节同音延续只在原图对应起音标字。"
+    "简谱与歌词逐音按新图录入，主歌保留双行歌词。",
+    "同音弧线为延音，异音弧线为连音；第23小节1—1延音弧跨过延长线。"
   ],
   "bars": [
     {
       "number": 1,
-      "parenthesisStart": true,
       "events": [
         {
-          "degree": 3,
-          "octave": 1,
-          "duration": 8
-        },
-        {
-          "degree": 5,
+          "degree": 0,
           "octave": 0,
-          "duration": 8
+          "duration": 4
         },
         {
-          "degree": 1,
-          "octave": 1,
-          "duration": 16
-        },
-        {
-          "degree": 5,
+          "degree": 0,
           "octave": 0,
-          "duration": 16
+          "duration": 4
         },
         {
-          "degree": 1,
-          "octave": 1,
-          "duration": 16
+          "degree": 0,
+          "octave": 0,
+          "duration": 4
         },
         {
-          "degree": 5,
-          "octave": 1,
-          "duration": 16
-        },
-        {
-          "degree": 4,
-          "octave": 1,
-          "duration": 8
-        },
-        {
-          "degree": 3,
-          "octave": 1,
-          "duration": 8
-        },
-        {
-          "degree": 2,
-          "octave": 1,
-          "duration": 8
-        },
-        {
-          "degree": 1,
-          "octave": 1,
-          "duration": 8
+          "degree": 0,
+          "octave": 0,
+          "duration": 4
         }
       ]
     },
@@ -69,31 +37,24 @@
       "number": 2,
       "events": [
         {
-          "degree": 2,
-          "octave": 1,
-          "duration": 4
-        },
-        {
-          "degree": 7,
+          "degree": 0,
           "octave": 0,
           "duration": 4
         },
         {
-          "degree": 5,
+          "degree": 0,
           "octave": 0,
-          "duration": 4,
-          "accidental": "#"
+          "duration": 4
         },
         {
-          "degree": 7,
+          "degree": 0,
           "octave": 0,
-          "duration": 8
+          "duration": 4
         },
         {
-          "degree": 5,
+          "degree": 0,
           "octave": 0,
-          "duration": 8,
-          "accidental": "#"
+          "duration": 4
         }
       ]
     },
@@ -101,75 +62,43 @@
       "number": 3,
       "events": [
         {
-          "degree": 6,
+          "degree": 0,
           "octave": 0,
-          "duration": 8
+          "duration": 4
         },
         {
-          "degree": 3,
+          "degree": 0,
           "octave": 0,
-          "duration": 8
+          "duration": 4
         },
         {
-          "degree": 5,
+          "degree": 0,
           "octave": 0,
-          "duration": 8
+          "duration": 4
         },
         {
-          "degree": 7,
+          "degree": 0,
           "octave": 0,
-          "duration": 8
-        },
-        {
-          "degree": 7,
-          "octave": 0,
-          "duration": 8
-        },
-        {
-          "degree": 5,
-          "octave": 0,
-          "duration": 8
-        },
-        {
-          "degree": 1,
-          "octave": 1,
-          "duration": 8
-        },
-        {
-          "degree": 2,
-          "octave": 1,
-          "duration": 8
+          "duration": 4
         }
       ]
     },
     {
       "number": 4,
-      "parenthesisEndAt": 4,
       "events": [
         {
-          "degree": 1,
-          "octave": 1,
-          "duration": 8
-        },
-        {
-          "degree": 5,
+          "degree": 0,
           "octave": 0,
-          "duration": 8,
-          "accidental": "#"
+          "duration": 4
         },
         {
-          "degree": 1,
-          "octave": 1,
-          "duration": 8
+          "degree": 0,
+          "octave": 0,
+          "duration": 4
         },
         {
-          "degree": 3,
-          "octave": 1,
-          "duration": 8
-        },
-        {
-          "degree": 5,
-          "octave": 1,
+          "degree": 0,
+          "octave": 0,
           "duration": 4
         },
         {
@@ -182,8 +111,7 @@
           "octave": -1,
           "duration": 8,
           "lyrics": [
-            "最",
-            "（想）"
+            "最"
           ]
         }
       ]
@@ -318,7 +246,7 @@
           "duration": 8,
           "lyrics": [
             "友",
-            "是"
+            "时"
           ]
         },
         {
@@ -487,12 +415,7 @@
             "痛",
             "属"
           ],
-          "slurEnd": 8
-        },
-        {
-          "degree": 5,
-          "octave": 0,
-          "duration": 16
+          "dotted": true
         }
       ]
     },
@@ -525,12 +448,7 @@
             "平",
             "自"
           ],
-          "slurEnd": 3
-        },
-        {
-          "degree": 3,
-          "octave": 0,
-          "duration": 16
+          "dotted": true
         },
         {
           "degree": 3,
@@ -570,7 +488,7 @@
         },
         {
           "degree": 5,
-          "octave": 0,
+          "octave": -1,
           "duration": 16,
           "lyrics": [
             "然",
@@ -585,9 +503,14 @@
       "events": [
         {
           "degree": 5,
+          "octave": -1,
+          "duration": 4
+        },
+        {
+          "degree": 0,
           "octave": 0,
-          "duration": 4,
-          "doubleDotted": true
+          "duration": 8,
+          "dotted": true
         },
         {
           "degree": 5,
@@ -931,7 +854,7 @@
           ]
         },
         {
-          "degree": 3,
+          "degree": 4,
           "octave": 1,
           "duration": 16,
           "lyrics": [
@@ -950,7 +873,7 @@
         {
           "degree": 2,
           "octave": 1,
-          "duration": 16
+          "duration": 8
         },
         {
           "degree": 3,
@@ -967,18 +890,12 @@
           "duration": 16
         },
         {
-          "degree": 2,
-          "octave": 1,
-          "duration": 16,
-          "lyrics": [
-            "忆"
-          ],
-          "slurEnd": 7
-        },
-        {
           "degree": 1,
           "octave": 1,
           "duration": 8,
+          "lyrics": [
+            "忆"
+          ],
           "dotted": true
         },
         {
@@ -1052,7 +969,8 @@
           "duration": 4
         },
         {
-          "hold": true,
+          "degree": 0,
+          "octave": 0,
           "duration": 4
         },
         {
@@ -1156,14 +1074,15 @@
           "duration": 4,
           "lyrics": [
             "曲"
-          ]
+          ],
+          "slurEnd": 2
         },
         {
           "hold": true,
           "duration": 4
         },
         {
-          "degree": 0,
+          "degree": 1,
           "octave": 0,
           "duration": 4
         },
@@ -1354,7 +1273,7 @@
         {
           "degree": 7,
           "octave": 0,
-          "duration": 16,
+          "duration": 8,
           "lyrics": [
             "最"
           ]
@@ -1365,13 +1284,7 @@
           "duration": 8,
           "lyrics": [
             "难"
-          ],
-          "slurEnd": 8
-        },
-        {
-          "degree": 5,
-          "octave": 0,
-          "duration": 16
+          ]
         }
       ]
     },
@@ -1401,12 +1314,7 @@
           "lyrics": [
             "旅"
           ],
-          "slurEnd": 3
-        },
-        {
-          "degree": 3,
-          "octave": 0,
-          "duration": 16
+          "dotted": true
         },
         {
           "degree": 3,
@@ -1451,8 +1359,13 @@
           "duration": 4,
           "lyrics": [
             "下"
-          ],
-          "doubleDotted": true
+          ]
+        },
+        {
+          "degree": 0,
+          "octave": 0,
+          "duration": 8,
+          "dotted": true
         },
         {
           "degree": 5,
@@ -1502,96 +1415,13 @@
         {
           "degree": 2,
           "octave": 1,
-          "duration": 16,
+          "duration": 4,
           "lyrics": [
             "品"
-          ],
-          "slurEnd": 1
-        },
-        {
-          "degree": 1,
-          "octave": 1,
-          "duration": 8,
-          "dotted": true,
-          "tieToNext": true
-        },
-        {
-          "degree": 1,
-          "octave": 1,
-          "duration": 4
+          ]
         },
         {
           "hold": true,
-          "duration": 4
-        },
-        {
-          "degree": 0,
-          "octave": 0,
-          "duration": 4
-        }
-      ]
-    },
-    {
-      "number": 30,
-      "events": [
-        {
-          "degree": 0,
-          "octave": 0,
-          "duration": 4
-        },
-        {
-          "degree": 0,
-          "octave": 0,
-          "duration": 4
-        },
-        {
-          "degree": 0,
-          "octave": 0,
-          "duration": 4
-        },
-        {
-          "degree": 0,
-          "octave": 0,
-          "duration": 4
-        }
-      ]
-    },
-    {
-      "number": 31,
-      "events": [
-        {
-          "degree": 0,
-          "octave": 0,
-          "duration": 4
-        },
-        {
-          "degree": 0,
-          "octave": 0,
-          "duration": 4
-        },
-        {
-          "degree": 0,
-          "octave": 0,
-          "duration": 4
-        },
-        {
-          "degree": 0,
-          "octave": 0,
-          "duration": 4
-        }
-      ]
-    },
-    {
-      "number": 32,
-      "events": [
-        {
-          "degree": 0,
-          "octave": 0,
-          "duration": 4
-        },
-        {
-          "degree": 0,
-          "octave": 0,
           "duration": 4
         },
         {
@@ -1605,21 +1435,15 @@
         {
           "degree": 2,
           "octave": 1,
-          "duration": 8,
+          "duration": 4,
           "lyrics": [
             "们"
-          ],
-          "slurEnd": 4
-        },
-        {
-          "degree": 1,
-          "octave": 1,
-          "duration": 8
+          ]
         }
       ]
     },
     {
-      "number": 33,
+      "number": 30,
       "events": [
         {
           "degree": 0,
@@ -1705,22 +1529,16 @@
           "lyrics": [
             "信"
           ],
-          "slurEnd": 11
-        },
-        {
-          "degree": 2,
-          "octave": 1,
-          "duration": 16,
-          "tieToNext": true
+          "dotted": true
         }
       ]
     },
     {
-      "number": 34,
+      "number": 31,
       "events": [
         {
-          "degree": 2,
-          "octave": 1,
+          "degree": 0,
+          "octave": 0,
           "duration": 8
         },
         {
@@ -1813,7 +1631,7 @@
       ]
     },
     {
-      "number": 35,
+      "number": 32,
       "events": [
         {
           "degree": 1,
@@ -1889,7 +1707,7 @@
       ]
     },
     {
-      "number": 36,
+      "number": 33,
       "events": [
         {
           "degree": 3,
@@ -1964,7 +1782,7 @@
       ]
     },
     {
-      "number": 37,
+      "number": 34,
       "events": [
         {
           "degree": 3,
@@ -2031,7 +1849,7 @@
       ]
     },
     {
-      "number": 38,
+      "number": 35,
       "events": [
         {
           "degree": 1,
@@ -2076,7 +1894,7 @@
       ]
     },
     {
-      "number": 39,
+      "number": 36,
       "events": [
         {
           "degree": 5,
@@ -2121,7 +1939,7 @@
       ]
     },
     {
-      "number": 40,
+      "number": 37,
       "events": [
         {
           "degree": 1,
@@ -2158,7 +1976,7 @@
       ]
     },
     {
-      "number": 41,
+      "number": 38,
       "events": [
         {
           "degree": 3,
@@ -2196,7 +2014,7 @@
       ]
     },
     {
-      "number": 42,
+      "number": 39,
       "events": [
         {
           "degree": 1,
@@ -2241,7 +2059,7 @@
       ]
     },
     {
-      "number": 43,
+      "number": 40,
       "events": [
         {
           "degree": 4,
@@ -2252,7 +2070,7 @@
           ]
         },
         {
-          "degree": 3,
+          "degree": 4,
           "octave": 1,
           "duration": 16,
           "lyrics": [
@@ -2263,24 +2081,24 @@
           "degree": 2,
           "octave": 1,
           "duration": 16,
+          "tieToNext": true,
           "lyrics": [
             "的"
-          ],
-          "tieToNext": true
+          ]
         },
         {
           "degree": 2,
           "octave": 1,
-          "duration": 16
+          "duration": 8
         },
         {
           "degree": 3,
           "octave": 1,
           "duration": 8,
+          "slurEnd": 5,
           "lyrics": [
             "回"
-          ],
-          "slurEnd": 5
+          ]
         },
         {
           "degree": 2,
@@ -2288,19 +2106,13 @@
           "duration": 16
         },
         {
-          "degree": 2,
-          "octave": 1,
-          "duration": 16,
-          "lyrics": [
-            "忆"
-          ],
-          "slurEnd": 7
-        },
-        {
           "degree": 1,
           "octave": 1,
           "duration": 8,
-          "dotted": true
+          "dotted": true,
+          "lyrics": [
+            "忆"
+          ]
         },
         {
           "degree": 6,
@@ -2321,7 +2133,7 @@
       ]
     },
     {
-      "number": 44,
+      "number": 41,
       "events": [
         {
           "degree": 1,
@@ -2358,7 +2170,7 @@
       ]
     },
     {
-      "number": 45,
+      "number": 42,
       "events": [
         {
           "degree": 1,
@@ -2373,7 +2185,8 @@
           "duration": 4
         },
         {
-          "hold": true,
+          "degree": 0,
+          "octave": 0,
           "duration": 4
         },
         {
@@ -2392,7 +2205,7 @@
       ]
     },
     {
-      "number": 46,
+      "number": 43,
       "events": [
         {
           "degree": 3,
@@ -2438,24 +2251,24 @@
           "degree": 7,
           "octave": -1,
           "duration": 8,
+          "dotted": true,
           "lyrics": [
             "安"
-          ],
-          "dotted": true
+          ]
         },
         {
           "degree": 1,
           "octave": 0,
           "duration": 16,
+          "tieToNext": true,
           "lyrics": [
             "静"
-          ],
-          "tieToNext": true
+          ]
         }
       ]
     },
     {
-      "number": 47,
+      "number": 44,
       "events": [
         {
           "degree": 1,
@@ -2487,7 +2300,7 @@
       ]
     },
     {
-      "number": 48,
+      "number": 45,
       "events": [
         {
           "degree": 4,
@@ -2541,15 +2354,15 @@
           "degree": 5,
           "octave": 0,
           "duration": 8,
+          "dotted": true,
           "lyrics": [
             "关"
-          ],
-          "dotted": true
+          ]
         }
       ]
     },
     {
-      "number": 49,
+      "number": 46,
       "events": [
         {
           "degree": 2,
@@ -2596,15 +2409,15 @@
           "degree": 6,
           "octave": 0,
           "duration": 16,
+          "tieToNext": true,
           "lyrics": [
             "忆"
-          ],
-          "tieToNext": true
+          ]
         }
       ]
     },
     {
-      "number": 50,
+      "number": 47,
       "events": [
         {
           "degree": 6,
@@ -2631,10 +2444,10 @@
           "degree": 2,
           "octave": 1,
           "duration": 16,
+          "tieToNext": true,
           "lyrics": [
             "翻"
-          ],
-          "tieToNext": true
+          ]
         },
         {
           "degree": 2,
@@ -2661,20 +2474,15 @@
           "degree": 6,
           "octave": 0,
           "duration": 8,
+          "dotted": true,
           "lyrics": [
             "痛"
-          ],
-          "slurEnd": 8
-        },
-        {
-          "degree": 5,
-          "octave": 0,
-          "duration": 16
+          ]
         }
       ]
     },
     {
-      "number": 51,
+      "number": 48,
       "events": [
         {
           "degree": 5,
@@ -2696,15 +2504,10 @@
           "degree": 6,
           "octave": 0,
           "duration": 8,
+          "dotted": true,
           "lyrics": [
             "平"
-          ],
-          "slurEnd": 3
-        },
-        {
-          "degree": 3,
-          "octave": 0,
-          "duration": 16
+          ]
         },
         {
           "degree": 3,
@@ -2740,23 +2543,28 @@
         },
         {
           "degree": 5,
-          "octave": 0,
+          "octave": -1,
           "duration": 16,
+          "tieToNext": true,
           "lyrics": [
             "然"
-          ],
-          "tieToNext": true
+          ]
         }
       ]
     },
     {
-      "number": 52,
+      "number": 49,
       "events": [
         {
           "degree": 5,
+          "octave": -1,
+          "duration": 4
+        },
+        {
+          "degree": 0,
           "octave": 0,
-          "duration": 4,
-          "doubleDotted": true
+          "duration": 8,
+          "dotted": true
         },
         {
           "degree": 5,
@@ -2801,7 +2609,7 @@
       ]
     },
     {
-      "number": 53,
+      "number": 50,
       "events": [
         {
           "degree": 1,
@@ -2839,29 +2647,23 @@
         {
           "degree": 1,
           "octave": 0,
-          "duration": 16,
+          "duration": 8,
           "lyrics": [
             "此"
           ]
-        },
-        {
-          "degree": 6,
-          "octave": 0,
-          "duration": 16,
-          "lyrics": [
-            "生"
-          ],
-          "tieToNext": true
         }
       ]
     },
     {
-      "number": 54,
+      "number": 51,
       "events": [
         {
           "degree": 6,
           "octave": 0,
-          "duration": 4
+          "duration": 4,
+          "lyrics": [
+            "生"
+          ]
         },
         {
           "degree": 6,
@@ -2883,10 +2685,10 @@
           "degree": 2,
           "octave": 1,
           "duration": 16,
+          "tieToNext": true,
           "lyrics": [
             "决"
-          ],
-          "tieToNext": true
+          ]
         },
         {
           "degree": 2,
@@ -2904,7 +2706,7 @@
         {
           "degree": 7,
           "octave": 0,
-          "duration": 16,
+          "duration": 8,
           "lyrics": [
             "自"
           ]
@@ -2916,17 +2718,11 @@
           "lyrics": [
             "己"
           ]
-        },
-        {
-          "degree": 5,
-          "octave": 0,
-          "duration": 16,
-          "tieToNext": true
         }
       ]
     },
     {
-      "number": 55,
+      "number": 52,
       "events": [
         {
           "degree": 5,
@@ -2937,7 +2733,7 @@
           ]
         },
         {
-          "degree": 7,
+          "degree": 5,
           "octave": 0,
           "duration": 16,
           "lyrics": [
@@ -2945,26 +2741,26 @@
           ]
         },
         {
-          "degree": 2,
-          "octave": 1,
+          "degree": 6,
+          "octave": 0,
           "duration": 8,
           "lyrics": [
             "有"
-          ],
-          "slurEnd": 3
+          ]
         },
         {
-          "degree": 1,
-          "octave": 1,
-          "duration": 16
-        },
-        {
-          "degree": 1,
-          "octave": 1,
-          "duration": 8,
+          "degree": 3,
+          "octave": 0,
+          "duration": 16,
+          "tieToNext": true,
           "lyrics": [
             "你"
           ]
+        },
+        {
+          "degree": 3,
+          "octave": 0,
+          "duration": 8
         },
         {
           "degree": 1,
@@ -2993,25 +2789,28 @@
       ]
     },
     {
-      "number": 56,
+      "number": 53,
       "events": [
         {
           "degree": 5,
+          "octave": 0,
           "duration": 4,
+          "dotted": true,
           "lyrics": [
             "然"
-          ],
-          "doubleDotted": true
+          ]
         },
         {
           "degree": 5,
-          "duration": 16,
+          "octave": 0,
+          "duration": 8,
           "lyrics": [
             "听"
           ]
         },
         {
           "degree": 5,
+          "octave": 0,
           "duration": 8,
           "lyrics": [
             "到"
@@ -3019,6 +2818,7 @@
         },
         {
           "degree": 4,
+          "octave": 0,
           "duration": 8,
           "lyrics": [
             "你"
@@ -3026,33 +2826,34 @@
         },
         {
           "degree": 6,
-          "duration": 4,
           "octave": -1,
+          "duration": 4,
+          "tieToNext": true,
           "lyrics": [
             "的"
-          ],
-          "tieToNext": true
+          ]
         }
       ]
     },
     {
-      "number": 57,
+      "number": 54,
       "events": [
         {
           "degree": 6,
-          "duration": 4,
-          "octave": -1
+          "octave": -1,
+          "duration": 4
         },
         {
           "degree": 7,
-          "duration": 4,
           "octave": -1,
+          "duration": 4,
           "lyrics": [
             "消"
           ]
         },
         {
           "degree": 1,
+          "octave": 0,
           "duration": 4,
           "lyrics": [
             "息"
@@ -3065,181 +2866,26 @@
       ]
     },
     {
-      "number": 58,
-      "parenthesisStart": true,
+      "number": 55,
       "events": [
         {
-          "degree": 3,
-          "duration": 8,
-          "octave": 1
-        },
-        {
-          "degree": 5,
-          "duration": 8
-        },
-        {
-          "degree": 1,
-          "duration": 16,
-          "octave": 1
-        },
-        {
-          "degree": 5,
-          "duration": 16
-        },
-        {
-          "degree": 1,
-          "duration": 16,
-          "octave": 1
-        },
-        {
-          "degree": 5,
-          "duration": 16,
-          "octave": 1
-        },
-        {
-          "degree": 4,
-          "duration": 8,
-          "octave": 1
-        },
-        {
-          "degree": 3,
-          "duration": 8,
-          "octave": 1
-        },
-        {
-          "degree": 2,
-          "duration": 8,
-          "octave": 1
-        },
-        {
-          "degree": 1,
-          "duration": 8,
-          "octave": 1
-        }
-      ]
-    },
-    {
-      "number": 59,
-      "events": [
-        {
-          "degree": 2,
-          "duration": 4,
-          "octave": 1
-        },
-        {
-          "degree": 2,
-          "duration": 16,
-          "octave": 1
-        },
-        {
-          "degree": 5,
-          "duration": 16
-        },
-        {
-          "degree": 2,
-          "duration": 16,
-          "octave": 1
-        },
-        {
-          "degree": 4,
-          "duration": 16,
-          "octave": 1
-        },
-        {
-          "degree": 3,
-          "duration": 8,
-          "octave": 1
-        },
-        {
-          "degree": 2,
-          "duration": 8,
-          "octave": 1
-        },
-        {
-          "degree": 1,
-          "duration": 8,
-          "octave": 1
-        },
-        {
-          "degree": 7,
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "number": 60,
-      "events": [
-        {
-          "degree": 6,
+          "degree": 0,
+          "octave": 0,
           "duration": 4
         },
         {
-          "degree": 1,
-          "duration": 8,
-          "octave": 1
-        },
-        {
-          "degree": 3,
-          "duration": 8,
-          "octave": 1
-        },
-        {
-          "degree": 5,
+          "degree": 0,
+          "octave": 0,
           "duration": 4
         },
         {
-          "degree": 5,
-          "duration": 8
-        },
-        {
-          "degree": 1,
-          "duration": 8,
-          "octave": 1
-        }
-      ]
-    },
-    {
-      "number": 61,
-      "events": [
-        {
-          "degree": 6,
-          "duration": 4,
-          "octave": 1,
-          "accidental": "b"
-        },
-        {
-          "degree": 1,
-          "duration": 4,
-          "octave": 1
-        },
-        {
-          "degree": 5,
+          "degree": 0,
+          "octave": 0,
           "duration": 4
         },
         {
-          "degree": 4,
-          "duration": 4
-        }
-      ]
-    },
-    {
-      "number": 62,
-      "parenthesisEnd": true,
-      "events": [
-        {
-          "degree": 3,
-          "duration": 4
-        },
-        {
-          "hold": true,
-          "duration": 4
-        },
-        {
-          "hold": true,
-          "duration": 4
-        },
-        {
-          "hold": true,
+          "degree": 0,
+          "octave": 0,
           "duration": 4
         }
       ]

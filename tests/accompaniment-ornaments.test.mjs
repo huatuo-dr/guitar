@@ -19,3 +19,15 @@ test('伴奏跨小节延音在2/4小节版保留两端',()=>{
  const data=fixture([{kind:'pluck',strings:[3],duration:4},{kind:'hold',duration:4},{kind:'hold',duration:4},{kind:'pluck',strings:[3],duration:4,tieToNext:true}]);
  for(const rows of [2,4])assert.equal((renderScore(data,rows).match(/class="tab-tie"/g)||[]).length,2);
 });
+test('跨小节琶音延音从实际起音跨过延长线，续音保留波浪箭头',()=>{
+ const data=fixture([{kind:'arpeggio',duration:4},{kind:'hold',duration:4},{kind:'arpeggio',duration:4},{kind:'hold',duration:4}]);
+ data.bars[0].crossBarTieStart=2;
+ data.patterns.two=[{kind:'hold',sourceArrow:'arpeggio',duration:4,startString:4,endString:1},...Array.from({length:3},()=>({kind:'hold',duration:4}))];
+ assert.equal(validateScore(data),true);
+ for(const rows of [2,4]){
+  const svg=renderScore(data,rows);
+  assert.equal((svg.match(/class="tab-tie"/g)||[]).length,2);
+  assert.equal((svg.match(/ q -4 -2 0 -4/g)||[]).length,11,'两次起音与一次延续的波浪箭头');
+ }
+ data.bars[0].crossBarTieStart=3;assert.throws(()=>validateScore(data),/延音起点/);
+});

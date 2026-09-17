@@ -54,9 +54,9 @@ window.GUITAR_SCORES = [
     path: 'sheet_music/突然好想你弹唱伴奏.html',
     timeSignature: '4/4',
     capo: 2,
-    bars: 62,
-    updatedAt: '2026-09-17',
-    description: 'C 调指法、原调 D，含分解和弦、扫弦、前后奏旋律与简谱歌词。'
+    bars: 55,
+    updatedAt: '2026-09-18',
+    description: '革命吉他编配，C 调指法、变调夹 2 品，含前奏、分解和弦、扫弦与简谱歌词。'
   },
   {
     id: 'canon-fingerstyle',

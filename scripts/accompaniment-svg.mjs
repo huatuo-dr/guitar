@@ -38,6 +38,10 @@ export function validateScore(data) {
     }
     const needsChord=bar.chords.length>0||bar.events.some(e=>['pluck','down','up','arpeggio'].includes(e.kind));
     if (needsChord && bar.chords[0]?.beat !== 1) throw new Error('每小节必须指定起始和弦');
+    if(bar.crossBarTieStart!==undefined){
+      const start=bar.events[bar.crossBarTieStart];
+      if(!Number.isInteger(bar.crossBarTieStart)||!start||['hold','rest'].includes(start.kind)||!expanded[i+1]||bar.events.slice(bar.crossBarTieStart+1).some(e=>e.kind!=='hold'))throw new Error('跨小节伴奏延音起点无效');
+    }
     for (const [eventIndex,event] of bar.events.entries()) {
       if (!['down','up','hold','arpeggio','note','pluck','rest','fretted'].includes(event.kind) || ![...(event.kind==='fretted'?[1]:[]),4,8,16,32].includes(event.duration)) throw new Error('事件无效');
       if (event.kind === 'note' && (!Number.isInteger(event.string) || event.string < 1 || event.string > 6 || !Number.isInteger(event.fret) || event.fret < 0)) throw new Error('品位或弦号无效');
@@ -57,7 +61,7 @@ export function validateScore(data) {
       }
       for(const string of [event.startString,event.endString])if(string!==undefined&&(!Number.isInteger(string)||string<1||string>6))throw new Error('扫弦范围无效');
       if(event.kind==='rest' && event.duration!==8)throw new Error('当前仅支持八分休止');
-      if(event.sourceArrow!==undefined && (event.kind!=='hold'||!['up','down'].includes(event.sourceArrow)))throw new Error('延音扫弦箭头无效');
+      if(event.sourceArrow!==undefined && (event.kind!=='hold'||!['up','down','arpeggio'].includes(event.sourceArrow)))throw new Error('延音扫弦箭头无效');
     }
   }
   for (const route of data.route) {
@@ -190,7 +194,7 @@ function renderBar(bar, data, index, rowHeight, headerCrop) {
       svg+=`<path class="tab-tie" d="M ${x} ${y-4} Q ${(x+placed[0].x)/2} ${y-8} ${placed[0].x} ${y}" fill="none"/>`;
     }
   }
-  if(previousEvent?.tieToNext){
+  if(previousEvent?.tieToNext||previousBar?.crossBarTieStart!==undefined){
     const first=placed[0],y=first.kind==='pluck'?TOP+(first.strings[0]-1)*STRING_GAP-6:TOP-8;
     svg+=`<path class="tab-tie" d="M ${x} ${y-4} Q ${(x+first.x)/2} ${y-8} ${first.x} ${y}" fill="none"/>`;
   }
@@ -203,7 +207,7 @@ function renderBar(bar, data, index, rowHeight, headerCrop) {
     const strokeKind = event.sourceArrow ?? event.kind;
     if (strokeKind === 'down') svg += arrow(at,event.startString?TOP+(event.startString-1)*STRING_GAP:Number.isInteger(event.beat)?bassY:TOP+24,event.endString?TOP+(event.endString-1)*STRING_GAP:TOP);
     if (strokeKind === 'up') svg += arrow(at,event.startString?TOP+(event.startString-1)*STRING_GAP:TOP,event.endString?TOP+(event.endString-1)*STRING_GAP:TOP+24);
-    if (event.kind === 'arpeggio') svg += arrow(at,event.startString?TOP+(event.startString-1)*STRING_GAP:bassY,event.endString?TOP+(event.endString-1)*STRING_GAP:TOP,true);
+    if (strokeKind === 'arpeggio') svg += arrow(at,event.startString?TOP+(event.startString-1)*STRING_GAP:bassY,event.endString?TOP+(event.endString-1)*STRING_GAP:TOP,true);
     if (event.kind === 'hold' && !event.sourceArrow) svg += text(at,TOP+23,'–','hold','middle');
     if(event.kind==='rest') svg+=`<g class="tab-rest"><ellipse cx="${at-2}" cy="${TOP+22}" rx="2.5" ry="2" fill="currentColor"/><path d="M ${at-2} ${TOP+24} Q ${at+2} ${TOP+25} ${at+4} ${TOP+19} L ${at-1} ${TOP+34}" fill="none" stroke-width="1.8"/></g>`;
     if(event.kind==='pluck'){
@@ -233,6 +237,10 @@ function renderBar(bar, data, index, rowHeight, headerCrop) {
     if (event.duration!==1 && event.kind !== 'rest' && (event.kind !== 'hold' || event.sourceArrow)) svg += line(at,BOTTOM+7,at,STEM_END);
     for(let i=0;i<(event.doubleDotted?2:event.dotted?1:0);i++)svg+=`<circle class="tab-duration-dot" cx="${at+6+i*5}" cy="${STEM_END-3}" r="1.5"/>`;
   });
+  if(bar.crossBarTieStart!==undefined){
+    const start=placed[bar.crossBarTieStart],right=x+BAR_WIDTH,y=TOP-8;
+    svg+=`<path class="tab-tie" d="M ${start.x} ${y} Q ${(start.x+right)/2} ${y-9} ${right} ${y}" fill="none"/>`;
+  }
   // Beam within each quarter-note pulse; connect only contiguous eighth/sixteenth events.
   for (let beat = 1; beat <= bar.beats; beat++) {
     const group = placed.filter(e => Math.floor(e.beat) === beat);
