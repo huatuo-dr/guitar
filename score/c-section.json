@@ -111,7 +111,7 @@
     ]},
     {"number":24,"beats":[
       {"duration":16,"notes":[{"string":6,"fret":0}]},
-      {"duration":16,"notes":[{"string":4,"fret":2}]},
+      {"duration":16,"notes":[{"string":3,"fret":2}]},
       {"duration":8,"notes":[{"string":1,"fret":3}]},
       {"duration":16,"notes":[{"string":1,"fret":3,"slide":"legato"}]},
       {"duration":16,"notes":[{"string":1,"fret":5,"slide":"legato"}]},
