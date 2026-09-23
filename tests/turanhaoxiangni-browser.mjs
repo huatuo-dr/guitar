@@ -15,11 +15,12 @@ try{
  assert.equal(await page.locator('#bar-3 .tab-tie').count(),1);
  assert.equal(await page.locator('.slide-label, .hammer, .melody-accidental').count(),0);
  assert.deepEqual(await page.locator('#bar-55 .melody-number').allTextContents(),['0','0','0','0']);
- assert.deepEqual(await page.locator('.route [data-jump]').evaluateAll(nodes=>nodes.map(n=>Number(n.dataset.jump))),[1,1,13]);
+ assert.deepEqual(await page.locator('.route [data-jump]').evaluateAll(nodes=>nodes.map(n=>Number(n.dataset.jump))),[1,5,13]);
  assert.equal(await page.locator('.source-link a').count(),0,'截图来源不虚构网页链接');
  for(const rows of ['4','2']){
   await page.locator('#bars-per-row').selectOption(rows);
   assert.equal(await page.locator('.numbered-melody').count(),55);
+  assert.equal(await page.locator('#bar-5 > circle[cx="58"][cy="137"]').count(),1,'第5小节左侧显示反复起点圆点');
   for(const bar of [53,54]){assert.equal(await page.locator(`#bar-${bar} .melody-tie`).count(),1);assert.equal(await page.locator(`#bar-${bar} .tab-tie`).count(),1);}
   assert.equal(await page.locator('.score-system').count(),Math.ceil(55/Number(rows)));
   const overlaps=await page.locator('.measure').evaluateAll(bars=>bars.flatMap(bar=>{

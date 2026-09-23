@@ -281,10 +281,10 @@ function renderBar(bar, data, index, rowHeight, headerCrop) {
   return svg + '</g>';
 }
 
-export function renderScore(data, barsPerRow = 4) {
+export function renderScore(data, barsPerRow = 4, range) {
   if (![2,4].includes(barsPerRow)) throw new Error('每行小节数只支持2或4');
   validateScore(data);
-  const bars = expandBars(data);
+  const bars = expandBars(data).filter(bar => !range || (bar.number >= range.start && bar.number <= range.end));
   const headerCrop=bars.every(b=>!b.chords.length&&!b.volta&&!b.startLabel)?70:0;
   let html = '';
   for (let start = 0; start < bars.length; start += barsPerRow) {

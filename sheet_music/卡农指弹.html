@@ -317,7 +317,9 @@ function setupScoreAutoScroll({storageKey}) {
         score.style.width=printing?'100%':width+'px';
       }});
       document.getElementById('print').addEventListener('click', () => window.print());
-      document.querySelectorAll('[data-jump]').forEach(link => link.addEventListener('click', event => {
+      document.addEventListener('click', event => {
+        const link=event.target.closest('[data-jump]');
+        if(!link)return;
         event.preventDefault();
         const target = document.getElementById('bar-' + link.dataset.jump);
         if (!target) return;
@@ -329,7 +331,7 @@ function setupScoreAutoScroll({storageKey}) {
         history.replaceState(null, '', '#bar-' + link.dataset.jump);
         target.scrollIntoView({block:'center', inline:'center', behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
         target.focus({preventScroll:true});
-      }));
+      });
     });
   </script>
 </body>

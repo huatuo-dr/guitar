@@ -4,6 +4,33 @@
   "key": "C",
   "fingeringKey": "C",
   "capoText": "男声 5–7 品 / 女声 0–2 品",
+  "simpleScore": {
+    "fullSections": [1],
+    "fullRanges": [{"start":21,"end":21,"name":"过门"},{"start":30,"end":30,"name":"间奏"},{"start":47,"end":47,"name":"尾奏"}],
+    "routeVerses": [0,1,0],
+    "lyricBreaks": [
+      {"bar":5,"beat":1,"kind":"line"},
+      {"bar":7,"beat":1,"kind":"space"},
+      {"bar":9,"beat":1,"kind":"space"},
+      {"bar":11,"beat":1,"kind":"space"},
+      {"bar":12,"beat":4.5,"kind":"line"},
+      {"bar":14,"beat":4.5,"kind":"space"},
+      {"bar":16,"beat":4.5,"kind":"space"},
+      {"bar":18,"beat":4.5,"kind":"space"},
+      {"bar":22,"beat":1,"kind":"line"},
+      {"bar":24,"beat":1,"kind":"space"},
+      {"bar":26,"beat":1,"kind":"space"},
+      {"bar":28,"beat":1,"kind":"space"},
+      {"bar":31,"beat":1,"kind":"line"},
+      {"bar":33,"beat":1,"kind":"space"},
+      {"bar":35,"beat":1,"kind":"space"},
+      {"bar":37,"beat":1,"kind":"space"},
+      {"bar":39,"beat":1,"kind":"line"},
+      {"bar":41,"beat":1,"kind":"space"},
+      {"bar":43,"beat":1,"kind":"space"},
+      {"bar":45,"beat":1,"kind":"space"}
+    ]
+  },
   "timeSignature": [
     4,
     4

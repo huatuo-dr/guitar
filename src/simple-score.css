@@ -1,0 +1,21 @@
+    .score-mode-control{flex-basis:100%;display:flex;align-items:center;gap:12px}
+    .score-mode-control button{padding:9px 13px;border:1px solid var(--green);border-radius:6px;background:var(--green);color:white;font-size:13px}
+    #score-mode-status{font-size:12px;color:var(--muted)}
+    .simple-help{font-size:12px;color:var(--muted);line-height:1.8;margin:0 0 22px}
+    .simple-section{margin:0 0 26px}
+    .simple-section-heading{font-size:12px;line-height:28px;font-weight:500;color:var(--muted);margin:0 12px 0 0;white-space:nowrap;break-after:avoid}
+    .simple-instrument-scroll{overflow-x:auto;max-width:100%;overscroll-behavior-x:contain}
+    .simple-instrument-score{width:var(--instrument-width,100%);margin:auto}
+    .simple-instrument-score .bar-number,.simple-instrument-score .section-label{display:none}
+    .simple-line{display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px 1.2em;margin-bottom:14px;break-inside:avoid}
+    .simple-phrase{display:flex;flex-wrap:wrap;align-items:flex-end;max-width:100%;row-gap:10px}
+    .simple-measure{border-radius:4px;scroll-margin-top:24px}
+    .simple-measure.current,.simple-measure:target{background:#c5dfad40}
+    .simple-cell{display:inline-flex;flex-direction:column;align-items:flex-start;min-width:1em;font-size:18px;break-inside:avoid}
+    .simple-chord{display:block;min-height:25px;line-height:25px;font-size:14px;font-weight:650;color:var(--green);white-space:nowrap;padding-right:4px}
+    .simple-lyric{display:block;min-height:28px;line-height:28px;white-space:nowrap;letter-spacing:.06em}
+    .simple-chord-lyric{text-decoration-line:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+    .simple-placeholder{color:var(--muted);padding-right:5px}
+    @media print{.simple-help{font-size:9px;margin-bottom:12px}.simple-instrument-scroll{overflow:visible}.simple-instrument-score{width:100%!important}.simple-line{row-gap:10px;margin-bottom:12px;orphans:2;widows:2}.simple-phrase{row-gap:10px}.simple-measure.current,.simple-measure:target{background:transparent}.simple-section{margin-bottom:20px}}
+
+    body[data-score-mode="simple"] [data-score-route],body[data-score-mode="simple"] .route-print{display:none!important}

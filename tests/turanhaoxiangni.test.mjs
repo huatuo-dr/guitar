@@ -13,9 +13,9 @@ test('突然好想你替换为革命吉他三页55小节，各声部4拍并保�
  assert.deepEqual(data.chordShapes.Fm.frets,[1,3,3,1,1,1]);
  assert.deepEqual(data.chordShapes['Am7/G'].frets,[3,0,2,0,1,0]);
  const range=(a,b)=>Array.from({length:b-a+1},(_,i)=>i+a);
- assert.deepEqual(performanceOrder(data),[...range(1,12),...range(1,11),...range(13,55)]);
+ assert.deepEqual(performanceOrder(data),[...range(1,12),...range(5,11),...range(13,55)]);
  assert.deepEqual(data.bars.filter(b=>b.repeatEnd).map(b=>b.number),[12]);
- assert.equal(data.bars.some(b=>b.repeatStart),false);assert.equal(data.bars[11].volta,1);assert.equal(data.bars[12].volta,2);
+ assert.deepEqual(data.bars.filter(b=>b.repeatStart).map(b=>b.number),[5]);assert.equal(data.bars[11].volta,1);assert.equal(data.bars[12].volta,2);
 });
 test('突然好想你按新图保留前奏品位、三弦同音延音、尾声与双行歌词',async()=>{
  const data=attachVocals(await read(''),await read('-vocal')),bars=expandBars(data);

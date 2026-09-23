@@ -4,6 +4,47 @@
   "key": "D",
   "fingeringKey": "C",
   "capo": 2,
+  "simpleScore": {
+    "fullSections": [1],
+    "fullRanges": [{"start": 55, "end": 55, "name": "尾奏"}],
+    "routeVerses": [0, 1, 1],
+    "lyricBreaks": [
+      {"bar": 6, "beat": 4.5, "kind": "space"},
+      {"bar": 8, "beat": 3.5, "kind": "space"},
+      {"bar": 10, "beat": 3.5, "kind": "space"},
+      {"bar": 12, "beat": 4.5, "kind": "space", "verse": 0},
+      {"bar": 13, "beat": 4, "kind": "line"},
+      {"bar": 14, "beat": 4, "kind": "space"},
+      {"bar": 15, "beat": 4, "kind": "space"},
+      {"bar": 17, "beat": 4, "kind": "space"},
+      {"bar": 18, "beat": 4, "kind": "space"},
+      {"bar": 19, "beat": 4, "kind": "space"},
+      {"bar": 21, "beat": 4.5, "kind": "line"},
+      {"bar": 23, "beat": 4.5, "kind": "space"},
+      {"bar": 25, "beat": 3.5, "kind": "space"},
+      {"bar": 27, "beat": 3.5, "kind": "space"},
+      {"bar": 29, "beat": 3, "kind": "line"},
+      {"bar": 30, "beat": 2.5, "kind": "space"},
+      {"bar": 30, "beat": 3.5, "kind": "space"},
+      {"bar": 31, "beat": 1.5, "kind": "space"},
+      {"bar": 31, "beat": 2.5, "kind": "space"},
+      {"bar": 32, "beat": 2.25, "kind": "space"},
+      {"bar": 33, "beat": 1, "kind": "space"},
+      {"bar": 34, "beat": 4, "kind": "line"},
+      {"bar": 35, "beat": 4, "kind": "space"},
+      {"bar": 36, "beat": 4, "kind": "space"},
+      {"bar": 38, "beat": 4, "kind": "space"},
+      {"bar": 39, "beat": 4, "kind": "space"},
+      {"bar": 40, "beat": 4, "kind": "space"},
+      {"bar": 42, "beat": 4.5, "kind": "line"},
+      {"bar": 44, "beat": 4.5, "kind": "space"},
+      {"bar": 46, "beat": 3.5, "kind": "space"},
+      {"bar": 48, "beat": 3.5, "kind": "space"},
+      {"bar": 50, "beat": 3.5, "kind": "line"},
+      {"bar": 52, "beat": 2, "kind": "space"},
+      {"bar": 52, "beat": 3.5, "kind": "space"}
+    ]
+  },
   "timeSignature": [
     4,
     4
@@ -14,13 +55,13 @@
   "notes": [
     "依据用户提供的革命吉他制谱三页截图重绘，完整替换此前“弦心距”编配版本。原图标1=D、变调夹2品、4/4；和弦采用C调指法，未标速度。",
     "共55个书写小节：第一页1–18，第二页19–37，第三页38–55。原图无小节号与段名，网页编号及段落仅供定位，反复不展开。",
-    "第12小节是1房子并带反复终止号，第13小节是2房子。截图未标反复起始号，按记谱规则返回曲首：1–12 → 1–11 → 13–55；第二遍前奏后唱主歌第二行歌词。",
+    "按用户确认，在第5小节补充反复起始号。第12小节是1房子并带反复终止号，第13小节是2房子；演奏路线为1–12 → 5–11 → 13–55，前奏只弹一次，第二遍主歌唱第二行歌词。",
     "前奏1–4小节保留数字品位；第3小节三弦0→0为同音延音，第4小节末两拍按图同时拨二、三弦；第6小节保留二弦1→0→1过门。",
     "11种和弦指法按新图录入：G/B和C7图中的六弦为○，照图保留；具体弹哪些弦以各拍六线谱为准。第54小节沿用上一小节G和弦，网页重示指法供换行查阅。",
     "副歌低音短箭头覆盖五至三弦，高音扫弦覆盖四至一弦；琶音按原图范围保留。第53小节第三拍G和弦延续至54，54保留原图波浪箭头表示续音、不重新拨弦；55小节C和弦琶音后延长三拍。",
     "第5小节歌词原图“空气库然”按语义录为“空气突然”；广告、水印和页面装饰不纳入曲谱。"
   ],
-  "routeNote": "截图未标反复起始号，按记谱规则回到曲首。第二遍跳过第12小节，进入第13小节的2房子。",
+  "routeNote": "第5小节开始反复，第12小节结束第一遍。回到第5小节唱第二行歌词，第二遍弹至11后跳过12，进入13的2房子；前奏不重复。",
   "route": [
     {
       "label": "第一遍 · 走1房子",
@@ -28,8 +69,8 @@
       "end": 12
     },
     {
-      "label": "从曲首反复 · 主歌第二行歌词",
-      "start": 1,
+      "label": "从第5小节反复 · 主歌第二行歌词",
+      "start": 5,
       "end": 11
     },
     {
@@ -1169,6 +1210,7 @@
     },
     {
       "number": 5,
+      "repeatStart": true,
       "chords": [
         [
           1,

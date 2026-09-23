@@ -1,6 +1,7 @@
 import {mkdir, readFile, writeFile} from 'node:fs/promises';
 import {renderScore, renderChordGuide, validateScore} from './accompaniment-svg.mjs';
 import {attachVocals} from './numbered-notation.mjs';
+import {renderSimpleScore,renderSimpleNavigation} from './simple-score.mjs';
 
 const root = new URL('../', import.meta.url);
 const escape = value => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
@@ -35,7 +36,16 @@ export async function buildAccompaniment(id,filename) {
   const routePrint = `演奏顺序：${data.route.map(({start,end}) => `${start}–${end}`).join(' → ')}。${routeNote}`;
   const fingerstyle=data.scoreType==='fingerstyle';
   const hasChords=Object.keys(data.chordShapes).length>0;
+  const simple=!!data.simpleScore&&!fingerstyle;
   const tokens = {
+    FOOTER_LABEL:simple ? '原谱' : '全曲',
+    READING_NOTE:simple ? '完整版按原谱书写顺序保留反复；简易版已按演奏顺序展开，可以从上往下连续阅读。' : '小节仍按书写顺序保留，没有展开反复；上方演奏顺序列出了完整行进路线。',
+    ROUTE_ATTRIBUTES:simple ? ' data-score-route' : '',
+    SIMPLE_CSS:simple ? await readFile(new URL('src/simple-score.css',root),'utf8') : '',
+    SIMPLE_CONTROL:simple ? '<div class="score-mode-control"><button type="button" id="score-mode" aria-controls="score" hidden>切换为简易谱</button><span id="score-mode-status" role="status" hidden>当前：完整谱</span></div>' : '',
+    SIMPLE_TEMPLATES:simple ? `<template id="simple-section-nav">${renderSimpleNavigation(data)}</template><template id="simple-four-bar-score">${renderSimpleScore(data,4)}</template><template id="simple-two-bar-score">${renderSimpleScore(data,2)}</template>` : '',
+    SIMPLE_SETUP:simple ? 'const simpleView=setupSimpleScore({score,layouts,storageKey:'+JSON.stringify(`guitar-view:${id}:v1`)+'});' : '',
+    SIMPLE_APPLY:simple ? 'if(simpleView){simpleView.render({barsPerRow,width,printing});return;}' : '',
     ROUTE_HEADING:escape(data.routeHeading??'演奏顺序 · 按原谱反复与跳尾'),
     CHORD_GUIDE:hasChords ? `<details class="optional"><summary>和弦指法速查 · ${Object.keys(data.chordShapes).length} 个和弦</summary><p class="guide-text">图中左至右为 6 弦至 1 弦；○ 空弦，× 不弹，圆点为按弦位置，粗横线为横按。${referenceNames ? `† ${escape(referenceNames)} 为补充参考指法。` : ''}</p><div class="chord-guide">${renderChordGuide(data)}</div></details>` : '',
 
@@ -51,10 +61,10 @@ export async function buildAccompaniment(id,filename) {
     ROUTE:data.route.map((r,i) => `<a href="#bar-${r.start}" data-jump="${r.start}"><span>${i+1}. ${escape(r.label)}</span><strong>${r.start}–${r.end}</strong></a>`).join(''),
     ROUTE_PRINT:escape(routePrint), BAR_COUNT:data.bars.length,
     SCORE:renderScore(data), SCORE_TWO:renderScore(data,2),
-    VIEW:await readFile(new URL('src/score-view.js',root),'utf8')+'\n'+await readFile(new URL('src/auto-scroll.js',root),'utf8'),
+    VIEW:await readFile(new URL('src/score-view.js',root),'utf8')+'\n'+await readFile(new URL('src/auto-scroll.js',root),'utf8')+(simple?'\n'+await readFile(new URL('src/simple-score.js',root),'utf8'):''),
     AUTO_SCROLL_CSS:await readFile(new URL('src/auto-scroll.css',root),'utf8'),
     STORAGE_KEY:JSON.stringify(`guitar-view:${id}:v1`).replaceAll('<','\\u003c'),
-    NOTES:[...(data.notes??[]),...data.vocalNotes].map(note => `<li>${escape(note)}</li>`).join('')
+    NOTES:[...(data.notes??[]),...data.vocalNotes,...(data.simpleScore?.notes??[])].map(note => `<li>${escape(note)}</li>`).join('')
   };
   const template = await readFile(new URL('src/accompaniment.html',root),'utf8');
   const html = template.replace(/@@([A-Z_]+)@@/g, (_,key) => {
