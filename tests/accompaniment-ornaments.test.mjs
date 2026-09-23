@@ -31,3 +31,18 @@ test('跨小节琶音延音从实际起音跨过延长线，续音保留波浪�
  }
  data.bars[0].crossBarTieStart=3;assert.throws(()=>validateScore(data),/延音起点/);
 });
+test('伴奏三连音等分一拍，显示括号3并拒绝不完整分组',()=>{
+ const triplet=[3,1,0].map(fret=>({kind:'note',string:1,fret,duration:8,tuplet:3}));
+ const data=fixture([...Array.from({length:3},()=>({kind:'pluck',strings:[3],duration:4})),...triplet]);
+ assert.equal(validateScore(data),true);
+ for(const rows of [2,4]){
+  const svg=renderScore(data,rows);
+  assert.equal((svg.match(/class="tab-tuplet"/g)||[]).length,1);
+  assert.match(svg,/class="tuplet-number"[^>]*>3<\/text>/);
+  assert.doesNotMatch(svg,/NaN|undefined/);
+ }
+ const invalid=fixture([{kind:'note',string:1,fret:0,duration:4,tuplet:2},...Array.from({length:3},()=>({kind:'hold',duration:4}))]);
+ assert.throws(()=>validateScore(invalid),/连音/);
+ const incomplete=fixture([{kind:'note',string:1,fret:0,duration:4,tuplet:3},{kind:'hold',duration:4},{kind:'note',string:1,fret:0,duration:4,tuplet:3},{kind:'hold',duration:4},{kind:'note',string:1,fret:0,duration:4,tuplet:3}]);
+ assert.throws(()=>validateScore(incomplete),/连音/);
+});

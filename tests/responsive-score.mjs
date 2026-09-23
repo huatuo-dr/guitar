@@ -9,8 +9,8 @@ async function ready(page, bars) {
 async function checkRows(page, fingerstyle, total, perRow) {
   if(!fingerstyle){
     assert.equal(await page.locator('.numbered-melody').count(),total,'换行后每小节仍保留简谱');
-    assert.ok(await page.locator(`#bar-${total===49?13:46} .melody-tie`).count()>0,'跨小节延音保留起点');
-    assert.ok(await page.locator(`#bar-${total===49?14:47} .melody-tie`).count()>0,'跨行延音保留终点');
+    assert.ok(await page.locator(`#bar-${total===69?13:46} .melody-tie`).count()>0,'跨小节延音保留起点');
+    assert.ok(await page.locator(`#bar-${total===69?14:47} .melody-tie`).count()>0,'跨行延音保留终点');
   }
   const rows = await page.evaluate(({fingerstyle,total}) => fingerstyle
     ? Array.from({length:total},(_,i) => api.renderer.boundsLookup.findMasterBarByIndex(i).visualBounds.y)
@@ -25,8 +25,8 @@ async function fits(page, fingerstyle) {
   assert.ok(overflow<=2,`适应宽度不应要求横向滑动，实际溢出${overflow}px`);
 }
 try {
-  for (const [file,fingerstyle,total] of [['偏爱指弹.html',true,61],['老男孩弹唱伴奏.html',false,55],['后来弹唱伴奏.html',false,49]]) {
-    const scoreId=fingerstyle?'pianai':total===49?'houlai':'laonanhai';
+  for (const [file,fingerstyle,total] of [['偏爱指弹.html',true,61],['老男孩弹唱伴奏.html',false,55],['后来弹唱伴奏.html',false,69]]) {
+    const scoreId=fingerstyle?'pianai':total===69?'houlai':'laonanhai';
     const context = await browser.newContext({offline:true,viewport:{width:390,height:844},reducedMotion:'reduce'});
     const page = await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
     const url = new URL('sheet_music/'+file,root).href;
@@ -78,10 +78,10 @@ try {
       assert.equal(await page.locator('[data-section-start="56"]').getAttribute('aria-pressed'),'true');
       assert.equal(await page.locator('#score svg text').filter({hasText:/^\*$/}).count(),90);
     } else {
-      const target=total===49?45:50;
+      const target=total===69?65:50;
       await page.locator(`.section-nav [data-jump="${target}"]`).click();
       assert.equal(await page.locator(`#bar-${target}`).evaluate(el=>el===document.activeElement),true);
-      assert.equal(await page.locator(`#bar-${total===49?43:29}`).locator('.volta-label').textContent(),'1.（续）');
+      assert.equal(await page.locator(`#bar-${total===69?56:29}`).locator('.volta-label').textContent(),total===69?'1.':'1.（续）');
     }
     assert.deepEqual(errors,[]);await context.close();
 

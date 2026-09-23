@@ -9,17 +9,30 @@ try{
  await page.goto(url);
  assert.equal(await page.locator('h1').innerText(),'《后来》弹唱伴奏');
  assert.match(await page.locator('.metadata').innerText(),/刘若英[\s\S]*E♭[\s\S]*C 指法[\s\S]*3 品/);
- assert.equal(await page.locator('.measure').count(),49);assert.equal(await page.locator('.score-system').count(),13);
- assert.equal(await page.locator('.melody-tuplet').count(),2);
- assert.equal(await page.locator('#bar-23 .melody-accidental').textContent(),'♭');
- assert.equal(await page.locator('#bar-3 .hammer').allTextContents().then(t=>t.join('')),'PP');
+ assert.equal(await page.locator('.measure').count(),69);assert.equal(await page.locator('.score-system').count(),18);
+ assert.equal(await page.locator('.melody-tuplet').count(),1);
+ assert.deepEqual(await page.locator('#bar-23 .melody-accidental').allTextContents(),['♯','♮']);
+ assert.equal(await page.locator('.tab-tuplet').count(),8);
+ assert.equal(await page.locator('#bar-62 .tab-tuplet').count(),3);
+ assert.equal(await page.locator('#bar-3 .hammer').count(),0);
  assert.equal(await page.locator('#bar-4 .hammer').allTextContents().then(t=>t.join('')),'HP');
- assert.deepEqual(await page.locator('.route [data-jump]').evaluateAll(nodes=>nodes.map(n=>Number(n.dataset.jump))),[1,13,29,31,44]);
+ assert.deepEqual(await page.locator('.route [data-jump]').evaluateAll(nodes=>nodes.map(n=>Number(n.dataset.jump))),[1,45,65]);
  assert.equal(await page.locator('.source-link a').count(),0,'截图来源不虚构网页链接');
  for(const rows of ['4','2']){
   await page.locator('#bars-per-row').selectOption(rows);
-  assert.equal(await page.locator('.numbered-melody').count(),49);
-  assert.ok(await page.locator('#bar-29 .melody-slur').count()>0,'第二结尾保留入弧');
+  assert.equal(await page.locator('.numbered-melody').count(),69);
+  assert.equal(await page.locator('.tab-tuplet').count(),8);
+  assert.equal(await page.locator('#bar-65 .volta-label').textContent(),'2.');
+  assert.equal(await page.locator('#bar-6 .chord-name').textContent(),'Em7/B');
+  assert.equal(await page.locator('#bar-5 .pluck-cross').count(),11,'旧版分解和弦保留一二弦同拨');
+  for(const n of [45,49,56,65,69]){
+   assert.equal(await page.locator(`#bar-${n} .pluck-cross`).count(),0,'演唱段恢复扫弦');
+   assert.match(await page.locator(`#bar-${n} > title`).textContent(),/下扫/);
+  }
+
+  const overlaps=await page.locator('.measure').evaluateAll(bars=>bars.flatMap(bar=>{
+   const lyrics=[...bar.querySelectorAll('.lyric')];return lyrics.flatMap((a,i)=>lyrics.slice(i+1).filter(b=>a.getAttribute('y')===b.getAttribute('y')&&Math.min(a.getBBox().x+a.getBBox().width,b.getBBox().x+b.getBBox().width)-Math.max(a.getBBox().x,b.getBBox().x)>0.5).map(b=>[bar.dataset.bar,a.textContent,b.textContent]));
+  }));assert.deepEqual(overlaps,[],'歌词不重叠');
   const overflow=await page.locator('.measure').evaluateAll(bars=>bars.flatMap(bar=>{
    const r=bar.querySelector('.measure-highlight').getBBox();return [...bar.querySelectorAll('.numbered-melody text')].filter(t=>{const b=t.getBBox();return b.x<r.x-2||b.x+b.width>r.x+r.width+2;}).map(t=>[bar.dataset.bar,t.textContent]);
   }));assert.deepEqual(overflow,[],'简谱与歌词不能伸入邻小节');
@@ -35,8 +48,8 @@ try{
  await page.screenshot({path:'artifacts/houlai-mobile.png',fullPage:true});
  assert.deepEqual(errors,[]);assert.deepEqual(requests,[]);
  const staticContext=await browser.newContext({offline:true,javaScriptEnabled:false});const staticPage=await staticContext.newPage();await staticPage.goto(url);
- assert.equal(await staticPage.locator('.measure').count(),49);assert.ok(await staticPage.locator('.lyric').count()>0);await staticContext.close();
+ assert.equal(await staticPage.locator('.measure').count(),69);assert.ok(await staticPage.locator('.lyric').count()>0);await staticContext.close();
  await page.goto(new URL('../index.html',import.meta.url).href);await page.locator('#search').fill('刘若英');
  assert.equal(await page.locator('.score-card').count(),1);await page.locator('[data-score-id="hou-lai-accompaniment"] .open-score').click();assert.equal(await page.locator('h1').innerText(),'《后来》弹唱伴奏');
- console.log('PASS: 后来49小节、技法、三连音、降号、歌词边界、手机、打印、离线和首页入口通过。');
+ console.log('PASS: 后来69小节、击勾弦、伴奏及简谱三连音、升还原号、歌词边界、手机、打印、离线和首页入口通过。');
 }finally{await browser.close();}

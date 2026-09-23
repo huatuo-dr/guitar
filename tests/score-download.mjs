@@ -58,7 +58,7 @@ try {
       for (const rows of ['2','4']) {
         await reopened.locator('#bars-per-row').selectOption(rows);
         await reopened.waitForFunction(value => document.getElementById('score').dataset.barsPerRow === value,rows);
-        if (file !== files[0]) assert.equal(await reopened.locator('#score .measure').count(),({[files[1]]:55,[files[2]]:49,[files[3]]:47,[files[4]]:55,[files[5]]:56,[files[6]]:9})[file]);
+        if (file !== files[0]) assert.equal(await reopened.locator('#score .measure').count(),({[files[1]]:55,[files[2]]:69,[files[3]]:47,[files[4]]:55,[files[5]]:56,[files[6]]:9})[file]);
       }
       const again = reopened.waitForEvent('download');
       await reopened.locator('#download').click();

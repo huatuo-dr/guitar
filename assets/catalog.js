@@ -31,9 +31,9 @@ window.GUITAR_SCORES = [
     path: 'sheet_music/后来弹唱伴奏.html',
     timeSignature: '4/4',
     capo: 3,
-    bars: 49,
-    updatedAt: '2026-09-17',
-    description: 'C 调指法、原调 E♭，含分解和弦、扫弦、简谱歌词与两组反复跳尾。'
+    bars: 69,
+    updatedAt: '2026-09-23',
+    description: 'C 调指法、变调夹 3 品，新版前奏与间奏搭配旧版演唱伴奏，含简谱歌词。'
   },
   {
     id: 'kong-xin-accompaniment',

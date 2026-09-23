@@ -212,8 +212,11 @@ try {
   await state(blockedPage, true);
   await moving(blockedPage, '禁用存储时手机触摸启动仍可滚动');
   await touchLongPress(true);
+  const scoreSystem = blockedPage.locator('.score-system').first();
+  await scoreSystem.scrollIntoViewIfNeeded();
+  const scoreBox = await scoreSystem.boundingBox();
   await touchSession.send('Input.dispatchTouchEvent', {
-    type: 'touchStart', touchPoints: [{x: 10, y: 300}],
+    type: 'touchStart', touchPoints: [{x: scoreBox.x + scoreBox.width / 2, y: scoreBox.y + scoreBox.height / 2}],
   });
   await blockedPage.waitForTimeout(100);
   assert.equal((await displacement(blockedPage, 500)).pixels, 0, '手指按住页面时自动滚动应让行');

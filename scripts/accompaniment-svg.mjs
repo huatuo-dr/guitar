@@ -30,7 +30,14 @@ export function validateScore(data) {
   for (const [i, bar] of expanded.entries()) {
     if (bar.number !== i + 1) throw new Error('小节编号不连续');
     const duration = bar.events.reduce((n, e) => n + eventBeats(e), 0);
-    if (duration !== bar.beats || ![2,4].includes(bar.beats)) throw new Error(`第${bar.number}小节时值与拍号不符`);
+    if (Math.abs(duration-bar.beats)>1e-8 || ![2,4].includes(bar.beats)) throw new Error(`第${bar.number}小节时值与拍号不符`);
+    for(let index=0;index<bar.events.length;index++){
+      const event=bar.events[index];
+      if(event.tuplet===undefined)continue;
+      const group=bar.events.slice(index,index+3);
+      if(event.tuplet!==3||group.length!==3||group.some(e=>e.tuplet!==3||e.duration!==event.duration||e.dotted||e.doubleDotted))throw new Error('伴奏三连音必须是连续三个等时值音符');
+      index+=2;
+    }
     let previous = 0;
     for (const chord of bar.chords) {
       if (!data.chordShapes[chord.name] || chord.beat <= previous || chord.beat > bar.beats) throw new Error(`第${bar.number}小节和弦无效`);
@@ -183,7 +190,7 @@ function renderBar(bar, data, index, rowHeight, headerCrop) {
   let elapsed = 0;
   const placed = bar.events.map(event => {
     const result = {...event, beat:elapsed+1, x:eventX(elapsed+1)};
-    elapsed += eventBeats(event);
+    elapsed = Math.round((elapsed+eventBeats(event))*960)/960;
     return result;
   });
   const previousBar=data.bars[bar.number-2];
@@ -256,6 +263,12 @@ function renderBar(bar, data, index, rowHeight, headerCrop) {
       }
       flush();
     }
+  }
+  for(let index=0;index<placed.length;index++){
+    if(placed[index].tuplet!==3)continue;
+    const group=placed.slice(index,index+3),left=group[0].x-5,right=group[2].x+5,center=(left+right)/2;
+    svg+='<g class="tab-tuplet">'+line(left,195,left,200)+line(left,200,center-6,200)+line(center+6,200,right,200)+line(right,200,right,195)+text(center,203,3,'tuplet-number','middle')+'</g>';
+    index+=2;
   }
   if(bar.vocal){
     svg+=line(x,216,x,252,'class="bar-line"')+line(x+BAR_WIDTH,216,x+BAR_WIDTH,252,'class="bar-line"');
