@@ -57,7 +57,7 @@ try{
    const bad=await page.locator('.simple-cell').evaluateAll(cells=>cells.filter(c=>{
     const ch=c.querySelector('.simple-chord'),ly=c.querySelector('.simple-lyric');
     const a=ch.getBoundingClientRect(),b=ly.getBoundingClientRect();
-    return Math.abs(a.left-b.left)>1||a.bottom>b.top+1||(ch.textContent&&(ly.classList.contains('simple-placeholder')?ly.textContent!=='_':!getComputedStyle(ly).textDecorationLine.includes('underline')));
+    return Math.abs(a.left-b.left)>1||a.bottom>b.top+1||(ch.textContent&&(!getComputedStyle(ly).textDecorationLine.includes('underline')||getComputedStyle(ly).textDecorationThickness!=='2px'||(ly.classList.contains('simple-placeholder')&&ly.textContent!=='\u3000')));
    }).length);assert.equal(bad,0);
    assert.equal(await page.locator('#score .bar-number:visible,.simple-line .simple-section-heading').count(),0);
    if(width!==320)await page.locator('#score').screenshot({path:`artifacts/${id}-simple-${width}.png`});

@@ -1,7 +1,6 @@
 // Optional compact view. Both layouts are embedded so it also works offline.
 function setupSimpleScore({score,layouts,storageKey}) {
   const button=document.getElementById('score-mode');
-  const status=document.getElementById('score-mode-status');
   const compact={2:document.getElementById('simple-two-bar-score').innerHTML,4:document.getElementById('simple-four-bar-score').innerHTML};
   const navigation=document.querySelector('.section-nav');
   const navLayouts={full:navigation.innerHTML,simple:document.getElementById('simple-section-nav').innerHTML};
@@ -38,10 +37,8 @@ function setupSimpleScore({score,layouts,storageKey}) {
     score.style.width=mode==='simple'||printing?'100%':width+'px';
     score.style.setProperty('--instrument-width',printing?'100%':width+'px');
     button.textContent=mode==='simple'?'切换为完整谱':'切换为简易谱';
-    status.textContent=mode==='simple'?'当前：简易谱':'当前：完整谱';
   }
   button.hidden=false;
-  status.hidden=false;
   button.addEventListener('click',()=>{
     mode=mode==='full'?'simple':'full';
     try {localStorage.setItem(storageKey+':mode',mode);} catch { /* Switching still works for this visit. */ }

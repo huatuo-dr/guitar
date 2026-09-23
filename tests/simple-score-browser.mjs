@@ -39,15 +39,21 @@ try {
  assert.deepEqual(await page.locator('#score svg .measure').evaluateAll(bars=>bars.map(b=>b.outerHTML)),originalInstrument,'前奏间奏SVG逐字一致');
  assert.deepEqual(await page.locator('#score .lyric, #score .simple-lyric:not(.simple-placeholder)').allTextContents(),fullLyrics,'所有歌词顺序不变');
  assert.deepEqual((await page.locator('#score .chord-name, #score .simple-chord').allTextContents()).filter(Boolean),fullChords,'所有和弦顺序不变');
- assert.equal(await page.locator('#bar-14 .simple-placeholder').textContent(),'_','无新歌词的换和弦使用独立下划线');
+ assert.equal(await page.locator('#bar-14 .simple-placeholder').textContent(),'\u3000','无新歌词的换和弦使用独立下划线');
  const checkUnderlines=async()=>{
   const invalid=await page.locator('#score .simple-cell').evaluateAll(cells=>cells.filter(cell=>{
    const chord=cell.querySelector('.simple-chord').textContent;
    const lyric=cell.querySelector('.simple-lyric');
-   const underline=getComputedStyle(lyric).textDecorationLine.includes('underline');
-   return chord?(lyric.classList.contains('simple-placeholder')?lyric.textContent!=='_':!underline):underline;
+   const style=getComputedStyle(lyric);
+   const underline=style.textDecorationLine.includes('underline');
+   return chord?(!underline||style.textDecorationThickness!=='2px'||(lyric.classList.contains('simple-placeholder')&&lyric.textContent!=='\u3000')):underline;
   }).length);
-  assert.equal(invalid,0,'只有和弦对应的歌词加下划线，空位使用独立下划线');
+  assert.equal(invalid,0,'和弦对应的歌词及空位均使用 2px 下划线');
+  const widths=await page.evaluate(()=>[
+   document.querySelector('#score .simple-chord-lyric'),
+   document.querySelector('#score .simple-placeholder:not(:empty)')
+  ].map(el=>el.getBoundingClientRect().width));
+  assert.ok(Math.abs(widths[0]-widths[1])<0.1,'独立下划线与单字下划线等长');
  };
  await checkUnderlines();
  await page.emulateMedia({media:'print'});await checkUnderlines();await page.emulateMedia({media:null});

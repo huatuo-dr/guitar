@@ -35,7 +35,7 @@ function renderCell({bar,token,index,id}) {
   const verseCount=Math.max(1,lyricLines(bar.vocal));
   const lyrics=Array.from({length:verseCount},(_,i)=>token.lyrics[i]||'');
   const anchor=index===0?` id="${id}" tabindex="-1" aria-label="第${bar.number}小节"`:'';
-  return `<span class="simple-cell${index===0?' simple-measure measure':''}"${anchor} data-bar="${bar.number}" data-beat="${token.beat}"><span class="simple-chord">${escape(token.chord)}</span>${lyrics.map(lyric=>`<span class="simple-lyric${lyric?(token.chord?' simple-chord-lyric':''):' simple-placeholder'}">${lyric?escape(lyric):(token.chord?'_':'')}</span>`).join('')}</span>`;
+  return `<span class="simple-cell${index===0?' simple-measure measure':''}"${anchor} data-bar="${bar.number}" data-beat="${token.beat}"><span class="simple-chord">${escape(token.chord)}</span>${lyrics.map(lyric=>`<span class="simple-lyric${lyric?(token.chord?' simple-chord-lyric':''):' simple-placeholder'}">${lyric?escape(lyric):(token.chord?'\u3000':'')}</span>`).join('')}</span>`;
 }
 
 // Phrase boundaries refer to musical onsets, so lyrics/chords stay attached and
@@ -105,7 +105,7 @@ export function renderSimpleNavigation(data) {
 }
 
 export function renderSimpleScore(data,barsPerRow=4) {
-  let html='<p class="simple-help">已按演奏顺序展开，直接向下阅读即可。歌词按段落排版，句间留空，随屏幕宽度换行；和弦对应的歌词下方加下划线，单独的“_”表示此处换和弦但没有新歌词。演唱段的详细节奏可切回完整谱查看。每行小节与缩放选项作用于完整保留的器乐段。</p>';
+  let html='';
   let pending=[];
   const flushLyrics=()=>{
     if(!pending.length)return;

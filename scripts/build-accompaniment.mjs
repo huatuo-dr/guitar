@@ -42,7 +42,7 @@ export async function buildAccompaniment(id,filename) {
     READING_NOTE:simple ? '完整版按原谱书写顺序保留反复；简易版已按演奏顺序展开，可以从上往下连续阅读。' : '小节仍按书写顺序保留，没有展开反复；上方演奏顺序列出了完整行进路线。',
     ROUTE_ATTRIBUTES:simple ? ' data-score-route' : '',
     SIMPLE_CSS:simple ? await readFile(new URL('src/simple-score.css',root),'utf8') : '',
-    SIMPLE_CONTROL:simple ? '<div class="score-mode-control"><button type="button" id="score-mode" aria-controls="score" hidden>切换为简易谱</button><span id="score-mode-status" role="status" hidden>当前：完整谱</span></div>' : '',
+    SIMPLE_CONTROL:simple ? '<div class="score-mode-control"><button type="button" id="score-mode" aria-controls="score" hidden>切换为简易谱</button></div>' : '',
     SIMPLE_TEMPLATES:simple ? `<template id="simple-section-nav">${renderSimpleNavigation(data)}</template><template id="simple-four-bar-score">${renderSimpleScore(data,4)}</template><template id="simple-two-bar-score">${renderSimpleScore(data,2)}</template>` : '',
     SIMPLE_SETUP:simple ? 'const simpleView=setupSimpleScore({score,layouts,storageKey:'+JSON.stringify(`guitar-view:${id}:v1`)+'});' : '',
     SIMPLE_APPLY:simple ? 'if(simpleView){simpleView.render({barsPerRow,width,printing});return;}' : '',
