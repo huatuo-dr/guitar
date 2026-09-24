@@ -6,6 +6,14 @@ import * as alphaTab from '@coderline/alphatab';
 const dataUrl = new URL('../score/intro.json', import.meta.url);
 const texUrl = new URL('../score/intro.alphatex', import.meta.url);
 
+test('全曲提供 60 BPM 练习节奏，仍保留 61 小节', () => {
+  const tex=readFileSync(new URL('../score/score.alphatex',import.meta.url),'utf8');
+  assert.match(tex,/\\tempo 60\b/);
+  const importer=new alphaTab.importer.AlphaTexImporter();
+  importer.initFromString(tex,new alphaTab.Settings());
+  assert.equal(importer.readScore().masterBars.length,61);
+});
+
 test('前奏包含第 1–4 小节，每小节恰为 4 拍，弦位与品位有效', () => {
   assert.ok(existsSync(dataUrl), '需要先转录前奏数据');
   const data = JSON.parse(readFileSync(dataUrl));

@@ -240,7 +240,7 @@ function setupScoreAutoScroll({storageKey}) {
     // External scrolling (including touch inertia and section jumps) owns the
     // position. Start again from wherever the reader leaves the page.
     if(Math.abs(currentY-expectedY)>.5){expectedY=currentY;yieldToReader();}
-    if(document.hidden||printing||touching||pointers.size||now<yieldUntil)remainder=0;
+    if(document.hidden||printing||touching||pointers.size||now<yieldUntil||document.body.dataset.playerPlaying==='true')remainder=0;
     else {
       remainder += speed.pixels*seconds;
       const pixels = Math.floor(remainder);

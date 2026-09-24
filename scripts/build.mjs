@@ -40,31 +40,34 @@ function toAlphaTex(score) {
     }).join(' ');
     return (section ? `\\section "${section.name}"\n` : '') + content;
   });
-  return `\\title "${score.title}"\n\\capo ${score.capo}\n.\n\\ts ${score.timeSignature.join(' ')}\n${bars.join('\n|\n')}\n`;
+  return `\\title "${score.title}"\n\\capo ${score.capo}\n\\tempo 60\n.\n\\ts ${score.timeSignature.join(' ')}\n${bars.join('\n|\n')}\n`;
 }
 
 const tex = toAlphaTex(data);
 await writeFile(new URL('score/intro.alphatex', root), toAlphaTex({...intro,title:data.title}));
 await writeFile(new URL('score/score.alphatex', root), tex);
 
-const [template, library, font, license, fontLicense] = await Promise.all([
+const [template, library, font, soundFont, license, fontLicense, soundFontLicense] = await Promise.all([
   read('src/template.html'),
   read('node_modules/@coderline/alphatab/dist/alphaTab.js'),
   readFile(new URL('node_modules/@coderline/alphatab/dist/font/Bravura.woff2', root)),
+  readFile(new URL('node_modules/@coderline/alphatab/dist/soundfont/sonivox.sf2', root)),
   read('node_modules/@coderline/alphatab/LICENSE'),
-  read('node_modules/@coderline/alphatab/dist/font/Bravura-OFL.txt')
+  read('node_modules/@coderline/alphatab/dist/font/Bravura-OFL.txt'),
+  read('node_modules/@coderline/alphatab/dist/soundfont/LICENSE')
 ]);
 const escapeJson = value => JSON.stringify(value).replaceAll('<', '\\u003c');
 const tokens = {
-  VIEW: await read('src/score-view.js')+'\n'+await read('src/auto-scroll.js'),
+  VIEW: await read('src/score-view.js')+'\n'+await read('src/auto-scroll.js')+'\n'+await read('src/pianai-player.js'),
   AUTO_SCROLL_CSS: await read('src/auto-scroll.css'),
   LIBRARY: showTiedSlideFrets(library).replace(/\/\/# sourceMappingURL=.*$/gm, '').replace(/<\/script/gi, '<\\/script'),
   FONT: font.toString('base64'),
+  SOUNDFONT: soundFont.toString('base64'),
   TEX: escapeJson(tex),
   DATA: escapeJson(data),
-  LICENSE: `${license}\n\n${fontLicense}`.replaceAll('&', '&amp;').replaceAll('<', '&lt;')
+  LICENSE: `${license}\n\n${fontLicense}\n\n${soundFontLicense}`.replaceAll('&', '&amp;').replaceAll('<', '&lt;')
 };
-const html = template.replace(/@@(LIBRARY|FONT|TEX|DATA|LICENSE|VIEW|AUTO_SCROLL_CSS)@@/g, (_, token) => tokens[token]);
+const html = template.replace(/@@(LIBRARY|FONT|SOUNDFONT|TEX|DATA|LICENSE|VIEW|AUTO_SCROLL_CSS)@@/g, (_, token) => tokens[token]);
 await mkdir(new URL('sheet_music/', root), {recursive:true});
 await writeFile(new URL('sheet_music/偏爱指弹.html', root), html);
-console.log(`生成 sheet_music/偏爱指弹.html：${(Buffer.byteLength(html) / 1024 / 1024).toFixed(2)} MB，${data.bars.length} 小节，脚本与字体已内嵌。`);
+console.log(`生成 sheet_music/偏爱指弹.html：${(Buffer.byteLength(html) / 1024 / 1024).toFixed(2)} MB，${data.bars.length} 小节，脚本、字体与音色已内嵌。`);
