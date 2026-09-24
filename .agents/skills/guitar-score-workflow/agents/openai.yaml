@@ -1,0 +1,4 @@
+interface:
+  display_name: "小k吉他制谱"
+  short_description: "本项目截图与网页吉他谱转录、简易谱制作及独立HTML校核流程"
+  default_prompt: "使用 $guitar-score-workflow，根据我提供的参考材料完成本项目曲谱的制作或修订。"
