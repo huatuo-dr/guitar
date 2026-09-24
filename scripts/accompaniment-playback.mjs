@@ -1,8 +1,8 @@
 import {expandBars,performanceOrder,validateScore} from './accompaniment-svg.mjs';
 import {eventBeats} from './numbered-notation.mjs';
 
-// Convert the written accompaniment, not the vocal melody, to a performed
-// guitar voice. Explicit frets take precedence; crosses use the current shape.
+// Convert the written guitar part, not the separate numbered melody, to a
+// performed voice. Explicit frets take precedence; crosses use the current shape.
 export function buildAccompanimentPlayback(data) {
   validateScore(data);
   const bars=expandBars(data);
@@ -59,5 +59,10 @@ export function buildAccompanimentPlayback(data) {
     texBars.push(`\\ts ${bar.beats} 4 ${events.join(' ')}`);
     tick+=elapsed;
   }
-  return {tempo:60,totalTicks:tick,sequence,tex:`\\title "${data.title}"\n\\instrument 25\n\\capo ${data.capo??0}\n\\tempo 60\n.\n${texBars.join('\n|\n')}\n`};
+  return {
+    label:data.scoreType==='fingerstyle'?'指弹':'伴奏',
+    capoNote:data.capo===undefined?'试听按未夹变调夹音高':'',
+    tempo:60,totalTicks:tick,sequence,
+    tex:`\\title "${data.title}"\n\\instrument 25\n\\capo ${data.capo??0}\n\\tempo 60\n.\n${texBars.join('\n|\n')}\n`
+  };
 }

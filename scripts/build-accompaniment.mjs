@@ -13,7 +13,7 @@ export async function buildAccompaniment(id,filename) {
   const accompaniment = JSON.parse(await readFile(new URL(`score/${id}.json`,root),'utf8'));
   const vocals = JSON.parse(await readFile(new URL(`score/${id}-vocal.json`,root),'utf8'));
   const data = attachVocals(accompaniment,vocals);
-  data.playbackEnabled=id==='houlai';
+  data.playbackEnabled=true;
   validateScore(data);
   const player=data.playbackEnabled?await accompanimentPlayerAssets(buildAccompanimentPlayback(data)):null;
 

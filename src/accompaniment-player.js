@@ -98,11 +98,11 @@ function setupAccompanimentPlayer() {
     document.body.dataset.playerState=next;
     document.body.dataset.playerPlaying=String(next==='playing');
     play.textContent=next==='playing'?'暂停':'播放';
-    play.setAttribute('aria-label',next==='playing'?'暂停伴奏':'播放伴奏');
+    play.setAttribute('aria-label',(next==='playing'?'暂停':'播放')+data.label);
     if(next==='stopped') {
       clearHighlight();
       lastRowTop=null;
-      if(ready)status.textContent=`可试听伴奏 · ${speed.value} BPM 为练习速度`;
+      if(ready)status.textContent=`可试听${data.label} · ${speed.value} BPM 为练习速度`;
     } else paint(next==='playing');
   }
   function fail(error) {

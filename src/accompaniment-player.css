@@ -2,7 +2,7 @@
 .player-controls button{padding:9px 13px;border:1px solid var(--green);border-radius:6px;background:var(--green);color:white;font-size:13px}
 .player-controls button:disabled{opacity:.45;cursor:wait}
 .player-controls #player-stop{background:#fafbf7;color:var(--ink);border-color:#d6dcd2}
-#player-status{font-size:12px;color:var(--muted)}
+#player-status,#player-capo-note{font-size:12px;color:var(--muted)}
 .player-licenses pre{white-space:pre-wrap;max-height:180px;overflow:auto;font-size:10px}
 @media screen{
   #score .measure.player-current .measure-highlight{fill:rgba(49,124,85,.18)}
