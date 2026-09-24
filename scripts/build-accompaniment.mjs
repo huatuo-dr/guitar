@@ -2,6 +2,8 @@ import {mkdir, readFile, writeFile} from 'node:fs/promises';
 import {renderScore, renderChordGuide, validateScore} from './accompaniment-svg.mjs';
 import {attachVocals} from './numbered-notation.mjs';
 import {renderSimpleScore,renderSimpleNavigation} from './simple-score.mjs';
+import {buildAccompanimentPlayback} from './accompaniment-playback.mjs';
+import {accompanimentPlayerAssets} from './player-assets.mjs';
 
 const root = new URL('../', import.meta.url);
 const escape = value => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
@@ -11,7 +13,9 @@ export async function buildAccompaniment(id,filename) {
   const accompaniment = JSON.parse(await readFile(new URL(`score/${id}.json`,root),'utf8'));
   const vocals = JSON.parse(await readFile(new URL(`score/${id}-vocal.json`,root),'utf8'));
   const data = attachVocals(accompaniment,vocals);
+  data.playbackEnabled=id==='houlai';
   validateScore(data);
+  const player=data.playbackEnabled?await accompanimentPlayerAssets(buildAccompanimentPlayback(data)):null;
 
   const meters = [...new Set(data.bars.map(bar => `${bar.beats??data.timeSignature?.[0]??4}/${data.timeSignature?.[1]??4}`))];
   const metadata = [];
@@ -38,6 +42,11 @@ export async function buildAccompaniment(id,filename) {
   const hasChords=Object.keys(data.chordShapes).length>0;
   const simple=!!data.simpleScore&&!fingerstyle;
   const tokens = {
+    PLAYER_CSS:player?await readFile(new URL('src/accompaniment-player.css',root),'utf8'):'',
+    PLAYER_CONTROLS:player?.controls??'',
+    PLAYER_ASSETS:player?.assets??'',
+    PLAYER_LICENSES:player?.licenses??'',
+    PLAYER_SETUP:player?'accompanimentPlayer=setupAccompanimentPlayer();':'',
     FOOTER_LABEL:simple ? '原谱' : '全曲',
     READING_NOTE:simple ? '完整版按原谱书写顺序保留反复；简易版已按演奏顺序展开，可以从上往下连续阅读。' : '小节仍按书写顺序保留，没有展开反复；上方演奏顺序列出了完整行进路线。',
     ROUTE_ATTRIBUTES:simple ? ' data-score-route' : '',
@@ -61,7 +70,7 @@ export async function buildAccompaniment(id,filename) {
     ROUTE:data.route.map((r,i) => `<a href="#bar-${r.start}" data-jump="${r.start}"><span>${i+1}. ${escape(r.label)}</span><strong>${r.start}–${r.end}</strong></a>`).join(''),
     ROUTE_PRINT:escape(routePrint), BAR_COUNT:data.bars.length,
     SCORE:renderScore(data), SCORE_TWO:renderScore(data,2),
-    VIEW:await readFile(new URL('src/score-view.js',root),'utf8')+'\n'+await readFile(new URL('src/auto-scroll.js',root),'utf8')+(simple?'\n'+await readFile(new URL('src/simple-score.js',root),'utf8'):''),
+    VIEW:await readFile(new URL('src/score-view.js',root),'utf8')+'\n'+await readFile(new URL('src/auto-scroll.js',root),'utf8')+(simple?'\n'+await readFile(new URL('src/simple-score.js',root),'utf8'):'')+(player?'\n'+await readFile(new URL('src/accompaniment-player.js',root),'utf8'):''),
     AUTO_SCROLL_CSS:await readFile(new URL('src/auto-scroll.css',root),'utf8'),
     STORAGE_KEY:JSON.stringify(`guitar-view:${id}:v1`).replaceAll('<','\\u003c'),
     NOTES:[...(data.notes??[]),...data.vocalNotes,...(data.simpleScore?.notes??[])].map(note => `<li>${escape(note)}</li>`).join('')

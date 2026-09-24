@@ -156,8 +156,15 @@ function renderBar(bar, data, index, rowHeight, headerCrop) {
   const inset=meterChange?45:21;
   const span = BAR_WIDTH - inset - 21;
   const eventX = createBeatPositioner(bar.events,bar.vocal,bar.beats,x+inset,span);
+  let playbackAttributes='';
+  if(data.playbackEnabled){
+    let beat=1;
+    const points=bar.events.map(event=>{const point=[beat,eventX(beat)];beat=Math.round((beat+eventBeats(event))*960)/960;return point;});
+    points.push([bar.beats+1,eventX(bar.beats+1)]);
+    playbackAttributes=` data-playback-points="${escape(JSON.stringify(points))}"`;
+  }
   const section = data.sections.find(s => s.start === bar.number);
-  let svg = `<g class="measure" id="bar-${bar.number}" data-bar="${bar.number}" tabindex="-1"><title>${escape(measureDescription(bar))}</title>`;
+  let svg = `<g class="measure" id="bar-${bar.number}" data-bar="${bar.number}" tabindex="-1"${playbackAttributes}><title>${escape(measureDescription(bar))}</title>`;
   svg += `<rect class="measure-highlight" x="${x+2}" y="1" width="${BAR_WIDTH-4}" height="${rowHeight-2}" rx="5"/>`;
   svg += text(x+2,TOP-6,bar.number,'bar-number','end');
   if (section) svg += text(x+37,13+headerCrop,section.name,'section-label');
