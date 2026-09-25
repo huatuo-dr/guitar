@@ -70258,7 +70258,7 @@ async function exportScoreImages(trigger,barCount) {
 }
 
 // Inlined into each standalone score by the build scripts.
-function setupScoreView({storageKey, viewport, baseWidths, apply}) {
+function setupScoreView({storageKey, viewport, baseWidths, apply, autoScroll=true}) {
   const rowsControl = document.getElementById('bars-per-row');
   const zoomControl = document.getElementById('zoom');
   const hint = document.getElementById('view-hint');
@@ -70296,13 +70296,17 @@ function setupScoreView({storageKey, viewport, baseWidths, apply}) {
   window.addEventListener('beforeprint',()=>print(true));
   window.addEventListener('afterprint',()=>print(printMedia.matches));
   update();
-  setupScoreAutoScroll({storageKey:storageKey+':auto-scroll'});
+  if(autoScroll)setupScoreAutoScroll({storageKey:storageKey+':auto-scroll'});
 }
 
-// Capture the parsed standalone document before rendering or adding runtime UI.
+// Capture a pristine standalone document before adding runtime UI.
 // A Blob download also works when this page is opened directly via file://.
-function setupScoreDownload() {
-  const source = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+function setupScoreDownload({restore}={}) {
+  // An early reader may already have changed layouts while audio was downloading.
+  // Restore its original markup in a detached copy, keeping the complete audio assets.
+  const root=restore?document.documentElement.cloneNode(true):document.documentElement;
+  if(restore)restore(root);
+  const source = '<!DOCTYPE html>\n' + root.outerHTML;
   const button = document.getElementById('download');
   button.addEventListener('click', () => {
     const url = URL.createObjectURL(new Blob([source], {type:'text/html;charset=utf-8'}));

@@ -72,15 +72,15 @@
     <p class="source-link">参考：@@SOURCE_CREDIT@@ · @@SOURCE_DETAIL@@</p>
     <footer>@@FOOTER_LABEL@@ · @@BAR_COUNT@@ 小节 · 小节编号与段名用于阅读定位</footer>@@PLAYER_LICENSES@@
   </article></main>
-  @@PLAYER_ASSETS@@<script>@@VIEW@@</script>
+  <script>@@VIEW@@</script>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      setupScoreDownload();
-      setupScoreExport();
+    (() => {
+      // Reading controls work as soon as the SVG and compact layouts have arrived.
+      let initialMain=document.querySelector('main').cloneNode(true);
       const score = document.getElementById('score');
       const layouts = {4:score.innerHTML,2:document.getElementById('two-bar-score').innerHTML};
       let currentRows=4;@@SIMPLE_SETUP@@
-      setupScoreView({storageKey:@@STORAGE_KEY@@,viewport:document.querySelector('.score-viewport'),baseWidths:{2:600,4:1140},apply({barsPerRow,width,printing}) {
+      setupScoreView({autoScroll:false,storageKey:@@STORAGE_KEY@@,viewport:document.querySelector('.score-viewport'),baseWidths:{2:600,4:1140},apply({barsPerRow,width,printing}) {
         @@SIMPLE_APPLY@@if(currentRows!==barsPerRow){
           const focused=score.querySelector('.measure.current')?.id;
           score.innerHTML=layouts[barsPerRow];
@@ -90,7 +90,17 @@
         score.dataset.barsPerRow=barsPerRow;
         score.style.width=printing?'100%':width+'px';
       }});
-      document.getElementById('print').addEventListener('click', () => window.print());@@PLAYER_SETUP@@
+      document.getElementById('print').addEventListener('click', () => window.print());
+      document.addEventListener('DOMContentLoaded', () => {
+        setupScoreDownload({restore(root) {
+          root.querySelector('main').replaceWith(initialMain);
+          root.querySelector('body').removeAttribute('data-score-mode');
+        }});
+        initialMain=null;
+        setupScoreExport();
+        setupScoreAutoScroll({storageKey:@@STORAGE_KEY@@+':auto-scroll'});
+        @@PLAYER_SETUP@@
+      });
       document.addEventListener('click', event => {
         const link=event.target.closest('[data-jump]');
         if(!link)return;
@@ -106,7 +116,8 @@
         target.scrollIntoView({block:'center', inline:'center', behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
         target.focus({preventScroll:true});
       });
-    });
+    })();
   </script>
+  @@PLAYER_ASSETS@@
 </body>
 </html>
