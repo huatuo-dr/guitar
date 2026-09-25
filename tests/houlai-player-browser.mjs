@@ -111,7 +111,7 @@ try {
 
   await mkdir(new URL('../artifacts/',import.meta.url),{recursive:true});
   const downloading=page.waitForEvent('download');
-  await page.locator('#download').click();
+  await page.locator('.export-menu > summary').click();await page.locator('#download').click();
   const saved=new URL('../artifacts/houlai-player-download.html',import.meta.url);
   await (await downloading).saveAs(saved.pathname);
   const downloaded=await context.newPage();

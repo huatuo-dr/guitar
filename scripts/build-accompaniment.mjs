@@ -1,3 +1,4 @@
+import {scoreExportAssets} from './score-export-assets.mjs';
 import {mkdir, readFile, writeFile} from 'node:fs/promises';
 import {renderScore, renderChordGuide, validateScore} from './accompaniment-svg.mjs';
 import {attachVocals} from './numbered-notation.mjs';
@@ -41,7 +42,9 @@ export async function buildAccompaniment(id,filename) {
   const fingerstyle=data.scoreType==='fingerstyle';
   const hasChords=Object.keys(data.chordShapes).length>0;
   const simple=!!data.simpleScore&&!fingerstyle;
+  const exportAssets=await scoreExportAssets();
   const tokens = {
+    EXPORT_CSS:exportAssets.css,
     PLAYER_CSS:player?await readFile(new URL('src/accompaniment-player.css',root),'utf8'):'',
     PLAYER_CONTROLS:player?.controls??'',
     PLAYER_ASSETS:player?.assets??'',
@@ -70,7 +73,7 @@ export async function buildAccompaniment(id,filename) {
     ROUTE:data.route.map((r,i) => `<a href="#bar-${r.start}" data-jump="${r.start}"><span>${i+1}. ${escape(r.label)}</span><strong>${r.start}–${r.end}</strong></a>`).join(''),
     ROUTE_PRINT:escape(routePrint), BAR_COUNT:data.bars.length,
     SCORE:renderScore(data), SCORE_TWO:renderScore(data,2),
-    VIEW:await readFile(new URL('src/score-view.js',root),'utf8')+'\n'+await readFile(new URL('src/auto-scroll.js',root),'utf8')+(simple?'\n'+await readFile(new URL('src/simple-score.js',root),'utf8'):'')+(player?'\n'+await readFile(new URL('src/player-initialization.js',root),'utf8')+'\n'+await readFile(new URL('src/accompaniment-player.js',root),'utf8'):''),
+    VIEW:exportAssets.script+'\n'+await readFile(new URL('src/score-view.js',root),'utf8')+'\n'+await readFile(new URL('src/auto-scroll.js',root),'utf8')+(simple?'\n'+await readFile(new URL('src/simple-score.js',root),'utf8'):'')+(player?'\n'+await readFile(new URL('src/player-initialization.js',root),'utf8')+'\n'+await readFile(new URL('src/accompaniment-player.js',root),'utf8'):''),
     AUTO_SCROLL_CSS:await readFile(new URL('src/auto-scroll.css',root),'utf8'),
     STORAGE_KEY:JSON.stringify(`guitar-view:${id}:v1`).replaceAll('<','\\u003c'),
     NOTES:[...(data.notes??[]),...data.vocalNotes,...(data.simpleScore?.notes??[])].map(note => `<li>${escape(note)}</li>`).join('')

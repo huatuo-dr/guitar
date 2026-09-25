@@ -42,6 +42,7 @@ try{
  }
  await page.reload();assert.equal(await page.locator('#zoom').inputValue(),'0.65');
  await page.locator('#zoom').selectOption('fit');
+ await page.locator('.section-picker > summary').click();
  await page.locator('.section-nav [data-jump="39"]').click();
  assert.equal(await page.locator('#bar-39').evaluate(el=>el===document.activeElement),true);
  await page.evaluate(()=>scrollTo(0,0));

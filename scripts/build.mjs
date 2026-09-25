@@ -1,3 +1,4 @@
+import {scoreExportAssets} from './score-export-assets.mjs';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { showTiedSlideFrets } from './alphatab-display.mjs';
 import { attachLyrics } from './pianai-lyrics.mjs';
@@ -57,8 +58,10 @@ const [template, library, font, soundFont, license, fontLicense, soundFontLicens
   read('node_modules/@coderline/alphatab/dist/soundfont/LICENSE')
 ]);
 const escapeJson = value => JSON.stringify(value).replaceAll('<', '\\u003c');
+const exportAssets=await scoreExportAssets();
 const tokens = {
-  VIEW: await read('src/score-view.js')+'\n'+await read('src/auto-scroll.js')+'\n'+await read('src/player-initialization.js')+'\n'+await read('src/pianai-player.js'),
+  EXPORT_CSS:exportAssets.css,
+  VIEW: exportAssets.script+'\n'+await read('src/score-view.js')+'\n'+await read('src/auto-scroll.js')+'\n'+await read('src/player-initialization.js')+'\n'+await read('src/pianai-player.js'),
   AUTO_SCROLL_CSS: await read('src/auto-scroll.css'),
   LIBRARY: showTiedSlideFrets(library).replace(/\/\/# sourceMappingURL=.*$/gm, '').replace(/<\/script/gi, '<\\/script'),
   FONT: font.toString('base64'),
@@ -67,7 +70,7 @@ const tokens = {
   DATA: escapeJson(data),
   LICENSE: `${license}\n\n${fontLicense}\n\n${soundFontLicense}`.replaceAll('&', '&amp;').replaceAll('<', '&lt;')
 };
-const html = template.replace(/@@(LIBRARY|FONT|SOUNDFONT|TEX|DATA|LICENSE|VIEW|AUTO_SCROLL_CSS)@@/g, (_, token) => tokens[token]);
+const html = template.replace(/@@(LIBRARY|FONT|SOUNDFONT|TEX|DATA|LICENSE|VIEW|AUTO_SCROLL_CSS|EXPORT_CSS)@@/g, (_, token) => tokens[token]);
 await mkdir(new URL('sheet_music/', root), {recursive:true});
 await writeFile(new URL('sheet_music/偏爱指弹.html', root), html);
 console.log(`生成 sheet_music/偏爱指弹.html：${(Buffer.byteLength(html) / 1024 / 1024).toFixed(2)} MB，${data.bars.length} 小节，脚本、字体与音色已内嵌。`);

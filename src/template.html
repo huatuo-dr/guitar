@@ -27,7 +27,7 @@
     .controls { display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
     .control-group { display:flex; align-items:center; gap:5px; white-space:nowrap; }
     #view-hint { flex-basis:100%; font-size:12px; color:var(--muted); }
-    select, .print-button, .download-button { padding:9px 13px; border:1px solid #d6dcd2; border-radius:6px; background:#fafbf7; color:var(--ink); font-size:13px; }
+    select { padding:9px 13px; border:1px solid #d6dcd2; border-radius:6px; background:#fafbf7; color:var(--ink); font-size:13px; }
     .player-controls { display:flex; flex-wrap:wrap; align-items:center; gap:8px; flex-basis:100%; }
     .player-controls button { padding:9px 13px; border:1px solid var(--green); border-radius:6px; background:var(--green); color:white; font-size:13px; }
     .player-controls button:disabled { opacity:.45; cursor:wait; }
@@ -54,7 +54,9 @@
     }
     .score-error { padding:16px; color:#8e3625; background:#fff0e9; border:1px solid #e0bbb0; }
     #status { font-size:12px; color:var(--muted); margin:0 0 10px; }
-    .legend { border-bottom:1px solid var(--line); display:flex; flex-wrap:wrap; gap:13px 30px; padding:18px 0; font-size:12px; color:var(--muted); }
+    .legend { margin:12px 0; font-size:12px; color:var(--muted); }
+    .legend > summary { padding:5px 0; font-size:13px; font-weight:600; color:var(--ink); }
+    .legend-content { display:flex; flex-wrap:wrap; gap:13px 30px; padding:8px 0 12px; }
     .legend b { color:var(--ink); font-family:Georgia,serif; font-size:16px; display:inline-block; margin-right:7px; }
     .legend-notes { flex-basis:100%; display:flex; flex-wrap:wrap; gap:10px 30px; }
     .sheet-footer { margin-top:26px; display:flex; justify-content:space-between; color:#92988e; font-size:10px; letter-spacing:.06em; }
@@ -74,7 +76,7 @@
       .metadata { gap:22px; padding-top:0; text-align:left; }
       .metadata strong { font-size:15px; }
       .metadata span { font-size:9px; }
-      .legend { gap:10px 20px; }
+      .legend-content { gap:10px 20px; }
     }
     @page { size:A4 portrait; margin:12mm; }
     @media print {
@@ -92,21 +94,27 @@
       .at-surface { height:auto!important; overflow:visible!important; }
       .at-surface>div { position:static!important; display:block!important; break-inside:avoid; }
     }
+    .section-picker { margin:0; max-width:100%; align-self:flex-start; }
+    .section-picker[open] { flex-basis:100%; }
+    .section-picker > summary { cursor:pointer; width:fit-content; padding:9px 0; color:var(--muted); font-size:12px; font-weight:400; }
+    .section-picker > summary span { margin-left:8px; font-size:11px; }
+    .section-picker .collapse-label, .section-picker[open] .expand-label { display:none; }
+    .section-picker[open] .collapse-label { display:inline; }
+    .section-picker .section-nav { margin-top:6px; }
+    @@EXPORT_CSS@@
   </style>
 </head>
 <body>
   <header class="topbar">
     <div class="brand"><span class="brand-mark" aria-hidden="true"></span>小k吉他练习</div>
-    <a class="back" href="../index.html">← 返回曲谱库</a>
+    <div class="topbar-actions"><details class="export-menu"><summary>导出</summary><div class="export-options"><button type="button" id="export-image">图片</button><button type="button" id="print">PDF</button><button type="button" id="download" data-filename="偏爱指弹.html">HTML</button></div></details><a class="back" href="../index.html">← 返回曲谱库</a></div>
   </header>
   <main>
     <nav class="toolbar" aria-label="乐谱工具">
-      <div class="section-nav" id="section-nav"><span class="label">段定位</span></div>
+      <details class="section-picker"><summary>段定位<span class="expand-label">展开</span><span class="collapse-label">收起</span></summary><div class="section-nav" id="section-nav" role="group" aria-label="段定位"></div></details>
       <div class="controls">
         <div class="control-group"><label class="label" for="bars-per-row">每行小节</label><select id="bars-per-row"><option value="auto" selected>自动</option><option value="2">2 小节</option><option value="4">4 小节</option></select></div>
         <div class="control-group"><label class="label" for="zoom">谱面大小</label><select id="zoom"><option value="fit" selected>适应宽度</option><option value="0.5">50%</option><option value="0.65">65%</option><option value="0.85">85%</option><option value="1">100%</option><option value="1.2">120%</option><option value="1.4">140%</option></select></div>
-        <button type="button" class="print-button" id="print">打印 / 存为 PDF</button>
-        <button type="button" class="download-button" id="download" data-filename="偏爱指弹.html">下载 HTML</button>
         <span id="view-hint" aria-live="polite"></span>
         <div class="player-controls" aria-label="乐谱播放">
           <button type="button" id="player-play" disabled>播放</button>
@@ -122,7 +130,7 @@
         <div><div class="eyebrow">GUITAR TABLATURE</div><h1>《偏爱》指弹</h1></div>
         <div class="metadata"><div><span>拍号</span><strong>4 / 4</strong></div><div><span>变调夹</span><strong>第 2 品</strong></div></div>
       </header>
-      <div class="legend" aria-label="演奏记号说明"><span><b>H</b>击弦</span><span><b>P</b>勾弦</span><span><b>×</b>闷音</span><span><b>&lt;7&gt;</b>7 品自然泛音</span><span><b>↑</b>琶音方向</span><span><b>sl.</b>连奏滑音</span><span><b>3</b>三连音</span><span><b>*</b>打板</span><div class="legend-notes"><span>同音弧线：延音，不再拨弦</span><span>小字号音符：装饰音</span></div></div>
+      <details class="legend"><summary>标记说明</summary><div class="legend-content" aria-label="演奏记号说明"><span><b>H</b>击弦</span><span><b>P</b>勾弦</span><span><b>×</b>闷音</span><span><b>&lt;7&gt;</b>7 品自然泛音</span><span><b>↑</b>琶音方向</span><span><b>sl.</b>连奏滑音</span><span><b>3</b>三连音</span><span><b>*</b>打板</span><div class="legend-notes"><span>同音弧线：延音，不再拨弦</span><span>小字号音符：装饰音</span></div></div></details>
       <div class="score-area" id="score-area"><p id="status" role="status">正在排版乐谱…</p><div id="score" role="img" aria-label="《偏爱》指弹第 1 至 61 小节，含前奏及 A–G 段，4/4 拍，变调夹第二品。详细音符可在下方转录内容中查看。"></div></div>
       <footer class="sheet-footer"><span>全曲 · 61 小节</span><span>品位与演奏记号按原谱转录</span></footer>
     </article>
@@ -145,6 +153,7 @@
     let api;
     document.addEventListener('DOMContentLoaded', () => {
       setupScoreDownload();
+      setupScoreExport({barCount:()=>api.score?.masterBars.length});
       const scoreData = @@DATA@@;
       const alphaTex = @@TEX@@;
       const soundFontBase64 = '@@SOUNDFONT@@';

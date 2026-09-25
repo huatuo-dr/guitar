@@ -1,0 +1,76 @@
+import assert from 'node:assert/strict';
+import {fileURLToPath} from 'node:url';
+import {readFile,mkdir} from 'node:fs/promises';
+import {chromium} from 'playwright';
+const root=new URL('../',import.meta.url);
+await mkdir(new URL('artifacts/exports/',root),{recursive:true});
+const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH?{executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH}:{})});
+try {
+ const context=await browser.newContext({offline:true,viewport:{width:390,height:844},reducedMotion:'reduce'});
+ const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ const cases=[['卡农指弹版本2',false],['偏爱指弹',false],['后来弹唱伴奏',false],['老男孩弹唱伴奏',false],['空心弹唱伴奏',false],['突然好想你弹唱伴奏',false],['卡农指弹',false],['后来弹唱伴奏',true],['老男孩弹唱伴奏',true],['空心弹唱伴奏',true],['突然好想你弹唱伴奏',true]];
+ for(const [name,simple] of cases){
+  await page.goto(new URL(`sheet_music/${name}.html`,root).href);
+  await page.waitForFunction(()=>document.body.dataset.renderState==='ready');
+  assert.equal(await page.locator('.topbar .export-menu').count(),1,'导出菜单位于顶部');
+  const menu=page.locator('.export-menu');
+  assert.equal(await menu.evaluate(e=>e.open),false);
+  const a=await menu.boundingBox(),b=await page.locator('.back').boundingBox();assert.ok(a.x+a.width<=b.x);
+  assert.equal(await page.locator('.toolbar #print,.toolbar #download').count(),0);
+  await menu.locator('summary').click();
+  assert.deepEqual(await menu.locator('button').allTextContents(),['图片','PDF','HTML']);
+  await page.keyboard.press('Escape');assert.equal(await menu.evaluate(e=>e.open),false);
+  await menu.locator('summary').click();await page.locator('h1').click();assert.equal(await menu.evaluate(e=>e.open),false);
+  await page.evaluate(()=>window.print=()=>window.printInvoked=(window.printInvoked||0)+1);
+  await menu.locator('summary').click();await page.locator('#print').click();
+  assert.equal(await page.evaluate(()=>window.printInvoked),1);
+  assert.equal(await menu.evaluate(e=>e.open),false);
+  if(simple)await page.locator('#score-mode').click();
+  if(name==='卡农指弹'||simple)await page.locator('#bars-per-row').selectOption('4');
+  const previous=await page.evaluate(()=>({rows:document.querySelector('#bars-per-row').value,zoom:document.querySelector('#zoom').value,mode:document.body.dataset.scoreMode}));
+  await page.evaluate(()=>{
+   const render=htmlToImage.toBlob;window.exportFonts=[];
+   htmlToImage.toBlob=(node,options)=>{
+    window.exportFonts.push(...[...node.querySelectorAll('svg text')].filter(e=>e.textContent.codePointAt(0)>57343).map(e=>getComputedStyle(e).fontFamily));
+    return render(node,options);
+   };
+  });
+  await menu.locator('summary').click();await page.locator('#export-image').click();
+  await page.waitForFunction(()=>document.querySelector('.export-dialog')?.dataset.state==='ready',{},{timeout:60000});
+  if(name==='偏爱指弹')assert.ok(await page.evaluate(()=>window.exportFonts.length>0&&window.exportFonts.every(f=>f==='alphaTab')),'音乐符号保留内嵌字体');
+  const images=page.locator('.export-images img');assert.ok(await images.count()>0);
+  const coverage=await page.locator('.export-images figure').evaluateAll(nodes=>nodes.flatMap(n=>JSON.parse(n.dataset.bars)));
+  const expected=await page.locator('#score .measure').evaluateAll(nodes=>nodes.map(n=>n.id));
+  if(expected.length)assert.deepEqual(coverage,expected,'图片包含每个小节且不遗漏或重复');
+  else assert.equal(coverage.length,61,'偏爱图片覆盖61小节');
+  assert.ok(await images.evaluateAll(nodes=>nodes.every(n=>n.naturalWidth===1600&&n.naturalHeight>200&&n.naturalHeight<=2400)));
+  const pending=page.waitForEvent('download');await page.locator('.export-images a[download]').first().click();
+  const file=await pending;assert.match(file.suggestedFilename(),/\.png$/);
+  const saved=new URL(`artifacts/exports/${name}${simple?'-simple':''}.png`,root);await file.saveAs(fileURLToPath(saved));
+  assert.equal((await readFile(saved)).subarray(0,8).toString('hex'),'89504e470d0a1a0a');
+  assert.ok(await images.first().evaluate(img=>{const c=document.createElement('canvas');c.width=img.naturalWidth;c.height=img.naturalHeight;const x=c.getContext('2d');x.drawImage(img,0,0);const pixels=x.getImageData(0,200,c.width,c.height-200).data;let dark=0;for(let i=0;i<pixels.length;i+=4)if(pixels[i]<150&&pixels[i+1]<150&&pixels[i+2]<150)dark++;return dark>2000&&dark/(pixels.length/4)<0.25;}),'图片正文不空白，也不能被大面积黑色覆盖');
+  await page.locator('.export-close').click();
+  assert.deepEqual(await page.evaluate(()=>({rows:document.querySelector('#bars-per-row').value,zoom:document.querySelector('#zoom').value,mode:document.body.dataset.scoreMode})),previous);
+  assert.equal(await page.locator('.export-stage').count(),0);
+  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+  console.log('PASS export menu, PDF, PNG, content, offline, mobile:',name,simple?'simple':'full');
+ }
+ await page.goto(new URL('sheet_music/卡农指弹版本2.html',root).href);
+ await page.setViewportSize({width:320,height:844});
+ await page.locator('.export-menu summary').click();
+ assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+ await page.screenshot({path:new URL('artifacts/exports/menu-mobile.png',root).pathname});
+ await page.evaluate(()=>{htmlToImage.toBlob=()=>Promise.reject(new Error('模拟图片生成失败'));});
+ await page.locator('#export-image').click();
+ await page.waitForFunction(()=>document.querySelector('.export-dialog').dataset.state==='error');
+ assert.match(await page.locator('.export-progress').textContent(),/模拟图片生成失败/);
+ assert.equal(await page.locator('.export-stage').count(),0);
+ await page.locator('.export-close').click();
+ await page.evaluate(()=>{htmlToImage.toBlob=()=>new Promise(()=>{});});
+ await page.locator('.export-menu summary').click();await page.locator('#export-image').click();
+ await page.waitForSelector('.export-stage',{state:'attached'});
+ await page.locator('.export-close').click();
+ assert.equal(await page.locator('.export-stage,.export-dialog').count(),0,'生成中也可关闭并清理');
+ console.log('PASS 320px menu, export failure and cancellation cleanup');
+ assert.deepEqual(errors,[]);
+}finally{await browser.close();}

@@ -24,6 +24,8 @@ try {
  const ids=await page.locator('#score .measure').evaluateAll(bars=>bars.map(b=>b.id));assert.equal(new Set(ids).size,80);
  assert.equal(await page.locator('[data-score-route]').isVisible(),false);
  assert.equal(await page.locator('.section-nav [data-jump]').count(),10);
+ assert.equal(await page.locator('.section-nav a').first().isVisible(),false,'切换简易谱后保持收起');
+ await page.locator('.section-picker > summary').click();
  for(const target of ['1','5','13','29','45','49','57','45-repeat-2','49-repeat-2','65']){
   await page.locator(`.section-nav [data-jump="${target}"]`).click();assert.equal(await page.evaluate(()=>document.activeElement.id),'bar-'+target);
  }
@@ -31,6 +33,8 @@ try {
  await page.locator('#bars-per-row').selectOption('2');assert.equal(await page.locator('#bar-45-repeat-2').getAttribute('class'),'simple-cell simple-measure measure current');
  await page.locator('#bars-per-row').selectOption('4');
  await page.reload();assert.equal(await page.evaluate(()=>location.hash),'#bar-45-repeat-2');
+ assert.equal(await page.locator('.section-nav a').first().isVisible(),false,'刷新后默认收起');
+ await page.locator('.section-picker > summary').click();
  await page.locator('#score-mode').click();assert.equal(await page.locator('.section-nav [data-jump]').count(),8);
  assert.equal(await page.evaluate(()=>location.hash),'#bar-45','刷新后切回完整谱也映射重复段定位');
  assert.equal(await page.locator('#bar-45').getAttribute('class'),'measure current');assert.equal(await page.locator('[data-score-route]').isVisible(),true);
@@ -106,7 +110,7 @@ try {
  await page.locator('#score-mode').click();assert.equal(await page.locator('#auto-scroll-toggle').textContent(),'停');
  await page.locator('#auto-scroll-toggle').click();
  await page.locator('#score-mode').click();
- const downloadPromise=page.waitForEvent('download');await page.locator('#download').click();const download=await downloadPromise;
+ const downloadPromise=page.waitForEvent('download');await page.locator('.export-menu > summary').click();await page.locator('#download').click();const download=await downloadPromise;
  const downloadPath=new URL('artifacts/houlai-simple-download.html',root);
  await download.saveAs(downloadPath.pathname);
  const downloaded=await readFile(downloadPath,'utf8');assert.match(downloaded,/simple-four-bar-score/);

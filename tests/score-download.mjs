@@ -34,12 +34,13 @@ try {
       const url = hosted ? `http://127.0.0.1:${server.address().port}/guitar/sheet_music/${encodeURIComponent(file)}` : new URL(`sheet_music/${file}`,root).href;
       await page.goto(url);
       await ready(page,file);
-      assert.equal(await page.locator('#print + #download').count(),1,'下载紧跟打印');
+      assert.equal(await page.locator('.topbar-actions .export-menu + .back').count(),1,'导出位于返回曲谱库左侧');
+      assert.equal(await page.locator('.toolbar #print,.toolbar #download').count(),0);
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),true);
       await page.locator('#bars-per-row').selectOption('2');
       await page.locator('#auto-scroll-toggle').click();
       const pending = page.waitForEvent('download');
-      await page.locator('#download').click();
+      await page.locator('.export-menu > summary').click();await page.locator('#download').click();
       const download = await pending;
       assert.equal(download.suggestedFilename(),file);
       assert.equal(page.url(),url,'下载不应导航');
@@ -61,7 +62,7 @@ try {
         if (file !== files[0]) assert.equal(await reopened.locator('#score .measure').count(),({[files[1]]:55,[files[2]]:69,[files[3]]:47,[files[4]]:55,[files[5]]:56,[files[6]]:9})[file]);
       }
       const again = reopened.waitForEvent('download');
-      await reopened.locator('#download').click();
+      await reopened.locator('.export-menu > summary').click();await reopened.locator('#download').click();
       assert.equal(await readFile(await (await again).path(),'utf8'),html,'再次下载不叠加谱面或控件');
       await reopened.emulateMedia({media:'print'});
       assert.equal(await reopened.locator('#download').isVisible(),false);

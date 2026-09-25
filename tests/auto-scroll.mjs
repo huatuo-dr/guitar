@@ -138,6 +138,7 @@ try {
   await page.waitForTimeout(300);
   // The page is intentionally moving: send a real click without waiting for
   // Playwright's two-frame position stability, which auto-scroll can prevent.
+  await page.locator('.section-picker > summary').click({force:true});
   const sectionJump = page.locator('.section-nav [data-jump="21"]');
   assert.equal(await sectionJump.isVisible(),true);
   await sectionJump.click({force:true});

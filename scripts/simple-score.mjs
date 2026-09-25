@@ -101,7 +101,7 @@ export function simpleSections(data) {
 }
 
 export function renderSimpleNavigation(data) {
-  return '<span class="label">段定位</span>'+simpleSections(data).map(section=>`<a class="jump-link" href="#${section.target}" data-jump="${section.target.slice(4)}">${escape(section.label)}</a>`).join('');
+  return simpleSections(data).map(section=>`<a class="jump-link" href="#${section.target}" data-jump="${section.target.slice(4)}">${escape(section.label)}</a>`).join('');
 }
 
 export function renderSimpleScore(data,barsPerRow=4) {

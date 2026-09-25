@@ -36,6 +36,7 @@ try{
   assert.deepEqual(await page.locator('#score .simple-lyric:not(.simple-placeholder),#score svg .lyric').allTextContents(),lyrics,'展开后每遍使用正确歌词，单行公共歌词复用');
   assert.deepEqual((await page.locator('#score .simple-chord,#score svg .chord-name').allTextContents()).filter(Boolean).map(name=>name.replace(/†$/,'')),chords);
   assert.equal(await page.locator('.simple-cell').evaluateAll(cells=>cells.filter(c=>c.querySelectorAll('.simple-lyric').length!==1).length),0);
+  await page.locator('.section-picker > summary').click();
   const targets=await page.locator('.section-nav [data-jump]').evaluateAll(links=>links.map(l=>l.dataset.jump));
   assert.equal(new Set(targets).size,targets.length);
   for(const target of targets){await page.locator(`.section-nav [data-jump="${target}"]`).click();assert.equal(await page.evaluate(()=>document.activeElement.id),'bar-'+target);}
@@ -65,7 +66,7 @@ try{
   await page.locator('#bars-per-row').selectOption('2');await page.locator('#zoom').selectOption('0.65');
   await page.pdf({path:`artifacts/${id}-simple-print.pdf`,preferCSSPageSize:true,printBackground:true});
   assert.equal(await page.locator('#score').getAttribute('data-view-mode'),'simple');assert.equal(await page.locator('#score').getAttribute('data-bars-per-row'),'2');
-  const promise=page.waitForEvent('download');await page.locator('#download').click();const download=await promise;
+  const promise=page.waitForEvent('download');await page.locator('.export-menu > summary').click();await page.locator('#download').click();const download=await promise;
   const saved=new URL(`artifacts/${id}-simple-download.html`,root);await download.saveAs(saved.pathname);
   const fresh=await browser.newContext({offline:true});const restored=await fresh.newPage();await restored.goto(saved.href);
   assert.equal(await restored.locator('#score').getAttribute('data-view-mode'),'full');await restored.locator('#score-mode').click();assert.equal(await restored.locator('#score .measure').count(),total);await fresh.close();

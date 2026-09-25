@@ -107,7 +107,7 @@ try {
     await start();
     await page.waitForFunction(()=>document.body.dataset.playerState==='stopped');
     assert.equal(await page.locator('#score .player-current').count(),0);
-    const downloading=page.waitForEvent('download');await page.locator('#download').click();
+    const downloading=page.waitForEvent('download');await page.locator('.export-menu > summary').click();await page.locator('#download').click();
     const saved=new URL(`artifacts/player-download-${item.file}`,root);
     await (await downloading).saveAs(fileURLToPath(saved));
     const reopened=await context.newPage();

@@ -39,6 +39,12 @@ try {
   await page.screenshot({path:'artifacts/score-desktop.png',fullPage:true});
   await page.locator('#bars-per-row').selectOption('4');
 
+  assert.equal(await page.locator('.section-nav button').first().isVisible(),false,'段定位默认折叠');
+  await page.locator('.section-picker > summary').click();
+  assert.equal(await page.locator('.section-nav button').first().isVisible(),true);
+  await page.locator('.section-picker > summary').press('Enter');
+  assert.equal(await page.locator('.section-nav button').first().isVisible(),false,'键盘可以收起段定位');
+  await page.locator('.section-picker > summary').press('Space');
   await page.locator('[data-section-start="56"]').click();
   assert.equal(await page.locator('[data-section-start="56"]').getAttribute('aria-pressed'),'true');
   await page.locator('#zoom').selectOption('1.4');

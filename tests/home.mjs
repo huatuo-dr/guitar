@@ -79,7 +79,7 @@ try{
   await web.goto(address);await web.waitForSelector('.score-card');
   assert.ok((await web.locator(`${referenceCard} .open-score`).getAttribute('href')).startsWith('./sheet_music/'));
   assert.equal(await web.locator('.download-score').count(),0,'首页只保留打开曲谱');
-  await web.locator('nav a[href="./docs/制谱.html"]').click();
+  await web.locator('.library-footer a[href="./docs/制谱.html"]').click();
   assert.equal(await web.locator('h1').innerText(),'如何把原谱制作成网页吉他谱');
   await web.goto(address);await web.locator(`${referenceCard} .open-score`).click();
   await web.waitForFunction(()=>document.body.dataset.renderState==='ready');

@@ -20,7 +20,7 @@ try{
  assert.equal(await page.locator('#bar-9 .whole-note').count(),1);
  assert.deepEqual(await page.locator('#bar-9 .melody-number').allTextContents(),['1','—','—','—']);
  assert.equal(await page.locator('.lyric').count(),0);
- assert.doesNotMatch(await page.locator('.legend').innerText(),/歌词|下扫|上扫/);
+ assert.doesNotMatch(await page.locator('.legend-content').textContent(),/歌词|下扫|上扫/);
  assert.deepEqual(await page.locator('.route [data-jump]').evaluateAll(nodes=>nodes.map(n=>Number(n.dataset.jump))),[1]);
  assert.equal(await page.locator('.source-link a').count(),0,'截图来源不虚构网页链接');
  for(const rows of ['4','2']){
@@ -51,6 +51,7 @@ try{
  }
  await page.reload();assert.equal(await page.locator('#zoom').inputValue(),'0.65');
  await page.locator('#zoom').selectOption('fit');
+ await page.locator('.section-picker > summary').click();
  await page.locator('.section-nav [data-jump="9"]').click();
  assert.equal(await page.locator('#bar-9').evaluate(el=>el===document.activeElement),true);
  await page.evaluate(()=>scrollTo(0,0));

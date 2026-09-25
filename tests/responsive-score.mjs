@@ -73,6 +73,7 @@ try {
     assert.equal(await page.locator('#zoom').inputValue(),'0.65');
     assert.equal(await page.evaluate(()=>JSON.stringify({...localStorage})),stored,'打印不能覆盖用户偏好');
     await page.locator('#zoom').selectOption('fit');await ready(page,2);await fits(page,fingerstyle);
+    await page.locator('.section-picker > summary').click();
     if (fingerstyle) {
       await page.locator('[data-section-start="56"]').click();
       assert.equal(await page.locator('[data-section-start="56"]').getAttribute('aria-pressed'),'true');
