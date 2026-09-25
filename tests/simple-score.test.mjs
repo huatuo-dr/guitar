@@ -62,3 +62,22 @@ test('按语义断句，跨小节和段落连接歌词，重复副歌正确接�
  const invalid=structuredClone(data);invalid.simpleScore.lyricBreaks.push({bar:5,beat:1.123,kind:'line'});
  assert.throws(()=>simpleLyricLines(invalid,sections),/断句/);
 });
+
+test('多段同谱按实际遍次选择五行歌词，空位不回填第一段',()=>{
+ const data={bars:[{number:1,chords:[[1,'G']],vocal:{events:[
+  {duration:4,degree:1,lyrics:['甲','乙','丙','丁','戊']},
+  {duration:4,degree:2,lyrics:['一','','三','','五']},
+  {duration:2,degree:3,lyrics:['尾','尾','尾','尾','尾']}
+ ]}}],sections:[{name:'主歌',start:1,end:1}],route:Array.from({length:5},()=>({start:1,end:1})),
+ simpleScore:{routeVerses:[0,1,2,3,4],lyricBreaks:[{bar:1,beat:2,kind:'space',verse:4}]}};
+ const sections=simpleSections(data);
+ const phrases=simpleLyricLines(data,sections).flat().map(phrase=>phrase.map(cell=>cell.token.lyrics.join('')).join(''));
+ assert.deepEqual(phrases,['甲一尾乙尾丙三尾丁尾戊','五尾']);
+ assert.deepEqual(sections.map(s=>s.target),['bar-1','bar-1-repeat-2','bar-1-repeat-3','bar-1-repeat-4','bar-1-repeat-5']);
+ const html=renderSimpleScore(data);
+ assert.match(html,/bar-1-repeat-5/);
+ for(const invalid of [-1,1.5,5]){
+  const copy=structuredClone(data);copy.simpleScore.routeVerses[4]=invalid;
+  assert.throws(()=>simpleSections(copy),/歌词行/);
+ }
+});

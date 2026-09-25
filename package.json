@@ -4,18 +4,19 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node scripts/build.mjs && node scripts/build-laonanhai.mjs && node scripts/build-houlai.mjs && node scripts/build-kongxin.mjs && node scripts/build-turanhaoxiangni.mjs && node scripts/build-canon.mjs && node scripts/build-canon-v2.mjs",
+    "build": "node scripts/build.mjs && node scripts/build-laonanhai.mjs && node scripts/build-houlai.mjs && node scripts/build-kongxin.mjs && node scripts/build-turanhaoxiangni.mjs && node scripts/build-canon.mjs && node scripts/build-canon-v2.mjs && node scripts/build-tongnian.mjs",
     "build:laonanhai": "node scripts/build-laonanhai.mjs",
     "build:houlai": "node scripts/build-houlai.mjs",
     "test": "node --test tests/*.test.mjs",
-    "test:browser": "node tests/browser.mjs && node tests/home.mjs && node tests/accompaniment-browser.mjs && node tests/responsive-score.mjs && node tests/initial-score-layout.mjs && node tests/houlai-browser.mjs && node tests/houlai-player-browser.mjs && node tests/catalog-player-browser.mjs && node tests/player-initialization-browser.mjs && node tests/auto-scroll.mjs && node tests/score-download.mjs && node tests/score-export.mjs && node tests/pianai-lyrics-browser.mjs && node tests/pianai-player-browser.mjs && node tests/kongxin-browser.mjs && node tests/turanhaoxiangni-browser.mjs && node tests/canon-browser.mjs && node tests/canon-v2-browser.mjs && node tests/simple-score-browser.mjs && node tests/simple-score-catalog-browser.mjs",
+    "test:browser": "node tests/browser.mjs && node tests/home.mjs && node tests/accompaniment-browser.mjs && node tests/responsive-score.mjs && node tests/initial-score-layout.mjs && node tests/houlai-browser.mjs && node tests/houlai-player-browser.mjs && node tests/catalog-player-browser.mjs && node tests/player-initialization-browser.mjs && node tests/auto-scroll.mjs && node tests/score-download.mjs && node tests/score-export.mjs && node tests/pianai-lyrics-browser.mjs && node tests/pianai-player-browser.mjs && node tests/kongxin-browser.mjs && node tests/turanhaoxiangni-browser.mjs && node tests/canon-browser.mjs && node tests/canon-v2-browser.mjs && node tests/simple-score-browser.mjs && node tests/simple-score-catalog-browser.mjs && node tests/tongnian-browser.mjs",
     "test:home": "node tests/home.mjs",
-    "test:simple-score": "node tests/simple-score-browser.mjs && node tests/simple-score-catalog-browser.mjs",
+    "test:simple-score": "node tests/simple-score-browser.mjs && node tests/simple-score-catalog-browser.mjs && node tests/tongnian-browser.mjs",
     "build:kongxin": "node scripts/build-kongxin.mjs",
     "build:turanhaoxiangni": "node scripts/build-turanhaoxiangni.mjs",
     "build:canon": "node scripts/build-canon.mjs",
     "build:canon-v2": "node scripts/build-canon-v2.mjs",
-    "test:export": "node tests/score-export.mjs"
+    "test:export": "node tests/score-export.mjs",
+    "build:tongnian": "node scripts/build-tongnian.mjs"
   },
   "dependencies": {
     "@coderline/alphatab": "1.8.4",

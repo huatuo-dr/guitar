@@ -40,13 +40,18 @@ export function lyricLines(vocal) {
 // their main note, then distribute the remaining width by musical duration.
 export function createBeatPositioner(events,vocal,beats,left,width) {
   if(!vocal) return beat=>left+(beat-1)/beats*width;
-  const points=new Set([0,beats]);const ornament=new Map();const dotted=new Map();
+  const points=new Set([0,beats]);const ornament=new Map();const dotted=new Map();const lyricWidths=new Map();
   for(const sequence of [events,vocal.events]){
     let time=0;
-    for(const n of sequence){points.add(time);if(n.grace?.length||n.accidental)ornament.set(time,(n.grace?.length??0)+(n.accidental?1:0));if(n.doubleDotted||n.dotted)dotted.set(time,n.doubleDotted?8:3);time=beatRound(time+eventBeats(n));}
+    for(const n of sequence){points.add(time);if(n.grace?.length||n.accidental)ornament.set(time,(n.grace?.length??0)+(n.accidental?1:0));if(n.doubleDotted||n.dotted)dotted.set(time,n.doubleDotted?8:3);if(n.lyrics)lyricWidths.set(time,15*Math.max(0,...n.lyrics.map(word=>[...word].length)));time=beatRound(time+eventBeats(n));}
   }
   const times=[...points].sort((a,b)=>a-b);
-  const minimum=times.slice(1).map((t,i)=>14+9*(ornament.get(t)??0)+(dotted.get(times[i])??0));
+  const minimum=times.slice(1).map((t,i)=>{
+    const base=14+9*(ornament.get(t)??0)+(dotted.get(times[i])??0);
+    const before=lyricWidths.get(times[i])??0,after=lyricWidths.get(t)??0;
+    // A syllable can span several characters on one note (e.g. 高年 / 级的).
+    return Math.max(base,before>15||after>15?(before+after)/2+4:0);
+  });
   const total=minimum.reduce((a,b)=>a+b,0);
   const positions=[left];
   times.slice(1).forEach((t,i)=>{

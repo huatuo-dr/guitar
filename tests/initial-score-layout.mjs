@@ -3,7 +3,7 @@ import {readFile} from 'node:fs/promises';
 import {createServer} from 'node:http';
 import {chromium} from 'playwright';
 const root=new URL('../',import.meta.url);
-const simpleFiles=['后来弹唱伴奏.html','老男孩弹唱伴奏.html','空心弹唱伴奏.html','突然好想你弹唱伴奏.html'];
+const simpleFiles=['后来弹唱伴奏.html','老男孩弹唱伴奏.html','空心弹唱伴奏.html','突然好想你弹唱伴奏.html','童年弹唱伴奏.html'];
 const sources=new Map(await Promise.all(simpleFiles.map(async file=>[file,await readFile(new URL('sheet_music/'+file,root),'utf8')])));
 let release;
 const server=createServer((req,res)=>{

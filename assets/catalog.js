@@ -2,6 +2,17 @@
 // Optional fields: artist, timeSignature, capo (0 = no capo), bars, description.
 window.GUITAR_SCORES = [
   {
+    id: 'tong-nian-accompaniment',
+    title: '《童年》弹唱伴奏',
+    artist: '罗大佑',
+    type: 'accompaniment',
+    path: 'sheet_music/童年弹唱伴奏.html',
+    timeSignature: '4/4',
+    bars: 26,
+    updatedAt: '2026-09-25',
+    description: 'G 调弹唱，含前奏、扫弦、五段歌词与跳尾，简易谱按演唱顺序展开。'
+  },
+  {
     id: 'pian-ai-fingerstyle',
     title: '《偏爱》指弹',
     type: 'fingerstyle',

@@ -3,6 +3,9 @@ import {eventBeats,lyricLines} from './numbered-notation.mjs';
 import {renderScore} from './accompaniment-svg.mjs';
 const escape=value=>String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const tick=beat=>Math.round(beat*960);
+const validVerse=(data,verse)=>Number.isInteger(verse)&&verse>=0&&(
+  !data.bars.some(bar=>bar.vocal)||verse<Math.max(1,...data.bars.map(bar=>lyricLines(bar.vocal)))
+);
 
 export function simpleBarTokens(bar) {
   const points=new Map();
@@ -20,8 +23,8 @@ export function simpleBarTokens(bar) {
   return [...points.values()].sort((a,b)=>a.beat-b.beat);
 }
 
-// A single written voice may contain two verses. Select the performed verse;
-// single-row bars are common to both passes, while blank slots stay blank.
+// Select the performed verse from any number of written lyric rows;
+// single-row bars are common to all passes, while blank slots stay blank.
 export function projectSimpleBar(data,bar,{verse=0}) {
   const dual=lyricLines(bar.vocal)>1;
   const events=bar.vocal.events.map(event=>{
@@ -45,7 +48,7 @@ export function simpleLyricLines(data,sections) {
   for(const cue of data.simpleScore.lyricBreaks??[]){
     const bar=data.bars.find(bar=>bar.number===cue.bar);
     const key=`${cue.bar}:${tick(cue.beat)}:${cue.verse??'*'}`;
-    if(!bar||!['line','space'].includes(cue.kind)||(cue.verse!==undefined&&![0,1].includes(cue.verse))||breaks.has(key)||!simpleBarTokens(bar).some(token=>tick(token.beat)===tick(cue.beat)))throw new Error(`歌词断句位置无效：${cue.bar}小节 ${cue.beat}拍`);
+    if(!bar||!['line','space'].includes(cue.kind)||(cue.verse!==undefined&&!validVerse(data,cue.verse))||breaks.has(key)||!simpleBarTokens(bar).some(token=>tick(token.beat)===tick(cue.beat)))throw new Error(`歌词断句位置无效：${cue.bar}小节 ${cue.beat}拍`);
     breaks.set(key,cue.kind);
   }
   const lines=[];
@@ -75,7 +78,7 @@ export function simpleSections(data) {
   const fullSections=new Set(data.simpleScore.fullSections??[]);
   const ranges=data.simpleScore.fullRanges??[];
   const routeVerses=data.simpleScore.routeVerses;
-  if(routeVerses&&(routeVerses.length!==data.route.length||routeVerses.some(v=>![0,1].includes(v))))throw new Error('简易谱演唱段歌词行配置无效');
+  if(routeVerses&&(routeVerses.length!==data.route.length||routeVerses.some(v=>!validVerse(data,v))))throw new Error('简易谱演唱段歌词行配置无效');
   data.route.forEach((route,routeIndex)=>{
     let group;
     for(let number=route.start;number<=route.end;number++){
