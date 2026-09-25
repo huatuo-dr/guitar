@@ -9,7 +9,6 @@ function setupAccompanimentPlayer() {
   const status=document.getElementById('player-status');
   let ready=false,state='stopped',tick=0,occurrence=0;
   let targets=new Map(),highlighted=null,cursor=null,lastRowTop=null;
-  const bytes=base64=>Uint8Array.from(atob(base64),char=>char.charCodeAt(0));
   const libraryBytes=new TextEncoder().encode(document.getElementById('accompaniment-audio-library').textContent);
   let binary='';
   for(let offset=0;offset<libraryBytes.length;offset+=32768)binary+=String.fromCharCode(...libraryBytes.subarray(offset,offset+32768));
@@ -57,7 +56,7 @@ function setupAccompanimentPlayer() {
     else if(box.right>view.right-8)viewport.scrollBy({left:box.right-view.right+12,behavior:'instant'});
   }
   function paint(force=false) {
-    if(state==='stopped')return;
+    if(!ready||state==='stopped')return;
     occurrence=Math.max(0,data.sequence.findLastIndex(item=>item.startTick<=tick));
     const item=data.sequence[occurrence];
     const beat=1+Math.max(0,tick-item.startTick)/960;
@@ -105,31 +104,25 @@ function setupAccompanimentPlayer() {
       if(ready)status.textContent=`可试听${data.label} · ${speed.value} BPM 为练习速度`;
     } else paint(next==='playing');
   }
-  function fail(error) {
-    ready=false;
-    api.pause();
-    showState('stopped');
-    play.disabled=true;
-    stop.disabled=true;
-    status.textContent='播放暂不可用：'+error.message;
-  }
-  api.error.on(fail);
-  api.playerReady.on(()=>{
-    if(ready)return;
-    ready=true;
-    play.disabled=false;
-    stop.disabled=false;
-    api.playbackSpeed=Number(speed.value)/data.tempo;
-    showState('stopped');
+  const initialization=setupPlayerInitialization(api,{
+    soundFontBase64:data.soundFont,
+    onReady(){
+      ready=true;
+      play.disabled=false;
+      stop.disabled=false;
+      api.playbackSpeed=Number(speed.value)/data.tempo;
+      showState('stopped');
+    },
+    onUnavailable(){ready=false;api.pause();showState('stopped');}
   });
-  api.playerStateChanged.on(event=>showState(event.state===1?'playing':event.stopped?'stopped':'paused'));
+  api.playerStateChanged.on(event=>{if(ready)showState(event.state===1?'playing':event.stopped?'stopped':'paused');});
   api.playerPositionChanged.on(event=>{tick=event.currentTick;paint();});
-  api.playerFinished.on(()=>showState('stopped'));
-  play.addEventListener('click',()=>{if(ready){if(state==='playing')api.pause();else api.play();}});
+  api.playerFinished.on(()=>{if(ready)showState('stopped');});
+  play.addEventListener('click',()=>{if(!ready){initialization.retry();return;}if(state==='playing')api.pause();else api.play();});
   stop.addEventListener('click',()=>{if(ready){api.stop();tick=0;occurrence=0;showState('stopped');}});
   speed.addEventListener('change',()=>{
     if(ready)api.playbackSpeed=Number(speed.value)/data.tempo;
-    if(state==='stopped')showState('stopped');
+    if(ready&&state==='stopped')showState('stopped');
   });
   score.addEventListener('click',event=>{
     if(!ready)return;
@@ -159,8 +152,6 @@ function setupAccompanimentPlayer() {
   new ResizeObserver(()=>paint(true)).observe(score);
   rebuildTargets();
   showState('stopped');
-  api.tex(data.tex);
-  try {if(!api.loadSoundFont(bytes(data.soundFont)))throw new Error('音色无法加载');}
-  catch(error){fail(error);}
+  initialization.start(()=>api.tex(data.tex));
   return {api};
 }

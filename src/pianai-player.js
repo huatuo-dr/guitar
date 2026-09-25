@@ -1,6 +1,6 @@
 // alphaTab owns timing, seeking and the playback cursor. The sound bank is
 // embedded in the downloaded HTML so no runtime network request is needed.
-function setupPianaiPlayer(api,soundFontBase64) {
+function setupPianaiPlayer(api,soundFontBase64,loadScore) {
   const play=document.getElementById('player-play');
   const stop=document.getElementById('player-stop');
   const speed=document.getElementById('player-speed');
@@ -27,16 +27,19 @@ function setupPianaiPlayer(api,soundFontBase64) {
     if(next==='stopped'&&ready)status.textContent=`可试听 · ${speed.value} BPM 为练习速度`;
   }
 
-  api.playerReady.on(()=>{
-    if(ready)return;
-    ready=true;
-    play.disabled=false;
-    stop.disabled=false;
-    api.playbackSpeed=Number(speed.value)/api.score.tempo;
-    showState('stopped');
+  const initialization=setupPlayerInitialization(api,{
+    soundFontBase64,
+    onReady(){
+      ready=true;
+      play.disabled=false;
+      stop.disabled=false;
+      api.playbackSpeed=Number(speed.value)/api.score.tempo;
+      showState('stopped');
+    },
+    onUnavailable(){ready=false;api.pause();showState('stopped');}
   });
   api.playerStateChanged.on(event=>{
-    showState(event.state===1?'playing':event.stopped?'stopped':'paused');
+    if(ready)showState(event.state===1?'playing':event.stopped?'stopped':'paused');
   });
   api.playedBeatChanged.on(beat=>{
     if(state!=='playing')return;
@@ -62,10 +65,10 @@ function setupPianaiPlayer(api,soundFontBase64) {
     if(left<viewport.scrollLeft+12)viewport.scrollTo({left:Math.max(0,left-16),behavior:'instant'});
     else if(right>viewport.scrollLeft+viewport.clientWidth-12)viewport.scrollTo({left:right-viewport.clientWidth+16,behavior:'instant'});
   });
-  api.playerFinished.on(()=>showState('stopped'));
+  api.playerFinished.on(()=>{if(ready)showState('stopped');});
 
   play.addEventListener('click',()=>{
-    if(!ready)return;
+    if(!ready){initialization.retry();return;}
     if(state==='playing')api.pause();
     else api.play();
   });
@@ -80,12 +83,5 @@ function setupPianaiPlayer(api,soundFontBase64) {
   });
   window.addEventListener('beforeprint',()=>{if(state==='playing')api.pause();});
 
-  try {
-    const binary=atob(soundFontBase64);
-    const bytes=Uint8Array.from(binary,char=>char.charCodeAt(0));
-    if(!api.loadSoundFont(bytes))throw new Error('音色格式无法加载');
-  } catch(error) {
-    status.textContent='音色加载失败：'+error.message;
-  }
-
+  initialization.start(loadScore);
 }

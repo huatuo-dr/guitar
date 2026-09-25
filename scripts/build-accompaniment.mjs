@@ -70,7 +70,7 @@ export async function buildAccompaniment(id,filename) {
     ROUTE:data.route.map((r,i) => `<a href="#bar-${r.start}" data-jump="${r.start}"><span>${i+1}. ${escape(r.label)}</span><strong>${r.start}–${r.end}</strong></a>`).join(''),
     ROUTE_PRINT:escape(routePrint), BAR_COUNT:data.bars.length,
     SCORE:renderScore(data), SCORE_TWO:renderScore(data,2),
-    VIEW:await readFile(new URL('src/score-view.js',root),'utf8')+'\n'+await readFile(new URL('src/auto-scroll.js',root),'utf8')+(simple?'\n'+await readFile(new URL('src/simple-score.js',root),'utf8'):'')+(player?'\n'+await readFile(new URL('src/accompaniment-player.js',root),'utf8'):''),
+    VIEW:await readFile(new URL('src/score-view.js',root),'utf8')+'\n'+await readFile(new URL('src/auto-scroll.js',root),'utf8')+(simple?'\n'+await readFile(new URL('src/simple-score.js',root),'utf8'):'')+(player?'\n'+await readFile(new URL('src/player-initialization.js',root),'utf8')+'\n'+await readFile(new URL('src/accompaniment-player.js',root),'utf8'):''),
     AUTO_SCROLL_CSS:await readFile(new URL('src/auto-scroll.css',root),'utf8'),
     STORAGE_KEY:JSON.stringify(`guitar-view:${id}:v1`).replaceAll('<','\\u003c'),
     NOTES:[...(data.notes??[]),...data.vocalNotes,...(data.simpleScore?.notes??[])].map(note => `<li>${escape(note)}</li>`).join('')

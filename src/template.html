@@ -197,8 +197,7 @@
         api.updateSettings();
         if(api.score)api.render();
       }});
-      api.tex(alphaTex);
-      setupPianaiPlayer(api,soundFontBase64);
+      setupPianaiPlayer(api,soundFontBase64,()=>api.tex(alphaTex));
       for (const section of scoreData.sections) {
         const end = section.end;
         const button = document.createElement('button');

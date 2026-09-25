@@ -58,7 +58,7 @@ const [template, library, font, soundFont, license, fontLicense, soundFontLicens
 ]);
 const escapeJson = value => JSON.stringify(value).replaceAll('<', '\\u003c');
 const tokens = {
-  VIEW: await read('src/score-view.js')+'\n'+await read('src/auto-scroll.js')+'\n'+await read('src/pianai-player.js'),
+  VIEW: await read('src/score-view.js')+'\n'+await read('src/auto-scroll.js')+'\n'+await read('src/player-initialization.js')+'\n'+await read('src/pianai-player.js'),
   AUTO_SCROLL_CSS: await read('src/auto-scroll.css'),
   LIBRARY: showTiedSlideFrets(library).replace(/\/\/# sourceMappingURL=.*$/gm, '').replace(/<\/script/gi, '<\\/script'),
   FONT: font.toString('base64'),

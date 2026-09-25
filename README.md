@@ -78,6 +78,8 @@
 
 《偏爱》使用原有alphaTab谱面与播放器；其余六份复用 `scripts/accompaniment-playback.mjs` 和 `src/accompaniment-player.js`，将音频进度映射到既有SVG/简易歌词，无需重画原谱。`tests/accompaniment-playback.test.mjs` 验证路线、时值、音高与技法；三份播放浏览器测试（`pianai-player-browser.mjs`、`houlai-player-browser.mjs`、`catalog-player-browser.mjs`）纳入 `npm run test:browser`，检查离线音频、跟随、变拍跳转及下载重开。
 
+播放初始化会分别显示声音启动、内置音色加载与乐谱准备的状态。后台线程启动失败或20秒内未就绪时，按钮变为“重试播放”；点击后清理失效线程与音频输出，改用同版AlphaSynth在页面内合成声音，并开始播放，兼容模式仍可离线使用。正常启动继续使用后台线程。共享恢复逻辑在 `src/player-initialization.js`，适用于七份曲谱；`tests/player-initialization-browser.mjs` 模拟后台线程被禁止、脚本异常和无响应，验证HTTP/本地打开后的重试、实际音频及暂停停止。此仿真测试不能替代微信/X浏览器实机验证。
+
 ## 自动滚动
 
 七份曲谱右下角均提供固定的“滚／停”按钮，点击开始或停止自动向下滚动。手动拖动、滚轮、键盘翻页及段定位不会关闭运行状态；操作结束后从当前位置接着滚。滚到底部仍保持“停”，手动向上翻后继续滚动。

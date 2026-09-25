@@ -70268,9 +70268,115 @@ function setupScoreAutoScroll({storageKey}) {
   });
 }
 
+// alphaTab 1.8.4's worker errors do not reach api.error. Monitor that boundary
+// as well as readiness, and keep a user-initiated fallback in the same HTML.
+function setupPlayerInitialization(api,{soundFontBase64,onReady,onUnavailable}) {
+  const status=document.getElementById('player-status');
+  const play=document.getElementById('player-play');
+  const stop=document.getElementById('player-stop');
+  let phase='idle',timer=null,engine=null,unwatch=()=>{};
+  let soundFontLoaded=false,midiLoaded=false,playAfterReady=false;
+  let soundFontBytes;
+  function clearWait() {
+    clearTimeout(timer);
+    timer=null;
+    unwatch();
+    unwatch=()=>{};
+  }
+  function fail(message,error) {
+    if(phase!=='loading')return;
+    phase='failed';
+    clearWait();
+    onUnavailable();
+    play.disabled=false;
+    play.textContent='重试播放';
+    play.setAttribute('aria-label','重试播放');
+    stop.disabled=true;
+    status.textContent=message+'，点击重试播放';
+    // Short diagnostic detail for browser inspection, without printing a large
+    // embedded data URL or technical stack trace in the score's toolbar.
+    status.dataset.error=String(error?.message??error??message).replace(/data:[^\s]+/g,'[内嵌脚本]').slice(0,180);
+    document.body.dataset.playerInitialization=phase;
+  }
+  function progress() {
+    if(phase!=='loading')return;
+    status.textContent=!engine?.isReady?'正在启动声音…':!soundFontLoaded?'正在加载内置音色…':!midiLoaded?'正在准备播放乐谱…':'正在完成声音准备…';
+  }
+  api.soundFontLoaded.on(()=>{soundFontLoaded=true;progress();});
+  api.midiLoaded.on(()=>{midiLoaded=true;progress();});
+  api.error.on(error=>fail('播放准备失败',error));
+  api.playerReady.on(()=>{
+    if(phase!=='loading')return;
+    phase='ready';
+    clearWait();
+    document.body.dataset.playerInitialization=phase;
+    delete status.dataset.error;
+    onReady();
+    if(playAfterReady)api.play();
+  });
+  function watchEngine() {
+    // Pinned alphaTab exposes a wrapper through api.player. The concrete
+    // engine is needed only here to observe/clean up the worker boundary.
+    engine=api.player?.instance;
+    if(!engine)throw new Error('浏览器未能创建音频播放器');
+    const worker=engine.worker;
+    const failed=event=>{
+      event.preventDefault();
+      fail('后台音频启动失败',event);
+    };
+    worker?.addEventListener('error',failed);
+    worker?.addEventListener('messageerror',failed);
+    const offReady=engine.ready.on(progress);
+    unwatch=()=>{
+      worker?.removeEventListener('error',failed);
+      worker?.removeEventListener('messageerror',failed);
+      offReady();
+    };
+    progress();
+  }
+  function begin(createPlayer) {
+    phase='loading';
+    document.body.dataset.playerInitialization=phase;
+    soundFontLoaded=false;midiLoaded=false;
+    play.disabled=true;stop.disabled=true;
+    play.textContent='播放';
+    status.textContent='正在启动声音…';
+    timer=setTimeout(()=>fail('声音准备超时'),20000);
+    try {
+      if(!window.AudioContext&&!window.webkitAudioContext)throw new Error('浏览器不支持Web Audio');
+      createPlayer();
+      watchEngine();
+      soundFontBytes??=Uint8Array.from(atob(soundFontBase64),char=>char.charCodeAt(0));
+      if(!api.loadSoundFont(soundFontBytes))throw new Error('音色格式无法加载');
+    } catch(error) {fail('播放准备失败',error);}
+  }
+  function retry() {
+    if(phase!=='failed')return;
+    playAfterReady=true;
+    begin(()=>{
+      const previous=engine;
+      api.settings.player.enablePlayer=false;
+      api.settings.player.playerMode=alphaTab.PlayerMode.Disabled;
+      try {api.updateSettings();}
+      finally {
+        // A failed/stalled worker cannot process alphaTab's asynchronous
+        // destroy request. Release its output and terminate it explicitly.
+        if(previous?.worker){previous.worker.terminate();previous.output.destroy();}
+      }
+      api.uiFacade.createWorkerPlayer=()=>new alphaTab.synth.AlphaSynth(
+        new alphaTab.synth.AlphaSynthScriptProcessorOutput(),api.settings.player.bufferTimeInMilliseconds
+      );
+      api.settings.player.enablePlayer=true;
+      api.settings.player.playerMode=alphaTab.PlayerMode.EnabledSynthesizer;
+      api.updateSettings();
+    });
+  }
+  return {start:begin,retry};
+}
+
 // alphaTab owns timing, seeking and the playback cursor. The sound bank is
 // embedded in the downloaded HTML so no runtime network request is needed.
-function setupPianaiPlayer(api,soundFontBase64) {
+function setupPianaiPlayer(api,soundFontBase64,loadScore) {
   const play=document.getElementById('player-play');
   const stop=document.getElementById('player-stop');
   const speed=document.getElementById('player-speed');
@@ -70297,16 +70403,19 @@ function setupPianaiPlayer(api,soundFontBase64) {
     if(next==='stopped'&&ready)status.textContent=`可试听 · ${speed.value} BPM 为练习速度`;
   }
 
-  api.playerReady.on(()=>{
-    if(ready)return;
-    ready=true;
-    play.disabled=false;
-    stop.disabled=false;
-    api.playbackSpeed=Number(speed.value)/api.score.tempo;
-    showState('stopped');
+  const initialization=setupPlayerInitialization(api,{
+    soundFontBase64,
+    onReady(){
+      ready=true;
+      play.disabled=false;
+      stop.disabled=false;
+      api.playbackSpeed=Number(speed.value)/api.score.tempo;
+      showState('stopped');
+    },
+    onUnavailable(){ready=false;api.pause();showState('stopped');}
   });
   api.playerStateChanged.on(event=>{
-    showState(event.state===1?'playing':event.stopped?'stopped':'paused');
+    if(ready)showState(event.state===1?'playing':event.stopped?'stopped':'paused');
   });
   api.playedBeatChanged.on(beat=>{
     if(state!=='playing')return;
@@ -70332,10 +70441,10 @@ function setupPianaiPlayer(api,soundFontBase64) {
     if(left<viewport.scrollLeft+12)viewport.scrollTo({left:Math.max(0,left-16),behavior:'instant'});
     else if(right>viewport.scrollLeft+viewport.clientWidth-12)viewport.scrollTo({left:right-viewport.clientWidth+16,behavior:'instant'});
   });
-  api.playerFinished.on(()=>showState('stopped'));
+  api.playerFinished.on(()=>{if(ready)showState('stopped');});
 
   play.addEventListener('click',()=>{
-    if(!ready)return;
+    if(!ready){initialization.retry();return;}
     if(state==='playing')api.pause();
     else api.play();
   });
@@ -70350,14 +70459,7 @@ function setupPianaiPlayer(api,soundFontBase64) {
   });
   window.addEventListener('beforeprint',()=>{if(state==='playing')api.pause();});
 
-  try {
-    const binary=atob(soundFontBase64);
-    const bytes=Uint8Array.from(binary,char=>char.charCodeAt(0));
-    if(!api.loadSoundFont(bytes))throw new Error('音色格式无法加载');
-  } catch(error) {
-    status.textContent='音色加载失败：'+error.message;
-  }
-
+  initialization.start(loadScore);
 }
 </script>
   <script>
@@ -70416,8 +70518,7 @@ function setupPianaiPlayer(api,soundFontBase64) {
         api.updateSettings();
         if(api.score)api.render();
       }});
-      api.tex(alphaTex);
-      setupPianaiPlayer(api,soundFontBase64);
+      setupPianaiPlayer(api,soundFontBase64,()=>api.tex(alphaTex));
       for (const section of scoreData.sections) {
         const end = section.end;
         const button = document.createElement('button');
