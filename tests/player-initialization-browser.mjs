@@ -36,9 +36,13 @@ try {
   // additionally exercises the opaque origin of the standalone download.
   const url=fault==='script'?new URL(`sheet_music/${file}`,root).href:`http://127.0.0.1:${server.address().port}/guitar/sheet_music/${encodeURIComponent(file)}`;
   await page.goto(url);
-  if(fault==='timeout'){await page.clock.fastForward(21000);await page.clock.resume();}
+  if(fault==='timeout'){
+    await page.waitForFunction(()=>document.body.dataset.playerInitialization==='loading');
+    await page.clock.fastForward(21000);await page.clock.resume();
+  }
   await page.waitForFunction(()=>!document.getElementById('player-play').disabled,{},{timeout:3000});
   assert.equal(await page.locator('#player-play').textContent(),'重试播放');
+  if(file.startsWith('偏爱'))assert.equal(await page.evaluate(()=>document.body.dataset.renderState),'ready','音频失败不应把已显示的曲谱标成排版失败');
   assert.match(await page.locator('#player-status').textContent(),/失败|超时/);
   assert.equal(await page.evaluate(()=>scrollY),0);
   if(file==='卡农指弹.html'&&fault==='timeout')await page.screenshot({path:'artifacts/mobile-player-retry.png'});

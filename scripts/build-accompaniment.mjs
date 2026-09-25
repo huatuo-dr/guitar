@@ -49,7 +49,7 @@ export async function buildAccompaniment(id,filename) {
     PLAYER_CONTROLS:player?.controls??'',
     PLAYER_ASSETS:player?.assets??'',
     PLAYER_LICENSES:player?.licenses??'',
-    PLAYER_SETUP:player?'accompanimentPlayer=setupAccompanimentPlayer();':'',
+    PLAYER_SETUP:player?'scheduleScorePlayback(()=>{accompanimentPlayer=setupAccompanimentPlayer();});':'',
     FOOTER_LABEL:simple ? '原谱' : '全曲',
     READING_NOTE:simple ? '完整版按原谱书写顺序保留反复；简易版已按演奏顺序展开，可以从上往下连续阅读。' : '小节仍按书写顺序保留，没有展开反复；上方演奏顺序列出了完整行进路线。',
     ROUTE_ATTRIBUTES:simple ? ' data-score-route' : '',

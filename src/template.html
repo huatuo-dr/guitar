@@ -41,7 +41,7 @@
     .metadata span { display:block; font-size:10px; letter-spacing:.13em; color:var(--muted); margin-bottom:7px; }
     .metadata strong { font-size:17px; font-weight:500; }
     .score-area { overflow:auto; padding-top:26px; }
-    #score { width:1100px; max-width:none; margin:0 auto; }
+    #score { width:100%; max-width:none; margin:0 auto; }
     .at-surface { cursor:default; }
     #score .at-cursors { visibility:hidden; }
     body[data-player-state="playing"] #score .at-cursors,
@@ -157,13 +157,6 @@
       const scoreData = @@DATA@@;
       const alphaTex = @@TEX@@;
       const soundFontBase64 = '@@SOUNDFONT@@';
-      // file:// pages have an opaque origin: an alphaTab worker cannot use
-      // importScripts() on a blob URL there. A data URL keeps this one-file
-      // score usable offline in the synthesizer worker.
-      const libraryBytes = new TextEncoder().encode(document.getElementById('alphatab-library').textContent);
-      let libraryBinary = '';
-      for(let offset=0;offset<libraryBytes.length;offset+=32768)libraryBinary+=String.fromCharCode(...libraryBytes.subarray(offset,offset+32768));
-      const scriptFile = 'data:text/javascript;base64,'+btoa(libraryBinary);
       const scoreElement = document.getElementById('score');
       const status = document.getElementById('status');
       // In pinned alphaTab 1.8.4, SharedBottom = 3. The score's beat text is
@@ -190,10 +183,10 @@
         return glyph;
       };
       api = new alphaTab.AlphaTabApi(scoreElement, {
-        core: { engine:'svg', useWorkers:false, scriptFile, includeNoteBounds:true, enableLazyLoading:false, fontDirectory:null, smuflFontSources:new Map([[alphaTab.FontFileFormat.Woff2,'data:font/woff2;base64,@@FONT@@']]) },
+        core: { engine:'svg', useWorkers:false, includeNoteBounds:true, enableLazyLoading:false, fontDirectory:null, smuflFontSources:new Map([[alphaTab.FontFileFormat.Woff2,'data:font/woff2;base64,@@FONT@@']]) },
         display: { scale:0.9, barsPerRow:4, justifyLastSystem:false, staveProfile:alphaTab.StaveProfile.Tab, padding:[0,12,0,12], resources: { staffLineColor:'#566059', mainGlyphColor:'#1d2822', secondaryGlyphColor:'#1d2822', barNumberColor:'#66725f', tablatureFont:'16px Arial', barNumberFont:'12px Arial', elementFonts:{EffectText:'18px Georgia',EffectLyrics:'15px "Microsoft YaHei", "Noto Sans CJK SC", sans-serif'} } },
         notation: { rhythmMode:alphaTab.TabRhythmMode.ShowWithBars, elements: { ScoreTitle:false, ScoreSubTitle:false, ScoreArtist:false, ScoreAlbum:false, ScoreWords:false, ScoreMusic:false, ScoreWordsAndMusic:false, ScoreCopyright:false, GuitarTuning:false, TrackNames:false, EffectTempo:false, EffectCapo:false, EffectDynamics:false, EffectHarmonics:false, EffectHammerOnPullOffText:true, EffectSlideText:true } },
-        player: { enablePlayer:true,enableCursor:true,outputMode:alphaTab.PlayerOutputMode.WebAudioScriptProcessor,scrollMode:alphaTab.ScrollMode.Off,scrollElement:document.scrollingElement,scrollOffsetY:-100 }
+        player: { enablePlayer:false,playerMode:alphaTab.PlayerMode.Disabled,enableCursor:true,outputMode:alphaTab.PlayerOutputMode.WebAudioScriptProcessor,scrollMode:alphaTab.ScrollMode.Off,scrollElement:document.scrollingElement,scrollOffsetY:-100 }
       });
       api.error.on(error => { status.className='score-error'; status.textContent='乐谱显示失败：'+error.message; document.body.dataset.renderState='error'; });
       api.renderFinished.on(() => { status.hidden=true; document.body.dataset.renderState='ready'; });
@@ -206,7 +199,19 @@
         api.updateSettings();
         if(api.score)api.render();
       }});
-      setupPianaiPlayer(api,soundFontBase64,()=>api.tex(alphaTex));
+      setupPianaiPlayer(api,soundFontBase64,()=>api.tex(alphaTex),()=>{
+        // file:// pages have an opaque origin: an alphaTab worker cannot use
+        // importScripts() on a blob URL there. A data URL keeps this one-file
+        // score usable offline in the synthesizer worker.
+        const libraryBytes = new TextEncoder().encode(document.getElementById('alphatab-library').textContent);
+        let libraryBinary = '';
+        for(let offset=0;offset<libraryBytes.length;offset+=32768)libraryBinary+=String.fromCharCode(...libraryBytes.subarray(offset,offset+32768));
+        const scriptFile = 'data:text/javascript;base64,'+btoa(libraryBinary);
+        api.settings.core.scriptFile=scriptFile;
+        api.settings.player.enablePlayer=true;
+        api.settings.player.playerMode=alphaTab.PlayerMode.EnabledSynthesizer;
+        api.updateSettings();
+      });
       for (const section of scoreData.sections) {
         const end = section.end;
         const button = document.createElement('button');

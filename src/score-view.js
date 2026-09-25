@@ -57,3 +57,9 @@ function setupScoreDownload() {
     setTimeout(() => URL.revokeObjectURL(url), 60000);
   });
 }
+
+// Allow the fitted score to reach the screen before allocating audio workers,
+// parsing the embedded sound bank or generating MIDI on the main thread.
+function scheduleScorePlayback(start) {
+  requestAnimationFrame(()=>requestAnimationFrame(()=>setTimeout(start,0)));
+}

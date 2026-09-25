@@ -1,6 +1,6 @@
 // alphaTab owns timing, seeking and the playback cursor. The sound bank is
 // embedded in the downloaded HTML so no runtime network request is needed.
-function setupPianaiPlayer(api,soundFontBase64,loadScore) {
+function setupPianaiPlayer(api,soundFontBase64,loadScore,enablePlayer) {
   const play=document.getElementById('player-play');
   const stop=document.getElementById('player-stop');
   const speed=document.getElementById('player-speed');
@@ -83,5 +83,9 @@ function setupPianaiPlayer(api,soundFontBase64,loadScore) {
   });
   window.addEventListener('beforeprint',()=>{if(state==='playing')api.pause();});
 
-  initialization.start(loadScore);
+  const rendered=api.renderFinished.on(()=>{
+    rendered();
+    scheduleScorePlayback(()=>initialization.start(enablePlayer));
+  });
+  loadScore();
 }
