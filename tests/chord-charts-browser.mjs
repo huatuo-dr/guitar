@@ -45,7 +45,7 @@ try {
   await page.emulateMedia({media:'screen'});
   await page.locator('.back').click();
   assert.equal(await page.locator('[data-type="tools"]').getAttribute('aria-pressed'),'true');
-  assert.equal(await page.locator('.tool-card').count(),1);
+  assert.equal(await page.locator('[data-tool-id="chord-charts"]').count(),1);
   assert.deepEqual(errors,[]);assert.deepEqual(requests,[],'离线无需请求远程资源');
   await context.close();
 
@@ -57,7 +57,7 @@ try {
   await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
   const hosted=await browser.newPage();
   await hosted.goto(`http://127.0.0.1:${server.address().port}/guitar/index.html#tools`);
-  await hosted.locator('.tool-card a').click();
+  await hosted.locator('[data-tool-id="chord-charts"] a').click();
   assert.equal(await hosted.locator('.chord-card').count(),56,'Pages 子路径可打开工具');
   await hosted.locator('.back').click();
   assert.equal(await hosted.locator('[data-type="tools"]').getAttribute('aria-pressed'),'true');

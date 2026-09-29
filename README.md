@@ -22,6 +22,10 @@
 
 `knowledge/chord-charts.json` 保存和弦分组、六弦至一弦的品位、手指编号和横按范围；`src/chord-charts.html` 保存独立页面模板。`npm run build:chord-charts` 重新生成详情页，完整 `npm run build` 也包含它；`npm run test:chord-charts` 校验音高、调内和弦、横按与浏览器布局。原图最后一列“VII”按实际和弦修正为“V7”，C 和弦保留原图 C/G 按法，补充空弦与不弹弦标记。
 
+第二个工具为[各调指板音阶](tools/各调指板音阶.html)，参考 `tmp/2.jpg` 展示 C、D、E、F、G、A、B 七个大调的空弦至第 15 品音级，并突出主音。电脑显示完整指板，手机分为空弦–5 品、6–10 品、11–15 品，支持调性筛选和独立离线阅读。数字表示音级，按参考图用上方／下方的点表示高／低八度，支持双点。各调无点主音基准由 `tonicMidi` 保存（C3 至 B3）。
+
+`knowledge/fretboard-scales.json` 保存调弦、调性与音名；`scripts/build-fretboard-scales.mjs` 依据标准调弦和大调音程计算每个弦品的音级，使用 `src/fretboard-scales.html` 生成页面。运行 `npm run build:fretboard-scales` 构建，`npm run test:fretboard-scales` 验证音高、原图关键音位、手机分段、筛选、离线与 Pages 导航。
+
 后续添加知识条目时填写 `id`、`title`、`description`、`updatedAt`；内容页完成后补充相对根目录的 `path`，首页会自动显示“查看内容”链接。未提供 `path` 的条目不生成链接。
 
 ## 添加曲谱

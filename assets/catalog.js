@@ -101,5 +101,12 @@ window.GUITAR_TOOLS = [
     title: '各调和弦图',
     description: '各调常用和弦与吉他指法速查。',
     updatedAt: '2026-09-29'
+  },
+  {
+    id: 'fretboard-scales',
+    path: 'tools/各调指板音阶.html',
+    title: '各调指板音阶',
+    description: '七个大调的吉他指板音级与音名，空弦至第 15 品。',
+    updatedAt: '2026-09-29'
   }
 ];
