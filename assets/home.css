@@ -347,6 +347,19 @@ h1 {
   top:35px;
   background:#eee8dc
 }
+.score-art.tool:after {
+  content:"♯";
+  writing-mode:horizontal-tb;
+  font-size:32px
+}
+.entry-pending {
+  padding:9px 13px;
+  border:1px solid var(--line);
+  border-radius:5px;
+  color:var(--muted);
+  background:#f5f6ef;
+  font-size:12px
+}
 .score-info {
   min-width:0
 }

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#315e4d">
+<title>各调和弦图 · 小k吉他练习</title>
+<style>
+:root{color-scheme:light;--ink:#263c33;--green:#315e4d;--muted:#65705f;--line:#dce3d8;--paper:#fffefa;--bg:#f3f4ee}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.65 system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+a{color:inherit}button{font:inherit;cursor:pointer}a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #86a28a;outline-offset:4px}
+header,main,footer{max-width:1160px;margin:auto}header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:24px 0;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px;font-size:16px;font-weight:650}.brand-mark{width:23px;height:25px;border-inline:2px solid var(--green);background:repeating-linear-gradient(to bottom,transparent 0 3px,var(--green) 3px 4px)}
+.back{padding:8px 12px;border:1px solid var(--line);border-radius:5px;text-decoration:none;font-size:13px;white-space:nowrap}.back:hover{background:#e8eee4}
+.intro{padding:24px 0 20px}h1{font-size:32px;letter-spacing:.04em;line-height:1.3;margin:0 0 8px}.subtitle{color:var(--muted);margin:0}
+.guide{padding:14px 18px;border:1px solid var(--line);background:var(--paper);border-radius:8px}.guide summary{cursor:pointer;font-weight:600}.guide p{margin:9px 0 0}.guide ul{display:flex;flex-wrap:wrap;gap:6px 25px;list-style:none;padding:0;margin:12px 0 0}.legend{color:var(--green);font-weight:750;margin-right:5px}.guide .note{color:var(--muted);font-size:12px}
+.key-nav{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 10px}.key-nav button{border:1px solid var(--line);border-radius:5px;min-height:42px;padding:7px 16px;background:var(--paper);color:var(--ink)}.key-nav button[aria-pressed="true"]{background:var(--green);color:white;border-color:var(--green)}
+.result-count{color:var(--muted);font-size:12px;margin:0 0 22px}.key-section{margin:0 0 28px}.key-section h2{display:flex;gap:10px;align-items:baseline;margin:0 0 12px;font-size:24px}.key-section h2 span{font-size:12px;font-weight:400;color:var(--muted)}
+.chord-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}.chord-card{min-width:0;background:var(--paper);border:1px solid var(--line);border-radius:8px;overflow:hidden;padding:10px 7px 7px}.degree{display:flex;justify-content:space-between;gap:4px;color:var(--muted);font-size:11px;padding:0 4px}.degree span:first-child{color:var(--green);font-weight:650}.chord-card h3{text-align:center;font-size:24px;font-weight:650;line-height:1.2;margin:10px 0 0}.chord-card svg{display:block;width:100%;max-width:175px;height:auto;margin:auto;overflow:visible}.shape-note{font-size:10px;text-align:center;min-height:17px;color:var(--muted);margin:0}
+.fret,.string{fill:none;stroke:#8b978c;stroke-width:1}.nut{stroke:var(--ink);stroke-width:3}.dot{fill:var(--green)}.barre{fill:none;stroke:var(--green);stroke-width:14;stroke-linecap:round}.finger{fill:white;font-size:11px;font-weight:700;text-anchor:middle}.open,.mute{stroke:var(--ink);stroke-width:1.5;fill:none}.string-number{fill:var(--muted);font-size:10px;text-anchor:middle}.fret-number{fill:var(--muted);font-size:12px;text-anchor:middle}
+footer{padding:0 0 28px;color:var(--muted);font-size:12px}footer p{margin:0}
+@media(max-width:1208px){header,main,footer{margin-inline:24px}}@media(max-width:950px){.chord-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:560px){header,main,footer{margin-inline:16px}header{padding:18px 0}.brand{font-size:14px;gap:8px}.back{font-size:12px;padding:8px}h1{font-size:28px}.subtitle{font-size:12px}.guide{padding:12px 14px}.key-nav{gap:7px}.key-nav button{padding:7px 13px}.chord-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.chord-card{padding-top:10px}.degree{font-size:12px}.shape-note{font-size:11px}}
+@page{size:A4 portrait;margin:12mm}@media print{body{background:white}header,.key-nav,.result-count,footer{display:none}main{margin:0;max-width:none}.intro{padding:0 0 12px}.guide{padding:8px 12px}.key-section{break-inside:avoid;margin:16px 0}.key-section h2{font-size:18px;margin:0 0 4px}.chord-grid{grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}.chord-card{padding:5px 2px;border-radius:0}.chord-card h3{font-size:18px}.degree{font-size:9px;padding:0}.shape-note{font-size:7px;min-height:12px}}
+</style>
+</head>
+<body>
+<header><div class="brand"><span class="brand-mark" aria-hidden="true"></span>小k吉他练习</div><a class="back" href="../index.html#tools">← 返回工具</a></header>
+<main>
+<div class="intro"><h1>各调和弦图</h1><p class="subtitle">8 个大调 · 常用和弦与左手指法 · 标准调弦 E A D G B E</p></div>
+<details class="guide" open>
+<summary>如何读图</summary>
+<p>从左到右为 6 → 1 弦（粗弦 → 细弦），左侧数字表示图中第一格的品位。</p>
+<ul><li><span class="legend">1 2 3 4</span>食指、中指、无名指、小指</li><li><span class="legend">○</span>空弦</li><li><span class="legend">×</span>不弹此弦</li><li><span class="legend">━</span>食指横按</li></ul>
+<p class="note">圆点内数字是手指编号，不是品数。I、IV、V 为大三和弦，ii、iii、vi 为小三和弦；级数旁的数字为调内构成音级。</p>
+</details>
+<nav class="key-nav" aria-label="选择调性"><!-- KEY_FILTERS --></nav>
+<p class="result-count" role="status" aria-live="polite">全部 8 个调 · 56 张指法图</p>
+<div id="charts"><!-- CHORD_CHARTS --></div>
+</main>
+<footer><p>按提供的参考图重绘。末列实际为属七和弦，已将原图“VII”修正为“V7”。C 保留原图以 G 为低音的按法；每个和弦只展示一种指法。</p></footer>
+<script>
+(() => {
+  const buttons = [...document.querySelectorAll('[data-key]')];
+  const sections = [...document.querySelectorAll('[data-key-section]')];
+  buttons.forEach(button => button.addEventListener('click', () => {
+    const key = button.dataset.key;
+    buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    sections.forEach(section => { section.hidden = key !== 'all' && section.dataset.keySection !== key; });
+    document.querySelector('.result-count').textContent = key === 'all' ? '全部 8 个调 · 56 张指法图' : `${button.textContent} · 7 张指法图`;
+  }));
+})();
+</script>
+</body>
+</html>

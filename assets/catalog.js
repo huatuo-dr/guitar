@@ -91,3 +91,15 @@ window.GUITAR_SCORES = [
     description: 'C 调单旋律练习版，60 拍/分钟，含六线谱和对应简谱。'
   }
 ];
+
+// Knowledge and practice tools are separate from the score collection.
+// Add a relative path when the content page is ready; omit it for planned entries.
+window.GUITAR_TOOLS = [
+  {
+    id: 'chord-charts',
+    path: 'tools/各调和弦图.html',
+    title: '各调和弦图',
+    description: '各调常用和弦与吉他指法速查。',
+    updatedAt: '2026-09-29'
+  }
+];

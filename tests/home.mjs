@@ -46,6 +46,49 @@ try{
   await page.waitForSelector('.score-card');
   assert.equal(await page.title(),'曲谱库 · 小k吉他练习');
   assert.equal(await page.locator('.score-card').count(),catalog.length);
+  assert.equal(await page.locator('[data-type="tools"]').count(),1,'分类末尾提供工具入口');
+  assert.deepEqual(await page.locator('.filters button').evaluateAll(nodes=>nodes.map(n=>n.dataset.type)),['all','fingerstyle','accompaniment','tools']);
+  assert.equal(await page.locator('.tool-card').count(),0,'全部不混入工具');
+  assert.equal(await page.locator('[data-count="all"]').innerText(),String(catalog.length));
+  await page.locator('#search').fill('偏爱');
+  await page.locator('[data-type="tools"]').click();
+  assert.equal(await page.locator('#search').inputValue(),'','工具与曲谱分别保留搜索词');
+  assert.equal(await page.locator('#search').getAttribute('placeholder'),'搜索工具名称或关键词');
+  assert.equal(await page.locator('.list-heading h2').innerText(),'工具目录');
+  assert.equal(await page.locator('[data-count="tools"]').innerText(),'1');
+  assert.equal(await page.locator('#result-count').innerText(),'共 1 项工具');
+  assert.equal(await page.locator('.tool-card').count(),1);
+  assert.equal(await page.locator('.tool-card .score-title').innerText(),'各调和弦图');
+  assert.equal(await page.locator('.tool-card a').count(),1);
+  assert.equal(await page.locator('.tool-card a').getAttribute('href'),'./tools/各调和弦图.html');
+  await page.locator('.tool-card a').click();
+  assert.equal(await page.locator('.chord-card').count(),56);
+  await page.locator('.back').click();
+  assert.equal(await page.locator('[data-type="tools"]').getAttribute('aria-pressed'),'true');
+  await page.locator('[data-type="all"]').click();
+  await page.locator('#search').fill('偏爱');
+  await page.locator('[data-type="tools"]').click();
+  for(const width of [390,320]){
+    await page.setViewportSize({width,height:844});
+    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'工具分类与卡片适应手机');
+  }
+  await page.screenshot({path:'artifacts/home-tools-mobile.png',fullPage:true});
+  await page.setViewportSize({width:1440,height:1000});
+  await page.screenshot({path:'artifacts/home-tools-desktop.png',fullPage:true});
+  await page.locator('#search').fill('和弦');assert.equal(await page.locator('.tool-card').count(),1);
+  await page.locator('#search').fill('吉他指法');assert.equal(await page.locator('.tool-card').count(),1,'工具关键词也匹配介绍');
+  await page.locator('#search').fill('不存在的工具');
+  assert.equal(await page.locator('#empty-title').innerText(),'没有找到相关工具');
+  await page.locator('#reset-filters').click();
+  assert.equal(await page.locator('[data-type="tools"]').getAttribute('aria-pressed'),'true');
+  assert.equal(await page.locator('.tool-card').count(),1);
+  await page.locator('[data-type="all"]').click();
+  assert.equal(await page.locator('#search').inputValue(),'偏爱');
+  assert.equal(await page.locator('.list-heading h2').innerText(),'曲谱目录');
+  await page.locator('#search').fill('和弦图');
+  assert.equal(await page.locator('.score-card').count(),0,'曲谱搜索不能查到工具条目');
+  await page.locator('#reset-filters').click();
+
   assert.equal(await page.locator(`${referenceCard} .score-title`).innerText(),reference.title);
   await page.locator('#search').fill('  偏爱  ');
   assert.equal(await page.locator('.score-card').count(),catalog.filter(s=>`${s.title} ${s.artist||''}`.includes('偏爱')).length);
@@ -77,6 +120,8 @@ try{
   web.on('pageerror',e=>failures.push(e.message));
   web.on('response',r=>{if(r.status()>=400)failures.push(`${r.status()} ${r.url()}`)});
   await web.goto(address);await web.waitForSelector('.score-card');
+  await web.locator('[data-type="tools"]').click();assert.equal(await web.locator('.tool-card .score-title').innerText(),'各调和弦图');
+  await web.locator('[data-type="all"]').click();assert.equal(await web.locator('.score-card').count(),catalog.length);
   assert.ok((await web.locator(`${referenceCard} .open-score`).getAttribute('href')).startsWith('./sheet_music/'));
   assert.equal(await web.locator('.download-score').count(),0,'首页只保留打开曲谱');
   await web.locator('.library-footer a[href="./docs/制谱.html"]').click();
@@ -91,7 +136,11 @@ try{
     {...reference,id:'a',title:'Alpha',type:'fingerstyle',updatedAt:'2026-01-01'},
     {...reference,id:'b',title:'Beta',type:'accompaniment',updatedAt:'2026-02-01'}
   ];
-  await web.route('**/assets/catalog.js',route=>route.fulfill({contentType:'text/javascript',body:`window.GUITAR_SCORES=${JSON.stringify(fixtures)};`}));
+  const toolFixtures=[
+    {id:'tool-a',title:'Alpha tool',description:'指法练习',updatedAt:'2026-01-01',path:'docs/制谱.html'},
+    {id:'tool-z',title:'Zeta tool',description:'和弦知识',updatedAt:'2026-02-01'}
+  ];
+  await web.route('**/assets/catalog.js',route=>route.fulfill({contentType:'text/javascript',body:`window.GUITAR_SCORES=${JSON.stringify(fixtures)};window.GUITAR_TOOLS=${JSON.stringify(toolFixtures)};`}));
   await web.goto(address);await web.waitForSelector('.score-card');
   assert.deepEqual(await web.locator('.score-title').allTextContents(),['Zebra','Beta','Alpha']);
   assert.equal(await web.locator('[data-count="all"]').innerText(),'3');
@@ -104,13 +153,23 @@ try{
   assert.equal(await web.locator('.score-card').count(),0);
   await web.locator('#reset-filters').click();
   assert.equal(await web.locator('.score-card').count(),3);
+  await web.locator('[data-type="tools"]').click();
+  assert.equal(await web.locator('[data-count="tools"]').innerText(),'2');
+  assert.equal(await web.locator('[data-count="all"]').innerText(),'3');
+  assert.deepEqual(await web.locator('.score-title').allTextContents(),['Alpha tool','Zeta tool']);
+  await web.locator('#sort').selectOption('updated');
+  assert.deepEqual(await web.locator('.score-title').allTextContents(),['Zeta tool','Alpha tool']);
+  await web.locator('#search').fill('指法');assert.equal(await web.locator('.tool-card').count(),1);
+  assert.equal(await web.locator('[data-tool-id="tool-a"] a').getAttribute('href'),'./docs/制谱.html');
+  await web.locator('[data-tool-id="tool-a"] a').click();
+  assert.equal(await web.locator('h1').innerText(),'如何把原谱制作成网页吉他谱');
   assert.deepEqual(failures,[]);
   await web.unroute('**/assets/catalog.js');
   await web.route('**/assets/catalog.js',route=>route.fulfill({contentType:'text/javascript',body:''}));
   await web.goto(address);
   assert.ok((await web.locator('#catalog-status').innerText()).includes('未能加载'));
   assert.equal(await web.locator('.empty-state').isVisible(),false);
-  console.log('PASS: 曲谱清单有效；首页离线、搜索、分类、排序、空态恢复、手机显示、曲谱/文档链接及GitHub Pages子路径检查通过。');
+  console.log('PASS: 曲谱清单有效；首页离线、搜索、分类、排序、空态恢复、手机显示、曲谱/工具隔离、工具搜索与扩展条目、文档链接及GitHub Pages子路径检查通过。');
   await hosted.close();
 }finally{
   await browser.close();

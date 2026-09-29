@@ -9,11 +9,20 @@
 图片导出按当前完整谱 / 简易谱以及每行小节布局生成 1600 像素宽的 PNG，长谱在完整谱行之间分图，预览后逐张保存；手机可长按预览图片保存。图片包含标题、曲谱、简谱和歌词，不包含工具栏及播放高亮。导出采用离屏副本，不改变页面行数、缩放或阅读模式。`src/score-export.js` / `.css` 共用导出菜单与图片逻辑，`html-to-image 1.11.13` 及 MIT 许可内嵌到各份 HTML，不依赖网络资源。运行 `npm run test:export` 验证菜单、PDF 入口、实际 PNG、小节覆盖及手机离线使用。
 
 - `index.html`：首页结构。
-- `assets/catalog.js`：独立曲谱清单，新增曲谱时在这里登记。
+- `assets/catalog.js`：曲谱与工具的独立清单，新增条目时在这里登记。
 - `assets/home.js`、`assets/home.css`：首页交互和样式。
 - `sheet_music/`：制作完成的独立 HTML 曲谱。
+
 - [docs/制谱.html](docs/制谱.html)：实际制谱流程、工具及校核经验。
 - [.agents/skills/guitar-score-workflow/SKILL.md](.agents/skills/guitar-score-workflow/SKILL.md)：本项目制谱、简易谱与校核的可复用工作方法。
+
+首页的“工具”位于“弹唱伴奏”之后，使用 `assets/catalog.js` 中独立的 `window.GUITAR_TOOLS` 清单；工具不会进入“全部”曲谱的列表、搜索和数量统计。工具支持名称与介绍关键词搜索、最近更新／名称排序，工具与曲谱分别保留当前搜索词。
+
+首个条目为[各调和弦图](tools/各调和弦图.html)，包含 C、D、E、F、G、A、B、B♭ 八个大调、56 张 SVG 指法图，支持按调筛选、手机自动换行与离线查看。返回入口直接打开首页“工具”分类。
+
+`knowledge/chord-charts.json` 保存和弦分组、六弦至一弦的品位、手指编号和横按范围；`src/chord-charts.html` 保存独立页面模板。`npm run build:chord-charts` 重新生成详情页，完整 `npm run build` 也包含它；`npm run test:chord-charts` 校验音高、调内和弦、横按与浏览器布局。原图最后一列“VII”按实际和弦修正为“V7”，C 和弦保留原图 C/G 按法，补充空弦与不弹弦标记。
+
+后续添加知识条目时填写 `id`、`title`、`description`、`updatedAt`；内容页完成后补充相对根目录的 `path`，首页会自动显示“查看内容”链接。未提供 `path` 的条目不生成链接。
 
 ## 添加曲谱
 
