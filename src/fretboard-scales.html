@@ -21,6 +21,12 @@ header,main,footer{max-width:1160px;margin:auto}header{display:flex;align-items:
 .scale-spelling{display:flex;flex-wrap:wrap;gap:8px 22px;margin:0 0 12px;color:var(--muted);font-size:13px}.scale-spelling b{color:var(--green);margin-right:5px}
 .fretboard{margin:0;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px 18px;min-width:0}.fretboard svg{display:block;width:100%;height:auto}.split-boards{display:none}.fretboard figcaption{color:var(--muted);font-size:12px;margin:0 0 8px}
 .fret,.string{fill:none;stroke:#a9b4a8}.fret{stroke-width:1}.nut{stroke:var(--ink);stroke-width:3}.fret-label,.string-label{fill:var(--muted);font-size:14px}.fret-label{text-anchor:middle}.position-dot{fill:#b5c1b4}.scale-note circle{fill:var(--paper);stroke:#dde5d9;stroke-width:1}.scale-note text{fill:var(--ink);font-size:18px;font-weight:600;text-anchor:middle}.tonic circle{fill:var(--green);stroke:var(--green)}.tonic text{fill:white}.scale-note .octave-dot{fill:var(--green);stroke:none}
+.pattern-band{opacity:0;pointer-events:none}.pattern-band.is-active{opacity:.14}.pattern-control{cursor:pointer;outline:none}.pattern-bracket{fill:none;stroke:var(--pattern-color);stroke-width:1.3}.pattern-button{fill:var(--paper);stroke:var(--pattern-color);stroke-width:1}.pattern-control text{text-anchor:middle;font-size:13px;font-weight:650;fill:var(--pattern-color)}.pattern-control[aria-pressed="true"] .pattern-button{fill:var(--pattern-color)}.pattern-control[aria-pressed="true"] text{fill:white}.pattern-control:focus-visible .pattern-button{stroke:var(--ink);stroke-width:3}.pattern-control:hover .pattern-button{stroke-width:2}.scale-note.is-highlighted>circle:not(.octave-dot){stroke:var(--pattern-color);stroke-width:2.5}
+.notation-toggle{font-size:12px;font-weight:500;line-height:1.5;min-height:36px;padding:7px 12px;background:var(--paper);border:1px solid var(--line);border-radius:5px;color:var(--green)}.notation-toggle[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:white}
+.letter-mode [data-degree="1"]{--note-color:#246a4b}.letter-mode [data-degree="2"]{--note-color:#3434a8}.letter-mode [data-degree="3"]{--note-color:#a24d28}.letter-mode [data-degree="4"]{--note-color:#b03f72}.letter-mode [data-degree="5"]{--note-color:#3167a5}.letter-mode [data-degree="6"]{--note-color:#8052a1}.letter-mode [data-degree="7"]{--note-color:#4b3026}
+.letter-mode .scale-note>circle:not(.octave-dot){fill:var(--paper)}.letter-mode .scale-note:not(.is-highlighted)>circle:not(.octave-dot){stroke:var(--note-color);stroke-width:1.5}.letter-mode .scale-note.tonic>circle:not(.octave-dot){stroke-width:3}.letter-mode .scale-note text,.letter-mode .scale-note .octave-dot{fill:var(--note-color)}
+.letter-mode .scale-note{cursor:pointer;outline:none}.letter-mode .scale-note:focus-visible>circle:not(.octave-dot){stroke-width:4}.letter-mode .scale-note.note-muted{opacity:.23}.letter-mode .scale-note.note-focused>circle:not(.octave-dot){fill:var(--note-color);stroke:var(--note-color)}.letter-mode .scale-note.note-focused text{fill:white}
+.letter-mode [data-note-key]{cursor:pointer;color:var(--note-color);border-radius:3px}.letter-mode [data-note-key]:focus-visible{outline:2px solid var(--note-color);outline-offset:3px}.letter-mode [data-note-key][aria-pressed="true"]{text-decoration:underline;text-underline-offset:4px}
 footer{padding:0 0 28px;color:var(--muted);font-size:12px}footer p{margin:0}
 @media(max-width:1208px){header,main,footer{margin-inline:24px}}
 @media(max-width:760px){.full-board{display:none}.split-boards{display:grid;gap:10px}.fretboard{padding:10px 8px}}
@@ -35,10 +41,10 @@ footer{padding:0 0 28px;color:var(--muted);font-size:12px}footer p{margin:0}
 <details class="guide" open>
 <summary>如何读图</summary>
 <p>从上到下为 1 → 6 弦（细弦 → 粗弦），从左到右为品位递增。空弦表示不按弦。</p>
-<p><span class="legend">1 2 3 4 5 6 7</span>表示当前调的音级，不是手指编号；绿色实心圆标出主音 1。</p>
+<p><span class="legend">1 2 3 4 5 6 7</span>表示当前调的音级，不是手指编号；数字方式中绿色实心圆标出主音 1。</p>
 <p class="note">数字上方一个点表示高一个八度，下方一个点表示低一个八度，两个点表示相差两个八度；没有点为中音区。空白位置是该大调音阶之外的音；下方小圆点辅助定位品位。手机按品位分段展示。</p>
 </details>
-<nav class="key-nav" aria-label="选择调性"><!-- KEY_FILTERS --></nav>
+<nav class="key-nav" aria-label="选择调性，可多选"><!-- KEY_FILTERS --></nav>
 <p class="result-count" role="status" aria-live="polite">全部 7 个调 · 空弦至第 15 品</p>
 <div id="charts"><!-- SCALE_CHARTS --></div>
 </main>
@@ -47,12 +53,95 @@ footer{padding:0 0 28px;color:var(--muted);font-size:12px}footer p{margin:0}
 (() => {
   const buttons = [...document.querySelectorAll('[data-key]')];
   const sections = [...document.querySelectorAll('[data-key-section]')];
+  const cSection = document.querySelector('[data-key-section="C"]');
+  const notationButton = cSection.querySelector('.notation-toggle');
+  const noteTargets = [...cSection.querySelectorAll('.scale-note[data-note], [data-note-key]')];
+  let focusedNote = null;
+  function renderNoteFocus(){
+    const letters = cSection.classList.contains('letter-mode');
+    noteTargets.forEach(target => {
+      const name = target.dataset.note || target.dataset.noteKey;
+      const selected = letters && focusedNote === name;
+      target.classList.toggle('note-focused', selected);
+      target.classList.toggle('note-muted', letters && focusedNote !== null && !selected);
+      if(letters){
+        target.setAttribute('role', 'button');
+        target.setAttribute('tabindex', '0');
+        target.setAttribute('aria-pressed', String(selected));
+        target.setAttribute('aria-label', `${name}，${selected ? '取消' : '聚焦'}同名音符`);
+      } else {
+        ['role','tabindex','aria-pressed','aria-label'].forEach(attribute => target.removeAttribute(attribute));
+      }
+    });
+  }
+  function toggleNote(target){
+    if(!cSection.classList.contains('letter-mode')) return;
+    const name = target.dataset.note || target.dataset.noteKey;
+    focusedNote = focusedNote === name ? null : name;
+    renderNoteFocus();
+  }
+  noteTargets.forEach(target => {
+    target.addEventListener('click', () => toggleNote(target));
+    target.addEventListener('keydown', event => {
+      if(cSection.classList.contains('letter-mode') && (event.key === 'Enter' || event.key === ' ')){
+        event.preventDefault();
+        toggleNote(target);
+      }
+    });
+  });
+  notationButton.addEventListener('click', () => {
+    const letters = cSection.classList.toggle('letter-mode');
+    notationButton.textContent = letters ? '方式2' : '方式1';
+    notationButton.setAttribute('aria-pressed', String(letters));
+    notationButton.setAttribute('aria-label', letters ? '方式2：字母音名，点击切换为方式1数字音级' : '方式1：数字音级，点击切换为方式2音名');
+    cSection.querySelectorAll('.scale-note').forEach(note => {
+      note.querySelector('text').textContent = letters ? note.dataset.note : note.dataset.degree;
+    });
+    if(!letters) focusedNote = null;
+    renderNoteFocus();
+  });
+  const patternButtons = [...cSection.querySelectorAll('[data-pattern]')];
+  let activePattern = null;
+  function selectPattern(button){
+    activePattern = activePattern === button.dataset.pattern ? null : button.dataset.pattern;
+    const first = Number(button.dataset.first), last = Number(button.dataset.last);
+    patternButtons.forEach(item => item.setAttribute('aria-pressed', String(item.dataset.pattern === activePattern)));
+    cSection.querySelectorAll('[data-pattern-band]').forEach(band => band.classList.toggle('is-active', band.dataset.patternBand === activePattern));
+    cSection.querySelectorAll('.scale-note').forEach(note => {
+      const highlighted = activePattern !== null && Number(note.dataset.fret) >= first && Number(note.dataset.fret) <= last;
+      note.classList.toggle('is-highlighted', highlighted);
+      if(highlighted)note.style.setProperty('--pattern-color', button.style.getPropertyValue('--pattern-color'));
+      else note.style.removeProperty('--pattern-color');
+    });
+  }
+  patternButtons.forEach(button => {
+    button.addEventListener('click', () => selectPattern(button));
+    button.addEventListener('keydown', event => {
+      if(event.key === 'Enter' || event.key === ' '){event.preventDefault();selectPattern(button);}
+    });
+  });
+  const selectedKeys = new Set(sections.map(section => section.dataset.keySection));
+  function renderKeys(){
+    sections.forEach(section => { section.hidden = !selectedKeys.has(section.dataset.keySection); });
+    buttons.forEach(button => {
+      const key = button.dataset.key;
+      const pressed = key === 'all' ? selectedKeys.size === sections.length : key === 'none' ? selectedKeys.size === 0 : selectedKeys.has(key);
+      button.setAttribute('aria-pressed', String(pressed));
+    });
+    const names = sections.filter(section => !section.hidden).map(section => section.dataset.keySection);
+    document.querySelector('.result-count').textContent = names.length === 0
+      ? '未选择调性 · 点击上方按钮显示音阶图'
+      : `${names.length === sections.length ? '全部 7 个调' : names.join('、') + ' 调 · 共 ' + names.length + ' 个调'} · 空弦至第 15 品`;
+  }
   buttons.forEach(button => button.addEventListener('click', () => {
     const key = button.dataset.key;
-    buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
-    sections.forEach(section => { section.hidden = key !== 'all' && section.dataset.keySection !== key; });
-    document.querySelector('.result-count').textContent = key === 'all' ? '全部 7 个调 · 空弦至第 15 品' : `${key} 调 · 空弦至第 15 品`;
+    if(key === 'all') sections.forEach(section => selectedKeys.add(section.dataset.keySection));
+    else if(key === 'none') selectedKeys.clear();
+    else if(selectedKeys.has(key)) selectedKeys.delete(key);
+    else selectedKeys.add(key);
+    renderKeys();
   }));
+  renderKeys();
 })();
 </script>
 </body>

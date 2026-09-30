@@ -10,6 +10,13 @@
     {"number":5,"note":"A","midi":45},
     {"number":6,"note":"E","midi":40}
   ],
+  "cPatterns": [
+    {"id":"mi","label":"E(Mi)型","first":0,"last":3,"side":"top","color":"#a24d28"},
+    {"id":"sol","label":"G(Sol)型","first":2,"last":6,"side":"bottom","color":"#3167a5"},
+    {"id":"la","label":"A(La)型","first":4,"last":8,"side":"top","color":"#8052a1"},
+    {"id":"si","label":"B(Si)型","first":7,"last":10,"side":"bottom","color":"#4b3026"},
+    {"id":"re","label":"D(Re)型","first":9,"last":13,"side":"top","color":"#3434a8"}
+  ],
   "majorIntervals": [0,2,4,5,7,9,11],
   "keys": [
     {"name":"C","root":0,"tonicMidi":48,"notes":["C","D","E","F","G","A","B"]},
