@@ -53,9 +53,9 @@ try{
   assert.equal(await page.locator('[data-count="all"]').innerText(),String(catalog.length));
   await page.locator('[data-type="chorus"]').click();
   assert.equal(await page.locator('[data-count="chorus"]').innerText(),String(catalog.filter(s=>s.type==='chorus').length));
-  assert.equal(await page.locator('.score-card').count(),1);
-  assert.equal(await page.locator('.score-title').innerText(),'《甲乙丙丁》仅副歌');
-  assert.equal(await page.locator('.type-badge').innerText(),'仅副歌');
+  assert.equal(await page.locator('.score-card').count(),catalog.filter(s=>s.type==='chorus').length);
+  assert.equal(await page.locator('[data-score-id="jiayibingding-chorus"] .score-title').innerText(),'《甲乙丙丁》仅副歌');
+  assert.ok((await page.locator('.type-badge').allTextContents()).every(label=>label==='仅副歌'));
   await page.locator('[data-type="all"]').click();
   await page.locator('#search').fill('偏爱');
   await page.locator('[data-type="tools"]').click();

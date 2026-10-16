@@ -2,6 +2,29 @@
 // Optional fields: artist, timeSignature, capo (0 = no capo), bars, description.
 window.GUITAR_SCORES = [
   {
+    id: 'gechangzuguo-chorus',
+    title: '《歌唱祖国》仅副歌',
+    artist: '群星',
+    type: 'chorus',
+    path: 'sheet_music/歌唱祖国仅副歌.html',
+    timeSignature: '4/4',
+    bars: 15,
+    updatedAt: '2026-10-16',
+    description: 'C 指法 · 登山者编配，含前奏与完整副歌，在“走向繁荣富强”处结束。'
+  },
+  {
+    id: 'xiangnideye-chorus',
+    title: '《想你的夜》仅副歌',
+    artist: '关喆',
+    type: 'chorus',
+    path: 'sheet_music/想你的夜仅副歌.html',
+    timeSignature: '4/4',
+    capo: 3,
+    bars: 11,
+    updatedAt: '2026-10-16',
+    description: '原调 ♭E · C 指法，从“想你的”接入，保留所选副歌、简谱与伴奏。'
+  },
+  {
     id: 'jiayibingding-chorus',
     title: '《甲乙丙丁》仅副歌',
     artist: '李佳薇',

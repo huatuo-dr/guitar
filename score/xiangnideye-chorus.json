@@ -1,0 +1,680 @@
+{
+  "title": "《想你的夜》仅副歌",
+  "scoreType": "chorus",
+  "artist": "关喆",
+  "key": "♭E",
+  "fingeringKey": "C",
+  "capo": 3,
+  "timeSignature": [
+    4,
+    4
+  ],
+  "measureWidth": 320,
+  "sourceTitle": "用户提供的《想你的夜》两页截图 · 关喆词曲 / 演唱 · 音乐之家原谱",
+  "techniqueLegend": "六线谱 ×：按当前和弦同时拨指定弦；↑ 下扫，波浪 ↑ 琶音；— 延续前音；休止符处停止发声。",
+  "melodyLegend": "简谱上下圆点表示八度，数字下短线表示减时；0 为休止，— 为延长；同音弧线为延音，异音弧线为连音，弧线上的 3 为三连音。",
+  "notes": [
+    "选取第二页前两行与第三行首小节，共11小节；网页从1重新编号，对应原图17–27小节。",
+    "第1小节保留完整六线谱与简谱，歌词仅留最后“想你的”；第11小节保留完整六线谱与简谱，歌词仅留“点”，删去末尾“想你的”。",
+    "原调♭E、C指法、变调夹3品、4/4拍；原谱未标速度，试听默认60 BPM。",
+    "第9小节括号内回主歌的替代弱起“分”不属于本次副歌摘录，保留主声部的延长音。",
+    "原谱反复返回未选取的主歌；摘录版改为副歌唱两遍，将反复起点移至第1小节，第二遍跳过8–9小节，接10–11结束。",
+    "G9名称按原谱保留，按弦位置为6弦3品、3弦2品、1弦3品；未标明的5弦作不弹处理。"
+  ],
+  "routeHeading": "演奏顺序 · 仅副歌摘录",
+  "sections": [
+    {
+      "name": "副歌引入",
+      "start": 1,
+      "end": 1
+    },
+    {
+      "name": "副歌",
+      "start": 2,
+      "end": 7
+    },
+    {
+      "name": "副歌收尾",
+      "start": 8,
+      "end": 11
+    }
+  ],
+  "route": [
+    {
+      "label": "副歌第一遍",
+      "start": 1,
+      "end": 9
+    },
+    {
+      "label": "副歌第二遍",
+      "start": 1,
+      "end": 7
+    },
+    {
+      "label": "第二跳尾与结束",
+      "start": 10,
+      "end": 11
+    }
+  ],
+  "simpleScore": {
+    "fullRanges": [
+      {
+        "start": 1,
+        "end": 1,
+        "name": "副歌引入"
+      }
+    ],
+    "routeVerses": [
+      0,
+      0,
+      0
+    ],
+    "lyricBreaks": [
+      {
+        "bar": 2,
+        "beat": 4,
+        "kind": "space"
+      },
+      {
+        "bar": 3,
+        "beat": 4.25,
+        "kind": "space"
+      },
+      {
+        "bar": 5,
+        "beat": 3,
+        "kind": "space"
+      },
+      {
+        "bar": 5,
+        "beat": 4,
+        "kind": "line"
+      },
+      {
+        "bar": 6,
+        "beat": 4,
+        "kind": "space"
+      },
+      {
+        "bar": 7,
+        "beat": 4.25,
+        "kind": "space"
+      }
+    ]
+  },
+  "chordShapes": {
+    "G9": {
+      "frets": [
+        3,
+        -1,
+        0,
+        2,
+        0,
+        3
+      ]
+    },
+    "Fmaj7": {
+      "frets": [
+        -1,
+        -1,
+        3,
+        2,
+        1,
+        0
+      ]
+    },
+    "Em7": {
+      "frets": [
+        0,
+        2,
+        2,
+        0,
+        3,
+        0
+      ]
+    },
+    "Dm7": {
+      "frets": [
+        -1,
+        -1,
+        0,
+        2,
+        1,
+        1
+      ],
+      "barre": {
+        "from": 2,
+        "to": 1,
+        "fret": 1
+      }
+    },
+    "G7": {
+      "frets": [
+        3,
+        2,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "Am": {
+      "frets": [
+        -1,
+        0,
+        2,
+        2,
+        1,
+        0
+      ]
+    },
+    "A": {
+      "frets": [
+        -1,
+        0,
+        2,
+        2,
+        2,
+        0
+      ]
+    },
+    "G": {
+      "frets": [
+        3,
+        2,
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    "C": {
+      "frets": [
+        -1,
+        3,
+        2,
+        0,
+        1,
+        0
+      ]
+    },
+    "D7": {
+      "frets": [
+        -1,
+        -1,
+        0,
+        2,
+        1,
+        2
+      ]
+    }
+  },
+  "patterns": {
+    "pickup": [
+      {
+        "kind": "arpeggio",
+        "startString": 6,
+        "endString": 1,
+        "duration": 4
+      },
+      "h4",
+      {
+        "kind": "down",
+        "startString": 5,
+        "endString": 1,
+        "duration": 4
+      },
+      {
+        "kind": "rest",
+        "duration": 4
+      }
+    ],
+    "four-bass": [
+      {
+        "kind": "pluck",
+        "strings": [
+          4,
+          3,
+          2,
+          1
+        ],
+        "duration": 4
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3,
+          2,
+          1
+        ],
+        "duration": 4
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4,
+          3,
+          2,
+          1
+        ],
+        "duration": 4
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3,
+          2,
+          1
+        ],
+        "duration": 4
+      }
+    ],
+    "em": [
+      {
+        "kind": "pluck",
+        "strings": [
+          4,
+          3,
+          2,
+          1
+        ],
+        "duration": 4
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3,
+          2,
+          1
+        ],
+        "duration": 4
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          6,
+          3,
+          2,
+          1
+        ],
+        "duration": 4
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3,
+          2,
+          1
+        ],
+        "duration": 4
+      }
+    ],
+    "g7": [
+      {
+        "kind": "pluck",
+        "strings": [
+          4,
+          3,
+          2,
+          1
+        ],
+        "duration": 4
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3,
+          2,
+          1
+        ],
+        "duration": 4
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3,
+          2,
+          1
+        ],
+        "duration": 4
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3,
+          2,
+          1
+        ],
+        "duration": 4
+      }
+    ],
+    "em-am-a": [
+      {
+        "kind": "pluck",
+        "strings": [
+          4,
+          3,
+          2,
+          1
+        ],
+        "duration": 4
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3,
+          2,
+          1
+        ],
+        "duration": 4
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          5,
+          3,
+          2,
+          1
+        ],
+        "duration": 4
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3,
+          2,
+          1
+        ],
+        "duration": 4
+      }
+    ],
+    "dm-g": [
+      {
+        "kind": "pluck",
+        "strings": [
+          4,
+          3,
+          2,
+          1
+        ],
+        "duration": 4
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3,
+          2,
+          1
+        ],
+        "duration": 4
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          6,
+          3,
+          2,
+          1
+        ],
+        "duration": 4
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3,
+          2,
+          1
+        ],
+        "duration": 4
+      }
+    ],
+    "first-ending": [
+      {
+        "kind": "pluck",
+        "strings": [
+          5
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          1
+        ],
+        "duration": 8,
+        "tieToNext": true
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          1
+        ],
+        "duration": 4
+      },
+      "h4"
+    ],
+    "d7-g": [
+      {
+        "kind": "pluck",
+        "strings": [
+          4,
+          3,
+          2,
+          1
+        ],
+        "duration": 4
+      },
+      "h4",
+      {
+        "kind": "pluck",
+        "strings": [
+          6,
+          3,
+          2,
+          1
+        ],
+        "duration": 4
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3,
+          2,
+          1
+        ],
+        "duration": 4
+      }
+    ],
+    "ending": [
+      {
+        "kind": "pluck",
+        "strings": [
+          5,
+          3,
+          2,
+          1
+        ],
+        "duration": 4
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3,
+          2,
+          1
+        ],
+        "duration": 4
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3,
+          2,
+          1
+        ],
+        "duration": 4
+      },
+      {
+        "kind": "rest",
+        "duration": 4
+      }
+    ]
+  },
+  "bars": [
+    {
+      "number": 1,
+      "sourceBar": 17,
+      "pattern": "pickup",
+      "chords": [
+        [
+          1,
+          "G9"
+        ]
+      ],
+      "repeatStart": true
+    },
+    {
+      "number": 2,
+      "sourceBar": 18,
+      "pattern": "four-bass",
+      "chords": [
+        [
+          1,
+          "Fmaj7"
+        ]
+      ]
+    },
+    {
+      "number": 3,
+      "sourceBar": 19,
+      "pattern": "em",
+      "chords": [
+        [
+          1,
+          "Em7"
+        ]
+      ]
+    },
+    {
+      "number": 4,
+      "sourceBar": 20,
+      "pattern": "four-bass",
+      "chords": [
+        [
+          1,
+          "Dm7"
+        ]
+      ]
+    },
+    {
+      "number": 5,
+      "sourceBar": 21,
+      "pattern": "g7",
+      "chords": [
+        [
+          1,
+          "G7"
+        ]
+      ]
+    },
+    {
+      "number": 6,
+      "sourceBar": 22,
+      "pattern": "four-bass",
+      "chords": [
+        [
+          1,
+          "Fmaj7"
+        ]
+      ]
+    },
+    {
+      "number": 7,
+      "sourceBar": 23,
+      "pattern": "em-am-a",
+      "chords": [
+        [
+          1,
+          "Em7"
+        ],
+        [
+          3,
+          "Am"
+        ],
+        [
+          4,
+          "A"
+        ]
+      ]
+    },
+    {
+      "number": 8,
+      "sourceBar": 24,
+      "pattern": "dm-g",
+      "chords": [
+        [
+          1,
+          "Dm7"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ]
+    },
+    {
+      "number": 9,
+      "sourceBar": 25,
+      "pattern": "first-ending",
+      "chords": [
+        [
+          1,
+          "C"
+        ]
+      ],
+      "repeatEnd": true
+    },
+    {
+      "number": 10,
+      "sourceBar": 26,
+      "pattern": "d7-g",
+      "chords": [
+        [
+          1,
+          "D7"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ]
+    },
+    {
+      "number": 11,
+      "sourceBar": 27,
+      "pattern": "ending",
+      "chords": [
+        [
+          1,
+          "C"
+        ]
+      ]
+    }
+  ],
+  "routeNote": "摘录版将反复起点移至第1小节：第一遍1–9，返回1–7后跳至10–11，在“原点”结束。",
+  "readingNote": "本页仅保留选定副歌范围；摘录版唱两遍，第二遍跳过第1跳尾。简易谱已按演奏顺序展开。"
+}

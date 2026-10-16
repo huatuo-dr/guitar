@@ -51,7 +51,7 @@ export async function buildAccompaniment(id,filename) {
     PLAYER_LICENSES:player?.licenses??'',
     PLAYER_SETUP:player?'scheduleScorePlayback(()=>{accompanimentPlayer=setupAccompanimentPlayer();});':'',
     FOOTER_LABEL:data.scoreType==='chorus' ? '摘录' : simple ? '原谱' : '全曲',
-    READING_NOTE:data.scoreType==='chorus' ? '本页仅保留选定副歌范围，按小节顺序演奏一次；简易版保留引入与器乐内容。' : simple ? '完整版按原谱书写顺序保留反复；简易版已按演奏顺序展开，可以从上往下连续阅读。' : '小节仍按书写顺序保留，没有展开反复；上方演奏顺序列出了完整行进路线。',
+    READING_NOTE:data.readingNote ? escape(data.readingNote) : data.scoreType==='chorus' ? '本页仅保留选定副歌范围，按小节顺序演奏一次；简易版保留引入与器乐内容。' : simple ? '完整版按原谱书写顺序保留反复；简易版已按演奏顺序展开，可以从上往下连续阅读。' : '小节仍按书写顺序保留，没有展开反复；上方演奏顺序列出了完整行进路线。',
     ROUTE_ATTRIBUTES:simple ? ' data-score-route' : '',
     SIMPLE_CSS:simple ? await readFile(new URL('src/simple-score.css',root),'utf8') : '',
     SIMPLE_CONTROL:simple ? '<div class="score-mode-control"><button type="button" id="score-mode" aria-controls="score" hidden>切换为简易谱</button></div>' : '',

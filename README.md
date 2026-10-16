@@ -276,3 +276,11 @@ C 段的星号（*）表示打板，含义经用户确认；按原图保存为 b
 [《甲乙丙丁》仅副歌](sheet_music/甲乙丙丁仅副歌.html) 为首个摘录：李佳薇演唱，原调 F、C 指法、Capo 5，4/4。保留 `tmp/1.jpg` 末行末小节的完整伴奏与简谱，只保留最后“是你”歌词；再接 `tmp/2.jpg` 前四行，含器乐收尾，共15小节（原图14–28）。原谱末尾反复指向选取范围之外，摘录改为顺序演奏一次，不保留房子跳转。简易谱完整保留第1小节和第12–15小节。
 
 数据位于 `score/jiayibingding-chorus.json` 与 `score/jiayibingding-chorus-vocal.json`；`npm run build:jiayibingding-chorus` 构建，`npm run test:jiayibingding-chorus` 验证选取范围、歌词、拍数、播放和浏览器显示。
+
+[《想你的夜》仅副歌](sheet_music/想你的夜仅副歌.html)：关喆词曲 / 演唱，原调 ♭E、C 指法、Capo 3，4/4。保留第二页前两行及第三行首小节，共11小节（原图17–27）。首小节歌词仅留“想你的”，末小节仅留“点”，完整伴奏和简谱均保留。摘录版暂按两遍副歌处理，将原来回主歌的反复改为返回摘录第1小节：`1–9 → 1–7 → 10–11`，简易谱和播放共18小节；原图括号内回主歌的替代弱起“分”不收录。
+
+数据位于 `score/xiangnideye-chorus.json` 与 `score/xiangnideye-chorus-vocal.json`；`npm run build:xiangnideye-chorus` 构建，`npm run test:xiangnideye-chorus` 验证。共享六线谱渲染器补充四分休止符，播放在该拍保持休止。
+
+[《歌唱祖国》仅副歌](sheet_music/歌唱祖国仅副歌.html)：依据 `tmp/1.png` 保留前两行和第三个完整谱行的前三小节，共15小节，在“走向繁荣富强”的“强”处结束。前奏1–3小节及“五星”弱起完整保留，简易谱简化第4–15小节。原图为C指法、原唱调F、4/4拍、95 BPM，变调夹未标；试听按未夹变调夹音高及默认60 BPM练习速度。两处二分音符保留两拍时值和短符干。
+
+数据位于 `score/gechangzuguo-chorus.json` 与 `score/gechangzuguo-chorus-vocal.json`；`npm run build:gechangzuguo-chorus` 构建，`npm run test:gechangzuguo-chorus` 验证。

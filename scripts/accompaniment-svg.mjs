@@ -51,7 +51,7 @@ export function validateScore(data) {
       if(!Number.isInteger(bar.crossBarTieStart)||!start||['hold','rest'].includes(start.kind)||!expanded[i+1]||bar.events.slice(bar.crossBarTieStart+1).some(e=>e.kind!=='hold'))throw new Error('跨小节伴奏延音起点无效');
     }
     for (const [eventIndex,event] of bar.events.entries()) {
-      if (!['down','up','hold','arpeggio','note','pluck','rest','fretted'].includes(event.kind) || ![...(event.kind==='fretted'?[1]:[]),4,8,16,32].includes(event.duration)) throw new Error('事件无效');
+      if (!['down','up','hold','arpeggio','note','pluck','rest','fretted'].includes(event.kind) || ![...(event.kind==='fretted'?[1]:[]),2,4,8,16,32].includes(event.duration)) throw new Error('事件无效');
       if (event.kind === 'note' && (!Number.isInteger(event.string) || event.string < 1 || event.string > 6 || !Number.isInteger(event.fret) || event.fret < 0)) throw new Error('品位或弦号无效');
       if(event.kind==='pluck'){
         if(!Array.isArray(event.strings)||!event.strings.length||event.strings.some(s=>!Number.isInteger(s)||s<1||s>6)||new Set(event.strings).size!==event.strings.length)throw new Error('拨弦弦位无效');
@@ -68,7 +68,7 @@ export function validateScore(data) {
         }
       }
       for(const string of [event.startString,event.endString])if(string!==undefined&&(!Number.isInteger(string)||string<1||string>6))throw new Error('扫弦范围无效');
-      if(event.kind==='rest' && event.duration!==8)throw new Error('当前仅支持八分休止');
+      if(event.kind==='rest' && ![4,8].includes(event.duration))throw new Error('当前仅支持四分与八分休止');
       if(event.sourceArrow!==undefined && (event.kind!=='hold'||!['up','down','arpeggio'].includes(event.sourceArrow)))throw new Error('延音扫弦箭头无效');
     }
   }
@@ -225,7 +225,9 @@ function renderBar(bar, data, index, rowHeight, headerCrop) {
     if (strokeKind === 'up') svg += arrow(at,event.startString?TOP+(event.startString-1)*STRING_GAP:TOP,event.endString?TOP+(event.endString-1)*STRING_GAP:TOP+24);
     if (strokeKind === 'arpeggio') svg += arrow(at,event.startString?TOP+(event.startString-1)*STRING_GAP:bassY,event.endString?TOP+(event.endString-1)*STRING_GAP:TOP,true);
     if (event.kind === 'hold' && !event.sourceArrow) svg += text(at,TOP+23,'–','hold','middle');
-    if(event.kind==='rest') svg+=`<g class="tab-rest"><ellipse cx="${at-2}" cy="${TOP+22}" rx="2.5" ry="2" fill="currentColor"/><path d="M ${at-2} ${TOP+24} Q ${at+2} ${TOP+25} ${at+4} ${TOP+19} L ${at-1} ${TOP+34}" fill="none" stroke-width="1.8"/></g>`;
+    if(event.kind==='rest') svg+=event.duration===4
+      ? `<g class="tab-rest tab-rest-quarter"><path d="M ${at-3} ${TOP+12} L ${at+3} ${TOP+20} L ${at-2} ${TOP+26} L ${at+4} ${TOP+33} Q ${at-7} ${TOP+27} ${at-3} ${TOP+40}" fill="none" stroke-width="2.6" stroke-linejoin="round"/></g>`
+      : `<g class="tab-rest"><ellipse cx="${at-2}" cy="${TOP+22}" rx="2.5" ry="2" fill="currentColor"/><path d="M ${at-2} ${TOP+24} Q ${at+2} ${TOP+25} ${at+4} ${TOP+19} L ${at-1} ${TOP+34}" fill="none" stroke-width="1.8"/></g>`;
     if(event.kind==='pluck'){
       for(const string of event.strings){
         const y=TOP+(string-1)*STRING_GAP;
@@ -250,7 +252,11 @@ function renderBar(bar, data, index, rowHeight, headerCrop) {
       const end=placed[i+1]?.x??x+barWidth;
       svg+=`<path class="tab-tie" d="M ${at} ${y} Q ${(at+end)/2} ${y-9} ${end} ${y}" fill="none"/>`;
     }
-    if (event.duration!==1 && event.kind !== 'rest' && (event.kind !== 'hold' || event.sourceArrow)) svg += line(at,BOTTOM+7,at,STEM_END);
+    if (event.duration!==1 && event.kind !== 'rest' && (event.kind !== 'hold' || event.sourceArrow)) {
+      svg += event.duration===2
+        ? line(at,STEM_END-10,at,STEM_END,'class="tab-half-stem"')
+        : line(at,BOTTOM+7,at,STEM_END);
+    }
     for(let i=0;i<(event.doubleDotted?2:event.dotted?1:0);i++)svg+=`<circle class="tab-duration-dot" cx="${at+6+i*5}" cy="${STEM_END-3}" r="1.5"/>`;
   });
   if(bar.crossBarTieStart!==undefined){
