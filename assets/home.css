@@ -691,3 +691,5 @@ h1 {
     transition:none
   }
 }
+
+.score-art.chorus{background:#eee6f1;border-color:#dfd2e4}.score-art.chorus:after{content:"副歌";writing-mode:horizontal-tb;font:15px/1.4 system-ui,sans-serif;left:15px;top:32px;background:#eee6f1}.type-badge.chorus{background:#f1eaf4;border-color:#dfd2e4;color:#735184}

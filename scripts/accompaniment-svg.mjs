@@ -22,6 +22,7 @@ export function performanceOrder(data) {
 }
 
 export function validateScore(data) {
+  if(data.measureWidth!==undefined&&(!Number.isFinite(data.measureWidth)||data.measureWidth<270||data.measureWidth>400))throw new Error('小节宽度应为270至400');
   for (const [name, shape] of Object.entries(data.chordShapes)) {
     const base=shape.baseFret??1;
     if (!Number.isInteger(base)||base<1||shape.frets.length !== 6 || shape.frets.some(f => !Number.isInteger(f) || f < -1 || f > base+3 || (f>0&&f<base))) throw new Error(`和弦指法无效：${name}`);
@@ -105,7 +106,7 @@ export function renderChordGuide(data) {
   return Object.entries(data.chordShapes).map(([name, shape]) => `<div class="chord-card"><svg viewBox="0 0 100 102" role="img" aria-label="${escape(name)}和弦指法">${chordDiagram(name,shape,32,35)}${text(50,93,shape.frets.map(f => f < 0 ? '×' : f).join(' '),'fret-code','middle')}</svg></div>`).join('');
 }
 
-const BAR_WIDTH = 270;
+const DEFAULT_BAR_WIDTH = 270;
 const LEFT = 46;
 const TOP = 125;
 const STRING_GAP = 8;
@@ -151,10 +152,11 @@ function renderFrettedEvent(event,next,right) {
 }
 
 function renderBar(bar, data, index, rowHeight, headerCrop) {
-  const x = LEFT + index * BAR_WIDTH;
+  const barWidth = data.measureWidth ?? DEFAULT_BAR_WIDTH;
+  const x = LEFT + index * barWidth;
   const meterChange=bar.number===1 || (data.bars[bar.number-2].beats??4)!==bar.beats;
   const inset=meterChange?45:21;
-  const span = BAR_WIDTH - inset - 21;
+  const span = barWidth - inset - 21;
   const eventX = createBeatPositioner(bar.events,bar.vocal,bar.beats,x+inset,span);
   let playbackAttributes='';
   if(data.playbackEnabled){
@@ -165,22 +167,22 @@ function renderBar(bar, data, index, rowHeight, headerCrop) {
   }
   const section = data.sections.find(s => s.start === bar.number);
   let svg = `<g class="measure" id="bar-${bar.number}" data-bar="${bar.number}" tabindex="-1"${playbackAttributes}><title>${escape(measureDescription(bar))}</title>`;
-  svg += `<rect class="measure-highlight" x="${x+2}" y="1" width="${BAR_WIDTH-4}" height="${rowHeight-2}" rx="5"/>`;
+  svg += `<rect class="measure-highlight" x="${x+2}" y="1" width="${barWidth-4}" height="${rowHeight-2}" rx="5"/>`;
   svg += text(x+2,TOP-6,bar.number,'bar-number','end');
   if (section) svg += text(x+37,13+headerCrop,section.name,'section-label');
   if (bar.startLabel) svg += text(x+8,30,bar.startLabel,'navigation-label');
   if (bar.volta) {
-    svg += line(x+5,39,x+BAR_WIDTH-4,39);
+    svg += line(x+5,39,x+barWidth-4,39);
     if (bar.voltaStart || index === 0) {
       svg += line(x+5,39,x+5,50);
       svg += text(x+10,51,`${bar.volta}.${!bar.voltaStart ? '（续）' : ''}`,'volta-label');
     }
-    if (bar.voltaEnd) svg += line(x+BAR_WIDTH-4,39,x+BAR_WIDTH-4,50);
+    if (bar.voltaEnd) svg += line(x+barWidth-4,39,x+barWidth-4,50);
   }
   for (const chord of bar.chords) svg += chordDiagram(chord.name,data.chordShapes[chord.name],eventX(chord.beat)-8,83);
-  for (let s = 0; s < 6; s++) svg += line(x,TOP+s*STRING_GAP,x+BAR_WIDTH,TOP+s*STRING_GAP,'class="staff-line"');
+  for (let s = 0; s < 6; s++) svg += line(x,TOP+s*STRING_GAP,x+barWidth,TOP+s*STRING_GAP,'class="staff-line"');
   svg += line(x,TOP,x,BOTTOM,'class="bar-line"');
-  svg += line(x+BAR_WIDTH,TOP,x+BAR_WIDTH,BOTTOM,'class="bar-line"');
+  svg += line(x+barWidth,TOP,x+barWidth,BOTTOM,'class="bar-line"');
   if(meterChange){
     svg+=`<g class="time-signature" data-bar="${bar.number}" data-meter="${bar.beats}/4"><rect x="${x+5}" y="${TOP+1}" width="20" height="38" class="note-background"/>`;
     svg+=text(x+15,TOP+17,bar.beats,'meter-number','middle')+text(x+15,TOP+34,4,'meter-number','middle')+'</g>';
@@ -190,10 +192,10 @@ function renderBar(bar, data, index, rowHeight, headerCrop) {
     svg += dot(x+12,TOP+12,2) + dot(x+12,TOP+28,2);
   }
   if (bar.repeatEnd) {
-    svg += line(x+BAR_WIDTH-2,TOP,x+BAR_WIDTH-2,BOTTOM,'stroke-width="3"') + line(x+BAR_WIDTH-7,TOP,x+BAR_WIDTH-7,BOTTOM);
-    svg += dot(x+BAR_WIDTH-12,TOP+12,2) + dot(x+BAR_WIDTH-12,TOP+28,2);
+    svg += line(x+barWidth-2,TOP,x+barWidth-2,BOTTOM,'stroke-width="3"') + line(x+barWidth-7,TOP,x+barWidth-7,BOTTOM);
+    svg += dot(x+barWidth-12,TOP+12,2) + dot(x+barWidth-12,TOP+28,2);
   }
-  if (bar.number === data.bars.length) svg += line(x+BAR_WIDTH-4,TOP,x+BAR_WIDTH-4,BOTTOM,'stroke-width="3"');
+  if (bar.number === data.bars.length) svg += line(x+barWidth-4,TOP,x+barWidth-4,BOTTOM,'stroke-width="3"');
   let elapsed = 0;
   const placed = bar.events.map(event => {
     const result = {...event, beat:elapsed+1, x:eventX(elapsed+1)};
@@ -214,7 +216,7 @@ function renderBar(bar, data, index, rowHeight, headerCrop) {
   }
   placed.forEach((event, i) => {
     const at = event.x;
-    if(event.kind==='fretted')svg+=renderFrettedEvent(event,placed[i+1],x+BAR_WIDTH);
+    if(event.kind==='fretted')svg+=renderFrettedEvent(event,placed[i+1],x+barWidth);
     const chord = bar.chords.findLast(c => c.beat <= event.beat);
     const bassIndex = chord?data.chordShapes[chord.name].frets.findIndex(f => f >= 0):0;
     const bassY = TOP + (5-bassIndex) * STRING_GAP;
@@ -245,14 +247,14 @@ function renderBar(bar, data, index, rowHeight, headerCrop) {
     }
     if(event.tieToNext){
       const y=event.kind==='pluck'?TOP+(event.strings[0]-1)*STRING_GAP-6:TOP-8;
-      const end=placed[i+1]?.x??x+BAR_WIDTH;
+      const end=placed[i+1]?.x??x+barWidth;
       svg+=`<path class="tab-tie" d="M ${at} ${y} Q ${(at+end)/2} ${y-9} ${end} ${y}" fill="none"/>`;
     }
     if (event.duration!==1 && event.kind !== 'rest' && (event.kind !== 'hold' || event.sourceArrow)) svg += line(at,BOTTOM+7,at,STEM_END);
     for(let i=0;i<(event.doubleDotted?2:event.dotted?1:0);i++)svg+=`<circle class="tab-duration-dot" cx="${at+6+i*5}" cy="${STEM_END-3}" r="1.5"/>`;
   });
   if(bar.crossBarTieStart!==undefined){
-    const start=placed[bar.crossBarTieStart],right=x+BAR_WIDTH,y=TOP-8;
+    const start=placed[bar.crossBarTieStart],right=x+barWidth,y=TOP-8;
     svg+=`<path class="tab-tie" d="M ${start.x} ${y} Q ${(start.x+right)/2} ${y-9} ${right} ${y}" fill="none"/>`;
   }
   // Beam within each quarter-note pulse; connect only contiguous eighth/sixteenth events.
@@ -278,17 +280,18 @@ function renderBar(bar, data, index, rowHeight, headerCrop) {
     index+=2;
   }
   if(bar.vocal){
-    svg+=line(x,216,x,252,'class="bar-line"')+line(x+BAR_WIDTH,216,x+BAR_WIDTH,252,'class="bar-line"');
+    svg+=line(x,216,x,252,'class="bar-line"')+line(x+barWidth,216,x+barWidth,252,'class="bar-line"');
     if(meterChange)svg+='<g class="melody-time-signature">'+text(x+15,228,bar.beats,'meter-number','middle')+text(x+15,247,4,'meter-number','middle')+'</g>';
     const previous=data.bars[bar.number-2]?.vocal;
-    svg+=renderNumberedMelody(bar.vocal,{position:eventX,left:x,right:x+BAR_WIDTH,incomingTie:!!previous?.events.at(-1).tieToNext||previous?.crossBarTieStart!==undefined,incomingSlur:bar.vocal.incomingSlur||previous?.events.at(-1).slurToNext||false});
+    svg+=renderNumberedMelody(bar.vocal,{position:eventX,left:x,right:x+barWidth,incomingTie:!!previous?.events.at(-1).tieToNext||previous?.crossBarTieStart!==undefined,incomingSlur:bar.vocal.incomingSlur||previous?.events.at(-1).slurToNext||false});
   }
   if (bar.note) svg += text(x+10,rowHeight-10,bar.note,'source-note');
-  if (bar.endLabel) svg += text(x+BAR_WIDTH-10,rowHeight-10,bar.endLabel,'navigation-label','end');
+  if (bar.endLabel) svg += text(x+barWidth-10,rowHeight-10,bar.endLabel,'navigation-label','end');
   return svg + '</g>';
 }
 
 export function renderScore(data, barsPerRow = 4, range) {
+  const barWidth = data.measureWidth ?? DEFAULT_BAR_WIDTH;
   if (![2,4].includes(barsPerRow)) throw new Error('每行小节数只支持2或4');
   validateScore(data);
   const bars = expandBars(data).filter(bar => !range || (bar.number >= range.start && bar.number <= range.end));
@@ -298,7 +301,7 @@ export function renderScore(data, barsPerRow = 4, range) {
     const group = bars.slice(start,start+barsPerRow);
     const verseCount=Math.max(0,...group.map(bar=>lyricLines(bar.vocal)));
     const rowHeight=group.some(b=>b.vocal)?(verseCount?280+verseCount*24:272):ROW_HEIGHT;
-    html += `<svg class="score-system" viewBox="0 ${headerCrop} ${LEFT + BAR_WIDTH * barsPerRow + 14} ${rowHeight-headerCrop}" role="group" aria-label="第${group[0].number}至${group.at(-1).number}小节">`;
+    html += `<svg class="score-system" viewBox="0 ${headerCrop} ${LEFT + barWidth * barsPerRow + 14} ${rowHeight-headerCrop}" role="group" aria-label="第${group[0].number}至${group.at(-1).number}小节">`;
     html += text(12,TOP+6,'T','tab-label') + text(12,TOP+22,'A','tab-label') + text(12,TOP+38,'B','tab-label');
     if(group.some(b=>b.vocal))html+=text(3,235,'简谱','voice-label');
     html += group.map((bar,index) => renderBar(bar,data,index,rowHeight,headerCrop)).join('') + '</svg>';

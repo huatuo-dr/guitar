@@ -2,6 +2,18 @@
 // Optional fields: artist, timeSignature, capo (0 = no capo), bars, description.
 window.GUITAR_SCORES = [
   {
+    id: 'jiayibingding-chorus',
+    title: '《甲乙丙丁》仅副歌',
+    artist: '李佳薇',
+    type: 'chorus',
+    path: 'sheet_music/甲乙丙丁仅副歌.html',
+    timeSignature: '4/4',
+    capo: 5,
+    bars: 15,
+    updatedAt: '2026-10-16',
+    description: '原调 F · C 指法，从“是你”接入副歌，含所选器乐收尾。'
+  },
+  {
     id: 'tong-nian-accompaniment',
     title: '《童年》弹唱伴奏',
     artist: '罗大佑',

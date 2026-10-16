@@ -16,7 +16,7 @@ assert.ok(reference,'保留已完成《偏爱》作为真实曲谱回归样本')
 const referenceCard='[data-score-id="pian-ai-fingerstyle"]';
 for(const score of catalog){
   assert.ok(score.id&&score.title);
-  assert.ok(['fingerstyle','accompaniment'].includes(score.type));
+  assert.ok(['fingerstyle','accompaniment','chorus'].includes(score.type));
   assert.match(score.updatedAt,/^\d{4}-\d{2}-\d{2}$/);
   assert.equal(new Date(score.updatedAt).toISOString().slice(0,10),score.updatedAt);
   assert.match(score.path,/^sheet_music\/.+\.html$/);
@@ -48,9 +48,15 @@ try{
   assert.equal(await page.title(),'曲谱库 · 小k吉他练习');
   assert.equal(await page.locator('.score-card').count(),catalog.length);
   assert.equal(await page.locator('[data-type="tools"]').count(),1,'分类末尾提供工具入口');
-  assert.deepEqual(await page.locator('.filters button').evaluateAll(nodes=>nodes.map(n=>n.dataset.type)),['all','fingerstyle','accompaniment','tools']);
+  assert.deepEqual(await page.locator('.filters button').evaluateAll(nodes=>nodes.map(n=>n.dataset.type)),['all','fingerstyle','accompaniment','chorus','tools']);
   assert.equal(await page.locator('.tool-card').count(),0,'全部不混入工具');
   assert.equal(await page.locator('[data-count="all"]').innerText(),String(catalog.length));
+  await page.locator('[data-type="chorus"]').click();
+  assert.equal(await page.locator('[data-count="chorus"]').innerText(),String(catalog.filter(s=>s.type==='chorus').length));
+  assert.equal(await page.locator('.score-card').count(),1);
+  assert.equal(await page.locator('.score-title').innerText(),'《甲乙丙丁》仅副歌');
+  assert.equal(await page.locator('.type-badge').innerText(),'仅副歌');
+  await page.locator('[data-type="all"]').click();
   await page.locator('#search').fill('偏爱');
   await page.locator('[data-type="tools"]').click();
   assert.equal(await page.locator('#search').inputValue(),'','工具与曲谱分别保留搜索词');

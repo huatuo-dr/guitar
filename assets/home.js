@@ -1,6 +1,6 @@
 (() => {
   'use strict';
-  const types={fingerstyle:'指弹',accompaniment:'弹唱伴奏',tool:'工具'};
+  const types={fingerstyle:'指弹',accompaniment:'弹唱伴奏',chorus:'仅副歌',tool:'工具'};
   const list=document.getElementById('score-list');
   const search=document.getElementById('search');
   const sort=document.getElementById('sort');
