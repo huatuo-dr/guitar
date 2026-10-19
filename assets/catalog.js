@@ -2,6 +2,40 @@
 // Optional fields: artist, timeSignature, capo (0 = no capo), bars, description.
 window.GUITAR_SCORES = [
   {
+    id: 'chuxianyoulikai-chorus',
+    title: '《出现又离开》仅副歌',
+    type: 'chorus',
+    path: 'sheet_music/出现又离开仅副歌.html',
+    timeSignature: '4/4 · 2/4',
+    capo: 2,
+    bars: 22,
+    updatedAt: '2026-10-19',
+    description: 'A 调 · G 指法，保留第一页全部与第二页前三小节，含前奏、两行主歌歌词及副歌。'
+  },
+  {
+    id: 'wozhendeaishangni',
+    title: '《我是真的爱上你》弹唱伴奏',
+    artist: '王杰',
+    type: 'accompaniment',
+    path: 'sheet_music/我是真的爱上你弹唱伴奏.html',
+    timeSignature: '4/4',
+    capo: 4,
+    bars: 60,
+    updatedAt: '2026-10-19',
+    description: 'E 调 · C 指法，含前奏、简谱歌词、反复跳尾与 F 调升调段，原谱 75 BPM。'
+  },
+  {
+    id: 'airencuoguo',
+    title: '《爱人错过》弹唱伴奏',
+    type: 'accompaniment',
+    path: 'sheet_music/爱人错过弹唱伴奏.html',
+    timeSignature: '4/4',
+    capo: 1,
+    bars: 67,
+    updatedAt: '2026-10-19',
+    description: '原调 C♯ · C 指法，含完整前奏、主歌、副歌与间奏，简易谱按反复顺序展开。'
+  },
+  {
     id: 'ninameaita-chorus',
     title: '《你那么爱他》仅副歌',
     artist: '李圣杰',

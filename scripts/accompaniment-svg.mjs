@@ -31,7 +31,7 @@ export function validateScore(data) {
   for (const [i, bar] of expanded.entries()) {
     if (bar.number !== i + 1) throw new Error('小节编号不连续');
     const duration = bar.events.reduce((n, e) => n + eventBeats(e), 0);
-    if (Math.abs(duration-bar.beats)>1e-8 || ![2,4].includes(bar.beats)) throw new Error(`第${bar.number}小节时值与拍号不符`);
+    if (Math.abs(duration-bar.beats)>1e-8 || !(bar.pickup ? i===0&&Number.isInteger(bar.beats)&&bar.beats>0&&bar.beats<(data.timeSignature?.[0]??4) : [2,4].includes(bar.beats))) throw new Error(`第${bar.number}小节时值与拍号不符`);
     for(let index=0;index<bar.events.length;index++){
       const event=bar.events[index];
       if(event.tuplet===undefined)continue;
@@ -41,7 +41,7 @@ export function validateScore(data) {
     }
     let previous = 0;
     for (const chord of bar.chords) {
-      if (!data.chordShapes[chord.name] || chord.beat <= previous || chord.beat > bar.beats) throw new Error(`第${bar.number}小节和弦无效`);
+      if (!data.chordShapes[chord.name] || chord.beat <= previous || chord.beat >= bar.beats+1) throw new Error(`第${bar.number}小节和弦无效`);
       previous = chord.beat;
     }
     // Explicit frets can precede the first chord diagram, as in a pickup run.
@@ -55,8 +55,15 @@ export function validateScore(data) {
       if(!Number.isInteger(bar.crossBarTieStart)||!start||['hold','rest'].includes(start.kind)||!expanded[i+1]||bar.events.slice(bar.crossBarTieStart+1).some(e=>e.kind!=='hold'))throw new Error('跨小节伴奏延音起点无效');
     }
     for (const [eventIndex,event] of bar.events.entries()) {
-      if (!['down','up','hold','arpeggio','note','pluck','rest','fretted'].includes(event.kind) || ![...(event.kind==='fretted'?[1]:[]),2,4,8,16,32].includes(event.duration)) throw new Error('事件无效');
+      if (!['down','up','hold','arpeggio','note','pluck','rest','fretted','muted'].includes(event.kind) || ![...(['fretted','down','up','arpeggio','rest'].includes(event.kind)?[1]:[]),2,4,8,16,32].includes(event.duration)) throw new Error('事件无效');
+      if(event.kind==='muted'&&(!Number.isInteger(event.string)||event.string<1||event.string>6))throw new Error('闷音弦号无效');
+      if(event.staccato!==undefined&&(typeof event.staccato!=='boolean'||['hold','rest'].includes(event.kind)))throw new Error('短促奏标记无效');
       if (event.kind === 'note' && (!Number.isInteger(event.string) || event.string < 1 || event.string > 6 || !Number.isInteger(event.fret) || event.fret < 0)) throw new Error('品位或弦号无效');
+      if(event.brush!==undefined&&(!['down','up'].includes(event.brush)||!['pluck','fretted'].includes(event.kind)))throw new Error('明确音符扫弦方向无效');
+      if(event.tieToNextStrings!==undefined){
+        const strings=event.tieToNextStrings,next=bar.events[eventIndex+1];
+        if(event.kind!=='pluck'||!Array.isArray(strings)||!strings.length||new Set(strings).size!==strings.length||strings.some(s=>!event.strings.includes(s)||!next?.strings?.includes(s)))throw new Error('逐弦延音起止弦号无效');
+      }
       if(event.kind==='pluck'){
         if(!Array.isArray(event.strings)||!event.strings.length||event.strings.some(s=>!Number.isInteger(s)||s<1||s>6)||new Set(event.strings).size!==event.strings.length)throw new Error('拨弦弦位无效');
         for(const n of event.notes??[])if(!Number.isInteger(n.string)||n.string<1||n.string>6||!Number.isInteger(n.fret)||n.fret<0||event.strings.includes(n.string))throw new Error('同时拨弦品位无效');
@@ -72,7 +79,8 @@ export function validateScore(data) {
         }
       }
       for(const string of [event.startString,event.endString])if(string!==undefined&&(!Number.isInteger(string)||string<1||string>6))throw new Error('扫弦范围无效');
-      if(event.kind==='rest' && ![4,8].includes(event.duration))throw new Error('当前仅支持四分与八分休止');
+      if(event.kind==='rest' && ![1,2,4,8,16].includes(event.duration))throw new Error('当前仅支持全至十六分休止');
+      if(event.grace!==undefined && (event.kind!=='note'||!Array.isArray(event.grace)||event.grace.length!==1||event.grace.some(n=>n.string!==event.string||!Number.isInteger(n.fret)||n.fret<0)))throw new Error('六线谱装饰音必须与主音同弦');
       if(event.sourceArrow!==undefined && (event.kind!=='hold'||!['up','down','arpeggio'].includes(event.sourceArrow)))throw new Error('延音扫弦箭头无效');
     }
   }
@@ -130,9 +138,9 @@ function arrow(x, from, to, wavy = false) {
 }
 
 function measureDescription(bar) {
-  const action = {rest:'休止',down:'下扫',up:'上扫',hold:'延续',arpeggio:'向上箭头琶音'};
+  const action = {muted:'闷音',rest:'休止',down:'下扫',up:'上扫',hold:'延续',arpeggio:'向上箭头琶音'};
   const events = bar.events.map(e => `${e.kind==='fretted'?e.notes.map(n=>`${n.string}弦${n.fret}品${n.hammerToNext?'击弦':n.pullToNext?'勾弦':n.slideToNext?'滑音':n.tieToNext?'延音':''}`).join('、'):e.kind === 'note' ? `${e.string}弦${e.fret}品${e.hammerToNext ? '击弦至下一音' : e.pullToNext?'勾弦至下一音':e.slideToNext?'滑音至下一音':''}` : e.kind==='pluck'?`拨${e.strings.join('、')}弦${(e.notes??[]).map(n=>`与${n.string}弦${n.fret}品`).join('')}`:action[e.kind]}·${e.duration}分`).join('，');
-  return `第${bar.number}小节；${bar.beats}/4拍；${bar.chords.map(c => `第${c.beat}拍${c.name}`).join('，')}；${events}${bar.note ? '；'+bar.note : ''}`;
+  return `第${bar.number}小节；${bar.pickup?`弱起${bar.beats}拍`:`${bar.beats}/4拍`}；${bar.chords.map(c => `第${c.beat}拍${c.name}`).join('，')}；${events}${bar.note ? '；'+bar.note : ''}`;
 }
 
 function renderFrettedEvent(event,next,right) {
@@ -158,10 +166,12 @@ function renderFrettedEvent(event,next,right) {
 function renderBar(bar, data, index, rowHeight, headerCrop) {
   const barWidth = data.measureWidth ?? DEFAULT_BAR_WIDTH;
   const x = LEFT + index * barWidth;
-  const meterChange=bar.number===1 || (data.bars[bar.number-2].beats??4)!==bar.beats;
+  const meter=bar.pickup?(data.timeSignature?.[0]??4):bar.beats;
+  const previousMeter=data.bars[bar.number-2]?.pickup?(data.timeSignature?.[0]??4):(data.bars[bar.number-2]?.beats??4);
+  const meterChange=bar.number===1 || previousMeter!==meter;
   const inset=meterChange?45:21;
   const span = barWidth - inset - 21;
-  const eventX = createBeatPositioner(bar.events,bar.vocal,bar.beats,x+inset,span);
+  const eventX = createBeatPositioner(bar.events,bar.vocal,bar.beats,x+inset,span,data.chordDiagramGap?{chords:bar.chords,gap:data.chordDiagramGap}:undefined);
   let playbackAttributes='';
   if(data.playbackEnabled){
     let beat=1;
@@ -183,13 +193,13 @@ function renderBar(bar, data, index, rowHeight, headerCrop) {
     }
     if (bar.voltaEnd) svg += line(x+barWidth-4,39,x+barWidth-4,50);
   }
-  for (const chord of bar.chords) svg += chordDiagram(chord.name,data.chordShapes[chord.name],eventX(chord.beat)-8,83);
+  if(bar.showChordDiagram!==false)for (const chord of bar.chords) svg += chordDiagram(chord.name,data.chordShapes[chord.name],eventX(chord.beat)-8,83);
   for (let s = 0; s < 6; s++) svg += line(x,TOP+s*STRING_GAP,x+barWidth,TOP+s*STRING_GAP,'class="staff-line"');
   svg += line(x,TOP,x,BOTTOM,'class="bar-line"');
   svg += line(x+barWidth,TOP,x+barWidth,BOTTOM,'class="bar-line"');
   if(meterChange){
-    svg+=`<g class="time-signature" data-bar="${bar.number}" data-meter="${bar.beats}/4"><rect x="${x+5}" y="${TOP+1}" width="20" height="38" class="note-background"/>`;
-    svg+=text(x+15,TOP+17,bar.beats,'meter-number','middle')+text(x+15,TOP+34,4,'meter-number','middle')+'</g>';
+    svg+=`<g class="time-signature" data-bar="${bar.number}" data-meter="${meter}/4"><rect x="${x+5}" y="${TOP+1}" width="20" height="38" class="note-background"/>`;
+    svg+=text(x+15,TOP+17,meter,'meter-number','middle')+text(x+15,TOP+34,4,'meter-number','middle')+'</g>';
   }
   if (bar.repeatStart) {
     svg += line(x+2,TOP,x+2,BOTTOM,'stroke-width="3"') + line(x+7,TOP,x+7,BOTTOM);
@@ -229,13 +239,33 @@ function renderBar(bar, data, index, rowHeight, headerCrop) {
     if (strokeKind === 'up') svg += arrow(at,event.startString?TOP+(event.startString-1)*STRING_GAP:TOP,event.endString?TOP+(event.endString-1)*STRING_GAP:TOP+24);
     if (strokeKind === 'arpeggio') svg += arrow(at,event.startString?TOP+(event.startString-1)*STRING_GAP:bassY,event.endString?TOP+(event.endString-1)*STRING_GAP:TOP,true);
     if (event.kind === 'hold' && !event.sourceArrow) svg += text(at,TOP+23,'–','hold','middle');
-    if(event.kind==='rest') svg+=event.duration===4
+    if(event.kind==='rest') svg+=event.duration===1
+      ? `<rect class="tab-rest tab-rest-whole" x="${at-6}" y="${TOP+8}" width="12" height="5" fill="currentColor"/>`
+      : event.duration===2
+      ? `<rect class="tab-rest tab-rest-half" x="${at-6}" y="${TOP+19}" width="12" height="5" fill="currentColor"/>`
+      : event.duration===16
+      ? `<g class="tab-rest tab-rest-sixteenth"><ellipse cx="${at-2}" cy="${TOP+18}" rx="2.5" ry="2" fill="currentColor"/><ellipse cx="${at-4}" cy="${TOP+26}" rx="2.5" ry="2" fill="currentColor"/><path d="M ${at-2} ${TOP+20} Q ${at+2} ${TOP+21} ${at+4} ${TOP+15} L ${at-2} ${TOP+38} M ${at-4} ${TOP+28} Q ${at} ${TOP+29} ${at+2} ${TOP+23}" fill="none" stroke-width="1.8"/></g>`
+      : event.duration===4
       ? `<g class="tab-rest tab-rest-quarter"><path d="M ${at-3} ${TOP+12} L ${at+3} ${TOP+20} L ${at-2} ${TOP+26} L ${at+4} ${TOP+33} Q ${at-7} ${TOP+27} ${at-3} ${TOP+40}" fill="none" stroke-width="2.6" stroke-linejoin="round"/></g>`
       : `<g class="tab-rest"><ellipse cx="${at-2}" cy="${TOP+22}" rx="2.5" ry="2" fill="currentColor"/><path d="M ${at-2} ${TOP+24} Q ${at+2} ${TOP+25} ${at+4} ${TOP+19} L ${at-1} ${TOP+34}" fill="none" stroke-width="1.8"/></g>`;
+    if(event.brush){
+      const strings=[...(event.strings??[]),...(event.notes??[]).map(n=>n.string)];
+      const low=TOP+(Math.max(...strings)-1)*STRING_GAP,high=TOP+(Math.min(...strings)-1)*STRING_GAP;
+      svg+=`<g class="explicit-brush">${arrow(at-9,event.brush==='down'?low:high,event.brush==='down'?high:low)}</g>`;
+    }
+    if(event.staccato)svg+=`<circle class="tab-staccato" cx="${at}" cy="${TOP-7}" r="2" fill="currentColor"/>`;
+    if(event.kind==='muted'){
+      const y=TOP+(event.string-1)*STRING_GAP;
+      svg+=`<g class="tab-muted"><circle cx="${at}" cy="${y}" r="5" class="note-background" style="stroke:currentColor"/><path d="M ${at-3} ${y-3} l 6 6 M ${at-3} ${y+3} l 6 -6" fill="none"/></g>`;
+    }
     if(event.kind==='pluck'){
       for(const string of event.strings){
         const y=TOP+(string-1)*STRING_GAP;
         svg+=`<path class="pluck-cross" d="M ${at-3} ${y-3} l 6 6 M ${at-3} ${y+3} l 6 -6" fill="none"/>`;
+      }
+      for(const string of [...(event.tieToNextStrings??[]),...(event.notes??[]).filter(n=>n.tieToNext).map(n=>n.string)]){
+        const y=TOP+(string-1)*STRING_GAP-3,end=placed[i+1]?.x??x+barWidth;
+        svg+=`<path class="pluck-tie" d="M ${at} ${y} Q ${(at+end)/2} ${y-5} ${end} ${y}" fill="none"/>`;
       }
       for(const n of event.notes??[]){
         const y=TOP+(n.string-1)*STRING_GAP;
@@ -244,6 +274,10 @@ function renderBar(bar, data, index, rowHeight, headerCrop) {
     }
     if (event.kind === 'note') {
       const y = TOP + (event.string-1) * STRING_GAP;
+      if(event.grace){
+        const gx=at-15;
+        svg+=`<g class="tab-grace"><rect x="${gx-4}" y="${y-5}" width="8" height="10" class="note-background"/><text x="${gx}" y="${y+3}" class="fret" text-anchor="middle" style="font-size:9px">${event.grace[0].fret}</text>${line(gx,y+6,gx,y+21)}${line(gx,y+21,gx+6,y+21)}${line(gx,y+17,gx+6,y+17)}</g>`;
+      }
       svg += `<rect x="${at-5}" y="${y-6}" width="10" height="13" class="note-background"/>` + text(at,y+4,event.fret,'fret','middle');
       if (event.hammerToNext || event.pullToNext || event.slideToNext) {
         const end = placed[i+1].x;
@@ -291,7 +325,7 @@ function renderBar(bar, data, index, rowHeight, headerCrop) {
   }
   if(bar.vocal){
     svg+=line(x,216,x,252,'class="bar-line"')+line(x+barWidth,216,x+barWidth,252,'class="bar-line"');
-    if(meterChange)svg+='<g class="melody-time-signature">'+text(x+15,228,bar.beats,'meter-number','middle')+text(x+15,247,4,'meter-number','middle')+'</g>';
+    if(meterChange)svg+='<g class="melody-time-signature">'+text(x+15,228,meter,'meter-number','middle')+text(x+15,247,4,'meter-number','middle')+'</g>';
     const previous=data.bars[bar.number-2]?.vocal;
     svg+=renderNumberedMelody(bar.vocal,{position:eventX,left:x,right:x+barWidth,incomingTie:!!previous?.events.at(-1).tieToNext||previous?.crossBarTieStart!==undefined,incomingSlur:bar.vocal.incomingSlur||previous?.events.at(-1).slurToNext||false});
   }

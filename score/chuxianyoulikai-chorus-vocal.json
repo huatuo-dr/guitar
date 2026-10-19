@@ -1,0 +1,1427 @@
+{
+  "sources": [
+    "tmp/1.jpg：全部，包括弱起与两行主歌歌词",
+    "tmp/2.jpg：前三小节，截止第一房子末尾"
+  ],
+  "notes": [
+    "按实际小节线从1编号，保留低八度、附点、三十二分音符、击弦及延音。"
+  ],
+  "bars": [
+    {
+      "number": 1,
+      "events": [
+        {
+          "degree": 0,
+          "octave": 0,
+          "duration": 2
+        },
+        {
+          "degree": 0,
+          "octave": 0,
+          "duration": 4
+        },
+        {
+          "duration": 4,
+          "degree": 0,
+          "octave": 0
+        }
+      ],
+      "beats": 4
+    },
+    {
+      "number": 2,
+      "events": [
+        {
+          "duration": 4,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 4,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 4,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 4,
+          "degree": 0,
+          "octave": 0
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "events": [
+        {
+          "duration": 4,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 4,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 4,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 4,
+          "degree": 0,
+          "octave": 0
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "events": [
+        {
+          "duration": 4,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 4,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 4,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 4,
+          "degree": 0,
+          "octave": 0
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "events": [
+        {
+          "duration": 4,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 4,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 4,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 16,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 16,
+          "degree": 5,
+          "octave": -1,
+          "lyrics": [
+            "我",
+            "我"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 6,
+          "octave": -1,
+          "lyrics": [
+            "跟",
+            "和"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 1,
+          "octave": 0,
+          "lyrics": [
+            "你",
+            "你"
+          ],
+          "tieToNext": true
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "events": [
+        {
+          "duration": 4,
+          "degree": 1,
+          "octave": 0
+        },
+        {
+          "duration": 16,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 16,
+          "degree": 5,
+          "octave": -1,
+          "lyrics": [
+            "本",
+            "不"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 6,
+          "octave": -1,
+          "lyrics": [
+            "应",
+            "应"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 2,
+          "octave": 0,
+          "lyrics": [
+            "该",
+            "该"
+          ],
+          "tieToNext": true
+        },
+        {
+          "duration": 4,
+          "degree": 2,
+          "octave": 0
+        },
+        {
+          "duration": 16,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 16,
+          "degree": 5,
+          "octave": -1,
+          "lyrics": [
+            "各",
+            "制"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 6,
+          "octave": -1,
+          "lyrics": [
+            "自",
+            "造"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 1,
+          "octave": 0,
+          "lyrics": [
+            "好",
+            "感"
+          ],
+          "tieToNext": true
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "events": [
+        {
+          "duration": 4,
+          "degree": 1,
+          "octave": 0,
+          "lyrics": [
+            "",
+            "觉"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 32,
+          "degree": 5,
+          "octave": -1,
+          "lyrics": [
+            "各",
+            "表"
+          ],
+          "tieToNext": true
+        },
+        {
+          "duration": 32,
+          "degree": 5,
+          "octave": -1
+        },
+        {
+          "duration": 16,
+          "degree": 6,
+          "octave": -1,
+          "lyrics": [
+            "自",
+            "达"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 2,
+          "octave": 0,
+          "lyrics": [
+            "坏",
+            "爱"
+          ],
+          "tieToNext": true
+        },
+        {
+          "duration": 4,
+          "degree": 2,
+          "octave": 0
+        },
+        {
+          "duration": 8,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 16,
+          "degree": 3,
+          "octave": -1,
+          "lyrics": [
+            "各",
+            "试"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 4,
+          "octave": -1,
+          "lyrics": [
+            "自",
+            "探"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "events": [
+        {
+          "duration": 8,
+          "dotted": true,
+          "degree": 3,
+          "octave": -1,
+          "lyrics": [
+            "生",
+            "未"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 1,
+          "octave": 0,
+          "lyrics": [
+            "活",
+            "知"
+          ],
+          "tieToNext": true
+        },
+        {
+          "duration": 16,
+          "degree": 1,
+          "octave": 0
+        },
+        {
+          "duration": 16,
+          "degree": 1,
+          "octave": 0,
+          "lyrics": [
+            "的",
+            "和"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 6,
+          "octave": -1,
+          "lyrics": [
+            "自",
+            "未"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 6,
+          "octave": -1,
+          "lyrics": [
+            "在",
+            "来"
+          ],
+          "slurEnd": 6
+        },
+        {
+          "duration": 4,
+          "degree": 5,
+          "octave": -1
+        },
+        {
+          "duration": 8,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 16,
+          "degree": 3,
+          "octave": -1,
+          "lyrics": [
+            "毫",
+            "相"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 4,
+          "octave": -1,
+          "lyrics": [
+            "无",
+            "信"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "events": [
+        {
+          "duration": 8,
+          "dotted": true,
+          "degree": 3,
+          "octave": -1,
+          "lyrics": [
+            "关",
+            "那"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 1,
+          "octave": 0,
+          "lyrics": [
+            "联",
+            "胡"
+          ],
+          "tieToNext": true
+        },
+        {
+          "duration": 16,
+          "degree": 1,
+          "octave": 0
+        },
+        {
+          "duration": 16,
+          "degree": 1,
+          "octave": 0,
+          "lyrics": [
+            "的",
+            "言"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 6,
+          "octave": -1,
+          "lyrics": [
+            "存",
+            "一"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 6,
+          "octave": -1,
+          "lyrics": [
+            "在",
+            "派"
+          ],
+          "slurEnd": 6
+        },
+        {
+          "duration": 4,
+          "degree": 5,
+          "octave": -1
+        },
+        {
+          "duration": 16,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 16,
+          "degree": 5,
+          "octave": -1,
+          "lyrics": [
+            "直",
+            "当"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 6,
+          "octave": -1,
+          "lyrics": [
+            "到",
+            "天"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 1,
+          "octave": 0,
+          "lyrics": [
+            "你",
+            "空"
+          ],
+          "tieToNext": true
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "events": [
+        {
+          "duration": 4,
+          "degree": 1,
+          "octave": 0
+        },
+        {
+          "duration": 16,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 16,
+          "degree": 5,
+          "octave": -1,
+          "lyrics": [
+            "出",
+            "暗"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 6,
+          "octave": -1,
+          "lyrics": [
+            "现",
+            "下"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 2,
+          "octave": 0,
+          "lyrics": [
+            "在",
+            "来"
+          ],
+          "tieToNext": true
+        },
+        {
+          "duration": 4,
+          "degree": 2,
+          "octave": 0
+        },
+        {
+          "duration": 16,
+          "degree": 5,
+          "octave": -1,
+          "lyrics": [
+            "",
+            "当"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 5,
+          "octave": -1,
+          "lyrics": [
+            "我",
+            "周"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 6,
+          "octave": -1,
+          "lyrics": [
+            "眼",
+            "围"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 1,
+          "octave": 0,
+          "lyrics": [
+            "中",
+            ""
+          ],
+          "tieToNext": true
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "events": [
+        {
+          "duration": 4,
+          "degree": 1,
+          "octave": 0,
+          "lyrics": [
+            "",
+            "又"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 32,
+          "degree": 5,
+          "octave": -1,
+          "lyrics": [
+            "躲",
+            "安"
+          ],
+          "tieToNext": true
+        },
+        {
+          "duration": 32,
+          "degree": 5,
+          "octave": -1,
+          "lyrics": [
+            "",
+            "静"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 6,
+          "octave": -1,
+          "lyrics": [
+            "不",
+            "起"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 2,
+          "octave": 0,
+          "lyrics": [
+            "开",
+            "来"
+          ],
+          "tieToNext": true
+        },
+        {
+          "duration": 4,
+          "degree": 2,
+          "octave": 0
+        },
+        {
+          "duration": 8,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 16,
+          "degree": 3,
+          "octave": -1,
+          "lyrics": [
+            "我",
+            "当"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 4,
+          "octave": -1,
+          "lyrics": [
+            "也",
+            "我"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "events": [
+        {
+          "duration": 8,
+          "degree": 3,
+          "octave": -1,
+          "lyrics": [
+            "占",
+            "突"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 6,
+          "octave": -1,
+          "lyrics": [
+            "领",
+            "然"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 1,
+          "octave": 0,
+          "lyrics": [
+            "你",
+            "梦"
+          ],
+          "tieToNext": true
+        },
+        {
+          "duration": 16,
+          "degree": 1,
+          "octave": 0
+        },
+        {
+          "duration": 16,
+          "degree": 1,
+          "octave": 0,
+          "lyrics": [
+            "的",
+            "里"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 6,
+          "octave": -1,
+          "lyrics": [
+            "心",
+            "醒"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 6,
+          "octave": -1,
+          "lyrics": [
+            "海",
+            "来"
+          ],
+          "slurEnd": 7
+        },
+        {
+          "duration": 4,
+          "degree": 5,
+          "octave": -1
+        },
+        {
+          "duration": 8,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 16,
+          "degree": 3,
+          "octave": -1,
+          "lyrics": [
+            "充",
+            "就"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 4,
+          "octave": -1,
+          "lyrics": [
+            "实",
+            "等"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "events": [
+        {
+          "duration": 8,
+          "degree": 3,
+          "octave": -1,
+          "lyrics": [
+            "着",
+            "着"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 6,
+          "octave": -1,
+          "lyrics": [
+            "你",
+            "太"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 1,
+          "octave": 0,
+          "lyrics": [
+            "的",
+            "阳"
+          ],
+          "tieToNext": true
+        },
+        {
+          "duration": 16,
+          "degree": 1,
+          "octave": 0
+        },
+        {
+          "duration": 16,
+          "degree": 1,
+          "octave": 0,
+          "lyrics": [
+            "空",
+            "出"
+          ],
+          "slurEnd": 5
+        },
+        {
+          "duration": 16,
+          "degree": 2,
+          "octave": 0
+        },
+        {
+          "duration": 16,
+          "degree": 1,
+          "octave": 0,
+          "lyrics": [
+            "白",
+            "来"
+          ],
+          "tieToNext": true
+        }
+      ],
+      "beats": 2
+    },
+    {
+      "number": 14,
+      "events": [
+        {
+          "duration": 4,
+          "degree": 1,
+          "octave": 0
+        },
+        {
+          "duration": 4,
+          "hold": true
+        },
+        {
+          "duration": 4,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 8,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 16,
+          "degree": 1,
+          "octave": 0,
+          "lyrics": [
+            "为"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 2,
+          "octave": 0,
+          "lyrics": [
+            "何"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "events": [
+        {
+          "duration": 16,
+          "degree": 3,
+          "octave": 0,
+          "lyrics": [
+            "出"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 3,
+          "octave": 0,
+          "lyrics": [
+            "现"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 3,
+          "octave": 0,
+          "lyrics": [
+            "在"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 4,
+          "octave": 0,
+          "lyrics": [
+            "彼"
+          ]
+        },
+        {
+          "duration": 8,
+          "degree": 3,
+          "octave": 0,
+          "lyrics": [
+            "此"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 1,
+          "octave": 0,
+          "lyrics": [
+            "的"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 6,
+          "octave": -1,
+          "lyrics": [
+            "生"
+          ],
+          "tieToNext": true
+        },
+        {
+          "duration": 8,
+          "degree": 6,
+          "octave": -1
+        },
+        {
+          "duration": 16,
+          "degree": 5,
+          "octave": -1,
+          "lyrics": [
+            "活"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 5,
+          "octave": -1,
+          "tieToNext": true,
+          "lyrics": [
+            "又"
+          ]
+        },
+        {
+          "duration": 8,
+          "degree": 5,
+          "octave": -1
+        },
+        {
+          "duration": 16,
+          "degree": 2,
+          "octave": -1,
+          "lyrics": [
+            "离"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 3,
+          "octave": 0,
+          "lyrics": [
+            "开"
+          ],
+          "tieToNext": true
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "events": [
+        {
+          "duration": 4,
+          "degree": 3,
+          "octave": 0
+        },
+        {
+          "duration": 4,
+          "hold": true
+        },
+        {
+          "duration": 4,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 8,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 16,
+          "degree": 1,
+          "octave": 0,
+          "lyrics": [
+            "只"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 2,
+          "octave": 0,
+          "lyrics": [
+            "留"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "events": [
+        {
+          "duration": 16,
+          "degree": 3,
+          "octave": 0,
+          "lyrics": [
+            "下"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 3,
+          "octave": 0,
+          "lyrics": [
+            "在"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 3,
+          "octave": 0,
+          "lyrics": [
+            "心"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 4,
+          "octave": 0,
+          "lyrics": [
+            "里"
+          ]
+        },
+        {
+          "duration": 8,
+          "degree": 3,
+          "octave": 0,
+          "lyrics": [
+            "深"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 1,
+          "octave": 0,
+          "lyrics": [
+            "深"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 6,
+          "octave": -1,
+          "lyrics": [
+            "浅"
+          ],
+          "tieToNext": true
+        },
+        {
+          "duration": 8,
+          "degree": 6,
+          "octave": -1
+        },
+        {
+          "duration": 16,
+          "degree": 5,
+          "octave": -1,
+          "lyrics": [
+            "浅"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 5,
+          "octave": -1,
+          "lyrics": [
+            "的"
+          ],
+          "tieToNext": true
+        },
+        {
+          "duration": 8,
+          "degree": 5,
+          "octave": -1
+        },
+        {
+          "duration": 16,
+          "degree": 1,
+          "octave": -1,
+          "lyrics": [
+            "表"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 2,
+          "octave": 0,
+          "lyrics": [
+            "白"
+          ],
+          "slurToNext": true
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "events": [
+        {
+          "duration": 4,
+          "degree": 3,
+          "octave": -1
+        },
+        {
+          "duration": 4,
+          "hold": true
+        },
+        {
+          "duration": 4,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 8,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 16,
+          "degree": 1,
+          "octave": 0,
+          "lyrics": [
+            "谁"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 2,
+          "octave": 0,
+          "lyrics": [
+            "也"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "events": [
+        {
+          "duration": 16,
+          "degree": 3,
+          "octave": 0,
+          "lyrics": [
+            "没"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 3,
+          "octave": 0,
+          "lyrics": [
+            "有"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 3,
+          "octave": 0,
+          "lyrics": [
+            "想"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 4,
+          "octave": 0,
+          "lyrics": [
+            "过"
+          ]
+        },
+        {
+          "duration": 8,
+          "degree": 3,
+          "octave": 0,
+          "lyrics": [
+            "再"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 6,
+          "octave": -1,
+          "lyrics": [
+            "更"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 5,
+          "octave": -1,
+          "lyrics": [
+            "改"
+          ],
+          "tieToNext": true
+        },
+        {
+          "duration": 4,
+          "degree": 5,
+          "octave": -1
+        },
+        {
+          "duration": 8,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 16,
+          "degree": 1,
+          "octave": 0,
+          "lyrics": [
+            "谁"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 2,
+          "octave": 0,
+          "lyrics": [
+            "也"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "events": [
+        {
+          "duration": 16,
+          "degree": 3,
+          "octave": 0,
+          "lyrics": [
+            "没"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 3,
+          "octave": 0,
+          "lyrics": [
+            "有"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 3,
+          "octave": 0,
+          "lyrics": [
+            "想"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 4,
+          "octave": 0,
+          "lyrics": [
+            "过"
+          ]
+        },
+        {
+          "duration": 8,
+          "degree": 3,
+          "octave": 0,
+          "lyrics": [
+            "再"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 5,
+          "octave": -1,
+          "lyrics": [
+            "想"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 6,
+          "octave": -1,
+          "lyrics": [
+            "回"
+          ],
+          "tieToNext": true
+        },
+        {
+          "duration": 16,
+          "degree": 6,
+          "octave": -1
+        },
+        {
+          "duration": 8,
+          "dotted": true,
+          "degree": 1,
+          "octave": -1,
+          "lyrics": [
+            "来"
+          ]
+        },
+        {
+          "duration": 8,
+          "dotted": true,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 16,
+          "degree": 3,
+          "octave": 0,
+          "lyrics": [
+            "Oh"
+          ],
+          "slurToNext": true
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "events": [
+        {
+          "duration": 16,
+          "degree": 1,
+          "octave": 0
+        },
+        {
+          "duration": 8,
+          "dotted": true,
+          "degree": 2,
+          "octave": 0
+        },
+        {
+          "duration": 4,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 8,
+          "dotted": true,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 16,
+          "degree": 1,
+          "octave": 0,
+          "lyrics": [
+            "我"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 5,
+          "octave": -1,
+          "lyrics": [
+            "不"
+          ]
+        },
+        {
+          "duration": 8,
+          "degree": 5,
+          "octave": -1,
+          "lyrics": [
+            "明"
+          ]
+        },
+        {
+          "duration": 16,
+          "degree": 1,
+          "octave": -1,
+          "lyrics": [
+            "白"
+          ],
+          "tieToNext": true
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "events": [
+        {
+          "duration": 4,
+          "degree": 1,
+          "octave": -1
+        },
+        {
+          "duration": 4,
+          "hold": true
+        },
+        {
+          "duration": 4,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "duration": 4,
+          "degree": 0,
+          "octave": 0
+        }
+      ]
+    }
+  ]
+}

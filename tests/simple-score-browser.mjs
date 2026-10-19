@@ -16,7 +16,8 @@ try {
  const order=[...Array.from({length:64},(_,i)=>i+1),...Array.from({length:11},(_,i)=>i+45),65,66,67,68,69];
  const fullLyrics=await page.locator('#score .measure').evaluateAll((bars,order)=>order.flatMap(n=>[...bars[n-1].querySelectorAll('.lyric')].map(e=>e.textContent)),order);
  const fullChords=await page.locator('#score .measure').evaluateAll((bars,order)=>order.flatMap(n=>[...bars[n-1].querySelectorAll('.chord-name')].map(e=>e.textContent)),order);
- const originalInstrument=await page.locator('#score .measure').evaluateAll(bars=>bars.filter(b=>+b.dataset.bar<=4||(+b.dataset.bar>=57&&+b.dataset.bar<=64)).map(b=>b.outerHTML));
+ const instrumentContent=bars=>bars.filter(b=>+b.dataset.bar<=4||(+b.dataset.bar>=57&&+b.dataset.bar<=64)).map(b=>({bar:b.dataset.bar,points:b.dataset.playbackPoints,music:[...b.querySelectorAll('.chord-diagram,.numbered-melody,.fret,.pluck-cross,.tab-tie,.hold,.tab-tuplet')].map(n=>n.outerHTML)}));
+ const originalInstrument=await page.locator('#score .measure').evaluateAll(instrumentContent);
  await page.locator('#score-mode').click();assert.equal(await mode(),'simple');
  assert.equal(await page.locator('#score .simple-measure').count(),68);
  assert.equal(await page.locator('#score svg .measure').count(),12);
@@ -40,7 +41,7 @@ try {
  assert.equal(await page.locator('#bar-45').getAttribute('class'),'measure current');assert.equal(await page.locator('[data-score-route]').isVisible(),true);
  await page.locator('#score-mode').click();
  await page.locator('.section-nav [data-jump="65"]').click();
- assert.deepEqual(await page.locator('#score svg .measure').evaluateAll(bars=>bars.map(b=>b.outerHTML)),originalInstrument,'前奏间奏SVG逐字一致');
+ assert.deepEqual(await page.locator('#score svg .measure').evaluateAll(instrumentContent),originalInstrument,'前奏间奏的音符、和弦、简谱、连线与播放时点保持一致');
  assert.deepEqual(await page.locator('#score .lyric, #score .simple-lyric:not(.simple-placeholder)').allTextContents(),fullLyrics,'所有歌词顺序不变');
  assert.deepEqual((await page.locator('#score .chord-name, #score .simple-chord').allTextContents()).filter(Boolean),fullChords,'所有和弦顺序不变');
  assert.equal(await page.locator('#bar-14 .simple-placeholder').textContent(),'\u3000','无新歌词的换和弦使用独立下划线');
@@ -61,7 +62,7 @@ try {
  };
  await checkUnderlines();
  await page.emulateMedia({media:'print'});await checkUnderlines();await page.emulateMedia({media:null});
- assert.equal(await page.locator('#score .bar-number:visible, #score .simple-bar-number, #score .simple-mark').count(),0,'简易谱不显示小节号与跳尾');
+ assert.equal(await page.locator('#score .bar-number:visible, #score .simple-bar-number, #score .simple-mark, #score .volta-label, #score .navigation-label').count(),0,'简易谱不显示小节号与跳尾');
  assert.equal(await page.locator('#score .simple-section-heading small').count(),0,'段标题没有小节范围');
  assert.deepEqual(await page.locator('#score-mode').evaluate(el=>{const s=getComputedStyle(el);return [s.backgroundColor,s.color,s.borderTopColor];}),['rgb(49, 94, 77)','rgb(255, 255, 255)','rgb(49, 94, 77)']);
  assert.equal(await page.locator('.simple-line .simple-section-heading').count(),0,'歌词区不显示段名');

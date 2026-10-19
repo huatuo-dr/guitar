@@ -38,13 +38,14 @@ export function lyricLines(vocal) {
 
 // Both staves use the same time positions. Reserve room for grace groups before
 // their main note, then distribute the remaining width by musical duration.
-export function createBeatPositioner(events,vocal,beats,left,width) {
+export function createBeatPositioner(events,vocal,beats,left,width,chordSpacing) {
   if(!vocal) return beat=>left+(beat-1)/beats*width;
   const points=new Set([0,beats]);const ornament=new Map();const dotted=new Map();const lyricWidths=new Map();
   for(const sequence of [events,vocal.events]){
     let time=0;
     for(const n of sequence){points.add(time);if(n.grace?.length||n.accidental)ornament.set(time,(n.grace?.length??0)+(n.accidental?1:0));if(n.doubleDotted||n.dotted)dotted.set(time,n.doubleDotted?8:3);if(n.lyrics)lyricWidths.set(time,15*Math.max(0,...n.lyrics.map(word=>[...word].length)));time=beatRound(time+eventBeats(n));}
   }
+  if(chordSpacing)for(const chord of chordSpacing.chords)points.add(beatRound(chord.beat-1));
   const times=[...points].sort((a,b)=>a-b);
   const minimum=times.slice(1).map((t,i)=>{
     const base=14+9*(ornament.get(t)??0)+(dotted.get(times[i])??0);
@@ -52,6 +53,17 @@ export function createBeatPositioner(events,vocal,beats,left,width) {
     // A syllable can span several characters on one note (e.g. 高年 / 级的).
     return Math.max(base,before>15||after>15?(before+after)/2+4:0);
   });
+  // Dense chord changes (e.g. the last-beat triplet) need room for diagrams
+  // as well as syllables. Reserve that room in the common beat grid.
+  if(chordSpacing){
+    const indices=chordSpacing.chords.map(chord=>times.indexOf(beatRound(chord.beat-1)));
+    for(let i=1;i<indices.length;i++){
+      const from=indices[i-1],to=indices[i];
+      const current=minimum.slice(from,to).reduce((a,b)=>a+b,0);
+      const extra=Math.max(0,chordSpacing.gap-current)/(to-from);
+      for(let j=from;j<to;j++)minimum[j]+=extra;
+    }
+  }
   const total=minimum.reduce((a,b)=>a+b,0);
   const positions=[left];
   times.slice(1).forEach((t,i)=>{

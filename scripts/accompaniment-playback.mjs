@@ -20,6 +20,7 @@ export function buildAccompanimentPlayback(data) {
     let elapsed=0;
     const events=[];
     for(const event of bar.events) {
+      for(const grace of event.grace??[])events.push(`(${grace.fret}.${grace.string}).32{gr}`);
       const beat=1+elapsed/960;
       const chord=bar.chords.findLast(c=>c.beat<=beat+1e-8);
       const frets=chord?data.chordShapes[chord.name].frets:[];
@@ -30,7 +31,8 @@ export function buildAccompanimentPlayback(data) {
       };
       let notes=[];
       if(event.kind==='note')notes=[{string:event.string,fret:event.fret,hammerToNext:event.hammerToNext,pullToNext:event.pullToNext,slideToNext:event.slideToNext}];
-      else if(event.kind==='pluck')notes=[...event.strings.map(fromShape),...(event.notes??[])];
+      else if(event.kind==='muted')notes=[{string:event.string,fret:0,dead:true}];
+      else if(event.kind==='pluck')notes=[...event.strings.map(string=>({...fromShape(string),tieToNext:event.tieToNextStrings?.includes(string)})),...(event.notes??[])];
       else if(event.kind==='fretted')notes=event.notes;
       else if(['down','up','arpeggio'].includes(event.kind)) {
         const bass=6-frets.findIndex(f=>f>=0);
@@ -45,10 +47,10 @@ export function buildAccompanimentPlayback(data) {
       const pitches=notes.map(note=>{
         const tied=note.tie||tiedStrings.has(note.string);
         if(tied&&!lastNotes.some(n=>n.string===note.string&&n.fret===note.fret))throw new Error(`第${number}小节延音音高不一致`);
-        const effects=[tied&&'t',(note.hammerToNext||note.pullToNext)&&'h',note.slideToNext&&'sl'].filter(Boolean);
+        const effects=[note.dead&&'x',event.staccato&&'st',tied&&'t',(note.hammerToNext||note.pullToNext)&&'h',note.slideToNext&&'sl'].filter(Boolean);
         return `${note.fret}.${note.string}${effects.length?`{${effects.join(' ')}}`:''}`;
       });
-      const brush={down:'bd',up:'bu',arpeggio:'ad'}[event.kind]??(event.arpeggio==='up'?'ad':null);
+      const brush={down:'bd',up:'bu',arpeggio:'ad'}[event.brush??event.kind]??(event.arpeggio==='up'?'ad':null);
       const effects=[brush,event.doubleDotted?'dd':event.dotted?'d':null,event.tuplet===3?'tu 3 2':null].filter(Boolean);
       events.push(`${pitches.length?`(${pitches.join(' ')})`:'r'}.${event.duration}${effects.length?`{${effects.join(' ')}}`:''}`);
       tiedStrings=new Set(notes.filter(n=>n.tieToNext||event.tieToNext).map(n=>n.string));
@@ -56,12 +58,13 @@ export function buildAccompanimentPlayback(data) {
       elapsed+=Math.round(eventBeats(event)*960);
     }
     if(elapsed!==bar.beats*960)throw new Error(`第${number}小节播放时值不完整`);
-    texBars.push(`\\ts ${bar.beats} 4 ${events.join(' ')}`);
+    texBars.push(`\\ts ${bar.pickup?(data.timeSignature?.[0]??4):bar.beats} 4 ${bar.pickup?'\\ac ':''}${events.join(' ')}`);
     tick+=elapsed;
   }
   return {
     label:data.scoreType==='fingerstyle'?'指弹':'伴奏',
     capoNote:data.capo===undefined?'试听按未夹变调夹音高':'',
+    ...(data.sourceTempo?{sourceTempo:data.sourceTempo}:{}),
     tempo:60,totalTicks:tick,sequence,
     tex:`\\title "${data.title}"\n\\instrument 25\n\\capo ${data.capo??0}\n\\tempo 60\n.\n${texBars.join('\n|\n')}\n`
   };

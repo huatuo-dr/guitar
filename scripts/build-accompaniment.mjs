@@ -18,7 +18,7 @@ export async function buildAccompaniment(id,filename) {
   validateScore(data);
   const player=data.playbackEnabled?await accompanimentPlayerAssets(buildAccompanimentPlayback(data)):null;
 
-  const meters = [...new Set(data.bars.map(bar => `${bar.beats??data.timeSignature?.[0]??4}/${data.timeSignature?.[1]??4}`))];
+  const meters = [...new Set(data.bars.map(bar => `${bar.pickup?(data.timeSignature?.[0]??4):(bar.beats??data.timeSignature?.[0]??4)}/${data.timeSignature?.[1]??4}`))];
   const metadata = [];
   if(data.artist)metadata.push([data.artistLabel??'演唱',data.artist]);
   metadata.push(['拍号',meters.join(' · ')]);

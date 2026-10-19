@@ -31,7 +31,9 @@ export function projectSimpleBar(data,bar,{verse=0}) {
     const lyric=event.lyrics?.[dual?verse:0]??'';
     return {...event,...(event.lyrics?{lyrics:lyric?[lyric]:[]}: {})};
   });
-  return {...bar,vocal:{...bar.vocal,events}};
+  // The simple view already follows the performance route; repeat signs would
+  // incorrectly instruct a second jump, including inside instrumental ranges.
+  return {...bar,repeatStart:false,repeatEnd:false,volta:undefined,voltaStart:false,voltaEnd:false,startLabel:undefined,endLabel:undefined,vocal:{...bar.vocal,events}};
 }
 
 function renderCell({bar,token,index,id}) {

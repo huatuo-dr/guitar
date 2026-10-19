@@ -1,0 +1,1336 @@
+{
+  "title": "《爱人错过》弹唱伴奏",
+  "scoreType": "accompaniment",
+  "key": "C♯",
+  "fingeringKey": "C",
+  "capo": 1,
+  "timeSignature": [
+    4,
+    4
+  ],
+  "measureWidth": 300,
+  "sourceTitle": "用户提供的《爱人错过》三页截图 · 革命吉他制造 / 小LV吉他",
+  "techniqueLegend": "↑ 下扫、↓ 上扫，范围按原图保留；扫弦弧线表示延音，后一个箭头保留方向提示但不重新拨响；箭头上圆点为短促奏；圈内 × 为闷音／击弦节奏，试听用闷音近似。",
+  "melodyLegend": "简谱上下圆点表示八度，数字下短线表示减时；0 为休止，— 为延长；同音弧线为延音，异音弧线为连音。",
+  "notes": [
+    "依据tmp/1.jpg、2.jpg、3.jpg逐小节整理，共67个书写小节，含前奏、两段主歌、副歌、间奏与双跳尾。",
+    "原图1=C♯、变调夹1品、4/4拍，按C指法呈现；未标演唱者与速度，不补猜署名，试听默认60 BPM。",
+    "第11–18小节圈叉记号按原位置保留，试听以吉他闷音近似；副歌扫弦圆点作为短促奏处理。",
+    "扫弦跨小节及切分弧线按延音保留，用真实延音播放，不把相连的每个箭头都重新扫响。",
+    "用户确认反复路线：第一房子从第42小节延续至第66小节，原图末端未清晰画出反复终止符；补全第66小节反复终止，返回第27小节，第二遍演奏至41后接67结束。",
+    "第66小节延音简谱漏高八度点，依据第65小节跨小节同音弧线补为高音3；其他音高与时值按图保留。",
+    "按用户要求补充前奏反复：第1小节为反复起点，7–8为第一房子（8末反复终止），9–10为第二房子；简易谱和试听展开前奏为16小节，全曲共88个演奏小节。"
+  ],
+  "routeHeading": "演奏顺序 · 反复与双跳尾",
+  "routeNote": "前奏：1–6 → 第一房子7–8 → 返回1–6 → 第二房子9–10；之后演奏11–66，返回27–41，再跳至67结束。副歌第一房子42–66只在第一遍演奏。",
+  "sections": [
+    {
+      "name": "前奏",
+      "start": 1,
+      "end": 10
+    },
+    {
+      "name": "主歌一",
+      "start": 11,
+      "end": 26
+    },
+    {
+      "name": "副歌",
+      "start": 27,
+      "end": 42
+    },
+    {
+      "name": "间奏",
+      "start": 43,
+      "end": 50
+    },
+    {
+      "name": "主歌二",
+      "start": 51,
+      "end": 66
+    },
+    {
+      "name": "尾声",
+      "start": 67,
+      "end": 67
+    }
+  ],
+  "route": [
+    {
+      "label": "前奏第一遍",
+      "start": 1,
+      "end": 8
+    },
+    {
+      "label": "前奏反复",
+      "start": 1,
+      "end": 6
+    },
+    {
+      "label": "前奏第二跳尾与第一遍演唱",
+      "start": 9,
+      "end": 66
+    },
+    {
+      "label": "返回副歌",
+      "start": 27,
+      "end": 41
+    },
+    {
+      "label": "副歌第二跳尾",
+      "start": 67,
+      "end": 67
+    }
+  ],
+  "simpleScore": {
+    "fullRanges": [
+      {
+        "start": 1,
+        "end": 10,
+        "name": "前奏"
+      },
+      {
+        "start": 43,
+        "end": 50,
+        "name": "间奏"
+      },
+      {
+        "start": 67,
+        "end": 67,
+        "name": "尾声"
+      }
+    ],
+    "routeVerses": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "lyricBreaks": [
+      {
+        "bar": 11,
+        "beat": 1,
+        "kind": "line"
+      },
+      {
+        "bar": 13,
+        "beat": 1,
+        "kind": "space"
+      },
+      {
+        "bar": 14,
+        "beat": 4,
+        "kind": "space"
+      },
+      {
+        "bar": 16,
+        "beat": 4,
+        "kind": "space"
+      },
+      {
+        "bar": 19,
+        "beat": 1,
+        "kind": "line"
+      },
+      {
+        "bar": 21,
+        "beat": 1,
+        "kind": "space"
+      },
+      {
+        "bar": 22,
+        "beat": 4,
+        "kind": "space"
+      },
+      {
+        "bar": 24,
+        "beat": 4,
+        "kind": "space"
+      },
+      {
+        "bar": 27,
+        "beat": 1,
+        "kind": "line"
+      },
+      {
+        "bar": 27,
+        "beat": 3,
+        "kind": "space"
+      },
+      {
+        "bar": 28,
+        "beat": 1,
+        "kind": "space"
+      },
+      {
+        "bar": 29,
+        "beat": 1,
+        "kind": "space"
+      },
+      {
+        "bar": 29,
+        "beat": 3,
+        "kind": "space"
+      },
+      {
+        "bar": 30,
+        "beat": 1,
+        "kind": "space"
+      },
+      {
+        "bar": 31,
+        "beat": 1,
+        "kind": "line"
+      },
+      {
+        "bar": 32,
+        "beat": 4,
+        "kind": "space"
+      },
+      {
+        "bar": 33,
+        "beat": 4,
+        "kind": "space"
+      },
+      {
+        "bar": 35,
+        "beat": 1,
+        "kind": "line"
+      },
+      {
+        "bar": 37,
+        "beat": 1,
+        "kind": "space"
+      },
+      {
+        "bar": 39,
+        "beat": 1,
+        "kind": "line"
+      },
+      {
+        "bar": 40,
+        "beat": 4,
+        "kind": "space"
+      },
+      {
+        "bar": 41,
+        "beat": 4,
+        "kind": "space"
+      },
+      {
+        "bar": 42,
+        "beat": 3.5,
+        "kind": "space"
+      },
+      {
+        "bar": 51,
+        "beat": 1,
+        "kind": "line"
+      },
+      {
+        "bar": 53,
+        "beat": 3,
+        "kind": "space"
+      },
+      {
+        "bar": 54,
+        "beat": 4,
+        "kind": "space"
+      },
+      {
+        "bar": 56,
+        "beat": 4,
+        "kind": "space"
+      },
+      {
+        "bar": 59,
+        "beat": 1,
+        "kind": "line"
+      },
+      {
+        "bar": 61,
+        "beat": 1,
+        "kind": "space"
+      },
+      {
+        "bar": 62,
+        "beat": 4,
+        "kind": "space"
+      },
+      {
+        "bar": 64,
+        "beat": 4,
+        "kind": "space"
+      }
+    ]
+  },
+  "chordShapes": {
+    "F": {
+      "frets": [
+        1,
+        3,
+        3,
+        2,
+        1,
+        1
+      ],
+      "barre": {
+        "from": 6,
+        "to": 1,
+        "fret": 1
+      }
+    },
+    "G": {
+      "frets": [
+        3,
+        2,
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    "E": {
+      "frets": [
+        0,
+        2,
+        2,
+        1,
+        0,
+        0
+      ]
+    },
+    "Am": {
+      "frets": [
+        -1,
+        0,
+        2,
+        2,
+        1,
+        0
+      ]
+    },
+    "C": {
+      "frets": [
+        -1,
+        3,
+        2,
+        0,
+        1,
+        0
+      ]
+    }
+  },
+  "patterns": {
+    "drive-a": [
+      {
+        "kind": "down",
+        "duration": 4,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 4,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 4,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 8,
+        "startString": 1,
+        "endString": 4,
+        "tieToNext": true
+      }
+    ],
+    "drive-b": [
+      {
+        "kind": "hold",
+        "duration": 8,
+        "sourceArrow": "down",
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 8,
+        "startString": 1,
+        "endString": 4,
+        "tieToNext": true
+      },
+      {
+        "kind": "hold",
+        "duration": 8,
+        "sourceArrow": "down",
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 8,
+        "startString": 1,
+        "endString": 4,
+        "tieToNext": true
+      },
+      {
+        "kind": "hold",
+        "duration": 8,
+        "sourceArrow": "down",
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 8,
+        "startString": 1,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 4,
+        "startString": 4,
+        "endString": 1
+      }
+    ],
+    "muted-start": [
+      {
+        "kind": "down",
+        "duration": 4,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "muted",
+        "duration": 4,
+        "string": 6
+      },
+      {
+        "kind": "muted",
+        "duration": 4,
+        "string": 6
+      },
+      {
+        "kind": "muted",
+        "duration": 4,
+        "string": 6
+      }
+    ],
+    "muted": [
+      {
+        "kind": "muted",
+        "duration": 4,
+        "string": 6
+      },
+      {
+        "kind": "muted",
+        "duration": 4,
+        "string": 6
+      },
+      {
+        "kind": "muted",
+        "duration": 4,
+        "string": 6
+      },
+      {
+        "kind": "muted",
+        "duration": 4,
+        "string": 6
+      }
+    ],
+    "muted-fill": [
+      {
+        "kind": "muted",
+        "duration": 4,
+        "string": 6
+      },
+      {
+        "kind": "muted",
+        "duration": 4,
+        "string": 6
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 8,
+        "startString": 1,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 4,
+        "startString": 4,
+        "endString": 1
+      }
+    ],
+    "chorus": [
+      {
+        "kind": "down",
+        "duration": 4,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1,
+        "staccato": true
+      },
+      {
+        "kind": "up",
+        "duration": 8,
+        "startString": 1,
+        "endString": 4,
+        "tieToNext": true
+      },
+      {
+        "kind": "hold",
+        "duration": 8,
+        "sourceArrow": "down",
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 8,
+        "startString": 1,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1,
+        "staccato": true
+      },
+      {
+        "kind": "up",
+        "duration": 8,
+        "startString": 1,
+        "endString": 4
+      }
+    ],
+    "first-ending": [
+      {
+        "kind": "down",
+        "duration": 4,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 8,
+        "startString": 1,
+        "endString": 4,
+        "tieToNext": true
+      },
+      {
+        "kind": "hold",
+        "duration": 8,
+        "sourceArrow": "down",
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 8,
+        "startString": 1,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 8,
+        "startString": 1,
+        "endString": 4
+      }
+    ],
+    "final": [
+      {
+        "kind": "arpeggio",
+        "duration": 4,
+        "startString": 6,
+        "endString": 1
+      },
+      "h4",
+      "h4",
+      "h4"
+    ]
+  },
+  "bars": [
+    {
+      "number": 1,
+      "pattern": "drive-a",
+      "chords": [
+        [
+          1,
+          "F"
+        ]
+      ],
+      "repeatStart": true
+    },
+    {
+      "number": 2,
+      "pattern": "drive-b",
+      "chords": [
+        [
+          1,
+          "F"
+        ]
+      ],
+      "showChordDiagram": false
+    },
+    {
+      "number": 3,
+      "pattern": "drive-a",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ]
+    },
+    {
+      "number": 4,
+      "pattern": "drive-b",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "showChordDiagram": false
+    },
+    {
+      "number": 5,
+      "pattern": "drive-a",
+      "chords": [
+        [
+          1,
+          "E"
+        ]
+      ]
+    },
+    {
+      "number": 6,
+      "pattern": "drive-b",
+      "chords": [
+        [
+          1,
+          "E"
+        ]
+      ],
+      "showChordDiagram": false
+    },
+    {
+      "number": 7,
+      "pattern": "drive-a",
+      "chords": [
+        [
+          1,
+          "F"
+        ]
+      ],
+      "volta": "1",
+      "voltaStart": true
+    },
+    {
+      "number": 8,
+      "pattern": "drive-b",
+      "chords": [
+        [
+          1,
+          "F"
+        ]
+      ],
+      "showChordDiagram": false,
+      "volta": "1",
+      "voltaEnd": true,
+      "repeatEnd": true
+    },
+    {
+      "number": 9,
+      "pattern": "drive-a",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "volta": "2",
+      "voltaStart": true
+    },
+    {
+      "number": 10,
+      "pattern": "drive-b",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "showChordDiagram": false,
+      "volta": "2",
+      "voltaEnd": true
+    },
+    {
+      "number": 11,
+      "pattern": "muted-start",
+      "chords": [
+        [
+          1,
+          "F"
+        ]
+      ]
+    },
+    {
+      "number": 12,
+      "pattern": "muted",
+      "chords": [
+        [
+          1,
+          "F"
+        ]
+      ],
+      "showChordDiagram": false
+    },
+    {
+      "number": 13,
+      "pattern": "muted-start",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ]
+    },
+    {
+      "number": 14,
+      "pattern": "muted",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "showChordDiagram": false
+    },
+    {
+      "number": 15,
+      "pattern": "muted-start",
+      "chords": [
+        [
+          1,
+          "E"
+        ]
+      ]
+    },
+    {
+      "number": 16,
+      "pattern": "muted",
+      "chords": [
+        [
+          1,
+          "E"
+        ]
+      ],
+      "showChordDiagram": false
+    },
+    {
+      "number": 17,
+      "pattern": "muted-start",
+      "chords": [
+        [
+          1,
+          "F"
+        ]
+      ]
+    },
+    {
+      "number": 18,
+      "pattern": "muted-fill",
+      "chords": [
+        [
+          1,
+          "F"
+        ]
+      ],
+      "showChordDiagram": false
+    },
+    {
+      "number": 19,
+      "pattern": "drive-a",
+      "chords": [
+        [
+          1,
+          "F"
+        ]
+      ]
+    },
+    {
+      "number": 20,
+      "pattern": "drive-b",
+      "chords": [
+        [
+          1,
+          "F"
+        ]
+      ],
+      "showChordDiagram": false
+    },
+    {
+      "number": 21,
+      "pattern": "drive-a",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ]
+    },
+    {
+      "number": 22,
+      "pattern": "drive-b",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "showChordDiagram": false
+    },
+    {
+      "number": 23,
+      "pattern": "drive-a",
+      "chords": [
+        [
+          1,
+          "E"
+        ]
+      ]
+    },
+    {
+      "number": 24,
+      "pattern": "drive-b",
+      "chords": [
+        [
+          1,
+          "E"
+        ]
+      ],
+      "showChordDiagram": false
+    },
+    {
+      "number": 25,
+      "pattern": "drive-a",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ]
+    },
+    {
+      "number": 26,
+      "pattern": "drive-b",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "showChordDiagram": false
+    },
+    {
+      "number": 27,
+      "pattern": "chorus",
+      "chords": [
+        [
+          1,
+          "F"
+        ]
+      ],
+      "repeatStart": true
+    },
+    {
+      "number": 28,
+      "pattern": "chorus",
+      "chords": [
+        [
+          1,
+          "F"
+        ]
+      ],
+      "showChordDiagram": false
+    },
+    {
+      "number": 29,
+      "pattern": "chorus",
+      "chords": [
+        [
+          1,
+          "C"
+        ]
+      ]
+    },
+    {
+      "number": 30,
+      "pattern": "chorus",
+      "chords": [
+        [
+          1,
+          "C"
+        ]
+      ],
+      "showChordDiagram": false
+    },
+    {
+      "number": 31,
+      "pattern": "chorus",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ]
+    },
+    {
+      "number": 32,
+      "pattern": "chorus",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "showChordDiagram": false
+    },
+    {
+      "number": 33,
+      "pattern": "chorus",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ]
+    },
+    {
+      "number": 34,
+      "pattern": "chorus",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "showChordDiagram": false
+    },
+    {
+      "number": 35,
+      "pattern": "chorus",
+      "chords": [
+        [
+          1,
+          "F"
+        ]
+      ]
+    },
+    {
+      "number": 36,
+      "pattern": "chorus",
+      "chords": [
+        [
+          1,
+          "F"
+        ]
+      ],
+      "showChordDiagram": false
+    },
+    {
+      "number": 37,
+      "pattern": "chorus",
+      "chords": [
+        [
+          1,
+          "C"
+        ]
+      ]
+    },
+    {
+      "number": 38,
+      "pattern": "chorus",
+      "chords": [
+        [
+          1,
+          "C"
+        ]
+      ],
+      "showChordDiagram": false
+    },
+    {
+      "number": 39,
+      "pattern": "chorus",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ]
+    },
+    {
+      "number": 40,
+      "pattern": "chorus",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "showChordDiagram": false
+    },
+    {
+      "number": 41,
+      "pattern": "chorus",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ]
+    },
+    {
+      "number": 42,
+      "pattern": "first-ending",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "volta": "1",
+      "voltaStart": true,
+      "showChordDiagram": false
+    },
+    {
+      "number": 43,
+      "pattern": "drive-a",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "volta": "1"
+    },
+    {
+      "number": 44,
+      "pattern": "drive-b",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "volta": "1",
+      "showChordDiagram": false
+    },
+    {
+      "number": 45,
+      "pattern": "drive-a",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "volta": "1"
+    },
+    {
+      "number": 46,
+      "pattern": "drive-b",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "volta": "1",
+      "showChordDiagram": false
+    },
+    {
+      "number": 47,
+      "pattern": "drive-a",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "volta": "1"
+    },
+    {
+      "number": 48,
+      "pattern": "drive-b",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "volta": "1",
+      "showChordDiagram": false
+    },
+    {
+      "number": 49,
+      "pattern": "drive-a",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "volta": "1"
+    },
+    {
+      "number": 50,
+      "pattern": "drive-b",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "volta": "1",
+      "showChordDiagram": false
+    },
+    {
+      "number": 51,
+      "pattern": "drive-a",
+      "chords": [
+        [
+          1,
+          "F"
+        ]
+      ],
+      "volta": "1"
+    },
+    {
+      "number": 52,
+      "pattern": "drive-b",
+      "chords": [
+        [
+          1,
+          "F"
+        ]
+      ],
+      "volta": "1",
+      "showChordDiagram": false
+    },
+    {
+      "number": 53,
+      "pattern": "drive-a",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "volta": "1"
+    },
+    {
+      "number": 54,
+      "pattern": "drive-b",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "volta": "1",
+      "showChordDiagram": false
+    },
+    {
+      "number": 55,
+      "pattern": "drive-a",
+      "chords": [
+        [
+          1,
+          "E"
+        ]
+      ],
+      "volta": "1"
+    },
+    {
+      "number": 56,
+      "pattern": "drive-b",
+      "chords": [
+        [
+          1,
+          "E"
+        ]
+      ],
+      "volta": "1",
+      "showChordDiagram": false
+    },
+    {
+      "number": 57,
+      "pattern": "drive-a",
+      "chords": [
+        [
+          1,
+          "F"
+        ]
+      ],
+      "volta": "1"
+    },
+    {
+      "number": 58,
+      "pattern": "drive-b",
+      "chords": [
+        [
+          1,
+          "F"
+        ]
+      ],
+      "volta": "1",
+      "showChordDiagram": false
+    },
+    {
+      "number": 59,
+      "pattern": "drive-a",
+      "chords": [
+        [
+          1,
+          "F"
+        ]
+      ],
+      "volta": "1"
+    },
+    {
+      "number": 60,
+      "pattern": "drive-b",
+      "chords": [
+        [
+          1,
+          "F"
+        ]
+      ],
+      "volta": "1",
+      "showChordDiagram": false
+    },
+    {
+      "number": 61,
+      "pattern": "drive-a",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "volta": "1"
+    },
+    {
+      "number": 62,
+      "pattern": "drive-b",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "volta": "1",
+      "showChordDiagram": false
+    },
+    {
+      "number": 63,
+      "pattern": "drive-a",
+      "chords": [
+        [
+          1,
+          "E"
+        ]
+      ],
+      "volta": "1"
+    },
+    {
+      "number": 64,
+      "pattern": "drive-b",
+      "chords": [
+        [
+          1,
+          "E"
+        ]
+      ],
+      "volta": "1",
+      "showChordDiagram": false
+    },
+    {
+      "number": 65,
+      "pattern": "drive-a",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "volta": "1"
+    },
+    {
+      "number": 66,
+      "pattern": "drive-b",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "volta": "1",
+      "voltaEnd": true,
+      "repeatEnd": true,
+      "showChordDiagram": false
+    },
+    {
+      "number": 67,
+      "pattern": "final",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "volta": "2",
+      "voltaStart": true,
+      "voltaEnd": true
+    }
+  ]
+}
