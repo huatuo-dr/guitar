@@ -277,10 +277,14 @@ C 段的星号（*）表示打板，含义经用户确认；按原图保存为 b
 
 数据位于 `score/jiayibingding-chorus.json` 与 `score/jiayibingding-chorus-vocal.json`；`npm run build:jiayibingding-chorus` 构建，`npm run test:jiayibingding-chorus` 验证选取范围、歌词、拍数、播放和浏览器显示。
 
-[《想你的夜》仅副歌](sheet_music/想你的夜仅副歌.html)：关喆词曲 / 演唱，原调 ♭E、C 指法、Capo 3，4/4。保留第二页前两行及第三行首小节，共11小节（原图17–27）。首小节歌词仅留“想你的”，末小节仅留“点”，完整伴奏和简谱均保留。摘录版暂按两遍副歌处理，将原来回主歌的反复改为返回摘录第1小节：`1–9 → 1–7 → 10–11`，简易谱和播放共18小节；原图括号内回主歌的替代弱起“分”不收录。
+[《想你的夜》仅副歌](sheet_music/想你的夜仅副歌.html)：关喆词曲 / 演唱，原调 ♭E、C 指法、Capo 3，4/4。保留第二页开头9小节（原图17–25），首小节歌词仅留“想你的”，完整伴奏和简谱保留。已删除原摘录第10、11小节及反复标记，按 `1–9` 演奏一次，在“原点”结束；简易谱和播放同步为9小节。原图括号内回主歌的替代弱起“分”不收录。
 
 数据位于 `score/xiangnideye-chorus.json` 与 `score/xiangnideye-chorus-vocal.json`；`npm run build:xiangnideye-chorus` 构建，`npm run test:xiangnideye-chorus` 验证。共享六线谱渲染器补充四分休止符，播放在该拍保持休止。
 
 [《歌唱祖国》仅副歌](sheet_music/歌唱祖国仅副歌.html)：依据 `tmp/1.png` 保留前两行和第三个完整谱行的前三小节，共15小节，在“走向繁荣富强”的“强”处结束。前奏1–3小节及“五星”弱起完整保留，简易谱简化第4–15小节。原图为C指法、原唱调F、4/4拍、95 BPM，变调夹未标；试听按未夹变调夹音高及默认60 BPM练习速度。两处二分音符保留两拍时值和短符干。
 
 数据位于 `score/gechangzuguo-chorus.json` 与 `score/gechangzuguo-chorus-vocal.json`；`npm run build:gechangzuguo-chorus` 构建，`npm run test:gechangzuguo-chorus` 验证。
+
+[《你那么爱他》仅副歌](sheet_music/你那么爱他仅副歌.html)：李圣杰演唱、林隆璇词曲、白鹏编配，原调 ♭B、G 指法、Capo 3。取 `tmp/1.png` 最后一行及 `tmp/2.png` 前两行加第三行首小节，共10小节（原图13–22），从“你那么爱”接入，在“无法自拔”结束。原图首页虽标2/4，所选小节两声部实际均为四拍，成谱按4/4呈现。移除指向范围外的反复、房子与Segno，按1–10演奏一次；简易谱完整保留引入和收尾。第10小节前两拍按明确品位演奏，Gadd9图位于原谱第三拍。
+
+数据位于 `score/ninameaita-chorus.json` 与 `score/ninameaita-chorus-vocal.json`；`npm run build:ninameaita-chorus` 构建，`npm run test:ninameaita-chorus` 验证。

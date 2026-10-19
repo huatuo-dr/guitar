@@ -1,10 +1,10 @@
 {
   "sources": [
     "tmp/1.jpg：歌名、调式、变调夹与词曲信息",
-    "tmp/2.jpg：前两行、第三行首小节"
+    "tmp/2.jpg：开头9小节（原图17–25小节）"
   ],
   "notes": [
-    "简谱保留原图三连音、附点、连音与延音；首尾仅删指定歌词，不删音符。"
+    "保留原图三连音、附点、连音与延音；首小节仅删指定歌词，不删音符；摘录在第9小节“原点”结束。"
   ],
   "bars": [
     {
@@ -583,121 +583,6 @@
         {
           "hold": true,
           "duration": 4
-        }
-      ]
-    },
-    {
-      "number": 10,
-      "events": [
-        {
-          "degree": 2,
-          "octave": 1,
-          "duration": 16,
-          "slurEnd": 3,
-          "lyrics": [
-            "爱"
-          ]
-        },
-        {
-          "degree": 1,
-          "octave": 1,
-          "duration": 16
-        },
-        {
-          "degree": 6,
-          "octave": 0,
-          "duration": 8,
-          "tieToNext": true
-        },
-        {
-          "degree": 6,
-          "octave": 0,
-          "duration": 8,
-          "dotted": true
-        },
-        {
-          "degree": 6,
-          "octave": 0,
-          "duration": 16,
-          "lyrics": [
-            "再"
-          ]
-        },
-        {
-          "degree": 1,
-          "octave": 1,
-          "duration": 8,
-          "dotted": true,
-          "lyrics": [
-            "回"
-          ]
-        },
-        {
-          "degree": 7,
-          "octave": 0,
-          "duration": 16,
-          "tieToNext": true,
-          "lyrics": [
-            "到"
-          ]
-        },
-        {
-          "degree": 7,
-          "octave": 0,
-          "duration": 16
-        },
-        {
-          "degree": 6,
-          "octave": 0,
-          "duration": 8,
-          "slurEnd": 9,
-          "lyrics": [
-            "原"
-          ]
-        },
-        {
-          "degree": 7,
-          "octave": 0,
-          "duration": 16
-        }
-      ]
-    },
-    {
-      "number": 11,
-      "events": [
-        {
-          "degree": 1,
-          "octave": 1,
-          "duration": 4,
-          "lyrics": [
-            "点"
-          ]
-        },
-        {
-          "hold": true,
-          "duration": 4
-        },
-        {
-          "hold": true,
-          "duration": 4
-        },
-        {
-          "degree": 1,
-          "octave": 1,
-          "duration": 8,
-          "tuplet": 3
-        },
-        {
-          "degree": 2,
-          "octave": 1,
-          "duration": 8,
-          "tuplet": 3
-        },
-        {
-          "degree": 1,
-          "octave": 1,
-          "duration": 8,
-          "tuplet": 3
         }
       ]
     }

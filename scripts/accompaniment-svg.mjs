@@ -44,8 +44,12 @@ export function validateScore(data) {
       if (!data.chordShapes[chord.name] || chord.beat <= previous || chord.beat > bar.beats) throw new Error(`第${bar.number}小节和弦无效`);
       previous = chord.beat;
     }
-    const needsChord=bar.chords.length>0||bar.events.some(e=>['pluck','down','up','arpeggio'].includes(e.kind));
-    if (needsChord && bar.chords[0]?.beat !== 1) throw new Error('每小节必须指定起始和弦');
+    // Explicit frets can precede the first chord diagram, as in a pickup run.
+    let onset=1;
+    for(const event of bar.events){
+      if(['pluck','down','up','arpeggio'].includes(event.kind)&&!bar.chords.some(chord=>chord.beat<=onset+1e-8))throw new Error(`第${bar.number}小节第${onset}拍缺少起始和弦`);
+      onset+=eventBeats(event);
+    }
     if(bar.crossBarTieStart!==undefined){
       const start=bar.events[bar.crossBarTieStart];
       if(!Number.isInteger(bar.crossBarTieStart)||!start||['hold','rest'].includes(start.kind)||!expanded[i+1]||bar.events.slice(bar.crossBarTieStart+1).some(e=>e.kind!=='hold'))throw new Error('跨小节伴奏延音起点无效');

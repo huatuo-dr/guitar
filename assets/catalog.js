@@ -2,6 +2,18 @@
 // Optional fields: artist, timeSignature, capo (0 = no capo), bars, description.
 window.GUITAR_SCORES = [
   {
+    id: 'ninameaita-chorus',
+    title: '《你那么爱他》仅副歌',
+    artist: '李圣杰',
+    type: 'chorus',
+    path: 'sheet_music/你那么爱他仅副歌.html',
+    timeSignature: '4/4',
+    capo: 3,
+    bars: 10,
+    updatedAt: '2026-10-19',
+    description: '原调 ♭B · G 指法，白鹏编配，含副歌引入、扫弦、三连音与“无法自拔”收尾。'
+  },
+  {
     id: 'gechangzuguo-chorus',
     title: '《歌唱祖国》仅副歌',
     artist: '群星',
@@ -20,8 +32,8 @@ window.GUITAR_SCORES = [
     path: 'sheet_music/想你的夜仅副歌.html',
     timeSignature: '4/4',
     capo: 3,
-    bars: 11,
-    updatedAt: '2026-10-16',
+    bars: 9,
+    updatedAt: '2026-10-19',
     description: '原调 ♭E · C 指法，从“想你的”接入，保留所选副歌、简谱与伴奏。'
   },
   {

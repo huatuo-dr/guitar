@@ -11,16 +11,16 @@ try{
  await page.goto(new URL('sheet_music/想你的夜仅副歌.html',root).href);
  assert.equal(await page.locator('h1').innerText(),'《想你的夜》仅副歌');
  assert.match(await page.locator('.metadata').innerText(),/关喆[\s\S]*4\/4[\s\S]*♭E[\s\S]*C 指法/);
- assert.equal(await page.locator('#score .measure').count(),11);assert.equal(await page.locator('.chord-card').count(),10);
+ assert.equal(await page.locator('#score .measure').count(),9);assert.equal(await page.locator('.chord-card').count(),9);
  assert.equal(await page.locator('.section-picker').getAttribute('open'),null);
  for(const rows of ['4','2']){
   await page.locator('#bars-per-row').selectOption(rows);
-  assert.equal(await page.locator('#score .measure').count(),11);
-  assert.equal(await page.locator('#score .numbered-melody').count(),11);
+  assert.equal(await page.locator('#score .measure').count(),9);
+  assert.equal(await page.locator('#score .numbered-melody').count(),9);
   assert.deepEqual(await page.locator('#bar-1 .lyric').allTextContents(),['想','你','的']);
-  assert.deepEqual(await page.locator('#bar-11 .lyric').allTextContents(),['点']);
+  assert.deepEqual(await page.locator('#bar-9 .lyric').allTextContents(),['原','点']);
   assert.equal(await page.locator('#score .volta-label').count(),0);
-  assert.equal(await page.locator('#score .tab-rest-quarter').count(),2);
+  assert.equal(await page.locator('#score .tab-rest-quarter').count(),1);
   const overlaps=await page.locator('#score .measure').evaluateAll(bars=>bars.flatMap(bar=>{
    const lyrics=[...bar.querySelectorAll('.lyric')];return lyrics.flatMap((a,i)=>lyrics.slice(i+1).filter(b=>a.getAttribute('y')===b.getAttribute('y')&&Math.min(a.getBBox().x+a.getBBox().width,b.getBBox().x+b.getBBox().width)-Math.max(a.getBBox().x,b.getBBox().x)>0.5).map(b=>[bar.dataset.bar,a.textContent,b.textContent]));
   }));assert.deepEqual(overlaps,[],'歌词不重叠');
@@ -29,12 +29,12 @@ try{
  await page.screenshot({path:new URL('full-desktop.png',output).pathname,fullPage:true});
  await page.pdf({path:new URL('full-print.pdf',output).pathname,preferCSSPageSize:true,printBackground:true});
  await page.locator('#score-mode').click();
- assert.equal(await page.locator('#score .measure').count(),18);
- assert.equal(await page.locator('.simple-instrument-score .measure').count(),2);
+ assert.equal(await page.locator('#score .measure').count(),9);
+ assert.equal(await page.locator('.simple-instrument-score .measure').count(),1);
  const words=(await page.locator('.simple-lyric').allTextContents()).join('').replace(/\s/g,'');
- assert.equal(words,'夜多希望你能在我身边不知道你心里还能否为我改变wo想你的夜求你让我再爱你一遍让爱再回到原点'.repeat(2));
+ assert.equal(words,'夜多希望你能在我身边不知道你心里还能否为我改变wo想你的夜求你让我再爱你一遍让爱再回到原点');
  assert.doesNotMatch(words,/切|分/);
- assert.equal(await page.locator('#bar-1-repeat-2').count(),1);
+ assert.equal(await page.locator('#bar-1-repeat-2').count(),0);
  await page.screenshot({path:new URL('simple-desktop.png',output).pathname,fullPage:true});
  for(const width of [320,393]){
   await page.setViewportSize({width,height:852});await page.locator('#bars-per-row').selectOption('auto');
@@ -68,18 +68,18 @@ try{
  await page.waitForFunction(()=>window.audioPeak>0.001);
  await page.locator('#player-play').click();await page.waitForFunction(()=>document.body.dataset.playerState==='paused');
  const payload=await page.locator('#accompaniment-playback-data').evaluate(n=>JSON.parse(n.textContent));
- assert.deepEqual(payload.sequence.map(s=>s.bar),[1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,10,11]);
- await page.locator('#bar-10').dispatchEvent('click');
- assert.equal(await page.locator('#bar-10.player-current').count(),1);
+ assert.deepEqual(payload.sequence.map(s=>s.bar),[1,2,3,4,5,6,7,8,9]);
+ await page.locator('#bar-9').dispatchEvent('click');
+ assert.equal(await page.locator('#bar-9.player-current').count(),1);
  await page.locator('#player-stop').click();
  const downloadPromise=page.waitForEvent('download');await page.locator('.export-menu > summary').click();await page.locator('#download').click();
  const download=await downloadPromise,saved=new URL('download.html',output);await download.saveAs(saved.pathname);
  assert.equal(download.suggestedFilename(),'想你的夜仅副歌.html');assert.ok(!(await readFile(saved,'utf8')).includes('class="auto-scroll"'));
  const fresh=await browser.newContext({offline:true}),reopened=await fresh.newPage();await reopened.goto(saved.href);
- assert.equal(await reopened.locator('#score .measure').count(),11);await reopened.locator('#score-mode').click();assert.equal(await reopened.locator('#score .measure').count(),18);await fresh.close();
+ assert.equal(await reopened.locator('#score .measure').count(),9);await reopened.locator('#score-mode').click();assert.equal(await reopened.locator('#score .measure').count(),9);await fresh.close();
  assert.deepEqual(errors,[]);assert.deepEqual(remote,[]);
  await page.goto(new URL('index.html',root).href);await page.locator('#search').fill('想你的夜');
  assert.equal(await page.locator('.score-card').count(),1);await page.locator('[data-score-id="xiangnideye-chorus"] .open-score').click();assert.equal(await page.locator('h1').innerText(),'《想你的夜》仅副歌');
  await context.close();
- console.log('PASS: 想你的夜仅副歌11小节、首尾歌词、18小节双跳尾路线、简易谱、手机、打印/PNG、离线播放与下载、首页入口。');
+ console.log('PASS: 想你的夜仅副歌9小节、首尾歌词、单次播放路线、简易谱、手机、打印/PNG、离线播放与下载、首页入口。');
 }finally{await browser.close();}
