@@ -12,47 +12,48 @@ export function scalePositions(data,key,first=data.firstFret,last=data.lastFret)
   }).filter(Boolean));
 }
 
-function patternLabels(patterns,first,last,x){
+function patternLabels(patterns,first,last,x,compact=false){
   return patterns.map(pattern=>{
     const left=x(Math.max(first,pattern.first))-24;
     const right=x(Math.min(last,pattern.last))+24;
     const center=(left+right)/2;
     const top=pattern.side==='top';
-    const bracketY=top?33:335;
-    const buttonY=top?1:342;
+    const bracketY=top?(compact?25:33):compact?183:335;
+    const buttonY=top?1:compact?190:342;
     const range=`${pattern.first===0?'空弦':pattern.first+'品'}至${pattern.last}品`;
-    return `<g class="pattern-control" data-pattern="${pattern.id}" data-first="${pattern.first}" data-last="${pattern.last}" style="--pattern-color:${pattern.color}" role="button" tabindex="0" aria-pressed="false" aria-label="${pattern.label}，${range}"><title>${pattern.label}：${range}，点击切换高亮</title><rect x="${left}" y="${top?0:330}" width="${right-left}" height="${top?38:35}" fill="transparent"/><path class="pattern-bracket" d="M${left} ${bracketY+(top?4:-4)}V${bracketY}H${right}V${bracketY+(top?4:-4)}"/><rect class="pattern-button" x="${center-41}" y="${buttonY}" width="82" height="22" rx="4"/><text x="${center}" y="${buttonY+16}">${pattern.label}</text></g>`;
+    return `<g class="pattern-control" data-pattern="${pattern.id}" data-first="${pattern.first}" data-last="${pattern.last}" style="--pattern-color:${pattern.color}" role="button" tabindex="0" aria-pressed="false" aria-label="${pattern.label}，${range}"><title>${pattern.label}：${range}，点击切换高亮</title><rect x="${left}" y="${top?0:compact?178:330}" width="${right-left}" height="${top?(compact?30:38):35}" fill="transparent"/><path class="pattern-bracket" d="M${left} ${bracketY+(top?4:-4)}V${bracketY}H${right}V${bracketY+(top?4:-4)}"/><rect class="pattern-button" x="${center-41}" y="${buttonY}" width="82" height="22" rx="4"/><text x="${center}" y="${buttonY+16}">${pattern.label}</text></g>`;
   }).join('');
 }
 
-function diagram(data,key,first,last,id){
+export function diagram(data,key,first,last,id,{compact=false}={}){
   const width=76+(last-first+0.5)*50;
   const x=fret=>76+(fret-first)*50;
-  const y=string=>64+(string-1)*48;
+  const top=compact?42:64, bottom=compact?162:304, height=compact?214:365;
+  const y=string=>top+(string-1)*(compact?24:48);
   const patterns=key.name==='C'?data.cPatterns.filter(p=>p.first<=last&&p.last>=first):[];
   const description=`${key.name}大调，${first===0?'空弦':first+'品'}至${last}品；从上到下为1至6弦，${key.name==='C'?'主音为1（音名C）':'绿色实心圆为主音1'}`;
-  let svg=`<svg viewBox="0 0 ${width} 365" role="${key.name==='C'?'group':'img'}" aria-labelledby="${id}"><title id="${id}">${description}</title>`;
+  let svg=`<svg viewBox="0 0 ${width} ${height}" role="${key.name==='C'?'group':'img'}" aria-labelledby="${id}"><title id="${id}">${description}</title>`;
   for(const pattern of patterns){
     const left=x(Math.max(first,pattern.first))-24;
     const right=x(Math.min(last,pattern.last))+24;
-    svg+=`<rect class="pattern-band" data-pattern-band="${pattern.id}" x="${left}" y="38" width="${right-left}" height="292" rx="5" style="fill:${pattern.color}"/>`;
+    svg+=`<rect class="pattern-band" data-pattern-band="${pattern.id}" x="${left}" y="${compact?30:38}" width="${right-left}" height="${compact?148:292}" rx="5" style="fill:${pattern.color}"/>`;
   }
   for(let fret=first;fret<=last;fret++){
-    if(fret>0)svg+=`<path class="fret${fret===1?' nut':''}" d="M${x(fret)-25} 64V304"/>`;
+    if(fret>0)svg+=`<path class="fret${fret===1?' nut':''}" d="M${x(fret)-25} ${top}V${bottom}"/>`;
     if(key.name!=='C')svg+=`<text class="fret-label" x="${x(fret)}" y="27">${fret===0?'空弦':fret}</text>`;
-    if(key.name!=='C'&&[3,5,7,9,15].includes(fret))svg+=`<circle class="position-dot" cx="${x(fret)}" cy="345" r="3"/>`;
-    if(key.name!=='C'&&fret===12)svg+=`<circle class="position-dot" cx="${x(fret)-5}" cy="345" r="3"/><circle class="position-dot" cx="${x(fret)+5}" cy="345" r="3"/>`;
+    if(key.name!=='C'&&[3,5,7,9,15].includes(fret))svg+=`<circle class="position-dot" cx="${x(fret)}" cy="${compact?195:345}" r="3"/>`;
+    if(key.name!=='C'&&fret===12)svg+=`<circle class="position-dot" cx="${x(fret)-5}" cy="${compact?195:345}" r="3"/><circle class="position-dot" cx="${x(fret)+5}" cy="${compact?195:345}" r="3"/>`;
   }
-  svg+=`<path class="fret" d="M${width} 64V304"/>`;
+  svg+=`<path class="fret" d="M${width} ${top}V${bottom}"/>`;
   for(const string of data.strings){
-    svg+=`<text class="string-label" x="3" y="${y(string.number)+5}">${string.number}弦 ${string.note}</text><path class="string" style="stroke-width:${0.7+string.number*0.16}" d="M51 ${y(string.number)}H${width}"/>`;
+    svg+=`<text class="string-label" x="3" y="${y(string.number)+(compact?4:5)}">${string.number}弦 ${string.note}</text><path class="string" style="stroke-width:${0.7+string.number*0.16}" d="M51 ${y(string.number)}H${width}"/>`;
   }
   for(const pos of scalePositions(data,key,first,last)){
     const register=pos.octave===0?'中音':`${pos.octave>0?'高':'低'}${Math.abs(pos.octave)}个八度`;
-    const dots=Array.from({length:Math.abs(pos.octave)},(_,i)=>`<circle class="octave-dot" cx="${x(pos.fret)}" cy="${y(pos.string)+(pos.octave>0?-1:1)*(18+i*6)}" r="2.2"/>`).join('');
-    svg+=`<g class="scale-note${pos.degree===1?' tonic':''}" data-string="${pos.string}" data-fret="${pos.fret}" data-degree="${pos.degree}" data-octave="${pos.octave}"${key.name==='C'?` data-note="${pos.note}"`:''}><title>${pos.string}弦${pos.fret===0?'空弦':pos.fret+'品'}：${pos.note}，${pos.degree}级，${register}</title><circle cx="${x(pos.fret)}" cy="${y(pos.string)}" r="12"/><text x="${x(pos.fret)}" y="${y(pos.string)+6}">${pos.degree}</text>${dots}</g>`;
+    const dots=Array.from({length:Math.abs(pos.octave)},(_,i)=>`<circle class="octave-dot" cx="${x(pos.fret)}" cy="${y(pos.string)+(pos.octave>0?-1:1)*(compact?11+i*3.5:18+i*6)}" r="${compact?1.1:2.2}"/>`).join('');
+    svg+=`<g class="scale-note${pos.degree===1?' tonic':''}" data-string="${pos.string}" data-fret="${pos.fret}" data-degree="${pos.degree}" data-octave="${pos.octave}"${key.name==='C'?` data-note="${pos.note}"`:''}><title>${pos.string}弦${pos.fret===0?'空弦':pos.fret+'品'}：${pos.note}，${pos.degree}级，${register}</title><circle cx="${x(pos.fret)}" cy="${y(pos.string)}" r="${compact?8:12}"/><text x="${x(pos.fret)}" y="${y(pos.string)+(compact?4.5:6)}">${pos.degree}</text>${dots}</g>`;
   }
-  return svg+patternLabels(patterns,first,last,x)+'</svg>';
+  return svg+patternLabels(patterns,first,last,x,compact)+'</svg>';
 }
 
 async function build(){

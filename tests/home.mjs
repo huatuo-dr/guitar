@@ -82,7 +82,8 @@ try{
   await page.screenshot({path:'artifacts/home-tools-mobile.png',fullPage:true});
   await page.setViewportSize({width:1440,height:1000});
   await page.screenshot({path:'artifacts/home-tools-desktop.png',fullPage:true});
-  await page.locator('#search').fill('和弦');assert.equal(await page.locator('.tool-card').count(),1);
+  await page.locator('#search').fill('和弦');
+  assert.equal(await page.locator('.tool-card').count(),catalogWindow.GUITAR_TOOLS.filter(tool=>`${tool.title} ${tool.description||''}`.includes('和弦')).length,'工具扩展后仍按名称与介绍搜索');
   await page.locator('#search').fill('吉他指法');assert.equal(await page.locator('.tool-card').count(),1,'工具关键词也匹配介绍');
   await page.locator('#search').fill('不存在的工具');
   assert.equal(await page.locator('#empty-title').innerText(),'没有找到相关工具');

@@ -312,3 +312,11 @@ C 段的星号（*）表示打板，含义经用户确认；按原图保存为 b
 所选范围内的反复保留，按 `1–22 → 1–22` 演奏两遍，共44个演奏小节、172拍；第二遍切换主歌歌词，并在第22小节结束，不接范围外的第二房子。简易谱完整保留两遍前奏1–5小节，包括“我跟你／我和你”的弱起歌词，其余按和弦与歌词展开。原图末两小节后两拍的休止及横线统一记为二分休止。
 
 数据位于 `score/chuxianyoulikai-chorus.json`、`score/chuxianyoulikai-chorus-vocal.json`；`npm run build:chuxianyoulikai-chorus` 构建，`npm run test:chuxianyoulikai-chorus` 验证。共享渲染器和播放器新增弱起、同弦前置装饰音、二分及十六分休止支持；首小节显示4/4拍号，每遍在原一拍弱起前先休止3拍。
+
+## 小星星练习工具
+
+[小星星练习](tools/小星星练习.html) 在首页“工具”中展示，不混入“全部”曲谱。上方选择音阶或和弦，以及 C、D、E、F、G、A、B 七个大调；下方保留截图中的12小节、48拍简谱与歌词。
+
+音阶模式复用指板音阶数据和八度点，支持数字/音名切换、同级音聚焦及C调五种指型高亮。和弦模式按每次旋律起音映射同级三和弦（I、ii、iii、IV、V、vi），不是和声伴奏编配：例如C调开头为 `C C G G | Am Am G —`。上方展示1—7级七张指法图（第7级为vii°减三和弦，供对照练习），下方42次起音只标和弦名称；6处延长线不增加新和弦。点击简谱、音级按钮或和弦名称可高亮对应练习对象。和弦图复用原有数据，C沿用C/G按法。
+
+旋律数据在 `knowledge/twinkle-practice.json`，页面源文件为 `src/twinkle-practice.html`、`.css`、`.js`，由 `scripts/build-twinkle-practice.mjs` 内嵌为离线HTML；和弦SVG纯函数共用 `scripts/chord-diagram.mjs`。此页指板采用紧凑布局，图高较原工具减少约41%，弦间距缩至原工具的一半、音级字号缩至13px，保持八度点与音符圆圈间隔；第7级指法单独保存于 `knowledge/twinkle-seventh-chords.json`。手机按品位分段显示指板，简谱每行两小节；电脑每行六小节。`npm run build:twinkle-practice` 构建，`npm run test:twinkle-practice` 验证音级映射、延长线、切换、高亮、手机和离线入口。

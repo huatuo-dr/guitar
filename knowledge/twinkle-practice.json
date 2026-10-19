@@ -1,0 +1,304 @@
+{
+  "title": "小星星",
+  "source": "用户提供的 tmp/1.png · 17吉他网制谱",
+  "timeSignature": [
+    4,
+    4
+  ],
+  "bars": [
+    {
+      "number": 1,
+      "events": [
+        {
+          "degree": 1,
+          "beats": 1,
+          "lyric": "一"
+        },
+        {
+          "degree": 1,
+          "beats": 1,
+          "lyric": "闪"
+        },
+        {
+          "degree": 5,
+          "beats": 1,
+          "lyric": "一"
+        },
+        {
+          "degree": 5,
+          "beats": 1,
+          "lyric": "闪"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "events": [
+        {
+          "degree": 6,
+          "beats": 1,
+          "lyric": "亮"
+        },
+        {
+          "degree": 6,
+          "beats": 1,
+          "lyric": "晶"
+        },
+        {
+          "degree": 5,
+          "beats": 1,
+          "lyric": "晶"
+        },
+        {
+          "hold": true,
+          "beats": 1
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "events": [
+        {
+          "degree": 4,
+          "beats": 1,
+          "lyric": "漫"
+        },
+        {
+          "degree": 4,
+          "beats": 1,
+          "lyric": "天"
+        },
+        {
+          "degree": 3,
+          "beats": 1,
+          "lyric": "都"
+        },
+        {
+          "degree": 3,
+          "beats": 1,
+          "lyric": "是"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "events": [
+        {
+          "degree": 2,
+          "beats": 1,
+          "lyric": "小"
+        },
+        {
+          "degree": 2,
+          "beats": 1,
+          "lyric": "星"
+        },
+        {
+          "degree": 1,
+          "beats": 1,
+          "lyric": "星"
+        },
+        {
+          "hold": true,
+          "beats": 1
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "events": [
+        {
+          "degree": 5,
+          "beats": 1,
+          "lyric": "高"
+        },
+        {
+          "degree": 5,
+          "beats": 1,
+          "lyric": "高"
+        },
+        {
+          "degree": 4,
+          "beats": 1,
+          "lyric": "挂"
+        },
+        {
+          "degree": 4,
+          "beats": 1,
+          "lyric": "在"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "events": [
+        {
+          "degree": 3,
+          "beats": 1,
+          "lyric": "天"
+        },
+        {
+          "degree": 3,
+          "beats": 1,
+          "lyric": "空"
+        },
+        {
+          "degree": 2,
+          "beats": 1,
+          "lyric": "中"
+        },
+        {
+          "hold": true,
+          "beats": 1
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "events": [
+        {
+          "degree": 5,
+          "beats": 1,
+          "lyric": "好"
+        },
+        {
+          "degree": 5,
+          "beats": 1,
+          "lyric": "像"
+        },
+        {
+          "degree": 4,
+          "beats": 1,
+          "lyric": "宝"
+        },
+        {
+          "degree": 4,
+          "beats": 1,
+          "lyric": "石"
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "events": [
+        {
+          "degree": 3,
+          "beats": 1,
+          "lyric": "放"
+        },
+        {
+          "degree": 3,
+          "beats": 1,
+          "lyric": "光"
+        },
+        {
+          "degree": 2,
+          "beats": 1,
+          "lyric": "明"
+        },
+        {
+          "hold": true,
+          "beats": 1
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "events": [
+        {
+          "degree": 1,
+          "beats": 1,
+          "lyric": "一"
+        },
+        {
+          "degree": 1,
+          "beats": 1,
+          "lyric": "闪"
+        },
+        {
+          "degree": 5,
+          "beats": 1,
+          "lyric": "一"
+        },
+        {
+          "degree": 5,
+          "beats": 1,
+          "lyric": "闪"
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "events": [
+        {
+          "degree": 6,
+          "beats": 1,
+          "lyric": "亮"
+        },
+        {
+          "degree": 6,
+          "beats": 1,
+          "lyric": "晶"
+        },
+        {
+          "degree": 5,
+          "beats": 1,
+          "lyric": "晶"
+        },
+        {
+          "hold": true,
+          "beats": 1
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "events": [
+        {
+          "degree": 4,
+          "beats": 1,
+          "lyric": "漫"
+        },
+        {
+          "degree": 4,
+          "beats": 1,
+          "lyric": "天"
+        },
+        {
+          "degree": 3,
+          "beats": 1,
+          "lyric": "都"
+        },
+        {
+          "degree": 3,
+          "beats": 1,
+          "lyric": "是"
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "events": [
+        {
+          "degree": 2,
+          "beats": 1,
+          "lyric": "小"
+        },
+        {
+          "degree": 2,
+          "beats": 1,
+          "lyric": "星"
+        },
+        {
+          "degree": 1,
+          "beats": 1,
+          "lyric": "星"
+        },
+        {
+          "hold": true,
+          "beats": 1
+        }
+      ]
+    }
+  ]
+}

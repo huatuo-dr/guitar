@@ -177,6 +177,13 @@ window.GUITAR_SCORES = [
 // Add a relative path when the content page is ready; omit it for planned entries.
 window.GUITAR_TOOLS = [
   {
+    id: 'twinkle-practice',
+    path: 'tools/小星星练习.html',
+    title: '小星星练习',
+    description: '用小星星练习七个大调的音阶与1—6级和弦，逐音查看对应和弦。',
+    updatedAt: '2026-10-19'
+  },
+  {
     id: 'chord-charts',
     path: 'tools/各调和弦图.html',
     title: '各调和弦图',

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#315e4d">
+<title>小星星练习 · 小k吉他练习</title>
+<style>/* STYLES */</style>
+</head>
+<body data-mode="scale">
+<header><div class="brand"><span class="brand-mark" aria-hidden="true"></span>小k吉他练习</div><a class="back" href="../index.html#tools">← 返回工具</a></header>
+<main>
+<div class="intro"><h1>小星星练习</h1><p>用一首熟悉的旋律，练习不同调的音阶与和弦级数。</p></div>
+<section class="practice-section" aria-labelledby="object-heading">
+<div class="section-title"><span class="section-index" aria-hidden="true">01</span><h2 id="object-heading">练习对象</h2></div>
+<div class="selectors">
+<div class="mode-selector" role="group" aria-label="练习类型"><button type="button" data-mode="scale" aria-pressed="true">音阶</button><button type="button" data-mode="chord" aria-pressed="false">和弦</button></div>
+<label class="key-label" for="practice-key">具体调 <select id="practice-key"><!-- KEYS --></select></label>
+</div>
+<div class="reference-heading"><h3 id="reference-title">C 大调音阶</h3><button type="button" id="notation-toggle" aria-pressed="false">音名显示</button><button type="button" id="clear-focus" hidden>取消高亮</button></div>
+<p class="hint" id="practice-hint">按简谱逐音弹奏。点击音级或指板上的音，查看对应位置；圆点表示八度。</p>
+<div id="reference"><!-- REFERENCE --></div>
+<details class="guide"><summary>读图提示</summary><p class="scale-help">音阶图从上到下为1—6弦，左到右为品位递增。上点为高八度、下点为低八度。C调可点击指型名称高亮对应品位。</p><p class="chord-help" hidden>和弦图从左到右为6—1弦；圆点里的数字表示左手指法，○为空弦，×为不弹。I、IV、V为大三和弦，ii、iii、vi为小三和弦；vii°为减三和弦（dim）。C沿用和弦工具中以G为低音的按法。</p></details>
+</section>
+<section class="practice-section song-section" aria-labelledby="song-heading">
+<div class="section-title"><span class="section-index" aria-hidden="true">02</span><h2 id="song-heading">小星星简谱</h2><span class="meter"><b id="tonic">1 = C</b><span>4/4 拍</span></span></div>
+<p class="hint" id="song-hint">点击简谱数字，高亮上方指板中的同级音。</p>
+<div id="melody" class="melody-grid"><!-- MELODY --></div>
+<p class="focus-status" id="focus-status" role="status" aria-live="polite">C 大调 · 音阶练习</p>
+</section>
+</main>
+<footer>简谱与歌词按提供的17吉他网《小星星》练习谱重绘。和弦按旋律音级逐音映射，用于级数切换练习。</footer>
+<script>/* DATA */
+/* SCRIPT */</script>
+</body>
+</html>
