@@ -1,0 +1,1658 @@
+{
+  "title": "《红色高跟鞋》仅副歌",
+  "artist": "蔡健雅",
+  "scoreType": "chorus",
+  "key": "D",
+  "fingeringKey": "C",
+  "capo": 2,
+  "timeSignature": [
+    4,
+    4
+  ],
+  "measureWidth": 400,
+  "sourceTitle": "用户提供的《红色高跟鞋》两页截图 · 王唯安制谱 / 安仔弹吉他；前奏5–8按补充截图3–6修订",
+  "techniqueLegend": "↑ 为下扫，↓ 为上扫，箭头范围表示扫弦范围；P.M. 为右手掌根闷音，保留音高；六线谱同列数字同时弹响。 H 为击弦；小字号和弦为扫弦装饰音，随后击弦；括号内数字承接前一小节延音，不再拨弦。",
+  "melodyLegend": "简谱上圆点表示高八度；数字下短线为减时，右侧点为附点；0 为休止，— 为延音；小字号音符为装饰音，同音弧线为延音，异音弧线为连音。",
+  "readingNote": "保留前奏和原图反复记号内的内容，按用户确认只演奏一遍；不进入框外第二房子及后续段落。",
+  "notes": [
+    "保留 tmp/1.jpg 全部17小节与 tmp/2.jpg 前11小节，共28个书写小节：前奏1–8、原反复框内9–28；第二房子及其后内容均不纳入。",
+    "经用户确认，前奏加框内内容只演奏一遍，路线为1–28；省略反复起止符及指向框外第二房子的房子编号，保留框内第一房子实际音符。",
+    "原谱1=D，C调指法，女生建议变调夹2品、男生5品；本页和试听默认夹2品，保留原调D。原图未标速度，练习试听默认60 BPM。",
+    "第2、4、26、28小节的Am过门为4弦2品、3弦2品和2弦0／1品同时弹响；保留0–1–0–1的变化。",
+    "P.M. 标注按手写位置处理：第1–3及25–27小节全小节闷音，第4、28小节前两拍继续闷音，第3拍起的明确品位音符放开；试听采用合成吉他的掌根闷音效果。",
+    "完整谱按原图保留扫弦方向、弦区和十六分节奏；第24小节后半包含八分与四分休止；简谱保留跨小节延音、装饰音及连音。",
+    "简易谱完整保留前奏1–8及器乐收尾25–28，其余9–24按和弦与歌词显示；第25小节延续“鞋”的旋律收尾，不重复添加歌词。",
+    "第5–8小节依次按补充截图 tmp/3.jpg 至 tmp/6.jpg 重制：第5、7小节保留扫弦装饰和弦及3弦0→2击弦，末尾Am提前半拍并延入下小节；第6、8小节先延音，再接上下扫。局部F、G指法按补充图，其余小节使用原两页截图指法。"
+  ],
+  "routeHeading": "演奏顺序 · 摘录一次",
+  "routeNote": "1–28：前奏一次，接框内内容一次，在器乐收尾结束。",
+  "sections": [
+    {
+      "name": "前奏",
+      "start": 1,
+      "end": 8
+    },
+    {
+      "name": "演唱段",
+      "start": 9,
+      "end": 24
+    },
+    {
+      "name": "器乐收尾",
+      "start": 25,
+      "end": 28
+    }
+  ],
+  "route": [
+    {
+      "label": "前奏及所选演唱段",
+      "start": 1,
+      "end": 28
+    }
+  ],
+  "simpleScore": {
+    "fullRanges": [
+      {
+        "start": 1,
+        "end": 8,
+        "name": "前奏"
+      },
+      {
+        "start": 25,
+        "end": 28,
+        "name": "器乐收尾"
+      }
+    ],
+    "routeVerses": [
+      0
+    ],
+    "lyricBreaks": [
+      {
+        "bar": 9,
+        "beat": 2.0,
+        "kind": "space"
+      },
+      {
+        "bar": 11,
+        "beat": 2.0,
+        "kind": "space"
+      },
+      {
+        "bar": 13,
+        "beat": 2.0,
+        "kind": "space"
+      },
+      {
+        "bar": 14,
+        "beat": 2.0,
+        "kind": "space"
+      },
+      {
+        "bar": 15,
+        "beat": 3.5,
+        "kind": "space"
+      },
+      {
+        "bar": 16,
+        "beat": 3.0,
+        "kind": "line"
+      },
+      {
+        "bar": 18,
+        "beat": 3.0,
+        "kind": "space"
+      },
+      {
+        "bar": 19,
+        "beat": 2.0,
+        "kind": "space"
+      },
+      {
+        "bar": 20,
+        "beat": 2.5,
+        "kind": "space"
+      },
+      {
+        "bar": 22,
+        "beat": 2.75,
+        "kind": "space"
+      },
+      {
+        "bar": 24,
+        "beat": 2.5,
+        "kind": "space"
+      }
+    ]
+  },
+  "chordShapes": {
+    "F": {
+      "frets": [
+        1,
+        3,
+        3,
+        2,
+        1,
+        1
+      ],
+      "barre": {
+        "fret": 1,
+        "to": 1,
+        "from": 6
+      }
+    },
+    "G": {
+      "frets": [
+        3,
+        2,
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    "Am": {
+      "frets": [
+        -1,
+        0,
+        2,
+        2,
+        1,
+        0
+      ]
+    },
+    "C": {
+      "frets": [
+        -1,
+        3,
+        2,
+        0,
+        1,
+        0
+      ]
+    }
+  },
+  "patterns": {
+    "intro-fg": [
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 6,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 6,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 6,
+        "endString": 2
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 6,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 6,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 6,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 6,
+        "endString": 2
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 6,
+        "endString": 4
+      }
+    ],
+    "intro-am": [
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 3
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 3
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 2
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 3
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          },
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          },
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          },
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          },
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      }
+    ],
+    "muted-fg": [
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 6,
+        "endString": 4,
+        "palmMute": true
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 6,
+        "endString": 4,
+        "palmMute": true
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 6,
+        "endString": 2,
+        "palmMute": true
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 6,
+        "endString": 4,
+        "palmMute": true
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 6,
+        "endString": 4,
+        "palmMute": true
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 6,
+        "endString": 4,
+        "palmMute": true
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 6,
+        "endString": 2,
+        "palmMute": true
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 6,
+        "endString": 4,
+        "palmMute": true
+      }
+    ],
+    "muted-am": [
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 3,
+        "palmMute": true
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 3,
+        "palmMute": true
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 2,
+        "palmMute": true
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 3,
+        "palmMute": true
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          },
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ],
+        "palmMute": true
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          },
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ],
+        "palmMute": true
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          },
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ],
+        "palmMute": true
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          },
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ],
+        "palmMute": true
+      }
+    ],
+    "release-am": [
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 3,
+        "palmMute": true
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 3,
+        "palmMute": true
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 2,
+        "palmMute": true
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 3,
+        "palmMute": true
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          },
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          },
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          },
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          },
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ]
+      }
+    ],
+    "sung-pair": [
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 2
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 2
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 2
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 2
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      }
+    ],
+    "sung-single": [
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 2
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 2
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      }
+    ],
+    "g-bridge": [
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 6,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 6,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 2
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 2
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 2
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 2
+      }
+    ],
+    "g-pause": [
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 6,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 6,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 5,
+        "endString": 2
+      },
+      {
+        "kind": "rest",
+        "duration": 8
+      },
+      {
+        "kind": "rest",
+        "duration": 4
+      }
+    ],
+    "intro-hammer": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 1
+          },
+          {
+            "string": 5,
+            "fret": 3
+          },
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ],
+        "brush": "down"
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 1
+          },
+          {
+            "string": 5,
+            "fret": 3
+          },
+          {
+            "string": 4,
+            "fret": 3
+          }
+        ],
+        "brush": "down"
+      },
+      {
+        "kind": "note",
+        "duration": 8,
+        "string": 3,
+        "fret": 2,
+        "graceChord": {
+          "brush": "down",
+          "notes": [
+            {
+              "string": 5,
+              "fret": 3
+            },
+            {
+              "string": 4,
+              "fret": 3
+            },
+            {
+              "string": 3,
+              "fret": 0,
+              "hammerToNext": true
+            },
+            {
+              "string": 2,
+              "fret": 1
+            }
+          ]
+        }
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 3
+          },
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ],
+        "brush": "down"
+      },
+      {
+        "kind": "note",
+        "duration": 8,
+        "string": 3,
+        "fret": 2,
+        "graceChord": {
+          "brush": "down",
+          "notes": [
+            {
+              "string": 4,
+              "fret": 0
+            },
+            {
+              "string": 3,
+              "fret": 0,
+              "hammerToNext": true
+            },
+            {
+              "string": 2,
+              "fret": 0
+            }
+          ]
+        }
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 6,
+            "fret": 3
+          },
+          {
+            "string": 4,
+            "fret": 0
+          }
+        ],
+        "brush": "down"
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 0
+          },
+          {
+            "string": 3,
+            "fret": 0
+          },
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ],
+        "brush": "down"
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 5,
+            "fret": 0,
+            "tieToNext": true
+          },
+          {
+            "string": 4,
+            "fret": 2,
+            "tieToNext": true
+          },
+          {
+            "string": 3,
+            "fret": 2,
+            "tieToNext": true
+          },
+          {
+            "string": 2,
+            "fret": 1,
+            "tieToNext": true
+          },
+          {
+            "string": 1,
+            "fret": 0,
+            "tieToNext": true
+          }
+        ],
+        "brush": "down"
+      }
+    ],
+    "intro-tied-am": [
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 5,
+            "fret": 0,
+            "tie": true
+          },
+          {
+            "string": 4,
+            "fret": 2,
+            "tie": true
+          },
+          {
+            "string": 3,
+            "fret": 2,
+            "tie": true
+          },
+          {
+            "string": 2,
+            "fret": 1,
+            "tie": true
+          },
+          {
+            "string": 1,
+            "fret": 0,
+            "tie": true
+          }
+        ]
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 5,
+            "fret": 0
+          },
+          {
+            "string": 4,
+            "fret": 2
+          },
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ],
+        "brush": "down"
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          },
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ],
+        "brush": "down"
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          },
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ],
+        "brush": "down"
+      },
+      {
+        "kind": "fretted",
+        "duration": 16,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          },
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 2,
+            "fret": 1
+          },
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ],
+        "brush": "up"
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 5,
+            "fret": 0
+          },
+          {
+            "string": 4,
+            "fret": 2
+          },
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ],
+        "brush": "down"
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          },
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ],
+        "brush": "down"
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          },
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ],
+        "brush": "down"
+      },
+      {
+        "kind": "fretted",
+        "duration": 8,
+        "notes": [
+          {
+            "string": 4,
+            "fret": 2
+          },
+          {
+            "string": 3,
+            "fret": 2
+          },
+          {
+            "string": 2,
+            "fret": 1
+          }
+        ],
+        "brush": "down"
+      }
+    ]
+  },
+  "bars": [
+    {
+      "number": 1,
+      "sourceBar": 1,
+      "sourcePage": 1,
+      "pattern": "muted-fg",
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "note": "P.M. 闷音（持续至第4小节第2拍）"
+    },
+    {
+      "number": 2,
+      "sourceBar": 2,
+      "sourcePage": 1,
+      "pattern": "muted-am",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ]
+    },
+    {
+      "number": 3,
+      "sourceBar": 3,
+      "sourcePage": 1,
+      "pattern": "muted-fg",
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ]
+    },
+    {
+      "number": 4,
+      "sourceBar": 4,
+      "sourcePage": 1,
+      "pattern": "release-am",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "note": "第3拍起放开闷音"
+    },
+    {
+      "number": 5,
+      "sourceBar": 5,
+      "sourcePage": 1,
+      "pattern": "intro-hammer",
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ],
+        [
+          4.5,
+          "Am"
+        ]
+      ],
+      "sourceImage": "tmp/3.jpg",
+      "chordShapes": {
+        "F": {
+          "frets": [
+            1,
+            3,
+            3,
+            2,
+            1,
+            -1
+          ]
+        },
+        "G": {
+          "frets": [
+            3,
+            -1,
+            0,
+            0,
+            0,
+            -1
+          ]
+        }
+      },
+      "compactFrets": true
+    },
+    {
+      "number": 6,
+      "sourceBar": 6,
+      "sourcePage": 1,
+      "pattern": "intro-tied-am",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "sourceImage": "tmp/4.jpg",
+      "compactFrets": true
+    },
+    {
+      "number": 7,
+      "sourceBar": 7,
+      "sourcePage": 1,
+      "pattern": "intro-hammer",
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ],
+        [
+          4.5,
+          "Am"
+        ]
+      ],
+      "sourceImage": "tmp/5.jpg",
+      "chordShapes": {
+        "F": {
+          "frets": [
+            1,
+            3,
+            3,
+            2,
+            1,
+            -1
+          ]
+        },
+        "G": {
+          "frets": [
+            3,
+            -1,
+            0,
+            0,
+            0,
+            -1
+          ]
+        }
+      },
+      "compactFrets": true
+    },
+    {
+      "number": 8,
+      "sourceBar": 8,
+      "sourcePage": 1,
+      "pattern": "intro-tied-am",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "sourceImage": "tmp/6.jpg",
+      "compactFrets": true
+    },
+    {
+      "number": 9,
+      "sourceBar": 9,
+      "sourcePage": 1,
+      "pattern": "sung-pair",
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ]
+    },
+    {
+      "number": 10,
+      "sourceBar": 10,
+      "sourcePage": 1,
+      "pattern": "sung-single",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ]
+    },
+    {
+      "number": 11,
+      "sourceBar": 11,
+      "sourcePage": 1,
+      "pattern": "sung-pair",
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ]
+    },
+    {
+      "number": 12,
+      "sourceBar": 12,
+      "sourcePage": 1,
+      "pattern": "sung-single",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ]
+    },
+    {
+      "number": 13,
+      "sourceBar": 13,
+      "sourcePage": 1,
+      "pattern": "sung-pair",
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ]
+    },
+    {
+      "number": 14,
+      "sourceBar": 14,
+      "sourcePage": 1,
+      "pattern": "sung-pair",
+      "chords": [
+        [
+          1,
+          "C"
+        ],
+        [
+          3,
+          "Am"
+        ]
+      ]
+    },
+    {
+      "number": 15,
+      "sourceBar": 15,
+      "sourcePage": 1,
+      "pattern": "sung-single",
+      "chords": [
+        [
+          1,
+          "F"
+        ]
+      ]
+    },
+    {
+      "number": 16,
+      "sourceBar": 16,
+      "sourcePage": 1,
+      "pattern": "g-bridge",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ]
+    },
+    {
+      "number": 17,
+      "sourceBar": 17,
+      "sourcePage": 1,
+      "pattern": "sung-pair",
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ]
+    },
+    {
+      "number": 18,
+      "sourceBar": 18,
+      "sourcePage": 2,
+      "pattern": "sung-single",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ]
+    },
+    {
+      "number": 19,
+      "sourceBar": 19,
+      "sourcePage": 2,
+      "pattern": "sung-pair",
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ]
+    },
+    {
+      "number": 20,
+      "sourceBar": 20,
+      "sourcePage": 2,
+      "pattern": "sung-single",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ]
+    },
+    {
+      "number": 21,
+      "sourceBar": 21,
+      "sourcePage": 2,
+      "pattern": "sung-pair",
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ]
+    },
+    {
+      "number": 22,
+      "sourceBar": 22,
+      "sourcePage": 2,
+      "pattern": "sung-single",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ]
+    },
+    {
+      "number": 23,
+      "sourceBar": 23,
+      "sourcePage": 2,
+      "pattern": "sung-single",
+      "chords": [
+        [
+          1,
+          "F"
+        ]
+      ]
+    },
+    {
+      "number": 24,
+      "sourceBar": 24,
+      "sourcePage": 2,
+      "pattern": "g-pause",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ]
+    },
+    {
+      "number": 25,
+      "sourceBar": 25,
+      "sourcePage": 2,
+      "pattern": "muted-fg",
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "note": "P.M. 闷音（持续至第28小节第2拍）"
+    },
+    {
+      "number": 26,
+      "sourceBar": 26,
+      "sourcePage": 2,
+      "pattern": "muted-am",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ]
+    },
+    {
+      "number": 27,
+      "sourceBar": 27,
+      "sourcePage": 2,
+      "pattern": "muted-fg",
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ]
+    },
+    {
+      "number": 28,
+      "sourceBar": 28,
+      "sourcePage": 2,
+      "pattern": "release-am",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "note": "第3拍起放开闷音"
+    }
+  ]
+}

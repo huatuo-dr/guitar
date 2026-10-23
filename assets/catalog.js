@@ -2,6 +2,18 @@
 // Optional fields: artist, timeSignature, capo (0 = no capo), bars, description.
 window.GUITAR_SCORES = [
   {
+    id: 'hongsegaogenxie-chorus',
+    title: '《红色高跟鞋》仅副歌',
+    artist: '蔡健雅',
+    type: 'chorus',
+    path: 'sheet_music/红色高跟鞋仅副歌.html',
+    timeSignature: '4/4',
+    capo: 2,
+    bars: 28,
+    updatedAt: '2026-10-23',
+    description: 'D 调 · C 指法，保留前奏和反复记号内的内容，只演奏一遍；含扫弦、P.M闷音及器乐收尾。'
+  },
+  {
     id: 'xiegeihuanghuai-chorus',
     title: '《写给黄淮》仅副歌',
     type: 'chorus',

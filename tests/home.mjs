@@ -69,6 +69,7 @@ try{
   assert.equal(await page.locator('[data-tool-id="chord-charts"] a').count(),1);
   assert.equal(await page.locator('[data-tool-id="chord-charts"] a').getAttribute('href'),'./tools/各调和弦图.html');
   await page.locator('[data-tool-id="chord-charts"] a').click();
+  await page.waitForLoadState('domcontentloaded');
   assert.equal(await page.locator('.chord-card').count(),56);
   await page.locator('.back').click();
   assert.equal(await page.locator('[data-type="tools"]').getAttribute('aria-pressed'),'true');

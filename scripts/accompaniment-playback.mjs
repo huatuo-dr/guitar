@@ -21,9 +21,13 @@ export function buildAccompanimentPlayback(data) {
     const events=[];
     for(const event of bar.events) {
       for(const grace of event.grace??[])events.push(`(${grace.fret}.${grace.string}).32{gr}`);
+      if(event.graceChord){
+        const {notes,brush}=event.graceChord;
+        events.push(`(${notes.map(n=>`${n.fret}.${n.string}${n.hammerToNext?'{h}':''}`).join(' ')}).32{gr ${brush==='down'?'bd':'bu'}}`);
+      }
       const beat=1+elapsed/960;
       const chord=bar.chords.findLast(c=>c.beat<=beat+1e-8);
-      const frets=chord?data.chordShapes[chord.name].frets:[];
+      const frets=chord?(bar.chordShapes?.[chord.name]??data.chordShapes[chord.name]).frets:[];
       const fromShape=string=>{
         const fret=frets[6-string];
         if(!Number.isInteger(fret)||fret<0)throw new Error(`第${number}小节第${beat}拍的${string}弦没有可弹奏品位`);
@@ -47,7 +51,7 @@ export function buildAccompanimentPlayback(data) {
       const pitches=notes.map(note=>{
         const tied=note.tie||tiedStrings.has(note.string);
         if(tied&&!lastNotes.some(n=>n.string===note.string&&n.fret===note.fret))throw new Error(`第${number}小节延音音高不一致`);
-        const effects=[note.dead&&'x',event.staccato&&'st',tied&&'t',(note.hammerToNext||note.pullToNext)&&'h',note.slideToNext&&'sl'].filter(Boolean);
+        const effects=[note.dead&&'x',event.palmMute&&'pm',event.staccato&&'st',tied&&'t',(note.hammerToNext||note.pullToNext)&&'h',note.slideToNext&&'sl'].filter(Boolean);
         return `${note.fret}.${note.string}${effects.length?`{${effects.join(' ')}}`:''}`;
       });
       const brush={down:'bd',up:'bu',arpeggio:'ad'}[event.brush??event.kind]??(event.arpeggio==='up'?'ad':null);

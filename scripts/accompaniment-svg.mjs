@@ -23,7 +23,7 @@ export function performanceOrder(data) {
 
 export function validateScore(data) {
   if(data.measureWidth!==undefined&&(!Number.isFinite(data.measureWidth)||data.measureWidth<270||data.measureWidth>400))throw new Error('小节宽度应为270至400');
-  for (const [name, shape] of Object.entries(data.chordShapes)) {
+  for (const [name, shape] of [data.chordShapes,...data.bars.map(bar=>bar.chordShapes??{})].flatMap(shapes=>Object.entries(shapes))) {
     const base=shape.baseFret??1;
     if (!Number.isInteger(base)||base<1||shape.frets.length !== 6 || shape.frets.some(f => !Number.isInteger(f) || f < -1 || f > base+3 || (f>0&&f<base))) throw new Error(`和弦指法无效：${name}`);
   }
@@ -57,6 +57,7 @@ export function validateScore(data) {
     for (const [eventIndex,event] of bar.events.entries()) {
       if (!['down','up','hold','arpeggio','note','pluck','rest','fretted','muted'].includes(event.kind) || ![...(['fretted','down','up','arpeggio','rest'].includes(event.kind)?[1]:[]),2,4,8,16,32].includes(event.duration)) throw new Error('事件无效');
       if(event.kind==='muted'&&(!Number.isInteger(event.string)||event.string<1||event.string>6))throw new Error('闷音弦号无效');
+      if(event.palmMute!==undefined&&(typeof event.palmMute!=='boolean'||['hold','rest','muted'].includes(event.kind)))throw new Error('掌根闷音标记无效');
       if(event.staccato!==undefined&&(typeof event.staccato!=='boolean'||['hold','rest'].includes(event.kind)))throw new Error('短促奏标记无效');
       if (event.kind === 'note' && (!Number.isInteger(event.string) || event.string < 1 || event.string > 6 || !Number.isInteger(event.fret) || event.fret < 0)) throw new Error('品位或弦号无效');
       if(event.brush!==undefined&&(!['down','up'].includes(event.brush)||!['pluck','fretted'].includes(event.kind)))throw new Error('明确音符扫弦方向无效');
@@ -81,6 +82,10 @@ export function validateScore(data) {
       for(const string of [event.startString,event.endString])if(string!==undefined&&(!Number.isInteger(string)||string<1||string>6))throw new Error('扫弦范围无效');
       if(event.kind==='rest' && ![1,2,4,8,16].includes(event.duration))throw new Error('当前仅支持全至十六分休止');
       if(event.grace!==undefined && (event.kind!=='note'||!Array.isArray(event.grace)||event.grace.length!==1||event.grace.some(n=>n.string!==event.string||!Number.isInteger(n.fret)||n.fret<0)))throw new Error('六线谱装饰音必须与主音同弦');
+      if(event.graceChord!==undefined){
+        const {notes,brush}=event.graceChord;
+        if(event.kind!=='note'||event.grace||!['down','up'].includes(brush)||!Array.isArray(notes)||!notes.length||new Set(notes.map(n=>n.string)).size!==notes.length||notes.some(n=>!Number.isInteger(n.string)||n.string<1||n.string>6||!Number.isInteger(n.fret)||n.fret<0||(n.hammerToNext&&(n.string!==event.string||n.fret>=event.fret))))throw new Error('扫弦装饰和弦无效');
+      }
       if(event.sourceArrow!==undefined && (event.kind!=='hold'||!['up','down','arpeggio'].includes(event.sourceArrow)))throw new Error('延音扫弦箭头无效');
     }
   }
@@ -143,7 +148,7 @@ function measureDescription(bar) {
   return `第${bar.number}小节；${bar.pickup?`弱起${bar.beats}拍`:`${bar.beats}/4拍`}；${bar.chords.map(c => `第${c.beat}拍${c.name}`).join('，')}；${events}${bar.note ? '；'+bar.note : ''}`;
 }
 
-function renderFrettedEvent(event,next,right) {
+function renderFrettedEvent(event,next,right,compact=false) {
   const at=event.x;let svg='';
   if(event.arpeggio==='up'){
     const strings=event.notes.map(n=>n.string);
@@ -151,12 +156,15 @@ function renderFrettedEvent(event,next,right) {
   }
   for(const note of event.notes){
     const y=TOP+(note.string-1)*STRING_GAP;
-    const width=String(note.fret).length>1?16:10;
+    const label=note.tie?`(${note.fret})`:String(note.fret);
+    const width=note.tie?24:label.length>1?16:10;
     if(event.duration===1)svg+=`<ellipse class="whole-note" cx="${at}" cy="${y}" rx="${width/2+4}" ry="9" fill="none"/>`;
-    svg+=`<rect x="${at-width/2}" y="${y-6}" width="${width}" height="13" class="note-background"/>`+text(at,y+4,note.fret,'fret','middle');
+    svg+=`<rect x="${at-width/2}" y="${y-(compact?4:6)}" width="${width}" height="${compact?8:13}" class="note-background"/>`;
+    svg+=compact?`<text x="${at}" y="${y+3}" class="fret" text-anchor="middle" style="font-size:10px">${label}</text>`:text(at,y+4,label,'fret','middle');
     if(note.hammerToNext||note.pullToNext||note.slideToNext||note.tieToNext){
       const end=next?.x??right;
-      svg+=`<path class="${note.tieToNext?'tab-tie':'tab-legato'}" d="M ${at} ${y-9} Q ${(at+end)/2} ${y-20} ${end} ${y-9}" fill="none"/>`;
+      const offset=compact&&note.tieToNext?2:9,depth=compact&&note.tieToNext?7:20;
+      svg+=`<path class="${note.tieToNext?'tab-tie':'tab-legato'}" d="M ${at} ${y-offset} Q ${(at+end)/2} ${y-depth} ${end} ${y-offset}" fill="none"/>`;
       if(!note.tieToNext)svg+=text((at+end)/2,y-17,note.pullToNext?'P':note.slideToNext?'S':'H',note.slideToNext?'slide-label':'hammer','middle');
     }
   }
@@ -164,6 +172,7 @@ function renderFrettedEvent(event,next,right) {
 }
 
 function renderBar(bar, data, index, rowHeight, headerCrop) {
+  if(bar.chordShapes)data={...data,chordShapes:{...data.chordShapes,...bar.chordShapes}};
   const barWidth = data.measureWidth ?? DEFAULT_BAR_WIDTH;
   const x = LEFT + index * barWidth;
   const meter=bar.pickup?(data.timeSignature?.[0]??4):bar.beats;
@@ -220,8 +229,8 @@ function renderBar(bar, data, index, rowHeight, headerCrop) {
   const previousEvent=previousBar?data.patterns[previousBar.pattern].at(-1):undefined;
   if(previousEvent?.kind==='fretted'){
     for(const note of previousEvent.notes.filter(n=>n.tieToNext)){
-      const y=TOP+(note.string-1)*STRING_GAP-9;
-      svg+=`<path class="tab-tie" d="M ${x} ${y-4} Q ${(x+placed[0].x)/2} ${y-8} ${placed[0].x} ${y}" fill="none"/>`;
+      const y=TOP+(note.string-1)*STRING_GAP-(bar.compactFrets?2:9);
+      svg+=`<path class="tab-tie" d="M ${x} ${y-(bar.compactFrets?2:4)} Q ${(x+placed[0].x)/2} ${y-(bar.compactFrets?4:8)} ${placed[0].x} ${y}" fill="none"/>`;
     }
   }
   if(previousEvent?.tieToNext||previousBar?.crossBarTieStart!==undefined){
@@ -230,7 +239,7 @@ function renderBar(bar, data, index, rowHeight, headerCrop) {
   }
   placed.forEach((event, i) => {
     const at = event.x;
-    if(event.kind==='fretted')svg+=renderFrettedEvent(event,placed[i+1],x+barWidth);
+    if(event.kind==='fretted')svg+=renderFrettedEvent(event,placed[i+1],x+barWidth,bar.compactFrets);
     const chord = bar.chords.findLast(c => c.beat <= event.beat);
     const bassIndex = chord?data.chordShapes[chord.name].frets.findIndex(f => f >= 0):0;
     const bassY = TOP + (5-bassIndex) * STRING_GAP;
@@ -274,6 +283,17 @@ function renderBar(bar, data, index, rowHeight, headerCrop) {
     }
     if (event.kind === 'note') {
       const y = TOP + (event.string-1) * STRING_GAP;
+      if(event.graceChord){
+        const gx=at-23,{notes,brush}=event.graceChord;
+        const low=TOP+(Math.max(...notes.map(n=>n.string))-1)*STRING_GAP,high=TOP+(Math.min(...notes.map(n=>n.string))-1)*STRING_GAP;
+        svg+=`<g class="tab-grace-chord">${arrow(gx-8,brush==='down'?low:high,brush==='down'?high:low)}`;
+        for(const note of notes){
+          const gy=TOP+(note.string-1)*STRING_GAP;
+          svg+=`<rect x="${gx-4}" y="${gy-4}" width="8" height="8" class="note-background"/><text x="${gx}" y="${gy+3}" class="fret" text-anchor="middle" style="font-size:9px">${note.fret}</text>`;
+          if(note.hammerToNext)svg+=`<path class="tab-legato" d="M ${gx+3} ${gy-4} Q ${(gx+at)/2} ${gy-12} ${at} ${gy-4}" fill="none"/>`+text((gx+at)/2,high-7,'H','hammer','middle');
+        }
+        svg+='</g>';
+      }
       if(event.grace){
         const gx=at-15;
         svg+=`<g class="tab-grace"><rect x="${gx-4}" y="${y-5}" width="8" height="10" class="note-background"/><text x="${gx}" y="${y+3}" class="fret" text-anchor="middle" style="font-size:9px">${event.grace[0].fret}</text>${line(gx,y+6,gx,y+21)}${line(gx,y+21,gx+6,y+21)}${line(gx,y+17,gx+6,y+17)}</g>`;

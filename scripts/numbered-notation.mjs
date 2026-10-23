@@ -43,7 +43,7 @@ export function createBeatPositioner(events,vocal,beats,left,width,chordSpacing)
   const points=new Set([0,beats]);const ornament=new Map();const dotted=new Map();const lyricWidths=new Map();
   for(const sequence of [events,vocal.events]){
     let time=0;
-    for(const n of sequence){points.add(time);if(n.grace?.length||n.accidental)ornament.set(time,(n.grace?.length??0)+(n.accidental?1:0));if(n.doubleDotted||n.dotted)dotted.set(time,n.doubleDotted?8:3);if(n.lyrics)lyricWidths.set(time,15*Math.max(0,...n.lyrics.map(word=>[...word].length)));time=beatRound(time+eventBeats(n));}
+    for(const n of sequence){points.add(time);if(n.grace?.length||n.graceChord||n.accidental)ornament.set(time,(n.graceChord?3:n.grace?.length??0)+(n.accidental?1:0));if(n.doubleDotted||n.dotted)dotted.set(time,n.doubleDotted?8:3);if(n.lyrics)lyricWidths.set(time,15*Math.max(0,...n.lyrics.map(word=>[...word].length)));time=beatRound(time+eventBeats(n));}
   }
   if(chordSpacing)for(const chord of chordSpacing.chords)points.add(beatRound(chord.beat-1));
   const times=[...points].sort((a,b)=>a-b);

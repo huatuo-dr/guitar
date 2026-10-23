@@ -329,3 +329,14 @@ C 段的星号（*）表示打板，含义经用户确认；按原图保存为 b
 按原图显示1=G、4/4拍、变调夹3品；第一小节是一拍弱起，其余32小节各四拍，共129拍。保留前奏与收尾的H/P/S，以及第28小节末尾的三连音。经用户确认，第29、33小节保留5弦拨弦并以空弦A音演奏，D和弦图同步改为5弦○；第33小节末尾去掉下一段歌词的“第”字，音符保留。简易谱完整展示1–9、26–33小节器乐范围，10–25按和弦与歌词显示。
 
 数据为 `score/xiegeihuanghuai-chorus.json` 与 `score/xiegeihuanghuai-chorus-vocal.json`；使用 `npm run build:xiegeihuanghuai-chorus` 构建，`npm run test:xiegeihuanghuai-chorus` 检查范围、时值、技法、歌词、播放、简易谱、离线和手机显示。
+
+
+## 《红色高跟鞋》仅副歌
+
+[打开曲谱](sheet_music/红色高跟鞋仅副歌.html)。根据用户提供的王唯安制谱／安仔弹吉他两页截图，保留8小节前奏和反复记号内20小节，共28小节；第二房子及之后不选。经用户确认只演奏一次，路线为1–28，共112拍，移除反复跳转和房子编号。
+
+D调、C指法，默认变调夹2品；原图另建议男生夹5品。保留扫弦方向与弦区、Am三声部过门、简谱装饰音及跨小节延音。手写P.M按位置解读为1–3和25–27全小节闷音，4、28前两拍闷音、第三拍起放开；源数据使用 `palmMute`，播放器映射到保留音高的掌根闷音效果。简易谱完整保留1–8与25–28小节，其余显示和弦与歌词。
+
+第5–8小节按补充截图3–6替换：扫弦装饰和弦接3弦0→2击弦，Am提前半拍并延入下小节，接上下扫弦；局部F、G指法按补充图显示，完整谱、简易谱和播放同步。
+
+源数据为 `score/hongsegaogenxie-chorus.json` 与 `score/hongsegaogenxie-chorus-vocal.json`；`npm run build:hongsegaogenxie-chorus` 构建，`npm run test:hongsegaogenxie-chorus` 检查范围、单次路线、扫弦、P.M效果、简易谱、手机及离线使用。
