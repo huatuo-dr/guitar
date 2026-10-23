@@ -1,0 +1,1940 @@
+{
+  "title": "《写给黄淮》仅副歌",
+  "scoreType": "chorus",
+  "key": "G",
+  "capo": 3,
+  "timeSignature": [
+    4,
+    4
+  ],
+  "measureWidth": 400,
+  "sourceTitle": "用户提供的《写给黄淮》两页截图",
+  "primaryLegend": "六线谱数字：品位；×：按和弦拨指定弦；H：击弦；P：勾弦；S：滑音。",
+  "techniqueLegend": "六线谱 × 为按当前和弦拨弦；H 为击弦，P 为勾弦，S 为滑音；同音弧线及 — 表示延音、不再拨弦；括号 3 为三连音。",
+  "melodyLegend": "简谱上圆点为高八度；数字下短线为减时，右侧圆点为附点；0 为休止，同音弧线为延音，异音弧线为连音。",
+  "readingNote": "按指定范围摘录：保留第一页全部及第二页除最后一小节外的内容；包含前奏、主歌、副歌与器乐收尾，顺序演奏一次。",
+  "notes": [
+    "保留 tmp/1.png 全部16小节及 tmp/2.png 前17小节，共33个书写小节；未加入第二页最后一个G小节及其中的“一次见你的时候……”歌词。",
+    "原图标1=G、4/4拍、变调夹3品；调式按原图标示，G指法夹3品的实际发声音高为降B。原图未标速度，试听默认60 BPM。",
+    "首小节为一拍弱起：附点八分休止加3弦2品十六分音符，保留实际一拍，不补成四拍；其余32小节均为四拍，共129拍。",
+    "第29、33小节的原图D和弦图标5弦不弹，但六线谱有5弦拨弦；经用户确认保留弦位、按5弦空弦A音演奏，并将D指法图的5弦改为○。",
+    "按用户确认去掉第33小节末尾下一段歌词的起字“第”，保留该小节全部六线谱及末尾简谱5；第9小节的“十”属于所选主歌引入，保留。",
+    "第28小节末尾2弦3–1–0为八分三连音；前奏和器乐收尾中的H/P/S逐音保留。演唱伴奏的同音弧线表示延续，不重复拨弦。",
+    "简易谱完整保留第1–9小节前奏及弱起、第26–33小节器乐收尾；第10–25小节按原始拍点显示和弦与歌词。"
+  ],
+  "routeHeading": "演奏顺序 · 摘录一次",
+  "routeNote": "1–33，按所选小节顺序演奏一次，在器乐收尾结束，不接下一段主歌。",
+  "sections": [
+    {
+      "name": "弱起与前奏",
+      "start": 1,
+      "end": 9
+    },
+    {
+      "name": "主歌",
+      "start": 10,
+      "end": 17
+    },
+    {
+      "name": "副歌",
+      "start": 18,
+      "end": 25
+    },
+    {
+      "name": "器乐收尾",
+      "start": 26,
+      "end": 33
+    }
+  ],
+  "route": [
+    {
+      "label": "所选段落",
+      "start": 1,
+      "end": 33
+    }
+  ],
+  "simpleScore": {
+    "fullRanges": [
+      {
+        "start": 1,
+        "end": 9,
+        "name": "弱起与前奏"
+      },
+      {
+        "start": 26,
+        "end": 33,
+        "name": "器乐收尾"
+      }
+    ],
+    "routeVerses": [
+      0
+    ],
+    "lyricBreaks": [
+      {
+        "bar": 10,
+        "beat": 4.5,
+        "kind": "space"
+      },
+      {
+        "bar": 11,
+        "beat": 4.5,
+        "kind": "space"
+      },
+      {
+        "bar": 12,
+        "beat": 4.5,
+        "kind": "space"
+      },
+      {
+        "bar": 13,
+        "beat": 4.5,
+        "kind": "space"
+      },
+      {
+        "bar": 14,
+        "beat": 4.75,
+        "kind": "space"
+      },
+      {
+        "bar": 16,
+        "beat": 4.5,
+        "kind": "space"
+      },
+      {
+        "bar": 17,
+        "beat": 4.25,
+        "kind": "line"
+      },
+      {
+        "bar": 18,
+        "beat": 4.0,
+        "kind": "space"
+      },
+      {
+        "bar": 19,
+        "beat": 4.0,
+        "kind": "space"
+      },
+      {
+        "bar": 20,
+        "beat": 4.0,
+        "kind": "space"
+      },
+      {
+        "bar": 21,
+        "beat": 4.0,
+        "kind": "line"
+      },
+      {
+        "bar": 22,
+        "beat": 4.0,
+        "kind": "space"
+      },
+      {
+        "bar": 23,
+        "beat": 4.0,
+        "kind": "space"
+      }
+    ]
+  },
+  "chordShapes": {
+    "G": {
+      "frets": [
+        3,
+        2,
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    "Em": {
+      "frets": [
+        0,
+        2,
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    "C": {
+      "frets": [
+        -1,
+        3,
+        2,
+        0,
+        1,
+        0
+      ]
+    },
+    "D7": {
+      "frets": [
+        -1,
+        -1,
+        0,
+        2,
+        1,
+        2
+      ]
+    },
+    "D": {
+      "frets": [
+        -1,
+        0,
+        0,
+        2,
+        3,
+        2
+      ]
+    }
+  },
+  "patterns": {
+    "pickup": [
+      {
+        "kind": "rest",
+        "duration": 8,
+        "dotted": true
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 2,
+        "duration": 16
+      }
+    ],
+    "intro-g": [
+      {
+        "kind": "pluck",
+        "strings": [
+          6,
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          2
+        ],
+        "duration": 4
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 2,
+        "duration": 16,
+        "hammerToNext": true
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 4,
+        "duration": 16,
+        "pullToNext": true
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 2,
+        "duration": 8
+      }
+    ],
+    "intro-em": [
+      {
+        "kind": "pluck",
+        "strings": [
+          6,
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          5
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          5
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 4,
+        "fret": 0,
+        "duration": 16,
+        "hammerToNext": true
+      },
+      {
+        "kind": "note",
+        "string": 4,
+        "fret": 2,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 0,
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 2,
+        "duration": 16,
+        "slideToNext": true
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 4,
+        "duration": 16
+      }
+    ],
+    "intro-c": [
+      {
+        "kind": "pluck",
+        "strings": [
+          5
+        ],
+        "duration": 8,
+        "notes": [
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ]
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 2,
+        "duration": 16,
+        "slideToNext": true
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 4,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 2,
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 0,
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 3,
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 2,
+        "duration": 16,
+        "slideToNext": true
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 4,
+        "duration": 16
+      }
+    ],
+    "intro-d7": [
+      {
+        "kind": "pluck",
+        "strings": [
+          4,
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          1
+        ],
+        "duration": 4
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 3,
+        "duration": 16,
+        "slideToNext": true
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 5,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 2,
+        "duration": 8
+      }
+    ],
+    "intro-g-high": [
+      {
+        "kind": "pluck",
+        "strings": [
+          6,
+          1
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 3,
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          6
+        ],
+        "duration": 8,
+        "notes": [
+          {
+            "string": 2,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 0,
+        "duration": 16,
+        "hammerToNext": true
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 2,
+        "duration": 16
+      }
+    ],
+    "intro-em-high": [
+      {
+        "kind": "pluck",
+        "strings": [
+          6
+        ],
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 0,
+        "duration": 16,
+        "hammerToNext": true
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 2,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 3,
+        "duration": 16,
+        "hammerToNext": true
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 5,
+        "duration": 16,
+        "pullToNext": true
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 3,
+        "duration": 16,
+        "hammerToNext": true
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 5,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 5,
+        "duration": 16,
+        "slideToNext": true
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 7,
+        "duration": 16
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 5,
+        "duration": 8
+      }
+    ],
+    "intro-c-high": [
+      {
+        "kind": "pluck",
+        "strings": [
+          5
+        ],
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          1
+        ],
+        "duration": 4
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 2,
+        "duration": 16,
+        "hammerToNext": true
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 3,
+        "duration": 16,
+        "pullToNext": true
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 2,
+        "duration": 16,
+        "hammerToNext": true
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 3,
+        "duration": 16
+      }
+    ],
+    "intro-d": [
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 5
+          }
+        ]
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4,
+          1
+        ],
+        "duration": 4
+      },
+      {
+        "kind": "hold",
+        "duration": 4
+      }
+    ],
+    "held-low": [
+      {
+        "kind": "pluck",
+        "strings": [
+          6
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          2
+        ],
+        "duration": 4
+      },
+      {
+        "kind": "hold",
+        "duration": 4
+      }
+    ],
+    "tied-low": [
+      {
+        "kind": "pluck",
+        "strings": [
+          6
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          2
+        ],
+        "duration": 8,
+        "tieToNext": true
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      }
+    ],
+    "tied-c": [
+      {
+        "kind": "pluck",
+        "strings": [
+          5
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          1
+        ],
+        "duration": 8,
+        "tieToNext": true
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          1
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      }
+    ],
+    "tied-d": [
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          1
+        ],
+        "duration": 8,
+        "tieToNext": true
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          1
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      }
+    ],
+    "vocal-ending": [
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4,
+          1
+        ],
+        "duration": 4,
+        "dotted": true
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 0,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 2,
+        "duration": 16
+      }
+    ],
+    "outro-g": [
+      {
+        "kind": "pluck",
+        "strings": [
+          6,
+          1
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          1
+        ],
+        "duration": 16
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          1
+        ],
+        "duration": 16
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          1
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 2,
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 0,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 3,
+        "duration": 16
+      }
+    ],
+    "outro-em": [
+      {
+        "kind": "pluck",
+        "strings": [
+          6,
+          1
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          2
+        ],
+        "duration": 16
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          2
+        ],
+        "duration": 16
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      }
+    ],
+    "outro-c": [
+      {
+        "kind": "pluck",
+        "strings": [
+          5
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 0,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 3,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 1,
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 3,
+        "duration": 8,
+        "tuplet": 3
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 1,
+        "duration": 8,
+        "tuplet": 3
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 0,
+        "duration": 8,
+        "tuplet": 3
+      }
+    ],
+    "outro-d": [
+      {
+        "kind": "pluck",
+        "strings": [
+          4,
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          5
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4,
+          1
+        ],
+        "duration": 4
+      },
+      {
+        "kind": "hold",
+        "duration": 4
+      }
+    ],
+    "outro-g-high": [
+      {
+        "kind": "pluck",
+        "strings": [
+          6
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 3,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 3,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 3,
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 2,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 3,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 3,
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 0,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 0,
+        "duration": 16
+      }
+    ],
+    "outro-em-high": [
+      {
+        "kind": "pluck",
+        "strings": [
+          6,
+          1
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 2,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 0,
+        "duration": 16
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 0,
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 3,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 2,
+        "duration": 16
+      }
+    ],
+    "outro-c-high": [
+      {
+        "kind": "pluck",
+        "strings": [
+          5
+        ],
+        "duration": 8,
+        "notes": [
+          {
+            "string": 1,
+            "fret": 3
+          }
+        ]
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 3,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 3,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 3,
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 1,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 0,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 1,
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 0,
+        "duration": 16,
+        "hammerToNext": true
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 1,
+        "duration": 16,
+        "pullToNext": true
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 0,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 0,
+        "duration": 16
+      }
+    ],
+    "outro-d-ending": [
+      {
+        "kind": "pluck",
+        "strings": [
+          4,
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          5
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4,
+          1
+        ],
+        "duration": 4
+      },
+      {
+        "kind": "note",
+        "string": 4,
+        "fret": 0,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 4,
+        "fret": 2,
+        "duration": 16,
+        "slideToNext": true
+      },
+      {
+        "kind": "note",
+        "string": 4,
+        "fret": 4,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 0,
+        "duration": 16
+      }
+    ]
+  },
+  "bars": [
+    {
+      "number": 1,
+      "sourcePage": 1,
+      "sourceBar": 1,
+      "pattern": "pickup",
+      "chords": [],
+      "beats": 1,
+      "pickup": true
+    },
+    {
+      "number": 2,
+      "sourcePage": 1,
+      "sourceBar": 2,
+      "pattern": "intro-g",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ]
+    },
+    {
+      "number": 3,
+      "sourcePage": 1,
+      "sourceBar": 3,
+      "pattern": "intro-em",
+      "chords": [
+        [
+          1,
+          "Em"
+        ]
+      ]
+    },
+    {
+      "number": 4,
+      "sourcePage": 1,
+      "sourceBar": 4,
+      "pattern": "intro-c",
+      "chords": [
+        [
+          1,
+          "C"
+        ]
+      ]
+    },
+    {
+      "number": 5,
+      "sourcePage": 1,
+      "sourceBar": 5,
+      "pattern": "intro-d7",
+      "chords": [
+        [
+          1,
+          "D7"
+        ]
+      ]
+    },
+    {
+      "number": 6,
+      "sourcePage": 1,
+      "sourceBar": 6,
+      "pattern": "intro-g-high",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ]
+    },
+    {
+      "number": 7,
+      "sourcePage": 1,
+      "sourceBar": 7,
+      "pattern": "intro-em-high",
+      "chords": [
+        [
+          1,
+          "Em"
+        ]
+      ]
+    },
+    {
+      "number": 8,
+      "sourcePage": 1,
+      "sourceBar": 8,
+      "pattern": "intro-c-high",
+      "chords": [
+        [
+          1,
+          "C"
+        ]
+      ]
+    },
+    {
+      "number": 9,
+      "sourcePage": 1,
+      "sourceBar": 9,
+      "pattern": "intro-d",
+      "chords": [
+        [
+          1,
+          "D"
+        ]
+      ]
+    },
+    {
+      "number": 10,
+      "sourcePage": 1,
+      "sourceBar": 10,
+      "pattern": "held-low",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ]
+    },
+    {
+      "number": 11,
+      "sourcePage": 1,
+      "sourceBar": 11,
+      "pattern": "held-low",
+      "chords": [
+        [
+          1,
+          "Em"
+        ]
+      ]
+    },
+    {
+      "number": 12,
+      "sourcePage": 1,
+      "sourceBar": 12,
+      "pattern": "tied-c",
+      "chords": [
+        [
+          1,
+          "C"
+        ]
+      ]
+    },
+    {
+      "number": 13,
+      "sourcePage": 1,
+      "sourceBar": 13,
+      "pattern": "tied-d",
+      "chords": [
+        [
+          1,
+          "D7"
+        ]
+      ]
+    },
+    {
+      "number": 14,
+      "sourcePage": 1,
+      "sourceBar": 14,
+      "pattern": "tied-low",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ]
+    },
+    {
+      "number": 15,
+      "sourcePage": 1,
+      "sourceBar": 15,
+      "pattern": "tied-low",
+      "chords": [
+        [
+          1,
+          "Em"
+        ]
+      ]
+    },
+    {
+      "number": 16,
+      "sourcePage": 1,
+      "sourceBar": 16,
+      "pattern": "tied-c",
+      "chords": [
+        [
+          1,
+          "C"
+        ]
+      ]
+    },
+    {
+      "number": 17,
+      "sourcePage": 2,
+      "sourceBar": 17,
+      "pattern": "tied-d",
+      "chords": [
+        [
+          1,
+          "D"
+        ]
+      ]
+    },
+    {
+      "number": 18,
+      "sourcePage": 2,
+      "sourceBar": 18,
+      "pattern": "held-low",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ]
+    },
+    {
+      "number": 19,
+      "sourcePage": 2,
+      "sourceBar": 19,
+      "pattern": "held-low",
+      "chords": [
+        [
+          1,
+          "Em"
+        ]
+      ]
+    },
+    {
+      "number": 20,
+      "sourcePage": 2,
+      "sourceBar": 20,
+      "pattern": "tied-c",
+      "chords": [
+        [
+          1,
+          "C"
+        ]
+      ]
+    },
+    {
+      "number": 21,
+      "sourcePage": 2,
+      "sourceBar": 21,
+      "pattern": "tied-d",
+      "chords": [
+        [
+          1,
+          "D7"
+        ]
+      ]
+    },
+    {
+      "number": 22,
+      "sourcePage": 2,
+      "sourceBar": 22,
+      "pattern": "tied-low",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ]
+    },
+    {
+      "number": 23,
+      "sourcePage": 2,
+      "sourceBar": 23,
+      "pattern": "tied-low",
+      "chords": [
+        [
+          1,
+          "Em"
+        ]
+      ]
+    },
+    {
+      "number": 24,
+      "sourcePage": 2,
+      "sourceBar": 24,
+      "pattern": "tied-c",
+      "chords": [
+        [
+          1,
+          "C"
+        ]
+      ]
+    },
+    {
+      "number": 25,
+      "sourcePage": 2,
+      "sourceBar": 25,
+      "pattern": "vocal-ending",
+      "chords": [
+        [
+          1,
+          "D"
+        ]
+      ]
+    },
+    {
+      "number": 26,
+      "sourcePage": 2,
+      "sourceBar": 26,
+      "pattern": "outro-g",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ]
+    },
+    {
+      "number": 27,
+      "sourcePage": 2,
+      "sourceBar": 27,
+      "pattern": "outro-em",
+      "chords": [
+        [
+          1,
+          "Em"
+        ]
+      ]
+    },
+    {
+      "number": 28,
+      "sourcePage": 2,
+      "sourceBar": 28,
+      "pattern": "outro-c",
+      "chords": [
+        [
+          1,
+          "C"
+        ]
+      ]
+    },
+    {
+      "number": 29,
+      "sourcePage": 2,
+      "sourceBar": 29,
+      "pattern": "outro-d",
+      "chords": [
+        [
+          1,
+          "D"
+        ]
+      ]
+    },
+    {
+      "number": 30,
+      "sourcePage": 2,
+      "sourceBar": 30,
+      "pattern": "outro-g-high",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ]
+    },
+    {
+      "number": 31,
+      "sourcePage": 2,
+      "sourceBar": 31,
+      "pattern": "outro-em-high",
+      "chords": [
+        [
+          1,
+          "Em"
+        ]
+      ]
+    },
+    {
+      "number": 32,
+      "sourcePage": 2,
+      "sourceBar": 32,
+      "pattern": "outro-c-high",
+      "chords": [
+        [
+          1,
+          "C"
+        ]
+      ]
+    },
+    {
+      "number": 33,
+      "sourcePage": 2,
+      "sourceBar": 33,
+      "pattern": "outro-d-ending",
+      "chords": [
+        [
+          1,
+          "D"
+        ]
+      ]
+    }
+  ]
+}

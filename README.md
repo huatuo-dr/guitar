@@ -320,3 +320,12 @@ C 段的星号（*）表示打板，含义经用户确认；按原图保存为 b
 音阶模式复用指板音阶数据和八度点，支持数字/音名切换、同级音聚焦及C调五种指型高亮。和弦模式按每次旋律起音映射同级三和弦（I、ii、iii、IV、V、vi），不是和声伴奏编配：例如C调开头为 `C C G G | Am Am G —`。上方展示1—7级七张指法图（第7级为vii°减三和弦，供对照练习），下方42次起音只标和弦名称；6处延长线不增加新和弦。点击简谱、音级按钮或和弦名称可高亮对应练习对象。和弦图复用原有数据，C沿用C/G按法。
 
 旋律数据在 `knowledge/twinkle-practice.json`，页面源文件为 `src/twinkle-practice.html`、`.css`、`.js`，由 `scripts/build-twinkle-practice.mjs` 内嵌为离线HTML；和弦SVG纯函数共用 `scripts/chord-diagram.mjs`。此页指板采用紧凑布局，图高较原工具减少约41%，弦间距缩至原工具的一半、音级字号缩至13px，保持八度点与音符圆圈间隔；第7级指法单独保存于 `knowledge/twinkle-seventh-chords.json`。手机按品位分段显示指板，简谱每行两小节；电脑每行六小节。`npm run build:twinkle-practice` 构建，`npm run test:twinkle-practice` 验证音级映射、延长线、切换、高亮、手机和离线入口。
+
+
+## 《写给黄淮》仅副歌
+
+[打开曲谱](sheet_music/写给黄淮仅副歌.html)。按用户指定范围保留 `tmp/1.png` 全部16小节，以及 `tmp/2.png` 除最后一小节外的17小节，共33小节。首页归入“仅副歌”；内容包含所选前奏、主歌、副歌与器乐收尾，按1–33顺序演奏一次。
+
+按原图显示1=G、4/4拍、变调夹3品；第一小节是一拍弱起，其余32小节各四拍，共129拍。保留前奏与收尾的H/P/S，以及第28小节末尾的三连音。经用户确认，第29、33小节保留5弦拨弦并以空弦A音演奏，D和弦图同步改为5弦○；第33小节末尾去掉下一段歌词的“第”字，音符保留。简易谱完整展示1–9、26–33小节器乐范围，10–25按和弦与歌词显示。
+
+数据为 `score/xiegeihuanghuai-chorus.json` 与 `score/xiegeihuanghuai-chorus-vocal.json`；使用 `npm run build:xiegeihuanghuai-chorus` 构建，`npm run test:xiegeihuanghuai-chorus` 检查范围、时值、技法、歌词、播放、简易谱、离线和手机显示。

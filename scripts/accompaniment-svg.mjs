@@ -295,7 +295,10 @@ function renderBar(bar, data, index, rowHeight, headerCrop) {
         ? line(at,STEM_END-10,at,STEM_END,'class="tab-half-stem"')
         : line(at,BOTTOM+7,at,STEM_END);
     }
-    for(let i=0;i<(event.doubleDotted?2:event.dotted?1:0);i++)svg+=`<circle class="tab-duration-dot" cx="${at+6+i*5}" cy="${STEM_END-3}" r="1.5"/>`;
+    // Rests have no stem: keep their augmentation dots beside the symbol.
+    const dotY=event.kind==='rest'?TOP+(event.duration===1?10:22):STEM_END-3;
+    const dotX=at+(event.kind==='rest'?9:6);
+    for(let i=0;i<(event.doubleDotted?2:event.dotted?1:0);i++)svg+=`<circle class="tab-duration-dot" cx="${dotX+i*5}" cy="${dotY}" r="1.5"/>`;
   });
   if(bar.crossBarTieStart!==undefined){
     const start=placed[bar.crossBarTieStart],right=x+barWidth,y=TOP-8;

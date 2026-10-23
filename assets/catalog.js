@@ -2,6 +2,17 @@
 // Optional fields: artist, timeSignature, capo (0 = no capo), bars, description.
 window.GUITAR_SCORES = [
   {
+    id: 'xiegeihuanghuai-chorus',
+    title: '《写给黄淮》仅副歌',
+    type: 'chorus',
+    path: 'sheet_music/写给黄淮仅副歌.html',
+    timeSignature: '4/4',
+    capo: 3,
+    bars: 33,
+    updatedAt: '2026-10-23',
+    description: 'G 指法 · 变调夹3品，保留所选前奏、主歌、副歌与器乐收尾，含一拍弱起、击勾弦、滑音与三连音。'
+  },
+  {
     id: 'chuxianyoulikai-chorus',
     title: '《出现又离开》仅副歌',
     type: 'chorus',
