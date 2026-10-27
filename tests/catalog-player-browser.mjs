@@ -6,7 +6,6 @@ import {chromium} from 'playwright';
 const root=new URL('../',import.meta.url);
 const cases=[
   {file:'老男孩弹唱伴奏.html',count:89,repeat:'bar-21-repeat-4',boundaries:[[29,7],[27,30],[45,21],[26,46],[47,21],[27,48]]},
-  {file:'空心弹唱伴奏.html',count:72,repeat:'bar-5-repeat-2',boundaries:[[30,5],[29,31]]},
   {file:'突然好想你弹唱伴奏.html',count:62,repeat:'bar-5-repeat-2',boundaries:[[12,5],[11,13]]},
   {file:'卡农指弹.html',count:69,fingerstyle:true,boundaries:[[16,13],[15,17],[21,18],[19,22],[27,24],[27,28],[51,48],[51,52]]},
   {file:'卡农指弹版本2.html',count:9,fingerstyle:true,boundaries:[]}

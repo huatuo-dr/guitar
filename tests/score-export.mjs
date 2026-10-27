@@ -8,7 +8,7 @@ const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CH
 try {
  const context=await browser.newContext({offline:true,viewport:{width:390,height:844},reducedMotion:'reduce'});
  const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
- const cases=[['卡农指弹版本2',false],['偏爱指弹',false],['后来弹唱伴奏',false],['老男孩弹唱伴奏',false],['空心弹唱伴奏',false],['突然好想你弹唱伴奏',false],['卡农指弹',false],['后来弹唱伴奏',true],['老男孩弹唱伴奏',true],['空心弹唱伴奏',true],['突然好想你弹唱伴奏',true]];
+ const cases=[['卡农指弹版本2',false],['偏爱指弹',false],['后来弹唱伴奏',false],['老男孩弹唱伴奏',false],['突然好想你弹唱伴奏',false],['卡农指弹',false],['后来弹唱伴奏',true],['老男孩弹唱伴奏',true],['突然好想你弹唱伴奏',true]];
  for(const [name,simple] of cases){
   await page.goto(new URL(`sheet_music/${name}.html`,root).href);
   await page.waitForFunction(()=>document.body.dataset.renderState==='ready');

@@ -5,7 +5,7 @@ import {attachVocals} from '../scripts/numbered-notation.mjs';
 import {simpleSections,simpleLyricLines,renderSimpleScore,projectSimpleBar} from '../scripts/simple-score.mjs';
 const read=async id=>JSON.parse(await readFile(new URL(`../score/${id}.json`,import.meta.url),'utf8'));
 const range=(start,end)=>Array.from({length:end-start+1},(_,i)=>start+i);
-for(const [id,expectedCount] of [['laonanhai',89],['kongxin',72],['turanhaoxiangni',62]]){
+for(const [id,expectedCount] of [['laonanhai',89],['turanhaoxiangni',62]]){
  test(`${id}简易谱按实际路线展开，完整保留器乐段，并选择每遍歌词`,async()=>{
   const data=attachVocals(await read(id),await read(id+'-vocal'));
   const sections=simpleSections(data);
@@ -26,12 +26,6 @@ for(const [id,expectedCount] of [['laonanhai',89],['kongxin',72],['turanhaoxiang
    assert.ok(sections.some(s=>s.full&&s.start===32&&s.end===39));
    assert.ok(sections.some(s=>s.start===21&&s.verse===0&&s.routeIndex===3));
    assert.ok(sections.some(s=>s.start===21&&s.verse===1&&s.routeIndex===5));
-  }
-  if(id==='kongxin'){
-   const projected=(n,v)=>projectSimpleBar(data,data.bars[n-1],{verse:v,routeIndex:1}).vocal.events.flatMap(e=>e.lyrics??[]).join('');
-   assert.equal(projected(5,1),'有个怀抱暖的像张');assert.equal(projected(26,1),'漆黑空心也想被释');
-   assert.ok(!projected(24,1).includes('要'),'第二段空白歌词不回填第一段的字');
-   assert.ok(sections.some(s=>s.full&&s.start===21&&s.end===21));
   }
   if(id==='turanhaoxiangni'){
    const lyric=(n,r)=>projectSimpleBar(data,data.bars[n-1],{verse:r?1:0,routeIndex:r}).vocal.events.flatMap(e=>e.lyrics??[]).join('');

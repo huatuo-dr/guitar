@@ -20,6 +20,7 @@ export function attachVocals(score,vocals) {
       if(note.tuplet!==undefined && note.tuplet!==3) throw new Error('简谱连音分组无效');
       if(note.accidental!==undefined && !['b','#','n'].includes(note.accidental)) throw new Error('简谱变音记号无效');
       if(!note.hold && (!Number.isInteger(note.degree)||note.degree<0||note.degree>7)) throw new Error('简谱音级无效');
+      if(note.spoken!==undefined&&(typeof note.spoken!=='boolean'||(note.spoken&&(note.degree!==0||note.hold||note.octave||note.accidental||note.grace?.length))))throw new Error('念白音符不能同时指定音高或延音');
       if(!Number.isInteger(note.octave??0)||Math.abs(note.octave??0)>2) throw new Error('简谱八度无效');
       if(note.lyrics && (!Array.isArray(note.lyrics)||note.lyrics.some(word=>typeof word!=='string'))) throw new Error('歌词无效');
       if(note.slurEnd!==undefined && (!Number.isInteger(note.slurEnd)||note.slurEnd<=index||note.slurEnd>=vocal.events.length)) throw new Error('简谱连奏弧终点无效');
@@ -103,7 +104,7 @@ export function renderNumberedMelody(vocal,{position,left,right,incomingTie=fals
   if(startAt!==undefined)svg+=text(notes[startAt].x-12,baseline,'(','melody-parenthesis');
   notes.forEach((note,index)=>{
     svg+=`<g class="melody-event" data-onset="${note.time}">`;
-    svg+=text(note.x,baseline,note.hold?'—':note.degree,'melody-number');
+    svg+=text(note.x,baseline,note.spoken?'X':note.hold?'—':note.degree,'melody-number');
     if(note.accidental)svg+=text(note.x-10,baseline-4,{b:'♭','#':'♯',n:'♮'}[note.accidental],'melody-accidental');
     if(!note.hold)svg+=octaveDots(note.x,baseline,note.octave);
     for(let i=0;i<(note.doubleDotted?2:note.dotted?1:0);i++)svg+=`<circle cx="${note.x+9+i*5}" cy="${baseline-5}" r="1.6" class="melody-duration-dot"/>`;

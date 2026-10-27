@@ -1,0 +1,62 @@
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import {readFile} from 'node:fs/promises';
+import * as alphaTab from '@coderline/alphatab';
+import {expandBars,performanceOrder,validateScore,renderScore} from '../scripts/accompaniment-svg.mjs';
+import {attachVocals,eventBeats} from '../scripts/numbered-notation.mjs';
+import {renderSimpleScore,simpleSections,simpleLyricLines} from '../scripts/simple-score.mjs';
+import {buildAccompanimentPlayback} from '../scripts/accompaniment-playback.mjs';
+const read=async suffix=>JSON.parse(await readFile(new URL('../score/dear-john'+suffix+'.json',import.meta.url),'utf8'));
+const score=await read(''),vocal=await read('-vocal'),data=attachVocals(score,vocal);
+const range=(a,b)=>Array.from({length:b-a+1},(_,i)=>i+a);
+const order=[...range(1,25),...range(5,20),...range(26,34),...range(14,20),...range(35,44)];
+const words=b=>b.vocal.events.flatMap(e=>e.lyrics??[]).join('');
+const verse='关上门一个人行李上车将心情化妆成初恋的快乐我要我为自己找回自我找到些什么铃声响DearJohn在电话那头你说话很温柔像一颗石头坚定的镇住我心头波涛我想泪流原来爱没有遗弃我';
+const chorus='你的爱会将我灌醉我没有所谓太过清醒怎么陶醉你的爱像是杯太浓的咖啡让我失眠彻夜好爱这种感觉';
+const bridge='每一次恋爱过程很像是赌注付出全部拿回什么不清楚也许爱过至少学会找到感动或知足难说当爱落幕赢或输';
+const coda='MyLovebabybabybaby不想牵挂心就要起飞到那充满可能的国界babybabybaby我是你的你是我的就够了别想那么多';
+test('Dear John两页44小节，F调C指法夹5品，歌词与各声部时值完整',()=>{
+ assert.equal(validateScore(data),true);assert.equal(data.bars.length,44);
+ assert.deepEqual([data.title,data.artist,data.key,data.fingeringKey,data.capo],['《Dear John》弹唱伴奏','比莉','F','C',5]);
+ assert.equal(data.bars.filter(b=>b.sourcePage===1).length,18);
+ assert.equal(data.bars.slice(4,13).map(words).join(''),verse);
+ assert.equal(data.bars.slice(13,21).map(words).join(''),chorus);
+ assert.equal(data.bars.slice(26,34).map(words).join(''),bridge);
+ assert.equal(data.bars.slice(34).map(words).join(''),coda);
+ for(const b of expandBars(data))for(const events of [b.events,b.vocal.events])assert.ok(Math.abs(events.reduce((s,e)=>s+eventBeats(e),0)-4)<1e-7,`第${b.number}小节4拍`);
+ assert.deepEqual(data.chordShapes.Fmaj7.frets,[1,-1,3,2,1,0]);
+});
+test('前奏明确弦品、主歌分解弦位、扫弦方向、念白与三连音保留',()=>{
+ const bars=expandBars(data);
+ assert.deepEqual(bars[0].events.map(e=>e.duration),[8,16,16,8,16,16,8,16,16,8]);
+ assert.deepEqual(bars[0].events.filter(e=>e.kind==='note').map(e=>[e.string,e.fret]),[[2,0],[2,1],[2,0],[2,3]]);
+ assert.deepEqual(bars[2].events[6].notes,[{string:4,fret:0},{string:3,fret:2}]);
+ assert.deepEqual(bars[4].events.map(e=>e.strings),[[5,3,2],[4],[3,2],[4],[6,3,2],[4],[3,2],[4]]);
+ assert.deepEqual(bars[6].events[4].strings,[4,3,2]);
+ assert.deepEqual(bars[13].events.map(e=>e.kind),['down','down','down','up','down','up','down','down','down','up']);
+ assert.deepEqual(bars[21].events.map(e=>e.duration),[4,8,16,16,4,8,16,16]);
+ assert.equal(bars[24].events[4].kind,'arpeggio');assert.equal(bars[24].events[5].kind,'hold');
+ assert.deepEqual(data.bars.flatMap(b=>b.vocal.events.filter(e=>e.spoken).flatMap(e=>e.lyrics)),['Dear','John','原','来']);
+ assert.ok(data.bars[30].vocal.events.slice(-6).every(e=>e.tuplet===3&&e.duration===8));
+ assert.equal(data.bars[25].vocal.incomingTie,true);assert.equal(data.bars[34].vocal.incomingTie,true);
+ const invalid=structuredClone(vocal);invalid.bars[8].events[4].degree=3;assert.throws(()=>attachVocals(score,invalid),/念白/);
+});
+test('一二房子与D.S./Coda展开67小节268拍，播放实际伴奏音高',()=>{
+ assert.deepEqual(performanceOrder(data),order);assert.ok(data.bars[4].repeatStart);assert.ok(data.bars[24].repeatEnd);
+ assert.equal(data.bars[20].volta,'1');assert.equal(data.bars[25].volta,'2');
+ const playback=buildAccompanimentPlayback(data);assert.equal(playback.totalTicks,268*960);assert.deepEqual(playback.sequence.map(s=>s.bar),order);assert.equal(new Set(playback.sequence.map(s=>s.id)).size,67);
+ const importer=new alphaTab.importer.AlphaTexImporter();importer.initFromString(playback.tex,new alphaTab.Settings());const parsed=importer.readScore(),bars=parsed.tracks[0].staves[0].bars;
+ assert.equal(parsed.masterBars.length,67);assert.equal(parsed.tracks[0].staves[0].capo,5);assert.ok(parsed.masterBars.every(b=>b.calculateDuration()===3840));
+ const notes=beat=>beat.notes.map(n=>[7-n.string,n.fret]);
+ assert.deepEqual(notes(bars[0].voices[0].beats[0]),[[5,0],[2,1]]);assert.equal(bars[0].voices[0].beats[0].notes[0].realValue,50);
+ assert.equal(bars[13].voices[0].beats[3].brushType,alphaTab.model.BrushType.BrushUp);
+ assert.ok(bars.at(-1).voices[0].beats.slice(1).every(b=>b.notes.every(n=>n.isTieDestination)));
+ for(const perRow of [2,4]){
+  const full=renderScore(data,perRow),simple=renderSimpleScore(data,perRow);
+  assert.equal((full.match(/class="numbered-melody"/g)||[]).length,44);assert.equal((full.match(/class="melody-number"[^>]*>X</g)||[]).length,4);
+  assert.equal((simple.match(/<g class="measure"/g)||[]).length,9);assert.doesNotMatch(simple,/volta-label/);assert.doesNotMatch(full+simple,/NaN|undefined|<image/);assert.match(full,/D.S. al Coda/);
+ }
+ const sections=simpleSections(data),phrases=simpleLyricLines(data,sections.filter(s=>!s.full)).flatMap(l=>l.map(p=>p.map(c=>c.token.lyrics.join('')).join('')));
+ assert.equal(phrases.join(''),verse+chorus+verse+chorus+bridge+chorus+coda);assert.doesNotMatch(phrases.join(''),/感觉觉/);
+ assert.ok(phrases.includes('你的爱会将我灌醉'));assert.ok(phrases.includes('你的爱像是杯太浓的咖啡'));
+});

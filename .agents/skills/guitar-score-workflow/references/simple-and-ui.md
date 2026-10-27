@@ -4,7 +4,7 @@
 
 ## 简易谱配置
 
-共享构建在非 `fingerstyle` 且存在 `simpleScore` 时启用切换。配置参考 `score/houlai.json`、`score/kongxin.json`；bar/beat 均指原始书写坐标。
+共享构建在非 `fingerstyle` 且存在 `simpleScore` 时启用切换。配置参考 `score/houlai.json`、`score/laonanhai.json`；bar/beat 均指原始书写坐标。
 
 | 配置 | 用途 |
 | --- | --- |

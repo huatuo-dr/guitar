@@ -1,0 +1,2085 @@
+{
+  "title": "《Dear John》弹唱伴奏",
+  "artist": "比莉",
+  "scoreType": "accompaniment",
+  "key": "F",
+  "fingeringKey": "C",
+  "capo": 5,
+  "timeSignature": [
+    4,
+    4
+  ],
+  "measureWidth": 400,
+  "sourceTitle": "用户提供的《Dear John》两页截图 · 山山吉他",
+  "techniqueLegend": "六线谱 ×：按和弦拨指定弦；数字：品位；同列音同时发声；↑ 下扫，↓ 上扫；波浪箭头为琶音，— 为延续。",
+  "melodyLegend": "简谱上点为高八度，下划线为减时，右侧点为附点；0 为休止，— 为延音；同音弧线为延音，异音弧线为连音，3 为三连音，♯ 为升号；X 为无固定音高的节奏念白。",
+  "notes": [
+    "根据 tmp/1.webp 和 tmp/2.webp 重绘44个书写小节，曲名按原图使用 Dear John，演唱比莉，制谱山山吉他。",
+    "原调F、C调指法、变调夹5品，4/4拍；截图没有速度标记，练习试听默认60 BPM。",
+    "反复起点在第5小节，第一房子从第21小节至第25小节的反复终止；第二遍从第20小节接第26小节第二房子，进入桥段。",
+    "第34小节D.S.返回第14小节Segno；再次奏至第20小节后，从第21小节前的Coda跳转到第35小节尾声。实际路线1–25 → 5–20 → 26–34 → 14–20 → 35–44，共67个演奏小节、268拍。",
+    "第9、12小节简谱的X为节奏念白，保留Dear John与“原来”的落点；试听只播放吉他伴奏，不合成人声。",
+    "第二房子第26小节的“觉”为前一小节同音延续提示，本页不再重复填字，避免简易谱连读成“感觉觉”；简谱保留1的延音。",
+    "第31小节旋律后两拍为两组三连音；尾段保留ba/by衬词、跨小节延音和高八度旋律。",
+    "前奏Fmaj7依图保留6弦1品、5弦不弹的指法；其余和弦图亦按原图录入。"
+  ],
+  "sections": [
+    {
+      "name": "前奏",
+      "start": 1,
+      "end": 4
+    },
+    {
+      "name": "主歌",
+      "start": 5,
+      "end": 13
+    },
+    {
+      "name": "副歌",
+      "start": 14,
+      "end": 21
+    },
+    {
+      "name": "间奏",
+      "start": 22,
+      "end": 25
+    },
+    {
+      "name": "第二跳尾",
+      "start": 26,
+      "end": 26
+    },
+    {
+      "name": "桥段",
+      "start": 27,
+      "end": 34
+    },
+    {
+      "name": "尾段",
+      "start": 35,
+      "end": 43
+    },
+    {
+      "name": "收尾",
+      "start": 44,
+      "end": 44
+    }
+  ],
+  "route": [
+    {
+      "label": "第一遍及间奏",
+      "start": 1,
+      "end": 25
+    },
+    {
+      "label": "反复主歌与副歌",
+      "start": 5,
+      "end": 20
+    },
+    {
+      "label": "第二房子与桥段",
+      "start": 26,
+      "end": 34
+    },
+    {
+      "label": "D.S.返回副歌",
+      "start": 14,
+      "end": 20
+    },
+    {
+      "label": "转入尾声并结束",
+      "start": 35,
+      "end": 44
+    }
+  ],
+  "routeNote": "第一遍走1房子，第二遍走2房子；D.S.只返回副歌，遇Coda转入尾声。",
+  "simpleScore": {
+    "fullRanges": [
+      {
+        "start": 1,
+        "end": 4,
+        "name": "前奏"
+      },
+      {
+        "start": 22,
+        "end": 25,
+        "name": "间奏"
+      },
+      {
+        "start": 44,
+        "end": 44,
+        "name": "收尾"
+      }
+    ],
+    "routeVerses": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "lyricBreaks": [
+      {
+        "bar": 5,
+        "beat": 1,
+        "kind": "line"
+      },
+      {
+        "bar": 6,
+        "beat": 1.5,
+        "kind": "space"
+      },
+      {
+        "bar": 7,
+        "beat": 1.5,
+        "kind": "space"
+      },
+      {
+        "bar": 8,
+        "beat": 1,
+        "kind": "space"
+      },
+      {
+        "bar": 9,
+        "beat": 1.5,
+        "kind": "space"
+      },
+      {
+        "bar": 9,
+        "beat": 2.5,
+        "kind": "space"
+      },
+      {
+        "bar": 9,
+        "beat": 3.75,
+        "kind": "space"
+      },
+      {
+        "bar": 10,
+        "beat": 1.5,
+        "kind": "space"
+      },
+      {
+        "bar": 11,
+        "beat": 1.5,
+        "kind": "space"
+      },
+      {
+        "bar": 12,
+        "beat": 1,
+        "kind": "space"
+      },
+      {
+        "bar": 12,
+        "beat": 3.75,
+        "kind": "space"
+      },
+      {
+        "bar": 13,
+        "beat": 1,
+        "kind": "space"
+      },
+      {
+        "bar": 14,
+        "beat": 1,
+        "kind": "line"
+      },
+      {
+        "bar": 15,
+        "beat": 2.5,
+        "kind": "space"
+      },
+      {
+        "bar": 16,
+        "beat": 2.5,
+        "kind": "space"
+      },
+      {
+        "bar": 17,
+        "beat": 3.75,
+        "kind": "space"
+      },
+      {
+        "bar": 19,
+        "beat": 2.5,
+        "kind": "space"
+      },
+      {
+        "bar": 20,
+        "beat": 2.5,
+        "kind": "space"
+      },
+      {
+        "bar": 27,
+        "beat": 1,
+        "kind": "line"
+      },
+      {
+        "bar": 29,
+        "beat": 1.5,
+        "kind": "space"
+      },
+      {
+        "bar": 29,
+        "beat": 3.0,
+        "kind": "space"
+      },
+      {
+        "bar": 31,
+        "beat": 1.5,
+        "kind": "space"
+      },
+      {
+        "bar": 33,
+        "beat": 1.5,
+        "kind": "space"
+      },
+      {
+        "bar": 35,
+        "beat": 1,
+        "kind": "line"
+      },
+      {
+        "bar": 36,
+        "beat": 1,
+        "kind": "space"
+      },
+      {
+        "bar": 37,
+        "beat": 2.5,
+        "kind": "space"
+      },
+      {
+        "bar": 40,
+        "beat": 1,
+        "kind": "space"
+      },
+      {
+        "bar": 41,
+        "beat": 2.5,
+        "kind": "space"
+      },
+      {
+        "bar": 42,
+        "beat": 3.5,
+        "kind": "space"
+      },
+      {
+        "bar": 9,
+        "beat": 2.75,
+        "kind": "space"
+      },
+      {
+        "bar": 35,
+        "beat": 2.75,
+        "kind": "space"
+      },
+      {
+        "bar": 36,
+        "beat": 2.0,
+        "kind": "space"
+      },
+      {
+        "bar": 36,
+        "beat": 3.0,
+        "kind": "space"
+      },
+      {
+        "bar": 40,
+        "beat": 2.0,
+        "kind": "space"
+      },
+      {
+        "bar": 40,
+        "beat": 3.0,
+        "kind": "space"
+      }
+    ]
+  },
+  "chordShapes": {
+    "Am": {
+      "frets": [
+        -1,
+        0,
+        2,
+        2,
+        1,
+        0
+      ]
+    },
+    "Fmaj7": {
+      "frets": [
+        1,
+        -1,
+        3,
+        2,
+        1,
+        0
+      ]
+    },
+    "G": {
+      "frets": [
+        3,
+        2,
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    "Em": {
+      "frets": [
+        0,
+        2,
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    "Dm7": {
+      "frets": [
+        -1,
+        -1,
+        0,
+        2,
+        1,
+        1
+      ]
+    },
+    "E": {
+      "frets": [
+        0,
+        2,
+        2,
+        1,
+        0,
+        0
+      ]
+    },
+    "C": {
+      "frets": [
+        -1,
+        3,
+        2,
+        0,
+        1,
+        0
+      ]
+    },
+    "F": {
+      "frets": [
+        1,
+        3,
+        3,
+        2,
+        1,
+        1
+      ],
+      "barre": {
+        "to": 1,
+        "fret": 1,
+        "from": 6
+      }
+    }
+  },
+  "patterns": {
+    "intro-1": [
+      {
+        "kind": "pluck",
+        "strings": [
+          5,
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 0,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 1,
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 0,
+        "duration": 16
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          6,
+          2
+        ],
+        "duration": 8,
+        "dotted": true
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          2
+        ],
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 3,
+        "duration": 16
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          2
+        ],
+        "duration": 8,
+        "dotted": true
+      }
+    ],
+    "intro-2": [
+      {
+        "kind": "pluck",
+        "strings": [
+          6,
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 0,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 2,
+        "duration": 16
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 0,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 2,
+        "duration": 16
+      },
+      {
+        "kind": "fretted",
+        "notes": [
+          {
+            "string": 6,
+            "fret": 0
+          },
+          {
+            "string": 2,
+            "fret": 0
+          }
+        ],
+        "duration": 8,
+        "dotted": true
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 0,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 1,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 0,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 0,
+        "duration": 8
+      }
+    ],
+    "intro-3": [
+      {
+        "kind": "pluck",
+        "strings": [
+          6,
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 0,
+        "duration": 16
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 0,
+        "duration": 16
+      },
+      {
+        "kind": "fretted",
+        "notes": [
+          {
+            "string": 4,
+            "fret": 0
+          },
+          {
+            "string": 3,
+            "fret": 2
+          }
+        ],
+        "duration": 8,
+        "dotted": true
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 2,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 0,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 2,
+        "duration": 8,
+        "dotted": true
+      }
+    ],
+    "intro-4": [
+      {
+        "kind": "pluck",
+        "strings": [
+          6,
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          5
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          5
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          6,
+          3,
+          2
+        ],
+        "duration": 8,
+        "dotted": true
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 1,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 2,
+        "duration": 16
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 0,
+        "duration": 8,
+        "dotted": true
+      }
+    ],
+    "verse-am-f": [
+      {
+        "kind": "pluck",
+        "strings": [
+          5,
+          3,
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3,
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          6,
+          3,
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3,
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      }
+    ],
+    "verse-g-em": [
+      {
+        "kind": "pluck",
+        "strings": [
+          6,
+          3,
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3,
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          6,
+          3,
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3,
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      }
+    ],
+    "verse-f-dm": [
+      {
+        "kind": "pluck",
+        "strings": [
+          6,
+          3,
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3,
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4,
+          3,
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3,
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      }
+    ],
+    "verse-e": [
+      {
+        "kind": "pluck",
+        "strings": [
+          6,
+          3,
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3,
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3,
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3,
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      }
+    ],
+    "pre-chorus": [
+      {
+        "kind": "pluck",
+        "strings": [
+          6,
+          3,
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3,
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          4
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "arpeggio",
+        "duration": 4
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      }
+    ],
+    "swing-c": [
+      {
+        "kind": "down",
+        "duration": 4,
+        "startString": 5,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      }
+    ],
+    "swing-g": [
+      {
+        "kind": "down",
+        "duration": 4,
+        "startString": 6,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      }
+    ],
+    "swing-am": [
+      {
+        "kind": "down",
+        "duration": 4,
+        "startString": 5,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      }
+    ],
+    "swing-f": [
+      {
+        "kind": "down",
+        "duration": 4,
+        "startString": 6,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      }
+    ],
+    "light-am-f": [
+      {
+        "kind": "down",
+        "duration": 4,
+        "startString": 5,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 4,
+        "startString": 6,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      }
+    ],
+    "light-g-em": [
+      {
+        "kind": "down",
+        "duration": 4,
+        "startString": 6,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 4,
+        "startString": 6,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      }
+    ],
+    "light-f-dm": [
+      {
+        "kind": "down",
+        "duration": 4,
+        "startString": 6,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 4,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      }
+    ],
+    "light-f-g": [
+      {
+        "kind": "down",
+        "duration": 4,
+        "startString": 6,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      },
+      {
+        "kind": "down",
+        "duration": 4,
+        "startString": 6,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      }
+    ],
+    "interlude-e": [
+      {
+        "kind": "down",
+        "duration": 4,
+        "startString": 6,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 8,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "down",
+        "duration": 16,
+        "startString": 4,
+        "endString": 1
+      },
+      {
+        "kind": "up",
+        "duration": 16,
+        "startString": 1,
+        "endString": 4
+      },
+      {
+        "kind": "arpeggio",
+        "duration": 4
+      },
+      {
+        "kind": "hold",
+        "duration": 4
+      }
+    ],
+    "ending": [
+      {
+        "kind": "arpeggio",
+        "duration": 4
+      },
+      {
+        "kind": "hold",
+        "duration": 4
+      },
+      {
+        "kind": "hold",
+        "duration": 4
+      },
+      {
+        "kind": "hold",
+        "duration": 4
+      }
+    ]
+  },
+  "bars": [
+    {
+      "number": 1,
+      "pattern": "intro-1",
+      "chords": [
+        [
+          1,
+          "Am"
+        ],
+        [
+          3,
+          "Fmaj7"
+        ]
+      ],
+      "sourcePage": 1
+    },
+    {
+      "number": 2,
+      "pattern": "intro-2",
+      "chords": [
+        [
+          1,
+          "G"
+        ],
+        [
+          3,
+          "Em"
+        ]
+      ],
+      "sourcePage": 1
+    },
+    {
+      "number": 3,
+      "pattern": "intro-3",
+      "chords": [
+        [
+          1,
+          "Fmaj7"
+        ],
+        [
+          3,
+          "Dm7"
+        ]
+      ],
+      "sourcePage": 1
+    },
+    {
+      "number": 4,
+      "pattern": "intro-4",
+      "chords": [
+        [
+          1,
+          "E"
+        ]
+      ],
+      "sourcePage": 1
+    },
+    {
+      "number": 5,
+      "pattern": "verse-am-f",
+      "chords": [
+        [
+          1,
+          "Am"
+        ],
+        [
+          3,
+          "Fmaj7"
+        ]
+      ],
+      "sourcePage": 1,
+      "repeatStart": true
+    },
+    {
+      "number": 6,
+      "pattern": "verse-g-em",
+      "chords": [
+        [
+          1,
+          "G"
+        ],
+        [
+          3,
+          "Em"
+        ]
+      ],
+      "sourcePage": 1
+    },
+    {
+      "number": 7,
+      "pattern": "verse-f-dm",
+      "chords": [
+        [
+          1,
+          "Fmaj7"
+        ],
+        [
+          3,
+          "Dm7"
+        ]
+      ],
+      "sourcePage": 1
+    },
+    {
+      "number": 8,
+      "pattern": "verse-e",
+      "chords": [
+        [
+          1,
+          "E"
+        ]
+      ],
+      "sourcePage": 1
+    },
+    {
+      "number": 9,
+      "pattern": "verse-am-f",
+      "chords": [
+        [
+          1,
+          "Am"
+        ],
+        [
+          3,
+          "Fmaj7"
+        ]
+      ],
+      "sourcePage": 1
+    },
+    {
+      "number": 10,
+      "pattern": "verse-g-em",
+      "chords": [
+        [
+          1,
+          "G"
+        ],
+        [
+          3,
+          "Em"
+        ]
+      ],
+      "sourcePage": 1
+    },
+    {
+      "number": 11,
+      "pattern": "verse-f-dm",
+      "chords": [
+        [
+          1,
+          "Fmaj7"
+        ],
+        [
+          3,
+          "Dm7"
+        ]
+      ],
+      "sourcePage": 1
+    },
+    {
+      "number": 12,
+      "pattern": "verse-e",
+      "chords": [
+        [
+          1,
+          "E"
+        ]
+      ],
+      "sourcePage": 1
+    },
+    {
+      "number": 13,
+      "pattern": "pre-chorus",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "sourcePage": 1
+    },
+    {
+      "number": 14,
+      "pattern": "swing-c",
+      "chords": [
+        [
+          1,
+          "C"
+        ]
+      ],
+      "sourcePage": 1,
+      "startLabel": "𝄋 Segno"
+    },
+    {
+      "number": 15,
+      "pattern": "swing-g",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "sourcePage": 1
+    },
+    {
+      "number": 16,
+      "pattern": "swing-am",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "sourcePage": 1
+    },
+    {
+      "number": 17,
+      "pattern": "swing-f",
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "sourcePage": 1
+    },
+    {
+      "number": 18,
+      "pattern": "swing-c",
+      "chords": [
+        [
+          1,
+          "C"
+        ]
+      ],
+      "sourcePage": 1
+    },
+    {
+      "number": 19,
+      "pattern": "swing-g",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "sourcePage": 2
+    },
+    {
+      "number": 20,
+      "pattern": "swing-am",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "sourcePage": 2
+    },
+    {
+      "number": 21,
+      "pattern": "swing-f",
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "sourcePage": 2,
+      "volta": "1",
+      "voltaStart": true,
+      "startLabel": "D.S. 后至此转尾声 → 35"
+    },
+    {
+      "number": 22,
+      "pattern": "light-am-f",
+      "chords": [
+        [
+          1,
+          "Am"
+        ],
+        [
+          3,
+          "F"
+        ]
+      ],
+      "sourcePage": 2,
+      "volta": "1"
+    },
+    {
+      "number": 23,
+      "pattern": "light-g-em",
+      "chords": [
+        [
+          1,
+          "G"
+        ],
+        [
+          3,
+          "Em"
+        ]
+      ],
+      "sourcePage": 2,
+      "volta": "1"
+    },
+    {
+      "number": 24,
+      "pattern": "light-f-dm",
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "Dm7"
+        ]
+      ],
+      "sourcePage": 2,
+      "volta": "1"
+    },
+    {
+      "number": 25,
+      "pattern": "interlude-e",
+      "chords": [
+        [
+          1,
+          "E"
+        ]
+      ],
+      "sourcePage": 2,
+      "repeatEnd": true,
+      "volta": "1",
+      "voltaEnd": true
+    },
+    {
+      "number": 26,
+      "pattern": "swing-f",
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "sourcePage": 2,
+      "volta": "2",
+      "voltaStart": true
+    },
+    {
+      "number": 27,
+      "pattern": "light-f-g",
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "sourcePage": 2,
+      "volta": "2"
+    },
+    {
+      "number": 28,
+      "pattern": "swing-am",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "sourcePage": 2,
+      "volta": "2"
+    },
+    {
+      "number": 29,
+      "pattern": "light-f-g",
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "sourcePage": 2,
+      "volta": "2"
+    },
+    {
+      "number": 30,
+      "pattern": "swing-am",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "sourcePage": 2,
+      "volta": "2"
+    },
+    {
+      "number": 31,
+      "pattern": "light-f-g",
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "sourcePage": 2,
+      "volta": "2"
+    },
+    {
+      "number": 32,
+      "pattern": "swing-am",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "sourcePage": 2,
+      "volta": "2"
+    },
+    {
+      "number": 33,
+      "pattern": "light-f-g",
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "sourcePage": 2,
+      "volta": "2"
+    },
+    {
+      "number": 34,
+      "pattern": "swing-am",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "sourcePage": 2,
+      "volta": "2",
+      "voltaEnd": true,
+      "endLabel": "D.S. al Coda → 14"
+    },
+    {
+      "number": 35,
+      "pattern": "swing-f",
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "sourcePage": 2,
+      "startLabel": "𝄌 Coda"
+    },
+    {
+      "number": 36,
+      "pattern": "swing-c",
+      "chords": [
+        [
+          1,
+          "C"
+        ]
+      ],
+      "sourcePage": 2
+    },
+    {
+      "number": 37,
+      "pattern": "swing-g",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "sourcePage": 2
+    },
+    {
+      "number": 38,
+      "pattern": "swing-am",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "sourcePage": 2
+    },
+    {
+      "number": 39,
+      "pattern": "swing-f",
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "sourcePage": 2
+    },
+    {
+      "number": 40,
+      "pattern": "swing-c",
+      "chords": [
+        [
+          1,
+          "C"
+        ]
+      ],
+      "sourcePage": 2
+    },
+    {
+      "number": 41,
+      "pattern": "swing-g",
+      "chords": [
+        [
+          1,
+          "G"
+        ]
+      ],
+      "sourcePage": 2
+    },
+    {
+      "number": 42,
+      "pattern": "swing-am",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "sourcePage": 2
+    },
+    {
+      "number": 43,
+      "pattern": "swing-f",
+      "chords": [
+        [
+          1,
+          "F"
+        ],
+        [
+          3,
+          "G"
+        ]
+      ],
+      "sourcePage": 2
+    },
+    {
+      "number": 44,
+      "pattern": "ending",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "sourcePage": 2
+    }
+  ]
+}

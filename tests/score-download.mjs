@@ -18,7 +18,7 @@ const server = createServer(async (req,res) => {
 });
 await new Promise(resolve => server.listen(0,'127.0.0.1',resolve));
 const browser = await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH ? {executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH} : {})});
-const files = ['偏爱指弹.html','老男孩弹唱伴奏.html','后来弹唱伴奏.html','空心弹唱伴奏.html','突然好想你弹唱伴奏.html','卡农指弹.html','卡农指弹版本2.html'];
+const files = ['偏爱指弹.html','老男孩弹唱伴奏.html','后来弹唱伴奏.html','突然好想你弹唱伴奏.html','卡农指弹.html','卡农指弹版本2.html'];
 async function ready(page,file) {
   if (file === files[0]) await page.waitForFunction(() => document.body.dataset.renderState === 'ready');
   else await page.waitForSelector('.measure');

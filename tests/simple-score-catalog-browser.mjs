@@ -5,7 +5,7 @@ import {eventBeats} from '../scripts/numbered-notation.mjs';
 const root=new URL('../',import.meta.url);
 await mkdir(new URL('artifacts/',root),{recursive:true});
 const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH?{executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH}:{})});
-const entries=[['laonanhai','老男孩弹唱伴奏.html',89],['kongxin','空心弹唱伴奏.html',72],['turanhaoxiangni','突然好想你弹唱伴奏.html',62]];
+const entries=[['laonanhai','老男孩弹唱伴奏.html',89],['turanhaoxiangni','突然好想你弹唱伴奏.html',62]];
 try{
  for(const [id,file,total] of entries){
   const data=JSON.parse(await readFile(new URL(`score/${id}.json`,root),'utf8'));

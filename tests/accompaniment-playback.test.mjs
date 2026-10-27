@@ -53,7 +53,6 @@ test('拒绝把和弦图禁弹弦静默转换为其他音高',()=>{
 const range=(start,end)=>Array.from({length:end-start+1},(_,i)=>start+i);
 const catalog=[
   {id:'laonanhai',beats:350,capo:0,label:'伴奏',route:[...range(1,29),...range(7,27),...range(30,45),...range(21,26),46,47,...range(21,27),...range(48,55)]},
-  {id:'kongxin',beats:288,capo:0,label:'伴奏',route:[...range(1,30),...range(5,29),...range(31,47)]},
   {id:'turanhaoxiangni',beats:248,capo:2,label:'伴奏',route:[...range(1,12),...range(5,11),...range(13,55)]},
   {id:'canon',beats:276,capo:0,label:'指弹',route:[...range(1,16),...range(13,15),...range(17,21),18,19,...range(22,27),...range(24,27),...range(28,51),...range(48,51),...range(52,56)]},
   {id:'canon-v2',beats:36,capo:0,label:'指弹',route:range(1,9)}
@@ -82,11 +81,6 @@ for(const expected of catalog)test(`${expected.id} 的完整路线、时值、�
     assert.equal(playback.sequence.at(-1).startTick,346*960);
     assert.ok(original(1)[3].notes[0].isHammerPullOrigin);
     assert.deepEqual(pitches(original(1)[0]),[48,52,55,60,64]);
-  } else if(expected.id==='kongxin') {
-    assert.ok(original(4)[4].notes.every(n=>n.isTieDestination),'延音箭头不重新扫弦');
-    assert.equal(original(4)[4].brushType,alphaTab.model.BrushType.None);
-    assert.deepEqual(pitches(original(1)[0]),[45,53,57,60,64]);
-    assert.ok(original(47).slice(1).every(b=>b.notes.every(n=>n.isTieDestination)));
   } else if(expected.id==='turanhaoxiangni') {
     assert.deepEqual(pitches(original(1)[0]),[50,66],'按第2品升高两半音');
     assert.ok(original(3)[7].notes[0].isTieDestination);

@@ -350,7 +350,7 @@ function renderBar(bar, data, index, rowHeight, headerCrop) {
     svg+=line(x,216,x,252,'class="bar-line"')+line(x+barWidth,216,x+barWidth,252,'class="bar-line"');
     if(meterChange)svg+='<g class="melody-time-signature">'+text(x+15,228,meter,'meter-number','middle')+text(x+15,247,4,'meter-number','middle')+'</g>';
     const previous=data.bars[bar.number-2]?.vocal;
-    svg+=renderNumberedMelody(bar.vocal,{position:eventX,left:x,right:x+barWidth,incomingTie:!!previous?.events.at(-1).tieToNext||previous?.crossBarTieStart!==undefined,incomingSlur:bar.vocal.incomingSlur||previous?.events.at(-1).slurToNext||false});
+    svg+=renderNumberedMelody(bar.vocal,{position:eventX,left:x,right:x+barWidth,incomingTie:!!bar.vocal.incomingTie||!!previous?.events.at(-1).tieToNext||previous?.crossBarTieStart!==undefined,incomingSlur:bar.vocal.incomingSlur||previous?.events.at(-1).slurToNext||false});
   }
   if (bar.note) svg += text(x+10,rowHeight-10,bar.note,'source-note');
   if (bar.endLabel) svg += text(x+barWidth-10,rowHeight-10,bar.endLabel,'navigation-label','end');

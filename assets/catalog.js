@@ -2,6 +2,18 @@
 // Optional fields: artist, timeSignature, capo (0 = no capo), bars, description.
 window.GUITAR_SCORES = [
   {
+    id: 'dear-john',
+    title: '《Dear John》弹唱伴奏',
+    artist: '比莉',
+    type: 'accompaniment',
+    path: 'sheet_music/Dear John弹唱伴奏.html',
+    timeSignature: '4/4',
+    capo: 5,
+    bars: 44,
+    updatedAt: '2026-10-27',
+    description: 'F 调 · C 指法，含前奏、分解和弦、扫弦、念白节奏、反复跳尾及 D.S. 尾声。'
+  },
+  {
     id: 'hongsegaogenxie-chorus',
     title: '《红色高跟鞋》仅副歌',
     artist: '蔡健雅',
@@ -149,17 +161,6 @@ window.GUITAR_SCORES = [
     bars: 69,
     updatedAt: '2026-09-23',
     description: 'C 调指法、变调夹 3 品，新版前奏与间奏搭配旧版演唱伴奏，含简谱歌词。'
-  },
-  {
-    id: 'kong-xin-accompaniment',
-    title: '《空心》弹唱伴奏',
-    artist: '光泽',
-    type: 'accompaniment',
-    path: 'sheet_music/空心弹唱伴奏.html',
-    timeSignature: '4/4',
-    bars: 47,
-    updatedAt: '2026-09-17',
-    description: 'C 调指法，含扫弦、琶音、简谱、双行歌词与反复跳尾。'
   },
   {
     id: 'tu-ran-hao-xiang-ni-accompaniment',
