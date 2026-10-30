@@ -124,9 +124,9 @@ window.GUITAR_SCORES = [
     type: 'accompaniment',
     path: 'sheet_music/童年弹唱伴奏.html',
     timeSignature: '4/4',
-    bars: 26,
-    updatedAt: '2026-09-25',
-    description: 'G 调弹唱，含前奏、扫弦、五段歌词与跳尾，简易谱按演唱顺序展开。'
+    bars: 20,
+    updatedAt: '2026-10-30',
+    description: 'C 调新版，4 小节前奏与三段歌词，保留低音分区扫弦和前奏延音，简易谱按三遍展开。'
   },
   {
     id: 'pian-ai-fingerstyle',

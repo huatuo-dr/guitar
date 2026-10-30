@@ -1,34 +1,27 @@
 {
   "title": "《童年》弹唱伴奏",
   "artist": "罗大佑",
-  "key": "G",
-  "fingeringKey": "G",
+  "scoreType": "accompaniment",
+  "key": "C",
+  "fingeringKey": "C",
   "timeSignature": [
     4,
     4
   ],
-  "sourceTitle": "17吉他 ·《民谣吉他经典歌曲弹唱谱集》（用户提供两页截图）",
-  "techniqueLegend": "六线谱数字：品位；同列音符同时拨响　　×：按和弦拨指定弦　　同音弧线：延音，不再拨弦　　弧线内箭头保留原谱方向，不重复扫弦",
-  "melodyLegend": "简谱：上点为高八度，下点为低八度，下方短线表示减时，右侧圆点为附点；0 为休止，— 为延续。五行歌词依次对应第一至第五遍。",
+  "measureWidth": 350,
+  "sourceTitle": "用户提供的《童年》单页C调参考谱 · 图中水印“吉他之家”",
+  "techniqueLegend": "六线谱数字：品位；×：按和弦拨指定弦；↑ 下扫、↓ 上扫，箭头长度表示扫弦范围；前奏弧线后的空符干为延音，不再拨弦。",
+  "melodyLegend": "简谱上点为高八度，下方短线表示减时；0 为休止，— 为延长；弧线保留原谱的延音或连音。三行歌词依次对应第一、第二、第三遍。",
   "notes": [
-    "词、曲、演唱：罗大佑。原图标原调与选调均为1=G，4/4拍，未标注变调夹或速度；试听沿用曲谱库默认60 BPM练习速度。",
-    "按两页截图重绘26个书写小节，第一页1–13、第二页14–26；段名与连续小节编号为网页阅读辅助。",
-    "前奏第1小节保留二、三弦同拨与六弦3品低音，第三弦2→0→0的尾音及同音弧线；第2小节保留第五弦3品低音与琶音，第3小节按和弦拨指定弦。",
-    "演唱伴奏保留原谱扫弦与切分延音；第8、12、16小节按第1、2.5、4拍换D、Dsus4、D，第20小节第2.5拍换Gsus4。",
-    "和弦图按截图录入；Gsus4保留原图第五弦2品，Bm保留原图各品位，不额外绘制原图未画的横按线。",
-    "用户确认第五遍由第19小节接第21小节，以保留“盼望长大的童年”；据此将原图覆盖19–20的第1–4遍跳尾框改为只覆盖第20小节。简易谱与试听同步采用此路线，共89个演奏小节。"
+    "依据新的 tmp/1.jpg 单页参考谱重新制作20个书写小节，替换旧版G调26小节曲谱。新图标1=C、4/4拍、词曲罗大佑，仅包含三行歌词。",
+    "前奏为第1–4小节，反复起点在第5小节，终止在第20小节。按三行歌词分别演唱三遍：1–20 → 5–20 → 5–20，共52个演奏小节、208拍；第三遍结束后不再返回。",
+    "新图未标变调夹、速度或和弦指法图。试听采用未夹变调夹的C调音高，默认60 BPM；和弦图为补充的常用指法，已由用户确认，名称后不再标记符号。",
+    "前奏第1–3小节第2拍为空符干延音，承接前一上扫，不增加新的拨弦；保留第1小节二弦3品两次拨响，第2小节三弦0品，以及第3小节三弦2→0、二弦3品、一弦0品。",
+    "前奏第4小节首拍为5弦扫至1弦；演唱段首拍及第三拍按原图分低音弦区，C/Am由5弦至3弦、F/Dm由4弦至3弦、G/Em由6弦至3弦，其余上、下扫为1至3弦范围。",
+    "歌词按新图的三段落点整理，保留“睡觉前”“蝴蝶停在上面”“天边那一道彩虹”等新图措辞；旧版其余两段歌词、跳尾和尾奏不再沿用。",
+    "简易谱完整保留四小节前奏，三段演唱依次展开；每行歌词空位保持空，不将其他遍次文字补入。"
   ],
   "chordShapes": {
-    "G": {
-      "frets": [
-        3,
-        2,
-        0,
-        0,
-        0,
-        3
-      ]
-    },
     "C": {
       "frets": [
         -1,
@@ -39,14 +32,39 @@
         0
       ]
     },
-    "D": {
+    "F": {
       "frets": [
-        -1,
+        1,
+        3,
+        3,
+        2,
+        1,
+        1
+      ],
+      "barre": {
+        "from": 6,
+        "to": 1,
+        "fret": 1
+      }
+    },
+    "G": {
+      "frets": [
+        3,
+        2,
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    "Am": {
+      "frets": [
         -1,
         0,
         2,
-        3,
-        2
+        2,
+        1,
+        0
       ]
     },
     "Em": {
@@ -59,44 +77,14 @@
         0
       ]
     },
-    "Dsus4": {
+    "Dm": {
       "frets": [
         -1,
         -1,
         0,
         2,
         3,
-        3
-      ]
-    },
-    "Bm": {
-      "frets": [
-        -1,
-        2,
-        4,
-        4,
-        3,
-        2
-      ]
-    },
-    "A7": {
-      "frets": [
-        -1,
-        0,
-        2,
-        0,
-        2,
-        0
-      ]
-    },
-    "Gsus4": {
-      "frets": [
-        3,
-        2,
-        0,
-        0,
-        1,
-        3
+        1
       ]
     }
   },
@@ -109,22 +97,7 @@
     {
       "name": "演唱",
       "start": 5,
-      "end": 19
-    },
-    {
-      "name": "第1–4遍结尾",
-      "start": 20,
       "end": 20
-    },
-    {
-      "name": "第5遍尾声",
-      "start": 21,
-      "end": 25
-    },
-    {
-      "name": "尾奏",
-      "start": 26,
-      "end": 26
     }
   ],
   "route": [
@@ -142,41 +115,21 @@
       "label": "第三段",
       "start": 5,
       "end": 20
-    },
-    {
-      "label": "第四段",
-      "start": 5,
-      "end": 20
-    },
-    {
-      "label": "第五段",
-      "start": 5,
-      "end": 19
-    },
-    {
-      "label": "第五遍跳尾与尾声",
-      "start": 21,
-      "end": 26
     }
   ],
+  "routeNote": "前奏一次；第5–20小节按三行歌词依次演唱三遍，第三遍在第20小节结束。",
   "simpleScore": {
-    "fullSections": [
-      1
-    ],
     "fullRanges": [
       {
-        "start": 26,
-        "end": 26,
-        "name": "尾奏"
+        "start": 1,
+        "end": 4,
+        "name": "前奏"
       }
     ],
     "routeVerses": [
       0,
       1,
-      2,
-      3,
-      4,
-      4
+      2
     ],
     "lyricBreaks": [
       {
@@ -205,6 +158,11 @@
         "kind": "space"
       },
       {
+        "bar": 14,
+        "beat": 1,
+        "kind": "space"
+      },
+      {
         "bar": 15,
         "beat": 1,
         "kind": "space"
@@ -223,598 +181,567 @@
         "bar": 19,
         "beat": 1,
         "kind": "space"
-      },
-      {
-        "bar": 22,
-        "beat": 1,
-        "kind": "line"
-      },
-      {
-        "bar": 23,
-        "beat": 1,
-        "kind": "space"
-      },
-      {
-        "bar": 24,
-        "beat": 1,
-        "kind": "space"
-      },
-      {
-        "bar": 21,
-        "beat": 4,
-        "kind": "space"
       }
     ]
   },
   "patterns": {
-    "intro-g": [
-      {
-        "kind": "fretted",
-        "duration": 8,
-        "notes": [
-          {
-            "string": 6,
-            "fret": 3
-          },
-          {
-            "string": 3,
-            "fret": 0
-          },
-          {
-            "string": 2,
-            "fret": 0
-          }
-        ]
-      },
-      {
-        "kind": "fretted",
-        "duration": 4,
-        "notes": [
-          {
-            "string": 3,
-            "fret": 0
-          },
-          {
-            "string": 2,
-            "fret": 0
-          }
-        ]
-      },
-      {
-        "kind": "fretted",
-        "duration": 8,
-        "notes": [
-          {
-            "string": 3,
-            "fret": 0
-          },
-          {
-            "string": 2,
-            "fret": 0
-          }
-        ]
-      },
-      {
-        "kind": "fretted",
-        "duration": 16,
-        "notes": [
-          {
-            "string": 3,
-            "fret": 0
-          },
-          {
-            "string": 2,
-            "fret": 0
-          }
-        ]
-      },
-      {
-        "kind": "fretted",
-        "duration": 16,
-        "notes": [
-          {
-            "string": 3,
-            "fret": 2
-          }
-        ]
-      },
-      {
-        "kind": "fretted",
-        "duration": 8,
-        "notes": [
-          {
-            "string": 3,
-            "fret": 0,
-            "tieToNext": true
-          }
-        ]
-      },
-      {
-        "kind": "fretted",
-        "duration": 4,
-        "notes": [
-          {
-            "string": 3,
-            "fret": 0
-          }
-        ]
-      }
-    ],
     "intro-c": [
       {
-        "kind": "fretted",
-        "duration": 8,
-        "notes": [
-          {
-            "string": 5,
-            "fret": 3
-          },
-          {
-            "string": 3,
-            "fret": 0
-          }
-        ]
-      },
-      {
-        "kind": "fretted",
-        "duration": 4,
-        "notes": [
-          {
-            "string": 3,
-            "fret": 0
-          }
-        ]
-      },
-      {
-        "kind": "fretted",
-        "duration": 8,
-        "notes": [
-          {
-            "string": 3,
-            "fret": 0
-          }
-        ]
-      },
-      {
-        "kind": "fretted",
-        "duration": 8,
-        "notes": [
-          {
-            "string": 3,
-            "fret": 2
-          }
-        ]
-      },
-      {
-        "kind": "fretted",
-        "duration": 8,
-        "notes": [
-          {
-            "string": 3,
-            "fret": 0
-          }
-        ]
-      },
-      {
-        "kind": "arpeggio",
-        "duration": 4,
+        "kind": "down",
         "startString": 5,
-        "endString": 1
-      }
-    ],
-    "intro-d": [
-      {
-        "kind": "pluck",
-        "strings": [
-          2,
-          3
-        ],
+        "endString": 1,
         "duration": 8
-      },
-      {
-        "kind": "pluck",
-        "strings": [
-          2,
-          3
-        ],
-        "duration": 8
-      },
-      {
-        "kind": "pluck",
-        "strings": [
-          2,
-          3
-        ],
-        "duration": 8
-      },
-      {
-        "kind": "pluck",
-        "strings": [
-          2,
-          3
-        ],
-        "duration": 8
-      },
-      {
-        "kind": "pluck",
-        "strings": [
-          2,
-          3
-        ],
-        "duration": 4
-      },
-      {
-        "kind": "pluck",
-        "strings": [
-          1,
-          2
-        ],
-        "duration": 4
-      }
-    ],
-    "strum": [
-      {
-        "kind": "down",
-        "duration": 4,
-        "startString": 4,
-        "endString": 1
-      },
-      {
-        "kind": "down",
-        "duration": 8,
-        "startString": 4,
-        "endString": 1
       },
       {
         "kind": "up",
-        "duration": 8,
         "startString": 1,
-        "endString": 4,
+        "endString": 3,
+        "duration": 8,
         "tieToNext": true
       },
       {
         "kind": "hold",
         "duration": 8,
-        "sourceArrow": "down",
-        "startString": 4,
+        "sourceStem": true,
+        "startString": 5,
         "endString": 1
       },
       {
+        "kind": "pluck",
+        "strings": [
+          1
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          1
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 3,
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 3,
+        "duration": 4
+      }
+    ],
+    "intro-f": [
+      {
+        "kind": "down",
+        "startString": 4,
+        "endString": 2,
+        "duration": 8
+      },
+      {
         "kind": "up",
+        "startString": 2,
+        "endString": 3,
         "duration": 8,
-        "startString": 1,
-        "endString": 4
+        "tieToNext": true
+      },
+      {
+        "kind": "hold",
+        "duration": 8,
+        "sourceStem": true,
+        "startString": 4,
+        "endString": 2
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 3,
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          2
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 0,
+        "duration": 8
+      }
+    ],
+    "intro-g": [
+      {
+        "kind": "down",
+        "startString": 6,
+        "endString": 3,
+        "duration": 8
+      },
+      {
+        "kind": "up",
+        "startString": 3,
+        "endString": 4,
+        "duration": 8,
+        "tieToNext": true
+      },
+      {
+        "kind": "hold",
+        "duration": 8,
+        "sourceStem": true,
+        "startString": 6,
+        "endString": 3
+      },
+      {
+        "kind": "pluck",
+        "strings": [
+          3
+        ],
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 2,
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 3,
+        "fret": 0,
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 2,
+        "fret": 3,
+        "duration": 8
+      },
+      {
+        "kind": "note",
+        "string": 1,
+        "fret": 0,
+        "duration": 8
+      }
+    ],
+    "intro-c-strum": [
+      {
+        "kind": "down",
+        "startString": 5,
+        "endString": 1,
+        "duration": 4
       },
       {
         "kind": "down",
-        "duration": 8,
-        "startString": 4,
-        "endString": 1
+        "startString": 3,
+        "endString": 1,
+        "duration": 8
       },
       {
         "kind": "up",
-        "duration": 8,
         "startString": 1,
-        "endString": 4
+        "endString": 3,
+        "duration": 8
+      },
+      {
+        "kind": "down",
+        "startString": 5,
+        "endString": 3,
+        "duration": 8
+      },
+      {
+        "kind": "up",
+        "startString": 1,
+        "endString": 3,
+        "duration": 8
+      },
+      {
+        "kind": "down",
+        "startString": 3,
+        "endString": 1,
+        "duration": 8
+      },
+      {
+        "kind": "up",
+        "startString": 1,
+        "endString": 3,
+        "duration": 8
       }
     ],
-    "end": [
+    "strum-5": [
       {
-        "kind": "arpeggio",
-        "duration": 4,
+        "kind": "down",
+        "startString": 5,
+        "endString": 3,
+        "duration": 4
+      },
+      {
+        "kind": "down",
+        "startString": 3,
+        "endString": 1,
+        "duration": 8
+      },
+      {
+        "kind": "up",
+        "startString": 1,
+        "endString": 3,
+        "duration": 8
+      },
+      {
+        "kind": "down",
+        "startString": 5,
+        "endString": 3,
+        "duration": 8
+      },
+      {
+        "kind": "up",
+        "startString": 1,
+        "endString": 3,
+        "duration": 8
+      },
+      {
+        "kind": "down",
+        "startString": 3,
+        "endString": 1,
+        "duration": 8
+      },
+      {
+        "kind": "up",
+        "startString": 1,
+        "endString": 3,
+        "duration": 8
+      }
+    ],
+    "strum-4": [
+      {
+        "kind": "down",
+        "startString": 4,
+        "endString": 3,
+        "duration": 4
+      },
+      {
+        "kind": "down",
+        "startString": 3,
+        "endString": 1,
+        "duration": 8
+      },
+      {
+        "kind": "up",
+        "startString": 1,
+        "endString": 3,
+        "duration": 8
+      },
+      {
+        "kind": "down",
+        "startString": 4,
+        "endString": 3,
+        "duration": 8
+      },
+      {
+        "kind": "up",
+        "startString": 1,
+        "endString": 3,
+        "duration": 8
+      },
+      {
+        "kind": "down",
+        "startString": 3,
+        "endString": 1,
+        "duration": 8
+      },
+      {
+        "kind": "up",
+        "startString": 1,
+        "endString": 3,
+        "duration": 8
+      }
+    ],
+    "strum-6": [
+      {
+        "kind": "down",
         "startString": 6,
-        "endString": 1
-      },
-      {
-        "kind": "hold",
+        "endString": 3,
         "duration": 4
       },
       {
-        "kind": "hold",
-        "duration": 4
+        "kind": "down",
+        "startString": 3,
+        "endString": 1,
+        "duration": 8
       },
       {
-        "kind": "hold",
-        "duration": 4
+        "kind": "up",
+        "startString": 1,
+        "endString": 3,
+        "duration": 8
+      },
+      {
+        "kind": "down",
+        "startString": 6,
+        "endString": 3,
+        "duration": 8
+      },
+      {
+        "kind": "up",
+        "startString": 1,
+        "endString": 3,
+        "duration": 8
+      },
+      {
+        "kind": "down",
+        "startString": 3,
+        "endString": 1,
+        "duration": 8
+      },
+      {
+        "kind": "up",
+        "startString": 1,
+        "endString": 3,
+        "duration": 8
       }
     ]
   },
   "bars": [
     {
       "number": 1,
+      "pattern": "intro-c",
       "chords": [
         [
           1,
-          "G"
+          "C"
         ]
       ],
-      "pattern": "intro-g"
+      "sourcePage": 1
     },
     {
       "number": 2,
+      "pattern": "intro-f",
       "chords": [
         [
           1,
-          "C"
+          "F"
         ]
       ],
-      "pattern": "intro-c"
+      "sourcePage": 1
     },
     {
       "number": 3,
+      "pattern": "intro-g",
       "chords": [
         [
           1,
-          "D"
+          "G"
         ]
       ],
-      "pattern": "intro-d"
+      "sourcePage": 1
     },
     {
       "number": 4,
+      "pattern": "intro-c-strum",
       "chords": [
         [
           1,
-          "G"
+          "C"
         ]
       ],
-      "pattern": "strum"
+      "sourcePage": 1
     },
     {
       "number": 5,
+      "pattern": "strum-5",
       "chords": [
         [
           1,
-          "G"
+          "C"
         ]
       ],
-      "pattern": "strum",
-      "repeatStart": true
+      "sourcePage": 1,
+      "repeatStart": true,
+      "startLabel": "三行歌词依次演唱，共三遍"
     },
     {
       "number": 6,
+      "pattern": "strum-5",
       "chords": [
         [
           1,
-          "Em"
+          "Am"
         ]
       ],
-      "pattern": "strum"
+      "sourcePage": 1
     },
     {
       "number": 7,
+      "pattern": "strum-4",
       "chords": [
         [
           1,
-          "C"
+          "F"
         ]
       ],
-      "pattern": "strum"
+      "sourcePage": 1
     },
     {
       "number": 8,
+      "pattern": "strum-6",
       "chords": [
         [
           1,
-          "D"
-        ],
-        [
-          2.5,
-          "Dsus4"
-        ],
-        [
-          4,
-          "D"
+          "G"
         ]
       ],
-      "pattern": "strum"
+      "sourcePage": 1
     },
     {
       "number": 9,
+      "pattern": "strum-5",
       "chords": [
         [
           1,
-          "G"
+          "C"
         ]
       ],
-      "pattern": "strum"
+      "sourcePage": 1
     },
     {
       "number": 10,
+      "pattern": "strum-5",
       "chords": [
         [
           1,
-          "Em"
+          "Am"
         ]
       ],
-      "pattern": "strum"
+      "sourcePage": 1
     },
     {
       "number": 11,
+      "pattern": "strum-4",
       "chords": [
         [
           1,
-          "C"
+          "F"
         ]
       ],
-      "pattern": "strum"
+      "sourcePage": 1
     },
     {
       "number": 12,
+      "pattern": "strum-6",
       "chords": [
         [
           1,
-          "D"
-        ],
-        [
-          2.5,
-          "Dsus4"
-        ],
-        [
-          4,
-          "D"
+          "G"
         ]
       ],
-      "pattern": "strum"
+      "sourcePage": 1
     },
     {
       "number": 13,
-      "chords": [
-        [
-          1,
-          "Bm"
-        ]
-      ],
-      "pattern": "strum"
-    },
-    {
-      "number": 14,
+      "pattern": "strum-6",
       "chords": [
         [
           1,
           "Em"
         ]
       ],
-      "pattern": "strum"
+      "sourcePage": 1
+    },
+    {
+      "number": 14,
+      "pattern": "strum-5",
+      "chords": [
+        [
+          1,
+          "Am"
+        ]
+      ],
+      "sourcePage": 1
     },
     {
       "number": 15,
+      "pattern": "strum-4",
       "chords": [
         [
           1,
-          "A7"
+          "Dm"
         ]
       ],
-      "pattern": "strum"
+      "sourcePage": 1
     },
     {
       "number": 16,
+      "pattern": "strum-6",
       "chords": [
         [
           1,
-          "D"
-        ],
-        [
-          2.5,
-          "Dsus4"
-        ],
-        [
-          4,
-          "D"
+          "G"
         ]
       ],
-      "pattern": "strum"
+      "sourcePage": 1
     },
     {
       "number": 17,
+      "pattern": "strum-5",
       "chords": [
         [
           1,
-          "G"
+          "C"
         ]
       ],
-      "pattern": "strum"
+      "sourcePage": 1
     },
     {
       "number": 18,
+      "pattern": "strum-4",
       "chords": [
         [
           1,
-          "C"
+          "F"
         ]
       ],
-      "pattern": "strum"
+      "sourcePage": 1
     },
     {
       "number": 19,
+      "pattern": "strum-6",
       "chords": [
         [
           1,
-          "D"
+          "G"
         ]
       ],
-      "pattern": "strum"
+      "sourcePage": 1
     },
     {
       "number": 20,
-      "chords": [
-        [
-          1,
-          "G"
-        ],
-        [
-          2.5,
-          "Gsus4"
-        ]
-      ],
-      "pattern": "strum",
-      "volta": "1–4",
-      "voltaEnd": true,
-      "repeatEnd": true,
-      "voltaStart": true
-    },
-    {
-      "number": 21,
-      "chords": [
-        [
-          1,
-          "G"
-        ]
-      ],
-      "pattern": "strum",
-      "volta": 5,
-      "voltaStart": true
-    },
-    {
-      "number": 22,
-      "chords": [
-        [
-          1,
-          "G"
-        ]
-      ],
-      "pattern": "strum"
-    },
-    {
-      "number": 23,
+      "pattern": "strum-5",
       "chords": [
         [
           1,
           "C"
         ]
       ],
-      "pattern": "strum"
-    },
-    {
-      "number": 24,
-      "chords": [
-        [
-          1,
-          "D"
-        ]
-      ],
-      "pattern": "strum"
-    },
-    {
-      "number": 25,
-      "chords": [
-        [
-          1,
-          "G"
-        ]
-      ],
-      "pattern": "strum"
-    },
-    {
-      "number": 26,
-      "chords": [
-        [
-          1,
-          "G"
-        ]
-      ],
-      "pattern": "end"
+      "sourcePage": 1,
+      "repeatEnd": true,
+      "endLabel": "第1、2遍返回第5小节；第3遍结束"
     }
-  ],
-  "routeNote": "第1–4遍唱完第20小节后返回第5小节；第五遍保留第19小节，跳过第20小节接21–26。"
+  ]
 }

@@ -87,6 +87,7 @@ export function validateScore(data) {
         if(event.kind!=='note'||event.grace||!['down','up'].includes(brush)||!Array.isArray(notes)||!notes.length||new Set(notes.map(n=>n.string)).size!==notes.length||notes.some(n=>!Number.isInteger(n.string)||n.string<1||n.string>6||!Number.isInteger(n.fret)||n.fret<0||(n.hammerToNext&&(n.string!==event.string||n.fret>=event.fret))))throw new Error('扫弦装饰和弦无效');
       }
       if(event.sourceArrow!==undefined && (event.kind!=='hold'||!['up','down','arpeggio'].includes(event.sourceArrow)))throw new Error('延音扫弦箭头无效');
+      if(event.sourceStem!==undefined&&(typeof event.sourceStem!=='boolean'||(event.sourceStem&&(event.kind!=='hold'||event.sourceArrow||!Number.isInteger(event.startString)||!Number.isInteger(event.endString)))))throw new Error('延音空符干无效');
     }
   }
   for (const route of data.route) {
@@ -247,7 +248,8 @@ function renderBar(bar, data, index, rowHeight, headerCrop) {
     if (strokeKind === 'down') svg += arrow(at,event.startString?TOP+(event.startString-1)*STRING_GAP:Number.isInteger(event.beat)?bassY:TOP+24,event.endString?TOP+(event.endString-1)*STRING_GAP:TOP);
     if (strokeKind === 'up') svg += arrow(at,event.startString?TOP+(event.startString-1)*STRING_GAP:TOP,event.endString?TOP+(event.endString-1)*STRING_GAP:TOP+24);
     if (strokeKind === 'arpeggio') svg += arrow(at,event.startString?TOP+(event.startString-1)*STRING_GAP:bassY,event.endString?TOP+(event.endString-1)*STRING_GAP:TOP,true);
-    if (event.kind === 'hold' && !event.sourceArrow) svg += text(at,TOP+23,'–','hold','middle');
+    if (event.kind === 'hold' && !event.sourceArrow && !event.sourceStem) svg += text(at,TOP+23,'–','hold','middle');
+    if(event.sourceStem)svg+=line(at,TOP+(event.startString-1)*STRING_GAP,at,TOP+(event.endString-1)*STRING_GAP,'class="tab-sustain-stem"');
     if(event.kind==='rest') svg+=event.duration===1
       ? `<rect class="tab-rest tab-rest-whole" x="${at-6}" y="${TOP+8}" width="12" height="5" fill="currentColor"/>`
       : event.duration===2
@@ -310,7 +312,7 @@ function renderBar(bar, data, index, rowHeight, headerCrop) {
       const end=placed[i+1]?.x??x+barWidth;
       svg+=`<path class="tab-tie" d="M ${at} ${y} Q ${(at+end)/2} ${y-9} ${end} ${y}" fill="none"/>`;
     }
-    if (event.duration!==1 && event.kind !== 'rest' && (event.kind !== 'hold' || event.sourceArrow)) {
+    if (event.duration!==1 && event.kind !== 'rest' && (event.kind !== 'hold' || event.sourceArrow || event.sourceStem)) {
       svg += event.duration===2
         ? line(at,STEM_END-10,at,STEM_END,'class="tab-half-stem"')
         : line(at,BOTTOM+7,at,STEM_END);
@@ -335,7 +337,7 @@ function renderBar(bar, data, index, rowHeight, headerCrop) {
         run = [];
       };
       for (const event of group) {
-        if (event.duration >= duration && event.kind!=='rest' && (event.kind!=='hold'||event.sourceArrow)) run.push(event); else flush();
+        if (event.duration >= duration && event.kind!=='rest' && (event.kind!=='hold'||event.sourceArrow||event.sourceStem)) run.push(event); else flush();
       }
       flush();
     }
